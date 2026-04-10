@@ -1,3 +1,585 @@
-<!-- dashboard.html -->
-<!-- Handlebars / template-literal HTML skeleton for the roadmap dashboard.
-     The generate script injects roadmap data into this template at build time. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Margo Roadmap Dashboard</title>
+  <style>
+    /* ------------------------------------------------------------------ */
+    /* Design tokens                                                        */
+    /* ------------------------------------------------------------------ */
+    :root {
+      --brand:        #00358C;
+      --brand-dark:   #002570;
+      --text:         #111827;
+      --text-muted:   #6b7280;
+      --bg:           #f0f4f9;
+      --surface:      #ffffff;
+      --border:       #d1dce8;
+      --radius:       10px;
+      --shadow-sm:    0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.04);
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Reset & base                                                         */
+    /* ------------------------------------------------------------------ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+                   Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Header                                                               */
+    /* ------------------------------------------------------------------ */
+    header {
+      background: var(--brand);
+      color: #fff;
+      padding: 18px 24px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 10px rgba(0,0,60,0.28);
+    }
+
+    header h1 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      line-height: 1.2;
+    }
+
+    .header-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 20px;
+      padding: 3px 12px;
+      font-size: 0.77rem;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Main layout                                                          */
+    /* ------------------------------------------------------------------ */
+    main {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 24px 16px 40px;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Summary bar                                                          */
+    /* ------------------------------------------------------------------ */
+    .summary {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      margin-bottom: 22px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .summary-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 10px;
+    }
+
+    .summary-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      color: var(--text-muted);
+    }
+
+    .summary-count {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .progress-track {
+      height: 10px;
+      background: var(--bg);
+      border-radius: 5px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #2e7d32, #1B5E20);
+      border-radius: 5px;
+      width: 0%;
+      transition: width 0.9s cubic-bezier(.4,0,.2,1);
+    }
+
+    .summary-footer {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 7px;
+    }
+
+    .pct-label {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #1B5E20;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Theme panels grid                                                    */
+    /* ------------------------------------------------------------------ */
+    .themes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+
+    @media (max-width: 960px) { .themes { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) {
+      .themes  { grid-template-columns: 1fr; }
+      header   { position: static; }
+    }
+
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .panel-header {
+      background: var(--brand);
+      color: #fff;
+      padding: 11px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .panel-title {
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.2px;
+    }
+
+    .panel-count {
+      font-size: 0.72rem;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px;
+      padding: 2px 9px;
+    }
+
+    .tile-list {
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .empty-panel {
+      padding: 18px 14px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      font-style: italic;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Tiles                                                                */
+    /* ------------------------------------------------------------------ */
+    .tile {
+      border-radius: 6px;
+      border: 1px solid rgba(0,0,0,0.09);
+      cursor: pointer;
+      user-select: none;
+      transition: box-shadow 0.15s;
+    }
+
+    .tile:hover  { box-shadow: 0 3px 10px rgba(0,0,0,0.14); }
+    .tile:active { opacity: 0.92; }
+
+    .tile-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      padding: 9px 11px;
+    }
+
+    .tile-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.18);
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+
+    .tile-name {
+      flex: 1;
+      font-size: 0.82rem;
+      font-weight: 500;
+      line-height: 1.35;
+    }
+
+    .tile-arrow {
+      font-size: 0.6rem;
+      opacity: 0.5;
+      flex-shrink: 0;
+      margin-top: 4px;
+      transition: transform 0.18s;
+    }
+
+    .tile.open .tile-arrow { transform: rotate(90deg); }
+
+    /* Detail body */
+    .tile-body {
+      display: none;
+      padding: 9px 11px 11px;
+      border-top: 1px solid rgba(0,0,0,0.1);
+      font-size: 0.78rem;
+    }
+
+    .tile.open .tile-body { display: block; }
+
+    .detail-row {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+
+    .detail-row:last-of-type { margin-bottom: 0; }
+
+    .detail-label {
+      font-weight: 600;
+      color: rgba(0,0,0,0.42);
+      min-width: 88px;
+      flex-shrink: 0;
+    }
+
+    .detail-value { color: rgba(0,0,0,0.78); }
+
+    .gh-link {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 0.77rem;
+      color: var(--brand);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0,53,140,0.35);
+      word-break: break-all;
+    }
+
+    .gh-link:hover { border-bottom-color: var(--brand); }
+
+    /* ------------------------------------------------------------------ */
+    /* Status colour rules (background + text overrides)                   */
+    /* ------------------------------------------------------------------ */
+    .s-no-owner { background: #E0E0E0; }
+    .s-owner-id { background: #FFD600; }
+    .s-sup-init { background: #FF9800; }
+    .s-sup-acc  { background: #66BB6A; }
+    .s-finished { background: #1B5E20; color: #fff; }
+    .s-unknown  { background: #e8eef7; }
+
+    /* Overrides for the dark "Finished" tile */
+    .s-finished .tile-body        { border-top-color: rgba(255,255,255,0.18); }
+    .s-finished .tile-dot         { background: rgba(255,255,255,0.35); }
+    .s-finished .detail-label     { color: rgba(255,255,255,0.52); }
+    .s-finished .detail-value     { color: rgba(255,255,255,0.88); }
+    .s-finished .gh-link          { color: #a5d6a7; border-bottom-color: rgba(165,214,167,0.4); }
+    .s-finished .gh-link:hover    { border-bottom-color: #a5d6a7; }
+
+    /* ------------------------------------------------------------------ */
+    /* Legend                                                               */
+    /* ------------------------------------------------------------------ */
+    .legend {
+      margin-top: 22px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .legend-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      color: var(--text-muted);
+      margin-bottom: 11px;
+    }
+
+    .legend-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 24px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.82rem;
+    }
+
+    .swatch {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      border: 1px solid rgba(0,0,0,0.1);
+      flex-shrink: 0;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Footer                                                               */
+    /* ------------------------------------------------------------------ */
+    footer {
+      text-align: center;
+      padding: 20px 16px;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+<!-- __INJECT_DATA__ -->
+
+<header>
+  <h1>Margo Roadmap Dashboard</h1>
+  <div class="header-meta">
+    <span class="badge" id="badge-release"></span>
+    <span class="badge" id="badge-next"></span>
+    <span class="badge" id="badge-updated"></span>
+  </div>
+</header>
+
+<main>
+  <div class="summary">
+    <div class="summary-top">
+      <span class="summary-label">Overall completion</span>
+      <span class="summary-count" id="sum-text"></span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+    <div class="summary-footer">
+      <span class="pct-label" id="sum-pct"></span>
+    </div>
+  </div>
+
+  <div class="themes" id="themes"></div>
+
+  <div class="legend">
+    <div class="legend-title">Status legend</div>
+    <div class="legend-items">
+      <div class="legend-item">
+        <div class="swatch" style="background:#E0E0E0"></div>No Owner
+      </div>
+      <div class="legend-item">
+        <div class="swatch" style="background:#FFD600"></div>Owner Identified
+      </div>
+      <div class="legend-item">
+        <div class="swatch" style="background:#FF9800"></div>SUP Initiated
+      </div>
+      <div class="legend-item">
+        <div class="swatch" style="background:#66BB6A"></div>SUP Accepted
+      </div>
+      <div class="legend-item">
+        <div class="swatch" style="background:#1B5E20"></div>Finished
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  Generated by the Margo roadmap dashboard generator &middot; Data sourced from GitHub Projects
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  const { items, meta } = window.__DASHBOARD__;
+
+  /* -------------------------------------------------------------------- */
+  /* Status helpers                                                         */
+  /* -------------------------------------------------------------------- */
+
+  // Sort order: Finished first (most progress), No Owner last (least progress).
+  const STATUS_ORDER = {
+    'Finished':         0,
+    'SUP Accepted':     1,
+    'SUP Initiated':    2,
+    'Owner Identified': 3,
+    'No Owner':         4,
+  };
+
+  const STATUS_CLASS = {
+    'No Owner':         's-no-owner',
+    'Owner Identified': 's-owner-id',
+    'SUP Initiated':    's-sup-init',
+    'SUP Accepted':     's-sup-acc',
+    'Finished':         's-finished',
+  };
+
+  function statusCls(s)  { return STATUS_CLASS[s] || 's-unknown'; }
+  function statusRank(s) { return STATUS_ORDER[s]  ?? 99; }
+
+  /* -------------------------------------------------------------------- */
+  /* Header badges                                                          */
+  /* -------------------------------------------------------------------- */
+  setText('badge-release', 'Current release: ' + (meta.currentRelease  ?? '—'));
+  setText('badge-next',    'Next release: '     + (meta.nextReleaseDate ?? '—'));
+  setText('badge-updated', 'Updated: '          + meta.generatedAt);
+
+  /* -------------------------------------------------------------------- */
+  /* Summary bar                                                            */
+  /* -------------------------------------------------------------------- */
+  const total    = items.length;
+  const finished = items.filter(function (i) { return i.status === 'Finished'; }).length;
+  const pct      = total > 0 ? Math.round((finished / total) * 100) : 0;
+
+  setText('sum-text', finished + ' of ' + total + ' items complete');
+  setText('sum-pct',  pct + '%');
+
+  // Defer so the CSS transition actually fires after first paint.
+  requestAnimationFrame(function () {
+    document.getElementById('progress-fill').style.width = pct + '%';
+  });
+
+  /* -------------------------------------------------------------------- */
+  /* Theme panels                                                           */
+  /* -------------------------------------------------------------------- */
+  var container = document.getElementById('themes');
+
+  (meta.themes || []).forEach(function (theme) {
+    var themeItems = items
+      .filter(function (i) { return i.theme === theme; })
+      .slice()  // don't mutate the original array
+      .sort(function (a, b) { return statusRank(a.status) - statusRank(b.status); });
+
+    var panel = make('div', 'panel');
+
+    var hd = make('div', 'panel-header');
+    hd.innerHTML =
+      '<span class="panel-title">' + esc(theme) + '</span>' +
+      '<span class="panel-count">' + themeItems.length +
+        (themeItems.length === 1 ? ' item' : ' items') + '</span>';
+    panel.appendChild(hd);
+
+    var list = make('div', 'tile-list');
+    if (themeItems.length === 0) {
+      var empty = make('div', 'empty-panel');
+      empty.textContent = 'No items';
+      list.appendChild(empty);
+    } else {
+      themeItems.forEach(function (item) {
+        list.appendChild(buildTile(item));
+      });
+    }
+
+    panel.appendChild(list);
+    container.appendChild(panel);
+  });
+
+  /* -------------------------------------------------------------------- */
+  /* Tile builder                                                           */
+  /* -------------------------------------------------------------------- */
+  function buildTile(item) {
+    var tile = make('div', 'tile ' + statusCls(item.status));
+
+    var head = make('div', 'tile-head');
+    head.innerHTML =
+      '<div class="tile-dot"></div>' +
+      '<div class="tile-name">' + esc(item.title || '(untitled)') + '</div>' +
+      '<div class="tile-arrow">&#9658;</div>';
+    tile.appendChild(head);
+
+    var body = make('div', 'tile-body');
+    body.innerHTML =
+      drow('Type',         item.type)                +
+      drow('Status',       item.status)              +
+      drow('SUP required', item.supRequired)         +
+      drow('Target date',  item.targetDate)          +
+      drow('Release',      item.release)             +
+      drow('Source',       srcLabel(item.source))    +
+      (item.url
+        ? '<a class="gh-link" href="' + esc(item.url) +
+          '" target="_blank" rel="noopener">View on GitHub &#8599;</a>'
+        : '');
+    tile.appendChild(body);
+
+    head.addEventListener('click', function () {
+      tile.classList.toggle('open');
+    });
+
+    return tile;
+  }
+
+  function drow(label, value) {
+    if (value == null || value === '') return '';
+    return '<div class="detail-row">' +
+      '<span class="detail-label">' + esc(label)        + '</span>' +
+      '<span class="detail-value">' + esc(String(value)) + '</span>' +
+      '</div>';
+  }
+
+  function srcLabel(src) {
+    if (src === 'pm')  return 'PM Epics';
+    if (src === 'twg') return 'TWG Features';
+    return src || null;
+  }
+
+  /* -------------------------------------------------------------------- */
+  /* Utilities                                                              */
+  /* -------------------------------------------------------------------- */
+  function setText(id, text) {
+    var el = document.getElementById(id);
+    if (el) el.textContent = text;
+  }
+
+  function make(tag, cls) {
+    var el = document.createElement(tag);
+    if (cls) el.className = cls;
+    return el;
+  }
+
+  function esc(str) {
+    return String(str)
+      .replace(/&/g,  '&amp;')
+      .replace(/</g,  '&lt;')
+      .replace(/>/g,  '&gt;')
+      .replace(/"/g,  '&quot;')
+      .replace(/'/g,  '&#39;');
+  }
+
+}());
+</script>
+
+</body>
+</html>

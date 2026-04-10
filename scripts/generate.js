@@ -202,6 +202,39 @@ async function fetchAllItems({ key, number, label }) {
 }
 
 // ---------------------------------------------------------------------------
+// HTML generation
+// ---------------------------------------------------------------------------
+
+/**
+ * Reads templates/dashboard.html, injects the items array and config metadata
+ * as window.__DASHBOARD__ via a <script> tag, and returns the final HTML string.
+ *
+ * '<' is escaped to '\u003c' inside the JSON payload so it can never break
+ * out of the surrounding <script> block, regardless of item titles or URLs.
+ */
+function renderHtml(items) {
+  const templatePath = resolve(ROOT, 'templates', 'dashboard.html');
+  const template     = readFileSync(templatePath, 'utf8');
+
+  const meta = {
+    currentRelease:  config.currentRelease  ?? null,
+    nextReleaseDate: config.nextReleaseDate ?? null,
+    themes:          config.themes          ?? [],
+    releases:        config.releases        ?? [],
+    generatedAt:     new Date().toUTCString(),
+  };
+
+  const payload   = JSON.stringify({ items, meta }).replace(/</g, '\\u003c');
+  const injection = `<script>window.__DASHBOARD__ = ${payload};<\/script>`;
+
+  const html = template.replace('<!-- __INJECT_DATA__ -->', injection);
+  if (html === template) {
+    throw new Error('Template is missing the <!-- __INJECT_DATA__ --> placeholder.');
+  }
+  return html;
+}
+
+// ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
 
@@ -228,8 +261,14 @@ async function main() {
 
   const outPath = resolve(docsDir, 'data.json');
   writeFileSync(outPath, JSON.stringify(allItems, null, 2), 'utf8');
+  console.log(`Wrote data          → ${outPath}`);
 
-  console.log(`\nWrote ${allItems.length} items → ${outPath}`);
+  // Render HTML dashboard from template.
+  console.log('\nRendering HTML dashboard...');
+  const html     = renderHtml(allItems);
+  const htmlPath = resolve(docsDir, 'index.html');
+  writeFileSync(htmlPath, html, 'utf8');
+  console.log(`Wrote dashboard     → ${htmlPath}`);
 }
 
 main().catch(err => {
