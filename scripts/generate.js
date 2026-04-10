@@ -6,6 +6,8 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { resolve, dirname }                        from 'node:path';
 import { fileURLToPath }                           from 'node:url';
+import { execFile }                                from 'node:child_process';
+import { promisify }                               from 'node:util';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT      = resolve(__dirname, '..');
@@ -32,26 +34,33 @@ if (!GITHUB_TOKEN) {
 
 // ---------------------------------------------------------------------------
 // GraphQL client
+//
+// Node's built-in fetch (undici) does not honour HTTPS_PROXY, so we shell
+// out to curl, which picks up the proxy automatically from the environment.
 // ---------------------------------------------------------------------------
 
-const GH_GRAPHQL = 'https://api.github.com/graphql';
+const GH_GRAPHQL  = 'https://api.github.com/graphql';
+const execFileAsync = promisify(execFile);
 
 async function graphql(query, variables = {}) {
-  const res = await fetch(GH_GRAPHQL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${GITHUB_TOKEN}`,
-      'User-Agent':    'margo-roadmap-dashboard/1.0',
-    },
-    body: JSON.stringify({ query, variables }),
-  });
+  const { stdout } = await execFileAsync('curl', [
+    '--silent',
+    '--show-error',
+    '-X', 'POST',
+    '-H', `Authorization: Bearer ${GITHUB_TOKEN}`,
+    '-H', 'Content-Type: application/json',
+    '-H', 'User-Agent: margo-roadmap-dashboard/1.0',
+    '--data', JSON.stringify({ query, variables }),
+    GH_GRAPHQL,
+  ], { maxBuffer: 50 * 1024 * 1024 });
 
-  if (!res.ok) {
-    throw new Error(`GitHub API HTTP error: ${res.status} ${res.statusText}`);
+  let json;
+  try {
+    json = JSON.parse(stdout);
+  } catch {
+    throw new Error(`GitHub API returned non-JSON: ${stdout.slice(0, 300)}`);
   }
 
-  const json = await res.json();
   if (json.errors?.length) {
     throw new Error(`GraphQL errors:\n${json.errors.map(e => e.message).join('\n')}`);
   }
