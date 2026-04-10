@@ -1,4 +1,19 @@
-// config.json
-// Central configuration for the dashboard: data sources, output paths,
-// refresh schedule, and any feature flags.
-{}
+{
+  "org": "margo",
+  "projects": {
+    "pm":  { "number": 13, "label": "PM Epics" },
+    "twg": { "number": 22, "label": "TWG Features" }
+  },
+  "fieldMappings": {
+    "status":      "Status",
+    "theme":       "Theme",
+    "release":     "Release",
+    "type":        "Type",
+    "supRequired": "SUP Required",
+    "targetDate":  "Target Date"
+  },
+  "releases":        ["PR1", "PR2", "PR3", "GA1"],
+  "currentRelease":  "PR2",
+  "nextReleaseDate": "2026-06-30",
+  "themes":          ["Trust", "Flexibility", "Robustness"]
+}
