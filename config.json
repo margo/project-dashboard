@@ -1,0 +1,4 @@
+// config.json
+// Central configuration for the dashboard: data sources, output paths,
+// refresh schedule, and any feature flags.
+{}
