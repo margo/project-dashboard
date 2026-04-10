@@ -15,5 +15,6 @@
   "releases":        ["PR1", "PR2", "PR3", "GA1"],
   "currentRelease":  "PR2",
   "nextReleaseDate": "2026-06-30",
-  "themes":          ["Trust", "Flexibility", "Robustness"]
+  "themes":          ["Trust", "Flexibility", "Robustness"],
+  "groupBy":         "source"
 }

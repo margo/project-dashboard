@@ -146,16 +146,15 @@
     }
 
     /* ------------------------------------------------------------------ */
-    /* Theme panels grid                                                    */
+    /* Panels grid — auto-fits any number of panels                        */
     /* ------------------------------------------------------------------ */
     .themes {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
       gap: 16px;
       align-items: start;
     }
 
-    @media (max-width: 960px) { .themes { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 600px) {
       .themes  { grid-template-columns: 1fr; }
       header   { position: static; }
@@ -295,22 +294,16 @@
     .gh-link:hover { border-bottom-color: var(--brand); }
 
     /* ------------------------------------------------------------------ */
-    /* Status colour rules (background + text overrides)                   */
+    /* Tile colour — set via inline style by JS; only white-text override  */
+    /* needs a CSS class (.tile-dark)                                       */
     /* ------------------------------------------------------------------ */
-    .s-no-owner { background: #E0E0E0; }
-    .s-owner-id { background: #FFD600; }
-    .s-sup-init { background: #FF9800; }
-    .s-sup-acc  { background: #66BB6A; }
-    .s-finished { background: #1B5E20; color: #fff; }
-    .s-unknown  { background: #e8eef7; }
-
-    /* Overrides for the dark "Finished" tile */
-    .s-finished .tile-body        { border-top-color: rgba(255,255,255,0.18); }
-    .s-finished .tile-dot         { background: rgba(255,255,255,0.35); }
-    .s-finished .detail-label     { color: rgba(255,255,255,0.52); }
-    .s-finished .detail-value     { color: rgba(255,255,255,0.88); }
-    .s-finished .gh-link          { color: #a5d6a7; border-bottom-color: rgba(165,214,167,0.4); }
-    .s-finished .gh-link:hover    { border-bottom-color: #a5d6a7; }
+    .tile-dark .tile-body        { border-top-color: rgba(255,255,255,0.18); }
+    .tile-dark .tile-dot         { background: rgba(255,255,255,0.35); }
+    .tile-dark .tile-arrow       { opacity: 0.7; }
+    .tile-dark .detail-label     { color: rgba(255,255,255,0.52); }
+    .tile-dark .detail-value     { color: rgba(255,255,255,0.88); }
+    .tile-dark .gh-link          { color: #a5d6a7; border-bottom-color: rgba(165,214,167,0.4); }
+    .tile-dark .gh-link:hover    { border-bottom-color: #a5d6a7; }
 
     /* ------------------------------------------------------------------ */
     /* Legend                                                               */
@@ -396,23 +389,7 @@
 
   <div class="legend">
     <div class="legend-title">Status legend</div>
-    <div class="legend-items">
-      <div class="legend-item">
-        <div class="swatch" style="background:#E0E0E0"></div>No Owner
-      </div>
-      <div class="legend-item">
-        <div class="swatch" style="background:#FFD600"></div>Owner Identified
-      </div>
-      <div class="legend-item">
-        <div class="swatch" style="background:#FF9800"></div>SUP Initiated
-      </div>
-      <div class="legend-item">
-        <div class="swatch" style="background:#66BB6A"></div>SUP Accepted
-      </div>
-      <div class="legend-item">
-        <div class="swatch" style="background:#1B5E20"></div>Finished
-      </div>
-    </div>
+    <div class="legend-items" id="legend-items"></div>
   </div>
 </main>
 
@@ -424,81 +401,125 @@
 (function () {
   'use strict';
 
-  const { items, meta } = window.__DASHBOARD__;
+  var _d   = window.__DASHBOARD__;
+  var items = _d.items;
+  var meta  = _d.meta;
 
   /* -------------------------------------------------------------------- */
-  /* Status helpers                                                         */
+  /* Status colour map — live values from the GitHub projects.             */
+  /* Will be remapped to the five-state scale once fields are standardised. */
   /* -------------------------------------------------------------------- */
-
-  // Sort order: Finished first (most progress), No Owner last (least progress).
-  const STATUS_ORDER = {
-    'Finished':         0,
-    'SUP Accepted':     1,
-    'SUP Initiated':    2,
-    'Owner Identified': 3,
-    'No Owner':         4,
+  var STATUS_BG = {
+    'Completed':                         '#1B5E20',
+    'PR2 Core Scope Features':           '#66BB6A',
+    'TWG - Approved Requirements':       '#66BB6A',
+    'Gen. Improvements: SUP Required':   '#FF9800',
+    'TWG - Requirement in progress':     '#FF9800',
+    'TWG - Requirement Under Review':    '#FFD600',
+    'PM - Reviewing TWG feedback':       '#FFD600',
+    'PM - Requirement under Review':     '#FFD600',
+    'Gen. Improvements: Non SUP':        '#90CAF9',
+    'PM - Requirement in Draft':         '#E0E0E0',
+    'backlog - notconfirmednextrelease': '#BDBDBD',
   };
 
-  const STATUS_CLASS = {
-    'No Owner':         's-no-owner',
-    'Owner Identified': 's-owner-id',
-    'SUP Initiated':    's-sup-init',
-    'SUP Accepted':     's-sup-acc',
-    'Finished':         's-finished',
+  // Statuses whose background is dark enough to require white text.
+  var STATUS_DARK = { 'Completed': true };
+
+  // Statuses that count toward the completion progress bar.
+  var DONE_STATUSES = { 'Completed': true };
+
+  // Sort order within panels: most-progressed first.
+  var STATUS_ORDER = {
+    'Completed':                          0,
+    'PR2 Core Scope Features':            1,
+    'TWG - Approved Requirements':        2,
+    'Gen. Improvements: SUP Required':    3,
+    'TWG - Requirement in progress':      4,
+    'TWG - Requirement Under Review':     5,
+    'PM - Reviewing TWG feedback':        6,
+    'PM - Requirement under Review':      7,
+    'Gen. Improvements: Non SUP':         8,
+    'PM - Requirement in Draft':          9,
+    'backlog - notconfirmednextrelease':  10,
   };
 
-  function statusCls(s)  { return STATUS_CLASS[s] || 's-unknown'; }
-  function statusRank(s) { return STATUS_ORDER[s]  ?? 99; }
+  function statusRank(s) {
+    return STATUS_ORDER[s] != null ? STATUS_ORDER[s] : 99;
+  }
 
   /* -------------------------------------------------------------------- */
   /* Header badges                                                          */
   /* -------------------------------------------------------------------- */
-  setText('badge-release', 'Current release: ' + (meta.currentRelease  ?? '—'));
-  setText('badge-next',    'Next release: '     + (meta.nextReleaseDate ?? '—'));
+  setText('badge-release', 'Current release: ' + (meta.currentRelease  || '—'));
+  setText('badge-next',    'Next release: '     + (meta.nextReleaseDate || '—'));
   setText('badge-updated', 'Updated: '          + meta.generatedAt);
 
   /* -------------------------------------------------------------------- */
   /* Summary bar                                                            */
   /* -------------------------------------------------------------------- */
-  const total    = items.length;
-  const finished = items.filter(function (i) { return i.status === 'Finished'; }).length;
-  const pct      = total > 0 ? Math.round((finished / total) * 100) : 0;
+  var total    = items.length;
+  var finished = items.filter(function (i) { return DONE_STATUSES[i.status]; }).length;
+  var pct      = total > 0 ? Math.round((finished / total) * 100) : 0;
 
   setText('sum-text', finished + ' of ' + total + ' items complete');
   setText('sum-pct',  pct + '%');
 
-  // Defer so the CSS transition actually fires after first paint.
+  // Defer so the CSS transition fires after the first paint.
   requestAnimationFrame(function () {
     document.getElementById('progress-fill').style.width = pct + '%';
   });
 
   /* -------------------------------------------------------------------- */
-  /* Theme panels                                                           */
+  /* Build panel definitions from config                                    */
+  /* Switch config.groupBy from "source" → "theme" once Theme fields       */
+  /* are added to the GitHub projects; no template change needed.           */
+  /* -------------------------------------------------------------------- */
+  var panelDefs;
+  if (meta.groupBy === 'source') {
+    panelDefs = Object.keys(meta.projects || {}).map(function (key) {
+      return {
+        label:    (meta.projects[key] || {}).label || key,
+        filterFn: function (i) { return i.source === key; },
+      };
+    });
+  } else {
+    // groupBy === 'theme' (default once Theme fields exist)
+    panelDefs = (meta.themes || []).map(function (theme) {
+      return {
+        label:    theme,
+        filterFn: function (i) { return i.theme === theme; },
+      };
+    });
+  }
+
+  /* -------------------------------------------------------------------- */
+  /* Render panels                                                          */
   /* -------------------------------------------------------------------- */
   var container = document.getElementById('themes');
 
-  (meta.themes || []).forEach(function (theme) {
-    var themeItems = items
-      .filter(function (i) { return i.theme === theme; })
-      .slice()  // don't mutate the original array
+  panelDefs.forEach(function (def) {
+    var panelItems = items
+      .filter(def.filterFn)
+      .slice()
       .sort(function (a, b) { return statusRank(a.status) - statusRank(b.status); });
 
     var panel = make('div', 'panel');
 
     var hd = make('div', 'panel-header');
     hd.innerHTML =
-      '<span class="panel-title">' + esc(theme) + '</span>' +
-      '<span class="panel-count">' + themeItems.length +
-        (themeItems.length === 1 ? ' item' : ' items') + '</span>';
+      '<span class="panel-title">' + esc(def.label) + '</span>' +
+      '<span class="panel-count">' + panelItems.length +
+        (panelItems.length === 1 ? ' item' : ' items') + '</span>';
     panel.appendChild(hd);
 
     var list = make('div', 'tile-list');
-    if (themeItems.length === 0) {
+    if (panelItems.length === 0) {
       var empty = make('div', 'empty-panel');
       empty.textContent = 'No items';
       list.appendChild(empty);
     } else {
-      themeItems.forEach(function (item) {
+      panelItems.forEach(function (item) {
         list.appendChild(buildTile(item));
       });
     }
@@ -511,7 +532,9 @@
   /* Tile builder                                                           */
   /* -------------------------------------------------------------------- */
   function buildTile(item) {
-    var tile = make('div', 'tile ' + statusCls(item.status));
+    var tile = make('div', 'tile');
+    tile.style.background = STATUS_BG[item.status] || '#e8eef7';
+    if (STATUS_DARK[item.status]) tile.classList.add('tile-dark');
 
     var head = make('div', 'tile-head');
     head.innerHTML =
@@ -522,37 +545,48 @@
 
     var body = make('div', 'tile-body');
     body.innerHTML =
-      drow('Type',         item.type)                +
-      drow('Status',       item.status)              +
-      drow('SUP required', item.supRequired)         +
-      drow('Target date',  item.targetDate)          +
-      drow('Release',      item.release)             +
-      drow('Source',       srcLabel(item.source))    +
+      drow('Status',       item.status)           +
+      drow('Type',         item.type)             +
+      drow('SUP required', item.supRequired)      +
+      drow('Target date',  item.targetDate)       +
+      drow('Release',      item.release)          +
+      drow('Source',       srcLabel(item.source)) +
       (item.url
         ? '<a class="gh-link" href="' + esc(item.url) +
           '" target="_blank" rel="noopener">View on GitHub &#8599;</a>'
         : '');
     tile.appendChild(body);
 
-    head.addEventListener('click', function () {
-      tile.classList.toggle('open');
-    });
-
+    head.addEventListener('click', function () { tile.classList.toggle('open'); });
     return tile;
   }
 
   function drow(label, value) {
     if (value == null || value === '') return '';
     return '<div class="detail-row">' +
-      '<span class="detail-label">' + esc(label)        + '</span>' +
+      '<span class="detail-label">' + esc(label)         + '</span>' +
       '<span class="detail-value">' + esc(String(value)) + '</span>' +
       '</div>';
   }
 
   function srcLabel(src) {
-    if (src === 'pm')  return 'PM Epics';
-    if (src === 'twg') return 'TWG Features';
-    return src || null;
+    var p = (meta.projects || {})[src];
+    return p ? p.label : (src || null);
+  }
+
+  /* -------------------------------------------------------------------- */
+  /* Legend — generated from the live colour map                           */
+  /* -------------------------------------------------------------------- */
+  var legendEl = document.getElementById('legend-items');
+  if (legendEl) {
+    Object.keys(STATUS_BG).forEach(function (status) {
+      var item = make('div', 'legend-item');
+      var sw   = make('div', 'swatch');
+      sw.style.background = STATUS_BG[status];
+      item.appendChild(sw);
+      item.appendChild(document.createTextNode(status));
+      legendEl.appendChild(item);
+    });
   }
 
   /* -------------------------------------------------------------------- */
@@ -571,11 +605,11 @@
 
   function esc(str) {
     return String(str)
-      .replace(/&/g,  '&amp;')
-      .replace(/</g,  '&lt;')
-      .replace(/>/g,  '&gt;')
-      .replace(/"/g,  '&quot;')
-      .replace(/'/g,  '&#39;');
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
   }
 
 }());
