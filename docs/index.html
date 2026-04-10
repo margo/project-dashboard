@@ -1,3 +1,585 @@
-<!-- index.html -->
-<!-- Auto-generated output file served by GitHub Pages.
-     Do not edit by hand — this file is overwritten each time generate.js runs. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Margo Roadmap Dashboard</title>
+  <style>
+    /* ------------------------------------------------------------------ */
+    /* Design tokens                                                        */
+    /* ------------------------------------------------------------------ */
+    :root {
+      --brand:        #00358C;
+      --brand-dark:   #002570;
+      --text:         #111827;
+      --text-muted:   #6b7280;
+      --bg:           #f0f4f9;
+      --surface:      #ffffff;
+      --border:       #d1dce8;
+      --radius:       10px;
+      --shadow-sm:    0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.04);
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Reset & base                                                         */
+    /* ------------------------------------------------------------------ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+                   Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Header                                                               */
+    /* ------------------------------------------------------------------ */
+    header {
+      background: var(--brand);
+      color: #fff;
+      padding: 18px 24px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 10px rgba(0,0,60,0.28);
+    }
+
+    header h1 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      line-height: 1.2;
+    }
+
+    .header-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 20px;
+      padding: 3px 12px;
+      font-size: 0.77rem;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Main layout                                                          */
+    /* ------------------------------------------------------------------ */
+    main {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 24px 16px 40px;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Summary bar                                                          */
+    /* ------------------------------------------------------------------ */
+    .summary {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      margin-bottom: 22px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .summary-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 10px;
+    }
+
+    .summary-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      color: var(--text-muted);
+    }
+
+    .summary-count {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .progress-track {
+      height: 10px;
+      background: var(--bg);
+      border-radius: 5px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #2e7d32, #1B5E20);
+      border-radius: 5px;
+      width: 0%;
+      transition: width 0.9s cubic-bezier(.4,0,.2,1);
+    }
+
+    .summary-footer {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 7px;
+    }
+
+    .pct-label {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #1B5E20;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Theme panels grid                                                    */
+    /* ------------------------------------------------------------------ */
+    .themes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+
+    @media (max-width: 960px) { .themes { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) {
+      .themes  { grid-template-columns: 1fr; }
+      header   { position: static; }
+    }
+
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .panel-header {
+      background: var(--brand);
+      color: #fff;
+      padding: 11px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .panel-title {
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.2px;
+    }
+
+    .panel-count {
+      font-size: 0.72rem;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px;
+      padding: 2px 9px;
+    }
+
+    .tile-list {
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .empty-panel {
+      padding: 18px 14px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      font-style: italic;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Tiles                                                                */
+    /* ------------------------------------------------------------------ */
+    .tile {
+      border-radius: 6px;
+      border: 1px solid rgba(0,0,0,0.09);
+      cursor: pointer;
+      user-select: none;
+      transition: box-shadow 0.15s;
+    }
+
+    .tile:hover  { box-shadow: 0 3px 10px rgba(0,0,0,0.14); }
+    .tile:active { opacity: 0.92; }
+
+    .tile-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      padding: 9px 11px;
+    }
+
+    .tile-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.18);
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+
+    .tile-name {
+      flex: 1;
+      font-size: 0.82rem;
+      font-weight: 500;
+      line-height: 1.35;
+    }
+
+    .tile-arrow {
+      font-size: 0.6rem;
+      opacity: 0.5;
+      flex-shrink: 0;
+      margin-top: 4px;
+      transition: transform 0.18s;
+    }
+
+    .tile.open .tile-arrow { transform: rotate(90deg); }
+
+    /* Detail body */
+    .tile-body {
+      display: none;
+      padding: 9px 11px 11px;
+      border-top: 1px solid rgba(0,0,0,0.1);
+      font-size: 0.78rem;
+    }
+
+    .tile.open .tile-body { display: block; }
+
+    .detail-row {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+
+    .detail-row:last-of-type { margin-bottom: 0; }
+
+    .detail-label {
+      font-weight: 600;
+      color: rgba(0,0,0,0.42);
+      min-width: 88px;
+      flex-shrink: 0;
+    }
+
+    .detail-value { color: rgba(0,0,0,0.78); }
+
+    .gh-link {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 0.77rem;
+      color: var(--brand);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0,53,140,0.35);
+      word-break: break-all;
+    }
+
+    .gh-link:hover { border-bottom-color: var(--brand); }
+
+    /* ------------------------------------------------------------------ */
+    /* Status colour rules (background + text overrides)                   */
+    /* ------------------------------------------------------------------ */
+    .s-no-owner { background: #E0E0E0; }
+    .s-owner-id { background: #FFD600; }
+    .s-sup-init { background: #FF9800; }
+    .s-sup-acc  { background: #66BB6A; }
+    .s-finished { background: #1B5E20; color: #fff; }
+    .s-unknown  { background: #e8eef7; }
+
+    /* Overrides for the dark "Finished" tile */
+    .s-finished .tile-body        { border-top-color: rgba(255,255,255,0.18); }
+    .s-finished .tile-dot         { background: rgba(255,255,255,0.35); }
+    .s-finished .detail-label     { color: rgba(255,255,255,0.52); }
+    .s-finished .detail-value     { color: rgba(255,255,255,0.88); }
+    .s-finished .gh-link          { color: #a5d6a7; border-bottom-color: rgba(165,214,167,0.4); }
+    .s-finished .gh-link:hover    { border-bottom-color: #a5d6a7; }
+
+    /* ------------------------------------------------------------------ */
+    /* Legend                                                               */
+    /* ------------------------------------------------------------------ */
+    .legend {
+      margin-top: 22px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .legend-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      color: var(--text-muted);
+      margin-bottom: 11px;
+    }
+
+    .legend-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 24px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.82rem;
+    }
+
+    .swatch {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      border: 1px solid rgba(0,0,0,0.1);
+      flex-shrink: 0;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Footer                                                               */
+    /* ------------------------------------------------------------------ */
+    footer {
+      text-align: center;
+      padding: 20px 16px;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+<script>window.__DASHBOARD__ = {"items":[{"title":"Ability to programmatically determine OT device capabilities and advertise capabilities ","url":"https://github.com/margo/product_management/issues/10","status":"PM - Reviewing TWG feedback","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Define how edge devices must enroll with workload fleet managers","url":"https://github.com/margo/product_management/issues/57","status":"TWG - Requirement in progress","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Enable end users to receive a Margo device pre-configured with credentials","url":"https://github.com/margo/product_management/issues/63","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Enable late binding of a Margo compatible device","url":"https://github.com/margo/product_management/issues/62","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Automated verification of Margo device","url":"https://github.com/margo/product_management/issues/64","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Ability to programmatically determine device capabilities of leaf devices","url":"https://github.com/margo/product_management/issues/11","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Define the format for Margo device capabilities descriptions","url":"https://github.com/margo/product_management/issues/14","status":"TWG - Requirement in progress","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Define the format for Margo application descriptions to be used in application catalogs","url":"https://github.com/margo/product_management/issues/13","status":"TWG - Requirement in progress","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Define the format for Margo application packages to be used in deploying/managing workloads at scale","url":"https://github.com/margo/product_management/issues/51","status":"TWG - Requirement in progress","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Application Package - Define the format for Margo applications to specify device requirements","url":"https://github.com/margo/product_management/issues/4","status":"TWG - Requirement in progress","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Ability to state seek campaign configuration across heterogenous deployment landscape (API-first)","url":"https://github.com/margo/product_management/issues/12","status":"PM - Requirement under Review","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"GPU allocation","url":"https://github.com/margo/product_management/issues/23","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"deploy workload per platform BKC requirements","url":"https://github.com/margo/product_management/issues/16","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Multi-container pod dedicated/shared cpu resources","url":"https://github.com/margo/product_management/issues/21","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Dealing with NUMA topology","url":"https://github.com/margo/product_management/issues/20","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Set scheduling priority","url":"https://github.com/margo/product_management/issues/19","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Cache Allocation","url":"https://github.com/margo/product_management/issues/17","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Orchestrate to Type and Quantity of Core","url":"https://github.com/margo/product_management/issues/18","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Allocate specified amount of memory to workload","url":"https://github.com/margo/product_management/issues/22","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Device secure boot","url":"https://github.com/margo/product_management/issues/25","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Authentication and Identity Mgmt","url":"https://github.com/margo/product_management/issues/24","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Network Management","url":"https://github.com/margo/product_management/issues/26","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Network Management 2","url":"https://github.com/margo/product_management/issues/27","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Specify the workload resource requirements","url":"https://github.com/margo/product_management/issues/15","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Allocate specified number of CPU cores to workload","url":"https://github.com/margo/product_management/issues/28","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Devices capabilities and health monitoring","url":"https://github.com/margo/product_management/issues/31","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Requirements for Edge App development journey","url":"https://github.com/margo/product_management/issues/32","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Requirement to standardise container app packaging.","url":"https://github.com/margo/product_management/issues/35","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Updates to the application description format to include definitions for the required resources","url":"https://github.com/margo/specification/issues/7","status":"TWG - Approved Requirements","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Decision Tracker -  Describe the device capabilities specification","url":"https://github.com/margo/specification/issues/9","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Parent Epic 1: Deploy a Margo compatible workload fleet manager","url":"https://github.com/margo/product_management/issues/36","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Parent Epic 2: Deploy a Margo compatible device fleet manager","url":"https://github.com/margo/product_management/issues/37","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Parent Epic 3: Build a Margo compatible application","url":"https://github.com/margo/product_management/issues/38","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Parent Epic 4: Register an app vendor repository and apps with the workload fleet manager","url":"https://github.com/margo/product_management/issues/39","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Parent Epic 5: Build a Margo compatible edge device","url":"https://github.com/margo/product_management/issues/40","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Parent Epic 5: Build a Margo compatible edge device","url":"https://github.com/margo/product_management/issues/41","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Parent Epic 6: Enroll an edge device with a workload fleet manager","url":"https://github.com/margo/product_management/issues/42","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Parent Epic 7: Enroll an edge device with a device fleet manager","url":"https://github.com/margo/product_management/issues/43","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Parent Epic 8: Deploy an application","url":"https://github.com/margo/product_management/issues/44","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Parent Epic 9: Monitor the execution of the application","url":"https://github.com/margo/product_management/issues/45","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Parent Epic 10: Monitor the state of an edge device","url":"https://github.com/margo/product_management/issues/46","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Parent Epic 11: Manage apps in a repository","url":"https://github.com/margo/product_management/issues/47","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Parent Epic 12: Manage enrolled edge devices","url":"https://github.com/margo/product_management/issues/48","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Parent Epic 13: Manage deployed applications","url":"https://github.com/margo/product_management/issues/49","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Define the Margo interfaces for workload fleet managers","url":"https://github.com/margo/product_management/issues/50","status":"TWG - Requirement in progress","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Define the Margo interfaces for device fleet managers","url":"https://github.com/margo/product_management/issues/52","status":"TWG - Requirement Under Review","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Define how workloads can target Docker or Kubernetes as a runtime environment","url":"https://github.com/margo/product_management/issues/53","status":"TWG - Approved Requirements","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Define how workloads can require vendor specific runtime environments","url":"https://github.com/margo/product_management/issues/54","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Define the Margo interfaces between app repositories and workload fleet managers","url":"https://github.com/margo/product_management/issues/55","status":"TWG - Requirement in progress","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Define the device requirements to fulfill initial Margo device roles","url":"https://github.com/margo/product_management/issues/56","status":"TWG - Requirement in progress","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Define how edge devices must enroll with device fleet managers","url":"https://github.com/margo/product_management/issues/58","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Define the format Margo uses for describing desired state for application deployment","url":"https://github.com/margo/product_management/issues/59","status":"TWG - Requirement in progress","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Define the mechanism Margo uses for achieving the desired state for application deployment","url":"https://github.com/margo/product_management/issues/60","status":"TWG - Requirement in progress","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"minimal touch onboarding","url":null,"status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Define mechanism for publishing application state","url":"https://github.com/margo/product_management/issues/65","status":"TWG - Requirement in progress","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Define the mechanism for publishing edge device state","url":"https://github.com/margo/product_management/issues/66","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Define the mechanism for workload fleet managers to be aware of app packages updates","url":"https://github.com/margo/product_management/issues/67","status":"TWG - Requirement Under Review","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Define the mechanism for managing a deployed application","url":"https://github.com/margo/product_management/issues/68","status":"TWG - Requirement in progress","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Parent Epic 4.1: Register a device vendor repository and device artifacts with a device fleet manager","url":"https://github.com/margo/product_management/issues/69","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Define the Margo interfaces between device vendor repositories and device fleet managers","url":"https://github.com/margo/product_management/issues/70","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Define the device requirements for multi-node clusters","url":"https://github.com/margo/product_management/issues/71","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Desired State API Proposals(Workload Management API)","url":"https://github.com/margo/specification/issues/63","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Device Onboarding: Scoping Device Onboarding ","url":"https://github.com/margo/specification/issues/52","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Define the margo application description file","url":"https://github.com/margo/specification/issues/87","status":"TWG - Approved Requirements","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Define Margo standard approach towards workload manifests and packaged software targeting Kubernetes and Docker enabled edge devices","url":"https://github.com/margo/specification/issues/91","status":"TWG - Approved Requirements","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Develop margo standard strategy for WFM to authenticate and retrieve the app desc attachments securely","url":"https://github.com/margo/specification/issues/90","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Develop margo standard strategy for WFM to authenticate and retrieve the application description package","url":"https://github.com/margo/specification/issues/89","status":"TWG - Approved Requirements","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Define how Margo application developers can include attachments associated with the application description package","url":"https://github.com/margo/specification/issues/88","status":"TWG - Approved Requirements","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Define the Margo Standalone Cluster device role","url":"https://github.com/margo/specification/issues/94","status":"TWG - Approved Requirements","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Define the Margo Standalone Device role","url":"https://github.com/margo/specification/issues/95","status":"TWG - Approved Requirements","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Define standard format and content to describe a Margo device's capabilities","url":"https://github.com/margo/specification/issues/97","status":"TWG - Approved Requirements","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Define the Margo \"Cluster Leader\" capability requirements","url":"https://github.com/margo/specification/issues/98","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Define Margo specified enrollment process that enables the workload management interface between WFM and Device. ","url":"https://github.com/margo/specification/issues/99","status":"TWG - Approved Requirements","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Define Margo desired state artifact that enables the state seeking workload management approach","url":"https://github.com/margo/specification/issues/100","status":"TWG - Approved Requirements","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Develop Margo standard feature enabling application developers to target device specific runtime environments","url":"https://github.com/margo/specification/issues/93","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Expand Helm DeploymentProfile to Support Both OCI Repository and Git/Code Repository","url":"https://github.com/margo/specification/issues/79","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Define the standard management interface that is utilized by the WFM to enable workload management within the edge devices.","url":"https://github.com/margo/specification/issues/101","status":"TWG - Approved Requirements","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Decision Tracker - Workload Management Interface Rest API","url":"https://github.com/margo/specification/issues/21","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Replace using Git as the transport mechanism for desired state","url":"https://github.com/margo/specification/issues/76","status":"TWG - Approved Requirements","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Decision Tracker - Describe the Workload Deployment Status mechanism","url":"https://github.com/margo/specification/issues/10","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Define the mechanism used to communicate deployment status between an edge device and the workload fleet manager.","url":"https://github.com/margo/product_management/issues/72","status":"TWG - Requirement in progress","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Define mechanism for edge device to request permission to process device management requests","url":"https://github.com/margo/product_management/issues/73","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"[Story: ] As a MARGO Workload Supplier, I should be able to provide the credentials to the MARGO WFM. so that the WFM can securely download the Workload artefacts mentioned in the ApplicationDescription","url":"https://github.com/margo/sandbox/issues/29","status":"TWG - Approved Requirements","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"[Story: ] As a MARGO Device Supplier, I should be able to use the Device to collect telemetry from the Workload using OTEL","url":"https://github.com/margo/sandbox/issues/32","status":"TWG - Approved Requirements","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Define the mechanism for updating a deployed application to a new version","url":"https://github.com/margo/product_management/issues/74","status":"TWG - Requirement in progress","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"[Story: ] As a MARGO Device Supplier, I shall be able to register my device with the MARGO WFM so that the WFM to Device communication can be enabled","url":"https://github.com/margo/sandbox/issues/33","status":"TWG - Approved Requirements","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"[Story: ] As a MARGO WFM Supplier, I shall be able to communicate the desired state of the Device (and one or more Workloads) to the MARGO Device Agent, so that applications can be deployed and managed","url":"https://github.com/margo/sandbox/issues/34","status":"TWG - Approved Requirements","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Describe the Margo specifications approach to Application Observability","url":"https://github.com/margo/specification/issues/107","status":"TWG - Approved Requirements","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Define the standard management interface format or artifact that provides deployment status to the WFM.","url":"https://github.com/margo/specification/issues/108","status":"TWG - Approved Requirements","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Finalize \"App Package\" for Pre-Release","url":"https://github.com/margo/specification/issues/59","status":"TWG - Approved Requirements","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"DesiredState specifiction needs clarity on allowed/mandatory properties ","url":"https://github.com/margo/specification/issues/53","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Constrained devices management","url":"https://github.com/margo/product_management/issues/76","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"[TASK: ]  Installation and exploration of Gogs","url":"https://github.com/margo/sandbox/issues/49","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"[TASK: ] Installation and exploration of Harbor","url":"https://github.com/margo/sandbox/issues/44","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"[TASK: ] Gogs and harbor integration with sdk","url":"https://github.com/margo/sandbox/issues/59","status":"TWG - Approved Requirements","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"[TASK: ] Implement Desired State/Current state","url":"https://github.com/margo/sandbox/issues/54","status":"TWG - Approved Requirements","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Implement authentication of device(some level of Onboarding","url":"https://github.com/margo/sandbox/issues/55","status":"TWG - Approved Requirements","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"[TASK: ] Write subsystem level tests for SDK's code in Symphony","url":"https://github.com/margo/sandbox/issues/53","status":"TWG - Approved Requirements","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"[TASK: ] Keycloak configuration & Installation","url":"https://github.com/margo/sandbox/issues/64","status":"TWG - Approved Requirements","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"[TASK: ] Installation / Exploration of OTEL ( PoC to showcase App/workload and collector integration)","url":"https://github.com/margo/sandbox/issues/65","status":"TWG - Approved Requirements","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Test Task","url":"https://github.com/margo/sandbox/issues/73","status":"TWG - Approved Requirements","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Fix the conversion of Margo objects to Symphony native objects.","url":"https://github.com/margo/sandbox/issues/72","status":"TWG - Approved Requirements","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"[TASK: ] Demo: Reference implementation for NBI","url":"https://github.com/margo/sandbox/issues/46","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"[TASK: ] Develop and implement the OTEL management system to handle logging and tracing","url":"https://github.com/margo/sandbox/issues/79","status":"TWG - Approved Requirements","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"OTEL app deployment on Device ( helm based OTEL app testing)","url":"https://github.com/margo/sandbox/issues/84","status":"TWG - Approved Requirements","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"[TASK: ] Workload supplier and WFM Authentication","url":"https://github.com/margo/sandbox/issues/45","status":"TWG - Approved Requirements","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Signing app packages ","url":"https://github.com/margo/specification/issues/36","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"[AI] 15.09.2025 Meeting Action Items","url":"https://github.com/margo/sc/issues/65","status":"TWG - Approved Requirements","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Initial outline for Conformance Testing","url":"https://github.com/margo/general_website_content/issues/17","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Verify identity of the workload fleet manager","url":"https://github.com/margo/product_management/issues/78","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Verify identity of an edge device","url":"https://github.com/margo/product_management/issues/79","status":"PM - Requirement in Draft","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"pm"},{"title":"Define the Margo \"Gateway\" capability Requirements","url":"https://github.com/margo/specification/issues/137","status":"backlog - notconfirmednextrelease","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Define how developers can deploy and manage Kubernetes operators, and how it impacts the various established system elements in Margo.","url":"https://github.com/margo/specification/issues/105","status":"backlog - notconfirmednextrelease","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Define how device to WFM API interactions should be handled for intermittently connected devices","url":"https://github.com/margo/specification/issues/147","status":"backlog - notconfirmednextrelease","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Define how HTTP message signatures work behind load balancers / TLS-terminating proxies","url":"https://github.com/margo/specification/issues/160","status":"Gen. Improvements: Non SUP","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Make object IDs top-level attributes","url":"https://github.com/margo/specification/issues/161","status":"Gen. Improvements: Non SUP","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Address problems exposing application endpoints","url":"https://github.com/margo/specification/issues/75","status":"Gen. Improvements: Non SUP","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Clarify within specification whether device capabilities reported reflect overall or Margo specific managed resources","url":"https://github.com/margo/specification/issues/159","status":"Gen. Improvements: Non SUP","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Make `ApplicationDeployment` ID a top-level attribute","url":"https://github.com/margo/specification/issues/163","status":"Gen. Improvements: Non SUP","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Define the strategy to enable sensitive information to be utilized within the application management mechanism","url":"https://github.com/margo/specification/issues/145","status":"Gen. Improvements: Non SUP","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Define/improve Certificate API functions","url":"https://github.com/margo/specification/issues/155","status":"Gen. Improvements: SUP Required","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Device Onboarding Workflow Needs Fixes for REST Timeliness and CA Support","url":"https://github.com/margo/specification/issues/164","status":"Gen. Improvements: Non SUP","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Specification consistency improvement - update once and propagate changes","url":"https://github.com/margo/specification/issues/157","status":"Gen. Improvements: Non SUP","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Improve deployment status / desired state mechanics and workflows","url":"https://github.com/margo/specification/issues/156","status":"Gen. Improvements: SUP Required","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Onboarding security - Make it explicit that onboarding requests are authenticated/signed from the star","url":"https://github.com/margo/specification/issues/154","status":"Gen. Improvements: Non SUP","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Define and improve clarity on parameters and their targets relating to Desired state.","url":"https://github.com/margo/specification/issues/167","status":"Gen. Improvements: Non SUP","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Clarify `name` parameter within the parameter attributes section of the application description.","url":"https://github.com/margo/specification/issues/169","status":"Gen. Improvements: Non SUP","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Define consistent standard error responses for all 4xx/5xx response codes","url":"https://github.com/margo/specification/issues/153","status":"Gen. Improvements: SUP Required","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Inconsistent certificate field name in Device Client Onboarding spec","url":"https://github.com/margo/specification/issues/133","status":"Gen. Improvements: Non SUP","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Clarify certificate encoding format: base64(DER) vs base64(PEM)","url":"https://github.com/margo/specification/issues/132","status":"Gen. Improvements: Non SUP","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Sequence diagram incorrectly suggests HTTP signatures begin after onboarding","url":"https://github.com/margo/specification/issues/135","status":"Gen. Improvements: Non SUP","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Define Margo strategy for ecosystem identity and authorization","url":"https://github.com/margo/specification/issues/127","status":"PR2 Core Scope Features","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Define the Margo application image and component signing strategy","url":"https://github.com/margo/specification/issues/138","status":"PR2 Core Scope Features","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Define how the WFM manages OCI credentials within the Margo device.","url":"https://github.com/margo/specification/issues/129","status":"PR2 Core Scope Features","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Replace device roles with capabilities within Margo artifacts","url":"https://github.com/margo/specification/issues/136","status":"PR2 Core Scope Features","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Define how vendor specific extensions can be supported within the application description file + device capabilities","url":"https://github.com/margo/specification/issues/144","status":"PR2 Core Scope Features","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Develop Margo standard feature enabling application developers to target device specific runtime environments","url":"https://github.com/margo/specification/issues/93","status":"PR2 Core Scope Features","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Define how device-specific parameter values can be provided","url":"https://github.com/margo/specification/issues/141","status":"PR2 Core Scope Features","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Define whether all or a limited set of Helm v3/4 features are supported for application deployment","url":"https://github.com/margo/specification/issues/148","status":"PR2 Core Scope Features","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Define the Margo strategy regarding ingestion of helm charts within the WFM and impacts on deployment to cluster enabled devices.","url":"https://github.com/margo/specification/issues/103","status":"backlog - notconfirmednextrelease","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Define how application developers can deploy WASM workloads through helm manifests, and how it impacts the various established system elements in Margo.","url":"https://github.com/margo/specification/issues/104","status":"backlog - notconfirmednextrelease","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Define how WASM workloads are packaged and deployed to the constrained device role.","url":"https://github.com/margo/specification/issues/131","status":"backlog - notconfirmednextrelease","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Define the Margo \"WASM Constrained device\" capability requirements","url":"https://github.com/margo/specification/issues/130","status":"backlog - notconfirmednextrelease","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Define the Margo \"Cluster Worker\" capability requirements","url":"https://github.com/margo/specification/issues/96","status":"backlog - notconfirmednextrelease","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Define the Margo \"Cluster Leader\" capability requirements","url":"https://github.com/margo/specification/issues/98","status":"backlog - notconfirmednextrelease","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Define how Margo application description can support multi language","url":"https://github.com/margo/specification/issues/128","status":"backlog - notconfirmednextrelease","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Define Margo specified enrollment process that enables the workload management interface between WFM and Device. ","url":"https://github.com/margo/specification/issues/99","status":"Completed","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Develop margo standard strategy for WFM to authenticate and retrieve the application description package","url":"https://github.com/margo/specification/issues/89","status":"Completed","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Define Margo desired state artifact that enables the state seeking workload management approach","url":"https://github.com/margo/specification/issues/100","status":"Completed","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Describe the Margo specifications approach to Application Observability","url":"https://github.com/margo/specification/issues/107","status":"Completed","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Define the margo application description file","url":"https://github.com/margo/specification/issues/87","status":"Completed","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Define the standard management interface format or artifact that provides deployment status to the WFM.","url":"https://github.com/margo/specification/issues/108","status":"Completed","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Define Margo standard approach towards workload manifests and packaged software targeting Kubernetes and Docker enabled edge devices","url":"https://github.com/margo/specification/issues/91","status":"Completed","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Define how Margo application developers can include attachments associated with the application description package","url":"https://github.com/margo/specification/issues/88","status":"Completed","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"TWG: PR1 Readiness Report","url":"https://github.com/margo/specification/issues/111","status":"Completed","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Define the Margo Standalone Device role","url":"https://github.com/margo/specification/issues/95","status":"Completed","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Define standard format and content to describe a Margo device's capabilities","url":"https://github.com/margo/specification/issues/97","status":"Completed","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Define the Margo Standalone Cluster device role","url":"https://github.com/margo/specification/issues/94","status":"Completed","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Define the standard management interface that is utilized by the WFM to enable workload management within the edge devices.","url":"https://github.com/margo/specification/issues/101","status":"Completed","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Mermaid example: onboarding sequence diagram","url":"https://github.com/margo/specification/pull/73","status":"Completed","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Updates to the content on the device pages to be more aligned with PR1","url":"https://github.com/margo/specification/pull/117","status":"Completed","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Initial outline for Conformance Testing","url":"https://github.com/margo/general_website_content/issues/17","status":null,"theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Further define how to properly handle namespaces for app deployment","url":"https://github.com/margo/specification/issues/142","status":"Gen. Improvements: Non SUP","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Document expected `apiVersion` values for all API resources","url":"https://github.com/margo/specification/issues/134","status":"Gen. Improvements: SUP Required","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Enhance schema for the version number in the application description","url":"https://github.com/margo/specification/issues/143","status":"Gen. Improvements: Non SUP","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Complete device client onboarding strategy follow device identity and authorization","url":"https://github.com/margo/specification/issues/146","status":"Gen. Improvements: SUP Required","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Define the standard mechanism for compose enabled devices to authenticate and pull Compose Archive","url":"https://github.com/margo/specification/issues/166","status":"Gen. Improvements: SUP Required","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Define improvements to compose manifest workloads when targeting typical targets(Docker/Podman)","url":"https://github.com/margo/specification/issues/168","status":"Gen. Improvements: SUP Required","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Define support for multiple instances of the same deployment profile type targeting same or 3rd party vendor devices","url":"https://github.com/margo/specification/issues/170","status":"Gen. Improvements: SUP Required","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Develop margo standard strategy for WFM to authenticate and retrieve the app desc attachments securely","url":"https://github.com/margo/specification/issues/90","status":"Gen. Improvements: SUP Required","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Non-root Containers","url":"https://github.com/margo/specification/issues/37","status":"Gen. Improvements: SUP Required","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Avoiding external registry access by WOA","url":"https://github.com/margo/specification/issues/20","status":"backlog - notconfirmednextrelease","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"},{"title":"Finalize Margo Version Management Strategy","url":"https://github.com/margo/specification/issues/174","status":"Gen. Improvements: Non SUP","theme":null,"release":null,"type":null,"supRequired":null,"targetDate":null,"source":"twg"}],"meta":{"currentRelease":"PR2","nextReleaseDate":"2026-06-30","themes":["Trust","Flexibility","Robustness"],"releases":["PR1","PR2","PR3","GA1"],"generatedAt":"Fri, 10 Apr 2026 10:29:39 GMT"}};</script>
+
+<header>
+  <h1>Margo Roadmap Dashboard</h1>
+  <div class="header-meta">
+    <span class="badge" id="badge-release"></span>
+    <span class="badge" id="badge-next"></span>
+    <span class="badge" id="badge-updated"></span>
+  </div>
+</header>
+
+<main>
+  <div class="summary">
+    <div class="summary-top">
+      <span class="summary-label">Overall completion</span>
+      <span class="summary-count" id="sum-text"></span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+    <div class="summary-footer">
+      <span class="pct-label" id="sum-pct"></span>
+    </div>
+  </div>
+
+  <div class="themes" id="themes"></div>
+
+  <div class="legend">
+    <div class="legend-title">Status legend</div>
+    <div class="legend-items">
+      <div class="legend-item">
+        <div class="swatch" style="background:#E0E0E0"></div>No Owner
+      </div>
+      <div class="legend-item">
+        <div class="swatch" style="background:#FFD600"></div>Owner Identified
+      </div>
+      <div class="legend-item">
+        <div class="swatch" style="background:#FF9800"></div>SUP Initiated
+      </div>
+      <div class="legend-item">
+        <div class="swatch" style="background:#66BB6A"></div>SUP Accepted
+      </div>
+      <div class="legend-item">
+        <div class="swatch" style="background:#1B5E20"></div>Finished
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  Generated by the Margo roadmap dashboard generator &middot; Data sourced from GitHub Projects
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  const { items, meta } = window.__DASHBOARD__;
+
+  /* -------------------------------------------------------------------- */
+  /* Status helpers                                                         */
+  /* -------------------------------------------------------------------- */
+
+  // Sort order: Finished first (most progress), No Owner last (least progress).
+  const STATUS_ORDER = {
+    'Finished':         0,
+    'SUP Accepted':     1,
+    'SUP Initiated':    2,
+    'Owner Identified': 3,
+    'No Owner':         4,
+  };
+
+  const STATUS_CLASS = {
+    'No Owner':         's-no-owner',
+    'Owner Identified': 's-owner-id',
+    'SUP Initiated':    's-sup-init',
+    'SUP Accepted':     's-sup-acc',
+    'Finished':         's-finished',
+  };
+
+  function statusCls(s)  { return STATUS_CLASS[s] || 's-unknown'; }
+  function statusRank(s) { return STATUS_ORDER[s]  ?? 99; }
+
+  /* -------------------------------------------------------------------- */
+  /* Header badges                                                          */
+  /* -------------------------------------------------------------------- */
+  setText('badge-release', 'Current release: ' + (meta.currentRelease  ?? '—'));
+  setText('badge-next',    'Next release: '     + (meta.nextReleaseDate ?? '—'));
+  setText('badge-updated', 'Updated: '          + meta.generatedAt);
+
+  /* -------------------------------------------------------------------- */
+  /* Summary bar                                                            */
+  /* -------------------------------------------------------------------- */
+  const total    = items.length;
+  const finished = items.filter(function (i) { return i.status === 'Finished'; }).length;
+  const pct      = total > 0 ? Math.round((finished / total) * 100) : 0;
+
+  setText('sum-text', finished + ' of ' + total + ' items complete');
+  setText('sum-pct',  pct + '%');
+
+  // Defer so the CSS transition actually fires after first paint.
+  requestAnimationFrame(function () {
+    document.getElementById('progress-fill').style.width = pct + '%';
+  });
+
+  /* -------------------------------------------------------------------- */
+  /* Theme panels                                                           */
+  /* -------------------------------------------------------------------- */
+  var container = document.getElementById('themes');
+
+  (meta.themes || []).forEach(function (theme) {
+    var themeItems = items
+      .filter(function (i) { return i.theme === theme; })
+      .slice()  // don't mutate the original array
+      .sort(function (a, b) { return statusRank(a.status) - statusRank(b.status); });
+
+    var panel = make('div', 'panel');
+
+    var hd = make('div', 'panel-header');
+    hd.innerHTML =
+      '<span class="panel-title">' + esc(theme) + '</span>' +
+      '<span class="panel-count">' + themeItems.length +
+        (themeItems.length === 1 ? ' item' : ' items') + '</span>';
+    panel.appendChild(hd);
+
+    var list = make('div', 'tile-list');
+    if (themeItems.length === 0) {
+      var empty = make('div', 'empty-panel');
+      empty.textContent = 'No items';
+      list.appendChild(empty);
+    } else {
+      themeItems.forEach(function (item) {
+        list.appendChild(buildTile(item));
+      });
+    }
+
+    panel.appendChild(list);
+    container.appendChild(panel);
+  });
+
+  /* -------------------------------------------------------------------- */
+  /* Tile builder                                                           */
+  /* -------------------------------------------------------------------- */
+  function buildTile(item) {
+    var tile = make('div', 'tile ' + statusCls(item.status));
+
+    var head = make('div', 'tile-head');
+    head.innerHTML =
+      '<div class="tile-dot"></div>' +
+      '<div class="tile-name">' + esc(item.title || '(untitled)') + '</div>' +
+      '<div class="tile-arrow">&#9658;</div>';
+    tile.appendChild(head);
+
+    var body = make('div', 'tile-body');
+    body.innerHTML =
+      drow('Type',         item.type)                +
+      drow('Status',       item.status)              +
+      drow('SUP required', item.supRequired)         +
+      drow('Target date',  item.targetDate)          +
+      drow('Release',      item.release)             +
+      drow('Source',       srcLabel(item.source))    +
+      (item.url
+        ? '<a class="gh-link" href="' + esc(item.url) +
+          '" target="_blank" rel="noopener">View on GitHub &#8599;</a>'
+        : '');
+    tile.appendChild(body);
+
+    head.addEventListener('click', function () {
+      tile.classList.toggle('open');
+    });
+
+    return tile;
+  }
+
+  function drow(label, value) {
+    if (value == null || value === '') return '';
+    return '<div class="detail-row">' +
+      '<span class="detail-label">' + esc(label)        + '</span>' +
+      '<span class="detail-value">' + esc(String(value)) + '</span>' +
+      '</div>';
+  }
+
+  function srcLabel(src) {
+    if (src === 'pm')  return 'PM Epics';
+    if (src === 'twg') return 'TWG Features';
+    return src || null;
+  }
+
+  /* -------------------------------------------------------------------- */
+  /* Utilities                                                              */
+  /* -------------------------------------------------------------------- */
+  function setText(id, text) {
+    var el = document.getElementById(id);
+    if (el) el.textContent = text;
+  }
+
+  function make(tag, cls) {
+    var el = document.createElement(tag);
+    if (cls) el.className = cls;
+    return el;
+  }
+
+  function esc(str) {
+    return String(str)
+      .replace(/&/g,  '&amp;')
+      .replace(/</g,  '&lt;')
+      .replace(/>/g,  '&gt;')
+      .replace(/"/g,  '&quot;')
+      .replace(/'/g,  '&#39;');
+  }
+
+}());
+</script>
+
+</body>
+</html>
