@@ -232,6 +232,7 @@ function renderHtml(items) {
     releases:        config.releases        ?? [],
     groupBy:         config.groupBy         ?? 'theme',
     projects:        config.projects        ?? {},
+    statusMap:       config.statusMap       ?? {},
     generatedAt:     new Date().toUTCString(),
   };
 

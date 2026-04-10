@@ -16,5 +16,18 @@
   "currentRelease":  "PR2",
   "nextReleaseDate": "2026-06-30",
   "themes":          ["Trust", "Flexibility", "Robustness"],
-  "groupBy":         "source"
+  "groupBy":         "source",
+  "statusMap": {
+    "Completed":                         "Finished",
+    "PR2 Core Scope Features":           "SUP Accepted",
+    "TWG - Approved Requirements":       "SUP Accepted",
+    "Gen. Improvements: SUP Required":   "SUP Initiated",
+    "TWG - Requirement in progress":     "SUP Initiated",
+    "TWG - Requirement Under Review":    "Owner Identified",
+    "PM - Reviewing TWG feedback":       "Owner Identified",
+    "PM - Requirement under Review":     "Owner Identified",
+    "Gen. Improvements: Non SUP":        "Owner Identified",
+    "PM - Requirement in Draft":         "No Owner",
+    "backlog - notconfirmednextrelease": "No Owner"
+  }
 }
