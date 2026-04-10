@@ -1,3 +1,52 @@
 # generate-dashboard.yml
-# GitHub Actions workflow that runs the dashboard generation script
-# on a schedule (or manually) and publishes the output to GitHub Pages.
+# Fetches roadmap data from both GitHub Projects (PM Epics #13, TWG Features #22),
+# renders docs/index.html and docs/data.json via scripts/generate.js, then
+# commits the result back to the repository so GitHub Pages serves it.
+#
+# Required secret: GH_PROJECT_TOKEN
+#   A classic PAT (or fine-grained token) belonging to an org member with:
+#     read:org    — query organization.projectV2 via GraphQL
+#     read:project — read project field values
+#     repo (public_repo is enough for public repos) — read linked issue URLs
+
+name: Generate roadmap dashboard
+
+on:
+  schedule:
+    - cron: '0 2 * * *'   # nightly at 02:00 UTC
+  workflow_dispatch:        # manual trigger from the Actions tab
+
+permissions:
+  contents: write           # allow the job to push docs/ back to the branch
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch project data and render dashboard
+        env:
+          # GH_PROJECT_TOKEN must have read:org + read:project + repo scopes.
+          # The built-in GITHUB_TOKEN does not have read:project, so a PAT is required.
+          GITHUB_TOKEN: ${{ secrets.GH_PROJECT_TOKEN }}
+        run: node scripts/generate.js
+
+      - name: Commit and push generated files
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/data.json docs/index.html
+          if git diff --cached --quiet; then
+            echo "Dashboard is already up to date — nothing to commit."
+          else
+            git commit -m "chore(dashboard): regenerate [skip ci]"
+            git push
+          fi
