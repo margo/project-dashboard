@@ -237,7 +237,9 @@ function renderHtml(items) {
   };
 
   const payload   = JSON.stringify({ items, meta }).replace(/</g, '\\u003c');
-  const injection = `<script>window.__DASHBOARD__ = ${payload};<\/script>`;
+  // Concatenate the closing tag so it never appears literally in this source
+  // file and can't be confused with a string that the HTML parser would swallow.
+  const injection = '<script>window.__DASHBOARD__ = ' + payload + ';<' + '/script>';
 
   const html = template.replace('<!-- __INJECT_DATA__ -->', injection);
   if (html === template) {
