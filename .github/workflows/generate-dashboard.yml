@@ -1,0 +1,3 @@
+# generate-dashboard.yml
+# GitHub Actions workflow that runs the dashboard generation script
+# on a schedule (or manually) and publishes the output to GitHub Pages.
