@@ -230,6 +230,8 @@ function renderHtml(items) {
     nextReleaseDate: config.nextReleaseDate ?? null,
     themes:          config.themes          ?? [],
     releases:        config.releases        ?? [],
+    groupBy:         config.groupBy         ?? 'theme',
+    projects:        config.projects        ?? {},
     generatedAt:     new Date().toUTCString(),
   };
 
