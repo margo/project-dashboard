@@ -1,4 +1,16 @@
-// config.json
-// Central configuration for the dashboard: data sources, output paths,
-// refresh schedule, and any feature flags.
-{}
+{
+  "_comment": "Central configuration for the Margo roadmap transparency dashboard.",
+  "org": "margo",
+  "projects": [1, 2],
+  "fieldMappings": {
+    "title":       "Title",
+    "status":      "Status",
+    "theme":       "Theme",
+    "release":     "Release",
+    "type":        "Type",
+    "supRequired": "SUP Required",
+    "targetDate":  "Target Date"
+  },
+  "releases": [],
+  "themes": []
+}
