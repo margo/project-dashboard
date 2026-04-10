@@ -1,9 +1,10 @@
 {
-  "_comment": "Central configuration for the Margo roadmap transparency dashboard.",
   "org": "margo",
-  "projects": [1, 2],
+  "projects": {
+    "pm":  { "number": 13, "label": "PM Epics" },
+    "twg": { "number": 22, "label": "TWG Features" }
+  },
   "fieldMappings": {
-    "title":       "Title",
     "status":      "Status",
     "theme":       "Theme",
     "release":     "Release",
@@ -11,6 +12,8 @@
     "supRequired": "SUP Required",
     "targetDate":  "Target Date"
   },
-  "releases": [],
-  "themes": []
+  "releases":        ["PR1", "PR2", "PR3", "GA1"],
+  "currentRelease":  "PR2",
+  "nextReleaseDate": "2026-06-30",
+  "themes":          ["Trust", "Flexibility", "Robustness"]
 }

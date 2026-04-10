@@ -15,7 +15,14 @@ const ROOT      = resolve(__dirname, '..');
 // ---------------------------------------------------------------------------
 
 const config = JSON.parse(readFileSync(resolve(ROOT, 'config.json'), 'utf8'));
-const { org, projects: projectNumbers, fieldMappings } = config;
+const { org, projects, fieldMappings } = config;
+
+// Normalise projects object → array of { key, number, label }
+const projectList = Object.entries(projects).map(([key, { number, label }]) => ({
+  key,
+  number,
+  label,
+}));
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 if (!GITHUB_TOKEN) {
@@ -131,8 +138,9 @@ function extractValue(node) {
 
 /**
  * Convert a raw project item node into the normalised shape defined by
- * fieldMappings.  url is always sourced from content since it is not a
- * project field.
+ * fieldMappings.  url and title are always sourced from content since
+ * title is no longer in fieldMappings and url is never a project field.
+ * source is stamped in by the caller.
  */
 function mapItem(rawItem) {
   // Index all fieldValues by their GitHub project field name.
@@ -144,17 +152,13 @@ function mapItem(rawItem) {
   }
 
   const item = {
-    url: rawItem.content?.url ?? null,
+    title: rawItem.content?.title ?? null,
+    url:   rawItem.content?.url   ?? null,
   };
 
   // Apply every logical-key → GitHub-field-name mapping from config.
   for (const [logicalKey, githubFieldName] of Object.entries(fieldMappings)) {
     item[logicalKey] = byFieldName[githubFieldName] ?? null;
-  }
-
-  // Fallback: if title wasn't captured via fieldMappings, use content.title.
-  if (item.title == null) {
-    item.title = rawItem.content?.title ?? null;
   }
 
   return item;
@@ -164,18 +168,18 @@ function mapItem(rawItem) {
 // Paginated fetch for one project
 // ---------------------------------------------------------------------------
 
-async function fetchAllItems(projectNumber) {
+async function fetchAllItems({ key, number, label }) {
   const items  = [];
   let cursor   = null;
   let page     = 0;
 
-  console.log(`  Fetching project #${projectNumber} from org "${org}"...`);
+  console.log(`  Fetching project #${number} "${label}" (${key}) from org "${org}"...`);
 
   while (true) {
     page++;
     console.log(`    Page ${page}${cursor ? ` (cursor: ${cursor.slice(0, 12)}…)` : ''}`);
 
-    const data    = await graphql(PROJECT_ITEMS_QUERY, { org, projectNumber, cursor });
+    const data    = await graphql(PROJECT_ITEMS_QUERY, { org, projectNumber: number, cursor });
     const project = data.organization.projectV2;
 
     if (page === 1) {
@@ -185,7 +189,7 @@ async function fetchAllItems(projectNumber) {
     const { nodes, pageInfo } = project.items;
 
     for (const rawItem of nodes) {
-      items.push(mapItem(rawItem));
+      items.push({ ...mapItem(rawItem), source: key });
     }
 
     console.log(`    +${nodes.length} items  (running total: ${items.length})`);
@@ -204,16 +208,16 @@ async function fetchAllItems(projectNumber) {
 async function main() {
   console.log('=== Margo roadmap dashboard — data generation ===');
   console.log(`Org:             ${org}`);
-  console.log(`Projects:        ${projectNumbers.join(', ')}`);
+  console.log(`Projects:        ${projectList.map(p => `#${p.number} ${p.label}`).join(', ')}`);
   console.log(`Field mappings:  ${Object.entries(fieldMappings).map(([k, v]) => `${k}→"${v}"`).join(', ')}`);
   console.log('');
 
   const allItems = [];
 
-  for (const projectNumber of projectNumbers) {
-    const items = await fetchAllItems(projectNumber);
+  for (const project of projectList) {
+    const items = await fetchAllItems(project);
     allItems.push(...items);
-    console.log(`  Done — ${items.length} items from project #${projectNumber}\n`);
+    console.log(`  Done — ${items.length} items from project #${project.number} "${project.label}"\n`);
   }
 
   console.log(`Total items across all projects: ${allItems.length}`);
