@@ -5,24 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Margo Roadmap Dashboard</title>
   <style>
-    /* ------------------------------------------------------------------ */
-    /* Design tokens                                                        */
-    /* ------------------------------------------------------------------ */
+    /* ============================================================
+       Design tokens
+    ============================================================ */
     :root {
-      --brand:        #00358C;
-      --brand-dark:   #002570;
-      --text:         #111827;
-      --text-muted:   #6b7280;
-      --bg:           #f0f4f9;
-      --surface:      #ffffff;
-      --border:       #d1dce8;
-      --radius:       10px;
-      --shadow-sm:    0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.04);
+      --brand:       #00358C;
+      --brand-dk:    #002570;
+      --text:        #111827;
+      --muted:       #6b7280;
+      --bg:          #f0f4f9;
+      --surface:     #ffffff;
+      --border:      #d1dce8;
+      --radius:      10px;
+      --shadow:      0 1px 3px rgba(0,0,0,.07), 0 1px 2px rgba(0,0,0,.04);
     }
 
-    /* ------------------------------------------------------------------ */
-    /* Reset & base                                                         */
-    /* ------------------------------------------------------------------ */
+    /* ============================================================
+       Reset & base
+    ============================================================ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
@@ -35,23 +35,23 @@
       min-height: 100vh;
     }
 
-    /* ------------------------------------------------------------------ */
-    /* Header                                                               */
-    /* ------------------------------------------------------------------ */
+    /* ============================================================
+       Header
+    ============================================================ */
     header {
       background: var(--brand);
       color: #fff;
       padding: 18px 24px 20px;
       position: sticky;
       top: 0;
-      z-index: 10;
-      box-shadow: 0 2px 10px rgba(0,0,60,0.28);
+      z-index: 20;
+      box-shadow: 0 2px 10px rgba(0,0,60,.28);
     }
 
     header h1 {
       font-size: 1.35rem;
       font-weight: 700;
-      letter-spacing: -0.3px;
+      letter-spacing: -.3px;
       line-height: 1.2;
     }
 
@@ -65,271 +65,46 @@
     .badge {
       display: inline-flex;
       align-items: center;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.22);
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.22);
       border-radius: 20px;
       padding: 3px 12px;
-      font-size: 0.77rem;
+      font-size: .77rem;
       font-weight: 500;
       white-space: nowrap;
     }
 
-    /* ------------------------------------------------------------------ */
-    /* Main layout                                                          */
-    /* ------------------------------------------------------------------ */
+    /* ============================================================
+       Main container
+    ============================================================ */
     main {
-      max-width: 1280px;
+      max-width: 1400px;
       margin: 0 auto;
       padding: 24px 16px 40px;
     }
 
-    /* ------------------------------------------------------------------ */
-    /* Summary bar                                                          */
-    /* ------------------------------------------------------------------ */
-    .summary {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 18px 22px;
-      margin-bottom: 22px;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .summary-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      flex-wrap: wrap;
-      gap: 4px;
-      margin-bottom: 10px;
-    }
-
-    .summary-label {
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.7px;
-      color: var(--text-muted);
-    }
-
-    .summary-count {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-    }
-
-    .progress-track {
-      height: 10px;
-      background: var(--bg);
-      border-radius: 5px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-    }
-
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #2e7d32, #1B5E20);
-      border-radius: 5px;
-      width: 0%;
-      transition: width 0.9s cubic-bezier(.4,0,.2,1);
-    }
-
-    .summary-footer {
-      display: flex;
-      justify-content: flex-end;
-      margin-top: 7px;
-    }
-
-    .pct-label {
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: #1B5E20;
-    }
-
-    /* ------------------------------------------------------------------ */
-    /* Panels grid — auto-fits any number of panels                        */
-    /* ------------------------------------------------------------------ */
-    .themes {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-      gap: 16px;
-      align-items: start;
-    }
-
-    @media (max-width: 600px) {
-      .themes  { grid-template-columns: 1fr; }
-      header   { position: static; }
-    }
-
-    .panel {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .panel-header {
-      background: var(--brand);
-      color: #fff;
-      padding: 11px 14px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .panel-title {
-      font-weight: 600;
-      font-size: 0.9rem;
-      letter-spacing: 0.2px;
-    }
-
-    .panel-count {
-      font-size: 0.72rem;
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 12px;
-      padding: 2px 9px;
-    }
-
-    .tile-list {
-      padding: 8px;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    .empty-panel {
-      padding: 18px 14px;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.82rem;
-      font-style: italic;
-    }
-
-    /* ------------------------------------------------------------------ */
-    /* Tiles                                                                */
-    /* ------------------------------------------------------------------ */
-    .tile {
-      border-radius: 6px;
-      border: 1px solid rgba(0,0,0,0.09);
-      cursor: pointer;
-      user-select: none;
-      transition: box-shadow 0.15s;
-    }
-
-    .tile:hover  { box-shadow: 0 3px 10px rgba(0,0,0,0.14); }
-    .tile:active { opacity: 0.92; }
-
-    .tile-head {
-      display: flex;
-      align-items: flex-start;
-      gap: 9px;
-      padding: 9px 11px;
-    }
-
-    .tile-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(0,0,0,0.18);
-      flex-shrink: 0;
-      margin-top: 4px;
-    }
-
-    .tile-name {
-      flex: 1;
-      font-size: 0.82rem;
-      font-weight: 500;
-      line-height: 1.35;
-    }
-
-    .tile-arrow {
-      font-size: 0.6rem;
-      opacity: 0.5;
-      flex-shrink: 0;
-      margin-top: 4px;
-      transition: transform 0.18s;
-    }
-
-    .tile.open .tile-arrow { transform: rotate(90deg); }
-
-    /* Detail body */
-    .tile-body {
-      display: none;
-      padding: 9px 11px 11px;
-      border-top: 1px solid rgba(0,0,0,0.1);
-      font-size: 0.78rem;
-    }
-
-    .tile.open .tile-body { display: block; }
-
-    .detail-row {
-      display: flex;
-      gap: 6px;
-      margin-bottom: 4px;
-      line-height: 1.4;
-    }
-
-    .detail-row:last-of-type { margin-bottom: 0; }
-
-    .detail-label {
-      font-weight: 600;
-      color: rgba(0,0,0,0.42);
-      min-width: 88px;
-      flex-shrink: 0;
-    }
-
-    .detail-value { color: rgba(0,0,0,0.78); }
-
-    .gh-link {
-      display: inline-block;
-      margin-top: 10px;
-      font-size: 0.77rem;
-      color: var(--brand);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(0,53,140,0.35);
-      word-break: break-all;
-    }
-
-    .gh-link:hover { border-bottom-color: var(--brand); }
-
-    /* ------------------------------------------------------------------ */
-    /* Tile colour — set via inline style by JS; only white-text override  */
-    /* needs a CSS class (.tile-dark)                                       */
-    /* ------------------------------------------------------------------ */
-    .tile-dark .tile-body        { border-top-color: rgba(255,255,255,0.18); }
-    .tile-dark .tile-dot         { background: rgba(255,255,255,0.35); }
-    .tile-dark .tile-arrow       { opacity: 0.7; }
-    .tile-dark .detail-label     { color: rgba(255,255,255,0.52); }
-    .tile-dark .detail-value     { color: rgba(255,255,255,0.88); }
-    .tile-dark .gh-link          { color: #a5d6a7; border-bottom-color: rgba(165,214,167,0.4); }
-    .tile-dark .gh-link:hover    { border-bottom-color: #a5d6a7; }
-
-    /* ------------------------------------------------------------------ */
-    /* Release timeline                                                     */
-    /* ------------------------------------------------------------------ */
+    /* ============================================================
+       Release timeline (global — sits above the tabs)
+    ============================================================ */
     .timeline-section {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 20px 24px;
-      margin: 22px 0;
-      box-shadow: var(--shadow-sm);
+      margin-bottom: 22px;
+      box-shadow: var(--shadow);
     }
 
     .timeline-title {
-      font-size: 0.72rem;
+      font-size: .72rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.7px;
-      color: var(--text-muted);
+      letter-spacing: .7px;
+      color: var(--muted);
       margin-bottom: 20px;
     }
 
-    .timeline-track {
-      display: flex;
-      align-items: flex-start;
-    }
+    .timeline-track { display: flex; align-items: flex-start; }
 
     .milestone {
       display: flex;
@@ -339,7 +114,7 @@
       position: relative;
     }
 
-    /* connector line to the right of each milestone except the last */
+    /* Connector line between milestones */
     .milestone:not(:last-child)::after {
       content: '';
       position: absolute;
@@ -350,8 +125,7 @@
       background: var(--border);
       z-index: 0;
     }
-
-    .milestone.ms-done:not(:last-child)::after  { background: #2e7d32; }
+    .milestone.ms-done:not(:last-child)::after   { background: #2e7d32; }
     .milestone.ms-active:not(:last-child)::after { background: var(--brand); }
 
     .ms-circle {
@@ -361,7 +135,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.72rem;
+      font-size: .72rem;
       font-weight: 700;
       position: relative;
       z-index: 1;
@@ -372,21 +146,19 @@
       color: #fff;
       border: 2px solid #2e7d32;
     }
-
     .milestone.ms-active .ms-circle {
       background: var(--brand);
       color: #fff;
       border: 2px solid var(--brand);
     }
-
     .milestone.ms-upcoming .ms-circle {
       background: var(--surface);
-      color: var(--text-muted);
+      color: var(--muted);
       border: 2px solid var(--border);
     }
 
     @keyframes pulse-ring {
-      0%   { transform: scale(1);   opacity: 0.65; }
+      0%   { transform: scale(1);   opacity: .65; }
       70%  { transform: scale(1.9); opacity: 0; }
       100% { transform: scale(1.9); opacity: 0; }
     }
@@ -401,33 +173,305 @@
     }
 
     .ms-label {
-      font-size: 0.78rem;
+      font-size: .78rem;
       font-weight: 600;
       margin-top: 6px;
       color: var(--text);
       text-align: center;
     }
-
-    .milestone.ms-upcoming .ms-label { color: var(--text-muted); }
+    .milestone.ms-upcoming .ms-label { color: var(--muted); }
 
     .ms-sub {
-      font-size: 0.68rem;
-      color: var(--text-muted);
+      font-size: .68rem;
+      color: var(--muted);
       margin-top: 2px;
       text-align: center;
     }
 
-    /* ------------------------------------------------------------------ */
-    /* PR2 priority badge                                                   */
-    /* ------------------------------------------------------------------ */
+    /* ============================================================
+       Tab bar
+    ============================================================ */
+    .tab-bar {
+      display: flex;
+      gap: 4px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 6px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 9px 16px;
+      border: none;
+      border-radius: 7px;
+      background: transparent;
+      color: var(--text);
+      font-size: .85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background .15s, color .15s;
+      text-align: center;
+      white-space: nowrap;
+    }
+    .tab-btn:hover:not(.active) { background: var(--bg); }
+    .tab-btn.active {
+      background: var(--brand);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* ============================================================
+       Tab panels
+    ============================================================ */
+    .tab-panel { display: none; }
+    .tab-panel.active {
+      display: block;
+      animation: fadeIn .2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* ============================================================
+       Per-tab summary bar
+    ============================================================ */
+    .summary {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .summary-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 10px;
+    }
+
+    .summary-label {
+      font-size: .72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .7px;
+      color: var(--muted);
+    }
+
+    .summary-count { font-size: .88rem; color: var(--muted); }
+
+    .progress-track {
+      height: 10px;
+      background: var(--bg);
+      border-radius: 5px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #2e7d32, #1B5E20);
+      border-radius: 5px;
+      width: 0%;
+      transition: width .9s cubic-bezier(.4,0,.2,1);
+    }
+
+    .summary-footer {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 7px;
+    }
+
+    .pct-label { font-size: .88rem; font-weight: 700; color: #1B5E20; }
+
+    /* ============================================================
+       Theme section — wraps all rows in a tab
+    ============================================================ */
+    .theme-section {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* ============================================================
+       Theme row  (label col + tiles grid)
+    ============================================================ */
+    .theme-row {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: flex;
+      align-items: stretch;
+    }
+
+    /* Red border when the row contains PR2 Core Scope items */
+    .theme-row.pr2-focus {
+      border: 2px solid #d32f2f;
+    }
+
+    /* Left label column */
+    .theme-label-col {
+      flex-shrink: 0;
+      width: 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 8px;
+      gap: 4px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+      /* thick colour left-border overridden per theme below */
+      border-left: 5px solid var(--border);
+    }
+
+    .theme-label-col .label-text {
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      color: var(--text);
+      word-break: break-word;
+    }
+
+    .theme-label-col .label-count {
+      font-size: .68rem;
+      color: var(--muted);
+    }
+
+    /* Per-theme left-border colours */
+    .theme-col-trust       { border-left-color: #E53935; }
+    .theme-col-flexibility { border-left-color: #1E88E5; }
+    .theme-col-robustness  { border-left-color: #8E24AA; }
+    .theme-col-unassigned  { border-left-color: #9E9E9E; }
+
+    /* Tiles grid area */
+    .theme-tiles {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 6px;
+      padding: 8px;
+      min-width: 0;
+      align-content: start;
+    }
+
+    /* ============================================================
+       Status tiles
+    ============================================================ */
+    .tile {
+      border-radius: 6px;
+      border: 1px solid rgba(0,0,0,.09);
+      cursor: pointer;
+      user-select: none;
+      transition: box-shadow .15s;
+    }
+
+    .tile:hover  { box-shadow: 0 3px 10px rgba(0,0,0,.14); }
+    .tile:active { opacity: .92; }
+
+    /* SUP Required = No — thick black inset outline (layout unaffected) */
+    .tile.sup-no { outline: 3px solid #111827; outline-offset: -1px; }
+
+    .tile-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      padding: 9px 11px;
+    }
+
+    .tile-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(0,0,0,.18);
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+
+    .tile-name {
+      flex: 1;
+      font-size: .82rem;
+      font-weight: 500;
+      line-height: 1.35;
+    }
+
+    .tile-arrow {
+      font-size: .6rem;
+      opacity: .5;
+      flex-shrink: 0;
+      margin-top: 4px;
+      transition: transform .18s;
+    }
+
+    .tile.open .tile-arrow { transform: rotate(90deg); }
+
+    /* Expandable detail body */
+    .tile-body {
+      display: none;
+      padding: 9px 11px 11px;
+      border-top: 1px solid rgba(0,0,0,.1);
+      font-size: .78rem;
+    }
+
+    .tile.open .tile-body { display: block; }
+
+    .detail-row {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+    .detail-row:last-of-type { margin-bottom: 0; }
+
+    .detail-label {
+      font-weight: 600;
+      color: rgba(0,0,0,.42);
+      min-width: 88px;
+      flex-shrink: 0;
+    }
+
+    .detail-value { color: rgba(0,0,0,.78); }
+
+    .gh-link {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: .77rem;
+      color: var(--brand);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0,53,140,.35);
+      word-break: break-all;
+    }
+    .gh-link:hover { border-bottom-color: var(--brand); }
+
+    /* Dark-tile overrides (white text on dark backgrounds) */
+    .tile-dark .tile-body      { border-top-color: rgba(255,255,255,.18); }
+    .tile-dark .tile-dot       { background: rgba(255,255,255,.35); }
+    .tile-dark .tile-arrow     { opacity: .7; }
+    .tile-dark .detail-label   { color: rgba(255,255,255,.52); }
+    .tile-dark .detail-value   { color: rgba(255,255,255,.88); }
+    .tile-dark .gh-link        { color: #a5d6a7; border-bottom-color: rgba(165,214,167,.4); }
+    .tile-dark .gh-link:hover  { border-bottom-color: #a5d6a7; }
+
+    /* PR2 priority badge */
     .priority-badge {
       display: inline-flex;
       align-items: center;
       background: var(--brand);
       color: #fff;
-      font-size: 0.62rem;
+      font-size: .62rem;
       font-weight: 700;
-      letter-spacing: 0.5px;
+      letter-spacing: .5px;
       border-radius: 4px;
       padding: 1px 5px;
       margin-left: 6px;
@@ -436,24 +480,24 @@
       white-space: nowrap;
     }
 
-    /* ------------------------------------------------------------------ */
-    /* Legend                                                               */
-    /* ------------------------------------------------------------------ */
+    /* ============================================================
+       Legend (global — sits below the tabs)
+    ============================================================ */
     .legend {
       margin-top: 22px;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 16px 20px;
-      box-shadow: var(--shadow-sm);
+      box-shadow: var(--shadow);
     }
 
     .legend-title {
-      font-size: 0.72rem;
+      font-size: .72rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.7px;
-      color: var(--text-muted);
+      letter-spacing: .7px;
+      color: var(--muted);
       margin-bottom: 11px;
     }
 
@@ -467,25 +511,46 @@
       display: flex;
       align-items: center;
       gap: 7px;
-      font-size: 0.82rem;
+      font-size: .82rem;
     }
 
     .swatch {
       width: 12px;
       height: 12px;
       border-radius: 3px;
-      border: 1px solid rgba(0,0,0,0.1);
+      border: 1px solid rgba(0,0,0,.1);
       flex-shrink: 0;
     }
 
-    /* ------------------------------------------------------------------ */
-    /* Footer                                                               */
-    /* ------------------------------------------------------------------ */
+    /* Secondary legend row (SUP border + PR2 badge explanation) */
+    .legend-extra {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 24px;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ============================================================
+       Footer
+    ============================================================ */
     footer {
       text-align: center;
       padding: 20px 16px;
-      font-size: 0.72rem;
-      color: var(--text-muted);
+      font-size: .72rem;
+      color: var(--muted);
+    }
+
+    /* ============================================================
+       Responsive
+    ============================================================ */
+    @media (max-width: 700px) {
+      header         { position: static; }
+      .tab-bar       { flex-direction: column; }
+      .tab-btn       { text-align: left; }
+      .theme-label-col { width: 80px; }
+      .theme-tiles   { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -503,27 +568,73 @@
 </header>
 
 <main>
-  <div class="summary">
-    <div class="summary-top">
-      <span class="summary-label">Overall completion</span>
-      <span class="summary-count" id="sum-text"></span>
-    </div>
-    <div class="progress-track">
-      <div class="progress-fill" id="progress-fill"></div>
-    </div>
-    <div class="summary-footer">
-      <span class="pct-label" id="sum-pct"></span>
-    </div>
-  </div>
 
-  <div class="themes" id="themes"></div>
-
+  <!-- Global: release timeline -->
   <div class="timeline-section" id="timeline"></div>
 
+  <!-- Tab switcher -->
+  <div class="tab-bar" id="tab-bar">
+    <button class="tab-btn" data-tab="0">TWG Features</button>
+    <button class="tab-btn" data-tab="1">PM Epics</button>
+    <button class="tab-btn active" data-tab="2">PM &amp; TWG Combined</button>
+  </div>
+
+  <!-- Tab panels -->
+  <div id="tab-twg" class="tab-panel" data-tab="0">
+    <div class="summary">
+      <div class="summary-top">
+        <span class="summary-label">Completion</span>
+        <span class="summary-count" id="sum-text-twg"></span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="fill-twg"></div>
+      </div>
+      <div class="summary-footer">
+        <span class="pct-label" id="sum-pct-twg"></span>
+      </div>
+    </div>
+    <div class="theme-section" id="themes-twg"></div>
+  </div>
+
+  <div id="tab-pm" class="tab-panel" data-tab="1">
+    <div class="summary">
+      <div class="summary-top">
+        <span class="summary-label">Completion</span>
+        <span class="summary-count" id="sum-text-pm"></span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="fill-pm"></div>
+      </div>
+      <div class="summary-footer">
+        <span class="pct-label" id="sum-pct-pm"></span>
+      </div>
+    </div>
+    <div class="theme-section" id="themes-pm"></div>
+  </div>
+
+  <div id="tab-combined" class="tab-panel active" data-tab="2">
+    <div class="summary">
+      <div class="summary-top">
+        <span class="summary-label">Completion</span>
+        <span class="summary-count" id="sum-text-combined"></span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="fill-combined"></div>
+      </div>
+      <div class="summary-footer">
+        <span class="pct-label" id="sum-pct-combined"></span>
+      </div>
+    </div>
+    <div class="theme-section" id="themes-combined"></div>
+  </div>
+
+  <!-- Global: status legend -->
   <div class="legend">
     <div class="legend-title">Status legend</div>
     <div class="legend-items" id="legend-items"></div>
+    <div class="legend-extra" id="legend-extra"></div>
   </div>
+
 </main>
 
 <footer>
@@ -538,20 +649,19 @@
   var items = _d.items;
   var meta  = _d.meta;
 
-  /* -------------------------------------------------------------------- */
-  /* Canonical state resolution                                             */
-  /* meta.statusMap maps raw GitHub column names → one of the five states  */
-  /* -------------------------------------------------------------------- */
+  /* ------------------------------------------------------------------
+     Canonical status resolution
+  ------------------------------------------------------------------ */
   var statusMap = meta.statusMap || {};
 
-  function canonical(rawStatus) {
-    if (!rawStatus) return null;
-    return statusMap[rawStatus] || rawStatus;
+  function canonical(raw) {
+    if (!raw) return null;
+    return statusMap[raw] || raw;
   }
 
-  /* -------------------------------------------------------------------- */
-  /* Five-state colour map (keyed on canonical state names)                */
-  /* -------------------------------------------------------------------- */
+  /* ------------------------------------------------------------------
+     Five-state colour map
+  ------------------------------------------------------------------ */
   var CANONICAL_BG = {
     'Finished':         '#1B5E20',
     'SUP Accepted':     '#66BB6A',
@@ -560,116 +670,206 @@
     'No Owner':         '#E0E0E0',
   };
 
-  // Canonical states whose background requires white text.
-  var CANONICAL_DARK = { 'Finished': true };
-
-  // Canonical states counted as "done" for the progress bar.
-  var DONE_CANONICAL = { 'Finished': true };
-
-  // Sort order within panels: most-progressed first.
+  var CANONICAL_DARK  = { 'Finished': true };
+  var DONE_CANONICAL  = { 'Finished': true };
   var CANONICAL_ORDER = {
-    'Finished':         0,
-    'SUP Accepted':     1,
-    'SUP Initiated':    2,
-    'Owner Identified': 3,
-    'No Owner':         4,
+    'Finished': 0, 'SUP Accepted': 1, 'SUP Initiated': 2,
+    'Owner Identified': 3, 'No Owner': 4,
   };
 
-  function statusRank(rawStatus) {
-    var c = canonical(rawStatus);
+  function statusRank(raw) {
+    var c = canonical(raw);
     return CANONICAL_ORDER[c] != null ? CANONICAL_ORDER[c] : 99;
   }
 
-  /* -------------------------------------------------------------------- */
-  /* Header badges                                                          */
-  /* -------------------------------------------------------------------- */
-  setText('badge-release', 'Current release: ' + (meta.currentRelease  || '—'));
-  setText('badge-next',    'Next release: '     + (meta.nextReleaseDate || '—'));
+  /* ------------------------------------------------------------------
+     Theme config
+  ------------------------------------------------------------------ */
+  var KNOWN_THEMES = meta.themes || [];
+  // Render known themes in order, then catch-all Unassigned at bottom
+  var THEME_KEYS = KNOWN_THEMES.concat(['Unassigned']);
+
+  var THEME_CSS = {
+    'Trust':       'trust',
+    'Flexibility': 'flexibility',
+    'Robustness':  'robustness',
+    'Unassigned':  'unassigned',
+  };
+
+  /* ------------------------------------------------------------------
+     Tab definitions
+  ------------------------------------------------------------------ */
+  var TABS = [
+    { key: 'twg',      label: 'TWG Features',
+      filter: function (i) { return i.source === 'twg'; } },
+    { key: 'pm',       label: 'PM Epics',
+      filter: function (i) { return i.source === 'pm';  } },
+    { key: 'combined', label: 'PM & TWG Combined',
+      filter: function (i) { return true; } },
+  ];
+  var DEFAULT_TAB = 2; // PM & TWG Combined
+
+  /* ------------------------------------------------------------------
+     Header badges
+  ------------------------------------------------------------------ */
+  setText('badge-release', 'Current release: ' + (meta.currentRelease  || '\u2014'));
+  setText('badge-next',    'Next release: '     + (meta.nextReleaseDate || '\u2014'));
   setText('badge-updated', 'Updated: '          + meta.generatedAt);
 
-  /* -------------------------------------------------------------------- */
-  /* Summary bar                                                            */
-  /* -------------------------------------------------------------------- */
-  var total    = items.length;
-  var finished = items.filter(function (i) { return DONE_CANONICAL[canonical(i.status)]; }).length;
-  var pct      = total > 0 ? Math.round((finished / total) * 100) : 0;
+  /* ------------------------------------------------------------------
+     Release timeline (global)
+  ------------------------------------------------------------------ */
+  (function renderTimeline() {
+    var el = document.getElementById('timeline');
+    if (!el || !(meta.releases || []).length) return;
 
-  setText('sum-text', finished + ' of ' + total + ' items complete');
-  setText('sum-pct',  pct + '%');
+    var releases   = meta.releases;
+    var currentIdx = releases.indexOf(meta.currentRelease);
 
-  requestAnimationFrame(function () {
-    document.getElementById('progress-fill').style.width = pct + '%';
+    var html = '<div class="timeline-title">Release Journey</div>' +
+               '<div class="timeline-track">';
+
+    releases.forEach(function (rel, idx) {
+      var state  = idx < currentIdx  ? 'ms-done'
+                 : idx === currentIdx ? 'ms-active'
+                 : 'ms-upcoming';
+      var circle = state === 'ms-done' ? '&#10003;' : esc(rel);
+      var sub    = (state === 'ms-active' && meta.nextReleaseDate) ? meta.nextReleaseDate
+                 : (idx === releases.length - 1)                   ? 'Target'
+                 : '';
+
+      html += '<div class="milestone ' + state + '">' +
+                '<div class="ms-circle">' + circle + '</div>' +
+                '<div class="ms-label">'  + esc(rel) + '</div>' +
+                (sub ? '<div class="ms-sub">' + esc(sub) + '</div>' : '') +
+              '</div>';
+    });
+
+    html += '</div>';
+    el.innerHTML = html;
+  }());
+
+  /* ------------------------------------------------------------------
+     Wire up tab buttons
+  ------------------------------------------------------------------ */
+  document.querySelectorAll('.tab-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      switchTab(parseInt(btn.dataset.tab, 10));
+    });
   });
 
-  /* -------------------------------------------------------------------- */
-  /* Build panel definitions from config                                    */
-  /* Switch config.groupBy from "source" → "theme" once Theme fields       */
-  /* are added to the GitHub projects; no template change needed.           */
-  /* -------------------------------------------------------------------- */
-  var panelDefs;
-  if (meta.groupBy === 'source') {
-    panelDefs = Object.keys(meta.projects || {}).map(function (key) {
-      return {
-        label:    (meta.projects[key] || {}).label || key,
-        filterFn: function (i) { return i.source === key; },
-      };
+  function switchTab(idx) {
+    document.querySelectorAll('.tab-btn').forEach(function (b) {
+      b.classList.toggle('active', parseInt(b.dataset.tab, 10) === idx);
     });
-  } else {
-    panelDefs = (meta.themes || []).map(function (theme) {
-      return {
-        label:    theme,
-        filterFn: function (i) { return i.theme === theme; },
-      };
+    document.querySelectorAll('.tab-panel').forEach(function (p) {
+      var becoming = parseInt(p.dataset.tab, 10) === idx;
+      var wasHidden = !p.classList.contains('active');
+      p.classList.toggle('active', becoming);
+      // Trigger progress-bar animation when panel first becomes visible
+      if (becoming && wasHidden) {
+        var tab = TABS[idx];
+        animateFill(tab.key, items.filter(tab.filter));
+      }
     });
   }
 
-  /* -------------------------------------------------------------------- */
-  /* Render panels                                                          */
-  /* -------------------------------------------------------------------- */
-  var container = document.getElementById('themes');
+  /* ------------------------------------------------------------------
+     Populate each tab panel
+  ------------------------------------------------------------------ */
+  TABS.forEach(function (tab, idx) {
+    var tabItems = items.filter(tab.filter);
 
-  panelDefs.forEach(function (def) {
-    var panelItems = items
-      .filter(def.filterFn)
-      .slice()
-      .sort(function (a, b) { return statusRank(a.status) - statusRank(b.status); });
+    // Summary counts
+    var done = tabItems.filter(function (i) {
+      return DONE_CANONICAL[canonical(i.status)];
+    }).length;
+    var pct = tabItems.length > 0
+      ? Math.round((done / tabItems.length) * 100) : 0;
 
-    var panel = make('div', 'panel');
+    setText('sum-text-' + tab.key, done + ' of ' + tabItems.length + ' items complete');
+    setText('sum-pct-'  + tab.key, pct + '%');
 
-    var hd = make('div', 'panel-header');
-    hd.innerHTML =
-      '<span class="panel-title">' + esc(def.label) + '</span>' +
-      '<span class="panel-count">' + panelItems.length +
-        (panelItems.length === 1 ? ' item' : ' items') + '</span>';
-    panel.appendChild(hd);
-
-    var list = make('div', 'tile-list');
-    if (panelItems.length === 0) {
-      var empty = make('div', 'empty-panel');
-      empty.textContent = 'No items';
-      list.appendChild(empty);
-    } else {
-      panelItems.forEach(function (item) {
-        list.appendChild(buildTile(item));
-      });
+    // Animate progress bar for the default (visible) tab immediately
+    if (idx === DEFAULT_TAB) {
+      requestAnimationFrame(function () { animateFill(tab.key, tabItems); });
     }
 
-    panel.appendChild(list);
-    container.appendChild(panel);
+    // Build theme rows
+    var container = document.getElementById('themes-' + tab.key);
+    if (container) renderThemeSection(tabItems, container);
   });
 
-  /* -------------------------------------------------------------------- */
-  /* Tile builder                                                           */
-  /* -------------------------------------------------------------------- */
+  function animateFill(key, tabItems) {
+    var done = tabItems.filter(function (i) {
+      return DONE_CANONICAL[canonical(i.status)];
+    }).length;
+    var pct = tabItems.length > 0
+      ? Math.round((done / tabItems.length) * 100) : 0;
+    var el = document.getElementById('fill-' + key);
+    if (el) el.style.width = pct + '%';
+  }
+
+  /* ------------------------------------------------------------------
+     Theme section renderer
+  ------------------------------------------------------------------ */
+  function renderThemeSection(tabItems, container) {
+    THEME_KEYS.forEach(function (theme) {
+      // Filter items for this theme bucket
+      var themeItems = tabItems.filter(function (i) {
+        if (theme === 'Unassigned') {
+          return !i.theme || KNOWN_THEMES.indexOf(i.theme) === -1;
+        }
+        return i.theme === theme;
+      });
+
+      if (themeItems.length === 0) return; // skip empty rows
+
+      // Sort within row: most-progressed status first
+      themeItems = themeItems.slice().sort(function (a, b) {
+        return statusRank(a.status) - statusRank(b.status);
+      });
+
+      var hasPr2 = themeItems.some(function (i) {
+        return i.status === 'PR2 Core Scope Features';
+      });
+
+      var cssKey = THEME_CSS[theme] || 'unassigned';
+      var row    = make('div', 'theme-row' + (hasPr2 ? ' pr2-focus' : ''));
+
+      // Label column
+      var labelCol = make('div', 'theme-label-col theme-col-' + cssKey);
+      labelCol.innerHTML =
+        '<span class="label-text">' + esc(theme) + '</span>' +
+        '<span class="label-count">' + themeItems.length +
+          (themeItems.length === 1 ? ' item' : ' items') + '</span>';
+      row.appendChild(labelCol);
+
+      // Tiles grid
+      var grid = make('div', 'theme-tiles');
+      themeItems.forEach(function (item) {
+        grid.appendChild(buildTile(item));
+      });
+      row.appendChild(grid);
+
+      container.appendChild(row);
+    });
+  }
+
+  /* ------------------------------------------------------------------
+     Tile builder
+  ------------------------------------------------------------------ */
   function buildTile(item) {
-    var c    = canonical(item.status);
-    var tile = make('div', 'tile');
+    var c   = canonical(item.status);
+    var cls = 'tile';
+    if (CANONICAL_DARK[c])         cls += ' tile-dark';
+    if (item.supRequired === 'No') cls += ' sup-no';
+
+    var tile = make('div', cls);
     tile.style.background = CANONICAL_BG[c] || '#e8eef7';
-    if (CANONICAL_DARK[c]) tile.classList.add('tile-dark');
 
     var pr2Badge = (item.status === 'PR2 Core Scope Features')
-      ? '<span class="priority-badge">PR2</span>'
-      : '';
+      ? '<span class="priority-badge">PR2</span>' : '';
 
     var head = make('div', 'tile-head');
     head.innerHTML =
@@ -681,6 +881,7 @@
     var body = make('div', 'tile-body');
     body.innerHTML =
       drow('Status',       c)                    +
+      drow('Theme',        item.theme)            +
       drow('Type',         item.type)             +
       drow('SUP required', item.supRequired)      +
       drow('Target date',  item.targetDate)       +
@@ -696,6 +897,74 @@
     return tile;
   }
 
+  /* ------------------------------------------------------------------
+     Legend
+  ------------------------------------------------------------------ */
+  var legendEl = document.getElementById('legend-items');
+  if (legendEl) {
+    Object.keys(CANONICAL_BG).forEach(function (state) {
+      var li = make('div', 'legend-item');
+      var sw = make('div', 'swatch');
+      sw.style.background = CANONICAL_BG[state];
+      li.appendChild(sw);
+      li.appendChild(document.createTextNode(state));
+      legendEl.appendChild(li);
+    });
+  }
+
+  var legendExtra = document.getElementById('legend-extra');
+  if (legendExtra) {
+    // SUP Required = No border
+    var supLi = make('div', 'legend-item');
+    var supSw = make('div', 'swatch');
+    supSw.style.background    = '#e8eef7';
+    supSw.style.outline       = '3px solid #111827';
+    supSw.style.outlineOffset = '-1px';
+    supLi.appendChild(supSw);
+    supLi.appendChild(document.createTextNode('SUP Required = No'));
+    legendExtra.appendChild(supLi);
+
+    // PR2 focus row border
+    var focusLi = make('div', 'legend-item');
+    var focusSw = make('div', 'swatch');
+    focusSw.style.background = 'transparent';
+    focusSw.style.border     = '2px solid #d32f2f';
+    focusLi.appendChild(focusSw);
+    focusLi.appendChild(document.createTextNode('PR2 focus theme row'));
+    legendExtra.appendChild(focusLi);
+
+    // PR2 badge
+    var badgeLi = make('div', 'legend-item');
+    var badge   = make('span', 'priority-badge');
+    badge.textContent = 'PR2';
+    badgeLi.appendChild(badge);
+    badgeLi.appendChild(document.createTextNode('\u00a0Core Scope item'));
+    legendExtra.appendChild(badgeLi);
+  }
+
+  /* ------------------------------------------------------------------
+     Utilities
+  ------------------------------------------------------------------ */
+  function setText(id, txt) {
+    var el = document.getElementById(id);
+    if (el) el.textContent = txt;
+  }
+
+  function make(tag, cls) {
+    var el = document.createElement(tag);
+    if (cls) el.className = cls;
+    return el;
+  }
+
+  function esc(s) {
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
   function drow(label, value) {
     if (value == null || value === '') return '';
     return '<div class="detail-row">' +
@@ -707,83 +976,6 @@
   function srcLabel(src) {
     var p = (meta.projects || {})[src];
     return p ? p.label : (src || null);
-  }
-
-  /* -------------------------------------------------------------------- */
-  /* Release timeline                                                       */
-  /* -------------------------------------------------------------------- */
-  var timelineEl = document.getElementById('timeline');
-  if (timelineEl && (meta.releases || []).length > 0) {
-    var releases = meta.releases;
-    var current  = meta.currentRelease;
-    var currentIdx = releases.indexOf(current);
-
-    timelineEl.innerHTML =
-      '<div class="timeline-title">Release Journey</div>' +
-      '<div class="timeline-track" id="timeline-track"></div>';
-
-    var track = document.getElementById('timeline-track');
-
-    releases.forEach(function (rel, idx) {
-      var state;
-      if (idx < currentIdx)       state = 'ms-done';
-      else if (idx === currentIdx) state = 'ms-active';
-      else                         state = 'ms-upcoming';
-
-      var circleContent = (state === 'ms-done') ? '&#10003;' : esc(rel);
-
-      var subText = '';
-      if (state === 'ms-active' && meta.nextReleaseDate) {
-        subText = meta.nextReleaseDate;
-      } else if (idx === releases.length - 1) {
-        subText = 'Target';
-      }
-
-      var ms = make('div', 'milestone ' + state);
-      ms.innerHTML =
-        '<div class="ms-circle">' + circleContent + '</div>' +
-        '<div class="ms-label">' + esc(rel) + '</div>' +
-        (subText ? '<div class="ms-sub">' + esc(subText) + '</div>' : '');
-      track.appendChild(ms);
-    });
-  }
-
-  /* -------------------------------------------------------------------- */
-  /* Legend — five canonical states                                         */
-  /* -------------------------------------------------------------------- */
-  var legendEl = document.getElementById('legend-items');
-  if (legendEl) {
-    Object.keys(CANONICAL_BG).forEach(function (state) {
-      var item = make('div', 'legend-item');
-      var sw   = make('div', 'swatch');
-      sw.style.background = CANONICAL_BG[state];
-      item.appendChild(sw);
-      item.appendChild(document.createTextNode(state));
-      legendEl.appendChild(item);
-    });
-  }
-
-  /* -------------------------------------------------------------------- */
-  /* Utilities                                                              */
-  /* -------------------------------------------------------------------- */
-  function setText(id, text) {
-    var el = document.getElementById(id);
-    if (el) el.textContent = text;
-  }
-
-  function make(tag, cls) {
-    var el = document.createElement(tag);
-    if (cls) el.className = cls;
-    return el;
-  }
-
-  function esc(str) {
-    return String(str)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#39;');
   }
 
 }());
