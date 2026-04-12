@@ -80,7 +80,8 @@
     main {
       max-width: 1400px;
       margin: 0 auto;
-      padding: 24px 16px 40px;
+      /* extra bottom padding keeps content clear of the sticky legend bar */
+      padding: 24px 16px 120px;
     }
 
     /* ============================================================
@@ -481,15 +482,20 @@
     }
 
     /* ============================================================
-       Legend (global — sits below the tabs)
+       Legend — sticky bar pinned to bottom of viewport
     ============================================================ */
     .legend {
-      margin-top: 22px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 16px 20px;
-      box-shadow: var(--shadow);
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 30;
+      background: rgba(255, 255, 255, 0.93);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(209, 220, 232, 0.9);
+      box-shadow: 0 -3px 16px rgba(0, 0, 60, 0.10);
+      padding: 10px 24px 12px;
     }
 
     .legend-title {
@@ -498,13 +504,13 @@
       text-transform: uppercase;
       letter-spacing: .7px;
       color: var(--muted);
-      margin-bottom: 11px;
+      margin-bottom: 7px;
     }
 
     .legend-items {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px 24px;
+      gap: 8px 20px;
     }
 
     .legend-item {
@@ -512,6 +518,7 @@
       align-items: center;
       gap: 7px;
       font-size: .82rem;
+      white-space: nowrap;
     }
 
     .swatch {
@@ -522,14 +529,14 @@
       flex-shrink: 0;
     }
 
-    /* Secondary legend row (SUP border + PR2 badge explanation) */
+    /* Secondary row: SUP border + PR2 badge explanation */
     .legend-extra {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px 24px;
-      margin-top: 10px;
-      padding-top: 10px;
-      border-top: 1px solid var(--border);
+      gap: 8px 20px;
+      margin-top: 7px;
+      padding-top: 7px;
+      border-top: 1px solid rgba(209, 220, 232, 0.7);
     }
 
     /* ============================================================
@@ -546,11 +553,25 @@
        Responsive
     ============================================================ */
     @media (max-width: 700px) {
-      header         { position: static; }
-      .tab-bar       { flex-direction: column; }
-      .tab-btn       { text-align: left; }
+      header           { position: static; }
+      .tab-bar         { flex-direction: column; }
+      .tab-btn         { text-align: left; }
       .theme-label-col { width: 80px; }
-      .theme-tiles   { grid-template-columns: 1fr; }
+      .theme-tiles     { grid-template-columns: 1fr; }
+
+      /* Legend: collapse each row to a single horizontally-scrollable line */
+      .legend { padding: 8px 16px 10px; }
+
+      .legend-items,
+      .legend-extra {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 2px;
+      }
+      .legend-items::-webkit-scrollbar,
+      .legend-extra::-webkit-scrollbar { display: none; }
     }
   </style>
 </head>
