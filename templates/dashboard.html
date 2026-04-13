@@ -189,6 +189,41 @@
       text-align: center;
     }
 
+    /* Milestone tooltip */
+    .ms-tooltip {
+      position: absolute;
+      bottom: calc(100% + 12px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1E1E1E;
+      color: #fff;
+      font-size: .74rem;
+      line-height: 1.45;
+      padding: 8px 12px;
+      border-radius: 6px;
+      white-space: pre-line;
+      pointer-events: none;
+      box-shadow: 0 3px 12px rgba(0,0,0,.35);
+      z-index: 100;
+      opacity: 0;
+      transition: opacity .15s ease;
+      width: max-content;
+      max-width: 240px;
+      text-align: center;
+    }
+    /* Arrow pointing downward toward the circle */
+    .ms-tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: #1E1E1E;
+    }
+    .milestone:hover .ms-tooltip   { opacity: 1; }
+    .milestone.has-link             { cursor: pointer; }
+
     /* ============================================================
        Tab bar
     ============================================================ */
@@ -465,6 +500,23 @@
     .tile-dark .gh-link        { color: #a5d6a7; border-bottom-color: rgba(165,214,167,.4); }
     .tile-dark .gh-link:hover  { border-bottom-color: #a5d6a7; }
 
+    /* "Untyped" badge — shown on PM Epics tiles where Type field is blank */
+    .type-badge {
+      display: inline-flex;
+      align-items: center;
+      background: #9E9E9E;
+      color: #fff;
+      font-size: .62rem;
+      font-weight: 600;
+      letter-spacing: .4px;
+      border-radius: 4px;
+      padding: 1px 5px;
+      margin-left: 6px;
+      vertical-align: middle;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
     /* PR2 priority badge */
     .priority-badge {
       display: inline-flex;
@@ -596,13 +648,12 @@
 
   <!-- Tab switcher -->
   <div class="tab-bar" id="tab-bar">
-    <button class="tab-btn" data-tab="0">TWG Features</button>
+    <button class="tab-btn active" data-tab="0">TWG Features</button>
     <button class="tab-btn" data-tab="1">PM Epics</button>
-    <button class="tab-btn active" data-tab="2">PM &amp; TWG Combined</button>
   </div>
 
   <!-- Tab panels -->
-  <div id="tab-twg" class="tab-panel" data-tab="0">
+  <div id="tab-twg" class="tab-panel active" data-tab="0">
     <div class="summary">
       <div class="summary-top">
         <span class="summary-label">Completion</span>
@@ -632,22 +683,6 @@
       </div>
     </div>
     <div class="theme-section" id="themes-pm"></div>
-  </div>
-
-  <div id="tab-combined" class="tab-panel active" data-tab="2">
-    <div class="summary">
-      <div class="summary-top">
-        <span class="summary-label">Completion</span>
-        <span class="summary-count" id="sum-text-combined"></span>
-      </div>
-      <div class="progress-track">
-        <div class="progress-fill" id="fill-combined"></div>
-      </div>
-      <div class="summary-footer">
-        <span class="pct-label" id="sum-pct-combined"></span>
-      </div>
-    </div>
-    <div class="theme-section" id="themes-combined"></div>
   </div>
 
   <!-- Global: status legend -->
@@ -722,14 +757,17 @@
      Tab definitions
   ------------------------------------------------------------------ */
   var TABS = [
-    { key: 'twg',      label: 'TWG Features',
+    { key: 'twg', label: 'TWG Features',
       filter: function (i) { return i.source === 'twg'; } },
-    { key: 'pm',       label: 'PM Epics',
-      filter: function (i) { return i.source === 'pm';  } },
-    { key: 'combined', label: 'PM & TWG Combined',
-      filter: function (i) { return true; } },
+    { key: 'pm',  label: 'PM Epics',
+      // Show Child Epics only; items with no Type set are included but
+      // flagged with an "Untyped" badge so incomplete tagging is visible.
+      filter: function (i) {
+        return i.source === 'pm' &&
+               (i.type === 'Child Epic' || !i.type);
+      } },
   ];
-  var DEFAULT_TAB = 2; // PM & TWG Combined
+  var DEFAULT_TAB = 0; // TWG Features
 
   /* ------------------------------------------------------------------
      Header badges
@@ -739,36 +777,60 @@
   setText('badge-updated', 'Updated: '          + meta.generatedAt);
 
   /* ------------------------------------------------------------------
-     Release timeline (global)
+     Release timeline (global) — with tooltips and clickable milestones
   ------------------------------------------------------------------ */
   (function renderTimeline() {
     var el = document.getElementById('timeline');
     if (!el || !(meta.releases || []).length) return;
 
-    var releases   = meta.releases;
-    var currentIdx = releases.indexOf(meta.currentRelease);
+    var releases          = meta.releases;
+    var currentIdx        = releases.indexOf(meta.currentRelease);
+    var releaseDates      = meta.releaseDates      || {};
+    var milestoneLinks    = meta.milestoneLinks    || {};
+    var milestoneTooltips = meta.milestoneTooltips || {};
 
-    var html = '<div class="timeline-title">Release Journey</div>' +
-               '<div class="timeline-track">';
+    el.innerHTML = '<div class="timeline-title">Release Journey</div>' +
+                   '<div class="timeline-track" id="tl-track"></div>';
+
+    var track = document.getElementById('tl-track');
 
     releases.forEach(function (rel, idx) {
       var state  = idx < currentIdx  ? 'ms-done'
                  : idx === currentIdx ? 'ms-active'
                  : 'ms-upcoming';
       var circle = state === 'ms-done' ? '&#10003;' : esc(rel);
-      var sub    = (state === 'ms-active' && meta.nextReleaseDate) ? meta.nextReleaseDate
-                 : (idx === releases.length - 1)                   ? 'Target'
-                 : '';
 
-      html += '<div class="milestone ' + state + '">' +
-                '<div class="ms-circle">' + circle + '</div>' +
-                '<div class="ms-label">'  + esc(rel) + '</div>' +
-                (sub ? '<div class="ms-sub">' + esc(sub) + '</div>' : '') +
-              '</div>';
+      // Sub-label under the circle
+      var sub = '';
+      if (state === 'ms-done' && releaseDates[rel]) {
+        sub = releaseDates[rel];
+      } else if (state === 'ms-active' && meta.nextReleaseDate) {
+        sub = meta.nextReleaseDate;
+      } else if (state === 'ms-upcoming' && releaseDates[rel]) {
+        sub = releaseDates[rel];
+      }
+
+      // Tooltip text — replace {nextReleaseDate} placeholder
+      var rawTip = milestoneTooltips[rel] || '';
+      var tipText = rawTip.replace('{nextReleaseDate}', meta.nextReleaseDate || '\u2014');
+
+      var hasLink = !!milestoneLinks[rel];
+      var ms = make('div', 'milestone ' + state + (hasLink ? ' has-link' : ''));
+
+      ms.innerHTML =
+        '<div class="ms-circle">' + circle + '</div>' +
+        '<div class="ms-label">'  + esc(rel) + '</div>' +
+        (sub     ? '<div class="ms-sub">'     + esc(sub)     + '</div>' : '') +
+        (tipText ? '<div class="ms-tooltip">' + esc(tipText) + '</div>' : '');
+
+      if (hasLink) {
+        ms.addEventListener('click', function () {
+          window.open(milestoneLinks[rel], '_blank', 'noopener,noreferrer');
+        });
+      }
+
+      track.appendChild(ms);
     });
-
-    html += '</div>';
-    el.innerHTML = html;
   }());
 
   /* ------------------------------------------------------------------
@@ -890,13 +952,17 @@
     var tile = make('div', cls);
     tile.style.background = CANONICAL_BG[c] || '#e8eef7';
 
-    var pr2Badge = (item.status === 'PR2 Core Scope Features')
+    var pr2Badge     = (item.status === 'PR2 Core Scope Features')
       ? '<span class="priority-badge">PR2</span>' : '';
+    // Show Untyped badge on PM items where the Type field is not set,
+    // signalling that tagging is incomplete.
+    var untypedBadge = (item.source === 'pm' && !item.type)
+      ? '<span class="type-badge">Untyped</span>' : '';
 
     var head = make('div', 'tile-head');
     head.innerHTML =
       '<div class="tile-dot"></div>' +
-      '<div class="tile-name">' + esc(item.title || '(untitled)') + pr2Badge + '</div>' +
+      '<div class="tile-name">' + esc(item.title || '(untitled)') + pr2Badge + untypedBadge + '</div>' +
       '<div class="tile-arrow">&#9658;</div>';
     tile.appendChild(head);
 
