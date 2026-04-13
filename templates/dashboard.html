@@ -458,6 +458,7 @@
     /* Dark-tile overrides (white text on dark backgrounds) */
     .tile-dark .tile-body      { border-top-color: rgba(255,255,255,.18); }
     .tile-dark .tile-dot       { background: rgba(255,255,255,.35); }
+    .tile-dark .tile-name      { color: rgba(255,255,255,.95); }
     .tile-dark .tile-arrow     { opacity: .7; }
     .tile-dark .detail-label   { color: rgba(255,255,255,.52); }
     .tile-dark .detail-value   { color: rgba(255,255,255,.88); }
@@ -684,11 +685,11 @@
      Five-state colour map
   ------------------------------------------------------------------ */
   var CANONICAL_BG = {
-    'Finished':         '#1B5E20',
-    'SUP Accepted':     '#66BB6A',
-    'SUP Initiated':    '#FF9800',
-    'Owner Identified': '#90CAF9',
-    'No Owner':         '#E0E0E0',
+    'Finished':         '#1B5E20',   // dark green  → white text (tile-dark)
+    'SUP Accepted':     '#66BB6A',   // mid green   → black text
+    'SUP Initiated':    '#FF9800',   // orange      → black text
+    'Owner Identified': '#FFD600',   // yellow      → black text
+    'No Owner':         '#E0E0E0',   // light grey  → black text
   };
 
   var CANONICAL_DARK  = { 'Finished': true };
