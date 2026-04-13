@@ -189,6 +189,41 @@
       text-align: center;
     }
 
+    /* Milestone tooltip */
+    .ms-tooltip {
+      position: absolute;
+      bottom: calc(100% + 12px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1E1E1E;
+      color: #fff;
+      font-size: .74rem;
+      line-height: 1.45;
+      padding: 8px 12px;
+      border-radius: 6px;
+      white-space: pre-line;
+      pointer-events: none;
+      box-shadow: 0 3px 12px rgba(0,0,0,.35);
+      z-index: 100;
+      opacity: 0;
+      transition: opacity .15s ease;
+      width: max-content;
+      max-width: 240px;
+      text-align: center;
+    }
+    /* Arrow pointing downward toward the circle */
+    .ms-tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: #1E1E1E;
+    }
+    .milestone:hover .ms-tooltip   { opacity: 1; }
+    .milestone.has-link             { cursor: pointer; }
+
     /* ============================================================
        Tab bar
     ============================================================ */
@@ -742,18 +777,22 @@
   setText('badge-updated', 'Updated: '          + meta.generatedAt);
 
   /* ------------------------------------------------------------------
-     Release timeline (global)
+     Release timeline (global) — with tooltips and clickable milestones
   ------------------------------------------------------------------ */
   (function renderTimeline() {
     var el = document.getElementById('timeline');
     if (!el || !(meta.releases || []).length) return;
 
-    var releases     = meta.releases;
-    var currentIdx   = releases.indexOf(meta.currentRelease);
-    var releaseDates = meta.releaseDates || {};
+    var releases          = meta.releases;
+    var currentIdx        = releases.indexOf(meta.currentRelease);
+    var releaseDates      = meta.releaseDates      || {};
+    var milestoneLinks    = meta.milestoneLinks    || {};
+    var milestoneTooltips = meta.milestoneTooltips || {};
 
-    var html = '<div class="timeline-title">Release Journey</div>' +
-               '<div class="timeline-track">';
+    el.innerHTML = '<div class="timeline-title">Release Journey</div>' +
+                   '<div class="timeline-track" id="tl-track"></div>';
+
+    var track = document.getElementById('tl-track');
 
     releases.forEach(function (rel, idx) {
       var state  = idx < currentIdx  ? 'ms-done'
@@ -761,26 +800,37 @@
                  : 'ms-upcoming';
       var circle = state === 'ms-done' ? '&#10003;' : esc(rel);
 
-      // Sub-label: past releases show their date, active shows next
-      // release date, last upcoming shows "Target".
+      // Sub-label under the circle
       var sub = '';
       if (state === 'ms-done' && releaseDates[rel]) {
         sub = releaseDates[rel];
       } else if (state === 'ms-active' && meta.nextReleaseDate) {
         sub = meta.nextReleaseDate;
-      } else if (state === 'ms-upcoming' && idx === releases.length - 1) {
-        sub = 'Target';
+      } else if (state === 'ms-upcoming' && releaseDates[rel]) {
+        sub = releaseDates[rel];
       }
 
-      html += '<div class="milestone ' + state + '">' +
-                '<div class="ms-circle">' + circle + '</div>' +
-                '<div class="ms-label">'  + esc(rel) + '</div>' +
-                (sub ? '<div class="ms-sub">' + esc(sub) + '</div>' : '') +
-              '</div>';
-    });
+      // Tooltip text — replace {nextReleaseDate} placeholder
+      var rawTip = milestoneTooltips[rel] || '';
+      var tipText = rawTip.replace('{nextReleaseDate}', meta.nextReleaseDate || '\u2014');
 
-    html += '</div>';
-    el.innerHTML = html;
+      var hasLink = !!milestoneLinks[rel];
+      var ms = make('div', 'milestone ' + state + (hasLink ? ' has-link' : ''));
+
+      ms.innerHTML =
+        '<div class="ms-circle">' + circle + '</div>' +
+        '<div class="ms-label">'  + esc(rel) + '</div>' +
+        (sub     ? '<div class="ms-sub">'     + esc(sub)     + '</div>' : '') +
+        (tipText ? '<div class="ms-tooltip">' + esc(tipText) + '</div>' : '');
+
+      if (hasLink) {
+        ms.addEventListener('click', function () {
+          window.open(milestoneLinks[rel], '_blank', 'noopener,noreferrer');
+        });
+      }
+
+      track.appendChild(ms);
+    });
   }());
 
   /* ------------------------------------------------------------------
