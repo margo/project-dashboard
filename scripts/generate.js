@@ -24,12 +24,15 @@ const ROOT      = resolve(__dirname, '..');
 const config = JSON.parse(readFileSync(resolve(ROOT, 'config.json'), 'utf8'));
 const { org, projects, fieldMappings } = config;
 
-// Normalise projects object → array of { key, number, label, views }
-const projectList = Object.entries(projects).map(([key, { number, label, views }]) => ({
+// Normalise projects object → array of { key, number, label, views, effectiveMappings }
+// Each project inherits the global fieldMappings and can override individual keys.
+const projectList = Object.entries(projects).map(([key, proj]) => ({
   key,
-  number,
-  label,
-  views: views ?? [],   // empty array = fetch full project; non-empty = fetch specific views
+  number: proj.number,
+  label:  proj.label,
+  views:  proj.views ?? [],   // empty = fetch full project; non-empty = fetch specific views
+  // Merge global fieldMappings with any per-project overrides declared in config.
+  effectiveMappings: { ...fieldMappings, ...(proj.fieldMappings ?? {}) },
 }));
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
@@ -166,10 +169,11 @@ function extractValue(node) {
 
 /**
  * Convert a raw project item node into the normalised shape defined by
- * fieldMappings.  url and title are always sourced from content.
+ * effectiveMappings (the global fieldMappings merged with any per-project
+ * overrides).  url and title are always sourced from content.
  * source is stamped in by the caller.
  */
-function mapItem(rawItem) {
+function mapItem(rawItem, effectiveMappings) {
   const byFieldName = {};
   for (const fv of rawItem.fieldValues.nodes) {
     const fieldName = fv.field?.name;
@@ -182,7 +186,7 @@ function mapItem(rawItem) {
     url:   rawItem.content?.url   ?? null,
   };
 
-  for (const [logicalKey, githubFieldName] of Object.entries(fieldMappings)) {
+  for (const [logicalKey, githubFieldName] of Object.entries(effectiveMappings)) {
     item[logicalKey] = byFieldName[githubFieldName] ?? null;
   }
 
@@ -193,7 +197,7 @@ function mapItem(rawItem) {
 // Paginated fetch — full project
 // ---------------------------------------------------------------------------
 
-async function fetchAllItems({ key, number, label }) {
+async function fetchAllItems({ key, number, label, effectiveMappings }) {
   const items = [];
   let cursor  = null;
   let page    = 0;
@@ -210,7 +214,7 @@ async function fetchAllItems({ key, number, label }) {
     if (page === 1) console.log(`    Project title: "${project.title}"`);
 
     const { nodes, pageInfo } = project.items;
-    for (const rawItem of nodes) items.push({ ...mapItem(rawItem), source: key });
+    for (const rawItem of nodes) items.push({ ...mapItem(rawItem, effectiveMappings), source: key });
     console.log(`    +${nodes.length} items  (running total: ${items.length})`);
 
     if (!pageInfo.hasNextPage) break;
@@ -224,7 +228,7 @@ async function fetchAllItems({ key, number, label }) {
 // Paginated fetch — single project view
 // ---------------------------------------------------------------------------
 
-async function fetchAllViewItems({ key, projectNumber, viewNumber }) {
+async function fetchAllViewItems({ key, projectNumber, viewNumber, effectiveMappings }) {
   const items = [];
   let cursor  = null;
   let page    = 0;
@@ -246,7 +250,7 @@ async function fetchAllViewItems({ key, projectNumber, viewNumber }) {
     if (page === 1) console.log(`      View name: "${view.name}"`);
 
     const { nodes, pageInfo } = view.items;
-    for (const rawItem of nodes) items.push({ ...mapItem(rawItem), source: key });
+    for (const rawItem of nodes) items.push({ ...mapItem(rawItem, effectiveMappings), source: key });
     console.log(`      +${nodes.length} items  (running total: ${items.length})`);
 
     if (!pageInfo.hasNextPage) break;
@@ -324,6 +328,7 @@ async function main() {
           key: project.key,
           projectNumber: project.number,
           viewNumber,
+          effectiveMappings: project.effectiveMappings,
         });
 
         let added = 0;
