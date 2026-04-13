@@ -233,6 +233,7 @@ function renderHtml(items) {
     groupBy:         config.groupBy         ?? 'theme',
     projects:        config.projects        ?? {},
     statusMap:       config.statusMap       ?? {},
+    releaseDates:    config.releaseDates    ?? {},
     generatedAt:     new Date().toUTCString(),
   };
 

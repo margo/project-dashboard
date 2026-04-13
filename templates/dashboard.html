@@ -465,6 +465,23 @@
     .tile-dark .gh-link        { color: #a5d6a7; border-bottom-color: rgba(165,214,167,.4); }
     .tile-dark .gh-link:hover  { border-bottom-color: #a5d6a7; }
 
+    /* "Untyped" badge — shown on PM Epics tiles where Type field is blank */
+    .type-badge {
+      display: inline-flex;
+      align-items: center;
+      background: #9E9E9E;
+      color: #fff;
+      font-size: .62rem;
+      font-weight: 600;
+      letter-spacing: .4px;
+      border-radius: 4px;
+      padding: 1px 5px;
+      margin-left: 6px;
+      vertical-align: middle;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
     /* PR2 priority badge */
     .priority-badge {
       display: inline-flex;
@@ -596,13 +613,12 @@
 
   <!-- Tab switcher -->
   <div class="tab-bar" id="tab-bar">
-    <button class="tab-btn" data-tab="0">TWG Features</button>
+    <button class="tab-btn active" data-tab="0">TWG Features</button>
     <button class="tab-btn" data-tab="1">PM Epics</button>
-    <button class="tab-btn active" data-tab="2">PM &amp; TWG Combined</button>
   </div>
 
   <!-- Tab panels -->
-  <div id="tab-twg" class="tab-panel" data-tab="0">
+  <div id="tab-twg" class="tab-panel active" data-tab="0">
     <div class="summary">
       <div class="summary-top">
         <span class="summary-label">Completion</span>
@@ -632,22 +648,6 @@
       </div>
     </div>
     <div class="theme-section" id="themes-pm"></div>
-  </div>
-
-  <div id="tab-combined" class="tab-panel active" data-tab="2">
-    <div class="summary">
-      <div class="summary-top">
-        <span class="summary-label">Completion</span>
-        <span class="summary-count" id="sum-text-combined"></span>
-      </div>
-      <div class="progress-track">
-        <div class="progress-fill" id="fill-combined"></div>
-      </div>
-      <div class="summary-footer">
-        <span class="pct-label" id="sum-pct-combined"></span>
-      </div>
-    </div>
-    <div class="theme-section" id="themes-combined"></div>
   </div>
 
   <!-- Global: status legend -->
@@ -722,14 +722,17 @@
      Tab definitions
   ------------------------------------------------------------------ */
   var TABS = [
-    { key: 'twg',      label: 'TWG Features',
+    { key: 'twg', label: 'TWG Features',
       filter: function (i) { return i.source === 'twg'; } },
-    { key: 'pm',       label: 'PM Epics',
-      filter: function (i) { return i.source === 'pm';  } },
-    { key: 'combined', label: 'PM & TWG Combined',
-      filter: function (i) { return true; } },
+    { key: 'pm',  label: 'PM Epics',
+      // Show Child Epics only; items with no Type set are included but
+      // flagged with an "Untyped" badge so incomplete tagging is visible.
+      filter: function (i) {
+        return i.source === 'pm' &&
+               (i.type === 'Child Epic' || !i.type);
+      } },
   ];
-  var DEFAULT_TAB = 2; // PM & TWG Combined
+  var DEFAULT_TAB = 0; // TWG Features
 
   /* ------------------------------------------------------------------
      Header badges
@@ -745,8 +748,9 @@
     var el = document.getElementById('timeline');
     if (!el || !(meta.releases || []).length) return;
 
-    var releases   = meta.releases;
-    var currentIdx = releases.indexOf(meta.currentRelease);
+    var releases     = meta.releases;
+    var currentIdx   = releases.indexOf(meta.currentRelease);
+    var releaseDates = meta.releaseDates || {};
 
     var html = '<div class="timeline-title">Release Journey</div>' +
                '<div class="timeline-track">';
@@ -756,9 +760,17 @@
                  : idx === currentIdx ? 'ms-active'
                  : 'ms-upcoming';
       var circle = state === 'ms-done' ? '&#10003;' : esc(rel);
-      var sub    = (state === 'ms-active' && meta.nextReleaseDate) ? meta.nextReleaseDate
-                 : (idx === releases.length - 1)                   ? 'Target'
-                 : '';
+
+      // Sub-label: past releases show their date, active shows next
+      // release date, last upcoming shows "Target".
+      var sub = '';
+      if (state === 'ms-done' && releaseDates[rel]) {
+        sub = releaseDates[rel];
+      } else if (state === 'ms-active' && meta.nextReleaseDate) {
+        sub = meta.nextReleaseDate;
+      } else if (state === 'ms-upcoming' && idx === releases.length - 1) {
+        sub = 'Target';
+      }
 
       html += '<div class="milestone ' + state + '">' +
                 '<div class="ms-circle">' + circle + '</div>' +
@@ -890,13 +902,17 @@
     var tile = make('div', cls);
     tile.style.background = CANONICAL_BG[c] || '#e8eef7';
 
-    var pr2Badge = (item.status === 'PR2 Core Scope Features')
+    var pr2Badge     = (item.status === 'PR2 Core Scope Features')
       ? '<span class="priority-badge">PR2</span>' : '';
+    // Show Untyped badge on PM items where the Type field is not set,
+    // signalling that tagging is incomplete.
+    var untypedBadge = (item.source === 'pm' && !item.type)
+      ? '<span class="type-badge">Untyped</span>' : '';
 
     var head = make('div', 'tile-head');
     head.innerHTML =
       '<div class="tile-dot"></div>' +
-      '<div class="tile-name">' + esc(item.title || '(untitled)') + pr2Badge + '</div>' +
+      '<div class="tile-name">' + esc(item.title || '(untitled)') + pr2Badge + untypedBadge + '</div>' +
       '<div class="tile-arrow">&#9658;</div>';
     tile.appendChild(head);
 
