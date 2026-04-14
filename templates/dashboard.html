@@ -760,9 +760,9 @@
       </div>
     </div>
     <div class="sub-tab-bar">
-      <button class="sub-tab active" data-sub-tab="combined" onclick="switchSubTab('combined')">PR1 + PR2 Combined</button>
       <button class="sub-tab" data-sub-tab="pr1" onclick="switchSubTab('pr1')">PR1 Completed</button>
-      <button class="sub-tab" data-sub-tab="pr2" onclick="switchSubTab('pr2')">PR2 In Progress</button>
+      <button class="sub-tab active" data-sub-tab="pr2" onclick="switchSubTab('pr2')">PR2 In Progress</button>
+      <button class="sub-tab" data-sub-tab="ga1" onclick="switchSubTab('ga1')">GA1</button>
     </div>
     <div id="release-banner-twg"></div>
     <div class="theme-section" id="themes-twg"></div>
@@ -782,9 +782,9 @@
       </div>
     </div>
     <div class="sub-tab-bar">
-      <button class="sub-tab active" data-sub-tab="combined" onclick="switchSubTab('combined')">PR1 + PR2 Combined</button>
       <button class="sub-tab" data-sub-tab="pr1" onclick="switchSubTab('pr1')">PR1 Completed</button>
-      <button class="sub-tab" data-sub-tab="pr2" onclick="switchSubTab('pr2')">PR2 In Progress</button>
+      <button class="sub-tab active" data-sub-tab="pr2" onclick="switchSubTab('pr2')">PR2 In Progress</button>
+      <button class="sub-tab" data-sub-tab="ga1" onclick="switchSubTab('ga1')">GA1</button>
     </div>
     <div id="release-banner-pm"></div>
     <div class="theme-section" id="themes-pm"></div>
@@ -872,7 +872,7 @@
   var DEFAULT_TAB = 0; // TWG Features
 
   /* Sub-tab state — shared across both main tabs */
-  var currentSubTab = 'combined'; // 'pr1' | 'pr2' | 'combined'
+  var currentSubTab = 'pr2'; // 'pr1' | 'pr2' | 'ga1' (ga1 = all releases combined)
 
   /* ------------------------------------------------------------------
      Header badges
@@ -964,7 +964,7 @@
   ------------------------------------------------------------------ */
   TABS.forEach(function (tab, idx) {
     // Render summary + theme section through the shared renderThemes path so
-    // the sub-tab filter is always applied consistently (default: 'combined').
+    // the sub-tab filter is always applied consistently (default: 'pr2').
     renderThemes(tab);
 
     // Animate progress bar for the default (visible) tab immediately.
@@ -997,7 +997,7 @@
     var filtered = items.filter(tab.filter);
     if (currentSubTab === 'pr1') return filtered.filter(function (i) { return i.release === 'PR1'; });
     if (currentSubTab === 'pr2') return filtered.filter(function (i) { return i.release === 'PR2'; });
-    return filtered; // 'combined' — no additional release filter
+    return filtered; // 'ga1' — no release filter, shows all
   }
 
   /**
