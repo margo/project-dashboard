@@ -4,7 +4,6 @@
     "pm":  {
       "number": 13,
       "label":  "PM Epics",
-      "views":  [10, 11],
       "fieldMappings": { "release": "Milestone" }
     },
     "twg": {
