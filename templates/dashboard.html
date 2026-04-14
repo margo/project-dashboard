@@ -391,7 +391,7 @@
     .theme-col-robustness  { border-left-color: #8E24AA; }
     .theme-col-unassigned  { border-left-color: #9E9E9E; }
 
-    /* Theme description tooltip — appears to the right of the label col on hover */
+    /* Theme description tooltip — appears above the label col on hover */
     .theme-label-col { position: relative; }
 
     .theme-info-icon {
@@ -406,9 +406,10 @@
     .theme-tooltip {
       display: none;
       position: absolute;
-      left: calc(100% + 14px);
-      top: 50%;
-      transform: translateY(-50%);
+      bottom: calc(100% + 10px);
+      left: 0;
+      top: auto;
+      transform: none;
       z-index: 200;
       width: 290px;
       background: #1e293b;
@@ -424,15 +425,14 @@
       letter-spacing: 0;
       font-weight: 400;
     }
-    /* Arrow pointing left toward the label */
+    /* Arrow pointing down toward the label */
     .theme-tooltip::before {
       content: '';
       position: absolute;
-      right: 100%;
-      top: 50%;
-      transform: translateY(-50%);
+      top: 100%;
+      left: 20px;
       border: 7px solid transparent;
-      border-right-color: #1e293b;
+      border-top-color: #1e293b;
     }
     .theme-tooltip-title {
       font-weight: 700; font-size: .82rem;
