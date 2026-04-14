@@ -1,8 +1,16 @@
 {
   "org": "margo",
   "projects": {
-    "pm":  { "number": 13, "label": "PM Epics", "views": [10, 11] },
-    "twg": { "number": 22, "label": "TWG Features" }
+    "pm":  {
+      "number": 13,
+      "label":  "PM Epics",
+      "views":  [10, 11],
+      "fieldMappings": { "release": "Milestone" }
+    },
+    "twg": {
+      "number": 22,
+      "label":  "TWG Features"
+    }
   },
   "fieldMappings": {
     "status":      "Status",
