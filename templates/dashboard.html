@@ -759,6 +759,12 @@
         <span class="pct-label" id="sum-pct-twg"></span>
       </div>
     </div>
+    <div class="sub-tab-bar">
+      <button class="sub-tab active" data-sub-tab="combined" onclick="switchSubTab('combined')">PR1 + PR2 Combined</button>
+      <button class="sub-tab" data-sub-tab="pr1" onclick="switchSubTab('pr1')">PR1 Completed</button>
+      <button class="sub-tab" data-sub-tab="pr2" onclick="switchSubTab('pr2')">PR2 In Progress</button>
+    </div>
+    <div id="release-banner-twg"></div>
     <div class="theme-section" id="themes-twg"></div>
   </div>
 
@@ -775,6 +781,12 @@
         <span class="pct-label" id="sum-pct-pm"></span>
       </div>
     </div>
+    <div class="sub-tab-bar">
+      <button class="sub-tab active" data-sub-tab="combined" onclick="switchSubTab('combined')">PR1 + PR2 Combined</button>
+      <button class="sub-tab" data-sub-tab="pr1" onclick="switchSubTab('pr1')">PR1 Completed</button>
+      <button class="sub-tab" data-sub-tab="pr2" onclick="switchSubTab('pr2')">PR2 In Progress</button>
+    </div>
+    <div id="release-banner-pm"></div>
     <div class="theme-section" id="themes-pm"></div>
   </div>
 
@@ -1009,6 +1021,25 @@
     var fill = document.getElementById('fill-' + tab.key);
     if (fill) { fill.style.width = '0%'; }
     requestAnimationFrame(function () { animateFill(tab.key, tabItems); });
+
+    // Update release banner
+    var banner = document.getElementById('release-banner-' + tab.key);
+    if (banner) {
+      banner.innerHTML = '';
+      if (currentSubTab === 'pr1') {
+        var b = make('div', 'release-banner pr1-banner');
+        var icon = make('span', 'banner-icon'); icon.textContent = '\u2705';
+        var txt = make('span', ''); txt.textContent = 'PR1 \u2014 ' + (meta.releaseDates['PR1'] || 'Released') + ' \u00b7 Showing completed items only';
+        b.appendChild(icon); b.appendChild(txt);
+        banner.appendChild(b);
+      } else if (currentSubTab === 'pr2') {
+        var b = make('div', 'release-banner pr2-banner');
+        var dot = make('span', 'banner-pulse-dot');
+        var txt = make('span', ''); txt.textContent = 'PR2 \u2014 In Progress \u00b7 Target ' + (meta.nextReleaseDate || '') + ' \u00b7 Showing in-progress items';
+        b.appendChild(dot); b.appendChild(txt);
+        banner.appendChild(b);
+      }
+    }
 
     // Replace the theme-section node (re-triggers fadeIn CSS animation)
     var old = document.getElementById('themes-' + tab.key);
