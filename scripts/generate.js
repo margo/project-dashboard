@@ -308,9 +308,10 @@ function renderHtml(items) {
     projects:          config.projects          ?? {},
     statusMap:         config.statusMap         ?? {},
     releaseDates:      config.releaseDates      ?? {},
-    milestoneLinks:    config.milestoneLinks    ?? {},
-    milestoneTooltips: config.milestoneTooltips ?? {},
-    generatedAt:       new Date().toUTCString(),
+    milestoneLinks:      config.milestoneLinks      ?? {},
+    milestoneTooltips:   config.milestoneTooltips   ?? {},
+    themeDescriptions:   config.themeDescriptions   ?? {},
+    generatedAt:         new Date().toUTCString(),
   };
 
   const payload   = JSON.stringify({ items, meta }).replace(/</g, '\\u003c');
