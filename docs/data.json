@@ -1002,7 +1002,7 @@
     "title": "Define the Margo \"Gateway\" capability Requirements",
     "url": "https://github.com/margo/specification/issues/137",
     "type": "Feature (TWG)",
-    "release": "PR2",
+    "release": "GA1",
     "status": "backlog - notconfirmednextrelease",
     "source": "twg"
   },
