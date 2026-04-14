@@ -90,6 +90,16 @@ const ITEM_FIELDS = `
       title
       issueType { name }
       milestone { title }
+      subIssues(first: 20) {
+        totalCount
+        nodes {
+          title
+          url
+          state
+          number
+          issueType { name }
+        }
+      }
     }
     ... on PullRequest { url title }
     ... on DraftIssue  { title }
@@ -182,6 +192,15 @@ function mapItem(rawItem, effectiveMappings) {
     // Issue-level fields — not project custom fields
     type:    rawItem.content?.issueType?.name         ?? null,
     release: rawItem.content?.milestone?.title        ?? null,
+    // Sub-issues (nested issues) — fetched in same request, up to 20
+    subIssues: (rawItem.content?.subIssues?.nodes ?? []).map(n => ({
+      title:     n.title,
+      url:       n.url,
+      state:     n.state,
+      number:    n.number,
+      issueType: n.issueType?.name ?? null,
+    })),
+    subIssueCount: rawItem.content?.subIssues?.totalCount ?? 0,
   };
 
   for (const [logicalKey, githubFieldName] of Object.entries(effectiveMappings)) {

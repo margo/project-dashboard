@@ -500,6 +500,51 @@
     .tile-dark .gh-link        { color: #a5d6a7; border-bottom-color: rgba(165,214,167,.4); }
     .tile-dark .gh-link:hover  { border-bottom-color: #a5d6a7; }
 
+    /* Sub-issues collapsible section inside tile detail */
+    .sub-issues-section { margin-top: 10px; border-top: 1px solid rgba(0,0,0,.08); padding-top: 8px; }
+    .tile-dark .sub-issues-section { border-top-color: rgba(255,255,255,.14); }
+
+    .sub-issues-toggle {
+      display: flex; align-items: center; gap: 4px;
+      background: none; border: none; padding: 0; cursor: pointer;
+      font-size: .7rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+      color: rgba(0,0,0,.42);
+    }
+    .tile-dark .sub-issues-toggle { color: rgba(255,255,255,.48); }
+    .sub-issues-toggle:hover { color: rgba(0,0,0,.7); }
+    .tile-dark .sub-issues-toggle:hover { color: rgba(255,255,255,.8); }
+
+    .sub-issues-chevron { font-size: .6rem; transition: transform .15s; display: inline-block; }
+    .sub-issues-open .sub-issues-chevron { transform: rotate(90deg); }
+
+    .sub-issues-list { display: none; margin-top: 6px; max-height: 145px; overflow-y: auto; }
+    .sub-issues-open .sub-issues-list { display: block; }
+
+    .sub-issue-row {
+      display: flex; align-items: center; gap: 5px;
+      padding: 3px 0; font-size: .78rem;
+      border-bottom: 1px solid rgba(0,0,0,.06);
+    }
+    .sub-issue-row:last-child { border-bottom: none; }
+    .tile-dark .sub-issue-row { border-bottom-color: rgba(255,255,255,.08); }
+
+    .sub-issue-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+    .sub-issue-dot.closed { background: #1a7f37; }
+    .sub-issue-dot.open   { background: transparent; border: 2px solid #1a7f37; }
+    .tile-dark .sub-issue-dot.closed { background: #6bc46d; }
+    .tile-dark .sub-issue-dot.open   { border-color: #6bc46d; }
+
+    .sub-issue-title { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: rgba(0,0,0,.78); }
+    .tile-dark .sub-issue-title { color: rgba(255,255,255,.85); }
+
+    .sub-issue-num { color: rgba(0,0,0,.38); font-size: .72rem; flex-shrink: 0; }
+    .tile-dark .sub-issue-num { color: rgba(255,255,255,.42); }
+
+    .sub-issue-link { color: rgba(0,0,0,.38); text-decoration: none; flex-shrink: 0; font-size: .85rem; line-height: 1; }
+    .sub-issue-link:hover { color: rgba(0,0,0,.8); }
+    .tile-dark .sub-issue-link { color: rgba(255,255,255,.42); }
+    .tile-dark .sub-issue-link:hover { color: rgba(255,255,255,.9); }
+
     /* "Untyped" badge — shown on PM Epics tiles where Type field is blank */
     .type-badge {
       display: inline-flex;
@@ -1159,6 +1204,52 @@
         ? '<a class="gh-link" href="' + esc(item.url) +
           '" target="_blank" rel="noopener">View on GitHub &#8599;</a>'
         : '');
+
+    // Sub-issues collapsible section (DOM-built, not innerHTML)
+    if (item.subIssues && item.subIssues.length > 0) {
+      var siSection = make('div', 'sub-issues-section');
+
+      var siToggle = make('button', 'sub-issues-toggle');
+      var chevron  = make('span',   'sub-issues-chevron');
+      chevron.textContent = '\u25b6'; // ▶
+      siToggle.appendChild(chevron);
+      siToggle.appendChild(document.createTextNode(
+        '\u00a0Sub-issues (' + item.subIssueCount + ')'
+      ));
+      siSection.appendChild(siToggle);
+
+      var siList = make('div', 'sub-issues-list');
+      item.subIssues.forEach(function (si) {
+        var row  = make('div', 'sub-issue-row');
+        var dot  = make('span', 'sub-issue-dot ' + (si.state === 'CLOSED' ? 'closed' : 'open'));
+        var ttl  = make('span', 'sub-issue-title');
+        ttl.textContent = si.title || ('#' + si.number);
+        var num  = make('span', 'sub-issue-num');
+        num.textContent = '#' + si.number;
+        row.appendChild(dot);
+        row.appendChild(ttl);
+        row.appendChild(num);
+        if (si.url) {
+          var lnk = make('a', 'sub-issue-link');
+          lnk.href = si.url;
+          lnk.target = '_blank';
+          lnk.rel    = 'noopener';
+          lnk.textContent = '\u2192'; // →
+          lnk.title = 'Open in GitHub';
+          row.appendChild(lnk);
+        }
+        siList.appendChild(row);
+      });
+      siSection.appendChild(siList);
+
+      siToggle.addEventListener('click', function (e) {
+        e.stopPropagation(); // don't collapse the parent tile
+        siSection.classList.toggle('sub-issues-open');
+      });
+
+      body.appendChild(siSection);
+    }
+
     tile.appendChild(body);
 
     head.addEventListener('click', function () { tile.classList.toggle('open'); });
