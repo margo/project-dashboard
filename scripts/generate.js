@@ -198,6 +198,25 @@ async function fetchAllItems({ key, number, label, effectiveMappings }) {
     if (page === 1) console.log(`    Project title: "${project.title}"`);
 
     const { nodes, pageInfo } = project.items;
+
+    // On the first page, log every unique field name seen in fieldValues so
+    // mismatches between config fieldMappings and actual GitHub field names
+    // are immediately visible in Action logs.
+    if (page === 1) {
+      const seen = new Set();
+      for (const rawItem of nodes) {
+        for (const fv of rawItem.fieldValues.nodes) {
+          if (fv.field?.name) seen.add(fv.field.name);
+        }
+      }
+      console.log(`    Field names in GitHub project: ${[...seen].sort().map(n => `"${n}"`).join(', ')}`);
+      const mapped   = Object.values(effectiveMappings);
+      const unmapped = [...seen].filter(n => !mapped.includes(n));
+      const missing  = mapped.filter(n => !seen.has(n));
+      if (missing.length)  console.log(`    ⚠ Mapped fields NOT found in data: ${missing.map(n => `"${n}"`).join(', ')}`);
+      if (unmapped.length) console.log(`    ℹ Unmapped fields available: ${unmapped.map(n => `"${n}"`).join(', ')}`);
+    }
+
     for (const rawItem of nodes) items.push({ ...mapItem(rawItem, effectiveMappings), source: key });
     console.log(`    +${nodes.length} items  (running total: ${items.length})`);
 
