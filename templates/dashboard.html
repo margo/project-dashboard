@@ -606,6 +606,96 @@
     }
 
     /* ============================================================
+       Release pill badge — top-right corner of every tile
+    ============================================================ */
+    .tile { position: relative; }
+
+    .release-pill {
+      position: absolute;
+      top: 7px;
+      right: 8px;
+      padding: 2px 7px;
+      border-radius: 20px;
+      font-size: .7rem;
+      font-weight: 700;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.4);
+      pointer-events: none;
+      white-space: nowrap;
+      z-index: 1;
+    }
+    .release-pill.pr1 { background: #1B5E20; }
+    .release-pill.pr2 { background: #00358C; }
+    .release-pill.pr3 { background: #9E9E9E; }
+
+    /* Prevent tile title from running under the pill */
+    .tile-head.has-pill { padding-right: 44px; }
+
+    /* ============================================================
+       Sub-tab bar — sits inside each tab panel below the main tabs
+    ============================================================ */
+    .sub-tab-bar {
+      display: flex;
+      gap: 4px;
+      padding: 8px 0;
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sub-tab {
+      padding: 5px 14px;
+      border-radius: 6px 6px 0 0;
+      font-size: .8rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      background: transparent;
+      color: var(--muted);
+      transition: color .15s, border-color .15s;
+      white-space: nowrap;
+    }
+    .sub-tab:hover:not(.active) { color: var(--text); }
+    .sub-tab.active {
+      background: #fff;
+      color: var(--brand);
+      border-bottom-color: var(--brand);
+      font-weight: 600;
+    }
+
+    /* Release banner — shown above tiles for PR1 / PR2 specific views */
+    .release-banner {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-radius: var(--radius);
+      padding: 10px 16px;
+      margin-bottom: 12px;
+      font-size: .85rem;
+      font-weight: 600;
+      color: #fff;
+    }
+    .release-banner.pr1-banner { background: #1B5E20; }
+    .release-banner.pr2-banner { background: var(--brand); }
+
+    .banner-icon { font-size: 1.1rem; flex-shrink: 0; }
+
+    @keyframes dot-pulse {
+      0%, 100% { opacity: 1;  transform: scale(1);   }
+      50%       { opacity: .4; transform: scale(.65); }
+    }
+    .banner-pulse-dot {
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.9);
+      flex-shrink: 0;
+      animation: dot-pulse 1.5s ease-in-out infinite;
+    }
+
+    /* ============================================================
        Responsive
     ============================================================ */
     @media (max-width: 700px) {
