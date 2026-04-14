@@ -36,7 +36,7 @@ jobs:
         env:
           # GH_PROJECT_TOKEN must have read:org + read:project + repo scopes.
           # The built-in GITHUB_TOKEN does not have read:project, so a PAT is required.
-          GITHUB_TOKEN: ${{ secrets.GH_PROJECT_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PROJECT_TOKEN }}
         run: node scripts/generate.js
 
       - name: Commit and push generated files

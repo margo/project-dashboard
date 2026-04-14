@@ -3,10 +3,12 @@
 // configured project (with full pagination), maps every item to a normalised
 // shape using fieldMappings, merges the results, and writes docs/data.json.
 //
-// Projects that define a "views" array (e.g. PM Epics) are fetched view-by-
-// view so only items surfaced by those curated views are included.  Projects
-// without a "views" array are fetched from the top-level project items list.
-// Duplicate items (same URL) across multiple views are de-duplicated.
+// All projects are fetched from their top-level items list.  Per-project
+// fieldMappings overrides (e.g. PM uses "Milestone" instead of "Release")
+// are merged at config-load time into effectiveMappings for each project.
+// View-scoped filtering (e.g. Child Epic only) is applied client-side in
+// the dashboard template, not here — the GitHub Projects v2 GraphQL API
+// does not expose items() on ProjectV2View.
 
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { resolve, dirname }                        from 'node:path';
@@ -30,14 +32,13 @@ const projectList = Object.entries(projects).map(([key, proj]) => ({
   key,
   number: proj.number,
   label:  proj.label,
-  views:  proj.views ?? [],   // empty = fetch full project; non-empty = fetch specific views
   // Merge global fieldMappings with any per-project overrides declared in config.
   effectiveMappings: { ...fieldMappings, ...(proj.fieldMappings ?? {}) },
 }));
 
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+const GITHUB_TOKEN = process.env.GH_TOKEN;
 if (!GITHUB_TOKEN) {
-  console.error('Error: GITHUB_TOKEN environment variable is not set.');
+  console.error('Error: GH_TOKEN environment variable is not set.');
   process.exit(1);
 }
 
@@ -117,7 +118,6 @@ const ITEM_FIELDS = `
 // Queries
 // ---------------------------------------------------------------------------
 
-// Full-project query (used for TWG and any project without a views list)
 const PROJECT_ITEMS_QUERY = `
   query FetchProjectItems($org: String!, $projectNumber: Int!, $cursor: String) {
     organization(login: $org) {
@@ -132,22 +132,6 @@ const PROJECT_ITEMS_QUERY = `
   }
 `;
 
-// View-scoped query (used for PM and any project that specifies views)
-const PROJECT_VIEW_ITEMS_QUERY = `
-  query FetchViewItems($org: String!, $projectNumber: Int!, $viewNumber: Int!, $cursor: String) {
-    organization(login: $org) {
-      projectV2(number: $projectNumber) {
-        view(number: $viewNumber) {
-          name
-          items(first: 100, after: $cursor) {
-            pageInfo { hasNextPage endCursor }
-            nodes { ${ITEM_FIELDS} }
-          }
-        }
-      }
-    }
-  }
-`;
 
 // ---------------------------------------------------------------------------
 // Data extraction
@@ -225,42 +209,6 @@ async function fetchAllItems({ key, number, label, effectiveMappings }) {
 }
 
 // ---------------------------------------------------------------------------
-// Paginated fetch — single project view
-// ---------------------------------------------------------------------------
-
-async function fetchAllViewItems({ key, projectNumber, viewNumber, effectiveMappings }) {
-  const items = [];
-  let cursor  = null;
-  let page    = 0;
-
-  console.log(`    Fetching view #${viewNumber} of project #${projectNumber}...`);
-
-  while (true) {
-    page++;
-    console.log(`      Page ${page}${cursor ? ` (cursor: ${cursor.slice(0, 12)}…)` : ''}`);
-
-    const data = await graphql(PROJECT_VIEW_ITEMS_QUERY, {
-      org,
-      projectNumber,
-      viewNumber,
-      cursor,
-    });
-    const view = data.organization.projectV2.view;
-
-    if (page === 1) console.log(`      View name: "${view.name}"`);
-
-    const { nodes, pageInfo } = view.items;
-    for (const rawItem of nodes) items.push({ ...mapItem(rawItem, effectiveMappings), source: key });
-    console.log(`      +${nodes.length} items  (running total: ${items.length})`);
-
-    if (!pageInfo.hasNextPage) break;
-    cursor = pageInfo.endCursor;
-  }
-
-  return items;
-}
-
-// ---------------------------------------------------------------------------
 // HTML generation
 // ---------------------------------------------------------------------------
 
@@ -308,49 +256,16 @@ function renderHtml(items) {
 async function main() {
   console.log('=== Margo roadmap dashboard — data generation ===');
   console.log(`Org:             ${org}`);
-  console.log(`Projects:        ${projectList.map(p =>
-    `#${p.number} ${p.label}` + (p.views.length ? ` (views: ${p.views.join(', ')})` : '')
-  ).join(', ')}`);
+  console.log(`Projects:        ${projectList.map(p => `#${p.number} ${p.label}`).join(', ')}`);
   console.log(`Field mappings:  ${Object.entries(fieldMappings).map(([k, v]) => `${k}→"${v}"`).join(', ')}`);
   console.log('');
 
   const allItems = [];
 
   for (const project of projectList) {
-    if (project.views.length > 0) {
-      // Fetch from specific views and merge, de-duplicating by URL.
-      console.log(`  Fetching project #${project.number} "${project.label}" via views [${project.views.join(', ')}]...`);
-      const seenUrls = new Set();
-      let projectTotal = 0;
-
-      for (const viewNumber of project.views) {
-        const viewItems = await fetchAllViewItems({
-          key: project.key,
-          projectNumber: project.number,
-          viewNumber,
-          effectiveMappings: project.effectiveMappings,
-        });
-
-        let added = 0;
-        for (const item of viewItems) {
-          const dedupeKey = item.url || `${item.title}__${item.source}`;
-          if (!seenUrls.has(dedupeKey)) {
-            seenUrls.add(dedupeKey);
-            allItems.push(item);
-            added++;
-          }
-        }
-        projectTotal += added;
-        console.log(`      ${added} unique items added from view #${viewNumber}`);
-      }
-
-      console.log(`  Done — ${projectTotal} unique items from project #${project.number} "${project.label}"\n`);
-    } else {
-      // Fetch full project items
-      const items = await fetchAllItems(project);
-      allItems.push(...items);
-      console.log(`  Done — ${items.length} items from project #${project.number} "${project.label}"\n`);
-    }
+    const items = await fetchAllItems(project);
+    allItems.push(...items);
+    console.log(`  Done — ${items.length} items from project #${project.number} "${project.label}"\n`);
   }
 
   console.log(`Total items across all projects: ${allItems.length}`);
