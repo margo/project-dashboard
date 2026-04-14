@@ -4,7 +4,7 @@
     "pm":  {
       "number": 13,
       "label":  "PM Epics",
-      "fieldMappings": { "release": "Milestone" }
+      "fieldMappings": { "pr1": "PR1" }
     },
     "twg": {
       "number": 22,
@@ -12,12 +12,7 @@
     }
   },
   "fieldMappings": {
-    "status":      "Status",
-    "theme":       "Theme",
-    "release":     "Release",
-    "type":        "Type",
-    "supRequired": "SUP Required",
-    "targetDate":  "Target Date"
+    "status": "Status"
   },
   "releases":        ["PR1", "PR2", "PR3", "GA1"],
   "currentRelease":  "PR2",

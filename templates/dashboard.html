@@ -517,11 +517,11 @@
       white-space: nowrap;
     }
 
-    /* PR2 priority badge */
-    .priority-badge {
+    /* PR1 / PR2 milestone badges */
+    .priority-badge,
+    .pr1-badge {
       display: inline-flex;
       align-items: center;
-      background: var(--brand);
       color: #fff;
       font-size: .62rem;
       font-weight: 700;
@@ -533,6 +533,9 @@
       flex-shrink: 0;
       white-space: nowrap;
     }
+    .priority-badge { background: var(--brand); }
+    /* PR1 is released — muted blue-grey to signal shipped */
+    .pr1-badge { background: #546E7A; }
 
     /* ============================================================
        Legend — sticky bar pinned to bottom of viewport
@@ -953,6 +956,8 @@
     var tile = make('div', cls);
     tile.style.background = CANONICAL_BG[c] || '#e8eef7';
 
+    var pr1Badge     = item.pr1
+      ? '<span class="pr1-badge">PR1</span>' : '';
     var pr2Badge     = (item.status === 'PR2 Core Scope Features')
       ? '<span class="priority-badge">PR2</span>' : '';
     // Show Untyped badge on PM items where the Type field is not set,
@@ -963,7 +968,7 @@
     var head = make('div', 'tile-head');
     head.innerHTML =
       '<div class="tile-dot"></div>' +
-      '<div class="tile-name">' + esc(item.title || '(untitled)') + pr2Badge + untypedBadge + '</div>' +
+      '<div class="tile-name">' + esc(item.title || '(untitled)') + pr1Badge + pr2Badge + untypedBadge + '</div>' +
       '<div class="tile-arrow">&#9658;</div>';
     tile.appendChild(head);
 
@@ -1021,6 +1026,14 @@
     focusLi.appendChild(focusSw);
     focusLi.appendChild(document.createTextNode('PR2 focus theme row'));
     legendExtra.appendChild(focusLi);
+
+    // PR1 badge
+    var pr1Li   = make('div', 'legend-item');
+    var pr1Bdg  = make('span', 'pr1-badge');
+    pr1Bdg.textContent = 'PR1';
+    pr1Li.appendChild(pr1Bdg);
+    pr1Li.appendChild(document.createTextNode('\u00a0Released scope item'));
+    legendExtra.appendChild(pr1Li);
 
     // PR2 badge
     var badgeLi = make('div', 'legend-item');
