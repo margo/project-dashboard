@@ -36,9 +36,9 @@ const projectList = Object.entries(projects).map(([key, proj]) => ({
   effectiveMappings: { ...fieldMappings, ...(proj.fieldMappings ?? {}) },
 }));
 
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+const GITHUB_TOKEN = process.env.GH_TOKEN;
 if (!GITHUB_TOKEN) {
-  console.error('Error: GITHUB_TOKEN environment variable is not set.');
+  console.error('Error: GH_TOKEN environment variable is not set.');
   process.exit(1);
 }
 
