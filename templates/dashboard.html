@@ -859,6 +859,9 @@
   ];
   var DEFAULT_TAB = 0; // TWG Features
 
+  /* Sub-tab state — shared across both main tabs */
+  var currentSubTab = 'combined'; // 'pr1' | 'pr2' | 'combined'
+
   /* ------------------------------------------------------------------
      Header badges
   ------------------------------------------------------------------ */
@@ -938,40 +941,26 @@
     });
     document.querySelectorAll('.tab-panel').forEach(function (p) {
       var becoming = parseInt(p.dataset.tab, 10) === idx;
-      var wasHidden = !p.classList.contains('active');
       p.classList.toggle('active', becoming);
-      // Trigger progress-bar animation when panel first becomes visible
-      if (becoming && wasHidden) {
-        var tab = TABS[idx];
-        animateFill(tab.key, items.filter(tab.filter));
-      }
     });
+    // Re-render the newly active panel respecting the current sub-tab filter
+    if (TABS[idx]) renderThemes(TABS[idx]);
   }
 
   /* ------------------------------------------------------------------
      Populate each tab panel
   ------------------------------------------------------------------ */
   TABS.forEach(function (tab, idx) {
-    var tabItems = items.filter(tab.filter);
+    // Render summary + theme section through the shared renderThemes path so
+    // the sub-tab filter is always applied consistently (default: 'combined').
+    renderThemes(tab);
 
-    // Summary counts
-    var done = tabItems.filter(function (i) {
-      return DONE_CANONICAL[canonical(i.status)];
-    }).length;
-    var pct = tabItems.length > 0
-      ? Math.round((done / tabItems.length) * 100) : 0;
-
-    setText('sum-text-' + tab.key, done + ' of ' + tabItems.length + ' items complete');
-    setText('sum-pct-'  + tab.key, pct + '%');
-
-    // Animate progress bar for the default (visible) tab immediately
+    // Animate progress bar for the default (visible) tab immediately.
+    // renderThemes sets width:0 then rAF to target; kick the animation here
+    // so it runs on the already-visible panel without waiting for a tab click.
     if (idx === DEFAULT_TAB) {
-      requestAnimationFrame(function () { animateFill(tab.key, tabItems); });
+      requestAnimationFrame(function () { animateFill(tab.key, getTabItems(tab)); });
     }
-
-    // Build theme rows
-    var container = document.getElementById('themes-' + tab.key);
-    if (container) renderThemeSection(tabItems, container);
   });
 
   function animateFill(key, tabItems) {
@@ -983,6 +972,72 @@
     var el = document.getElementById('fill-' + key);
     if (el) el.style.width = pct + '%';
   }
+
+  /* ------------------------------------------------------------------
+     Sub-tab filtering
+  ------------------------------------------------------------------ */
+
+  /**
+   * Returns items for a tab after applying both the tab's source/type filter
+   * and the current sub-tab release filter.
+   */
+  function getTabItems(tab) {
+    var filtered = items.filter(tab.filter);
+    if (currentSubTab === 'pr1') return filtered.filter(function (i) { return i.release === 'PR1'; });
+    if (currentSubTab === 'pr2') return filtered.filter(function (i) { return i.release === 'PR2'; });
+    return filtered; // 'combined' — no additional release filter
+  }
+
+  /**
+   * Rebuilds the summary bar and theme section for a tab using the current
+   * sub-tab filter.  Replaces the theme-section DOM node entirely so the
+   * fadeIn animation re-triggers on each sub-tab switch.
+   */
+  function renderThemes(tab) {
+    var tabItems = getTabItems(tab);
+
+    // Update summary counts
+    var done = tabItems.filter(function (i) { return DONE_CANONICAL[canonical(i.status)]; }).length;
+    var pct  = tabItems.length > 0 ? Math.round((done / tabItems.length) * 100) : 0;
+    var label = currentSubTab === 'pr1' ? 'PR1 items'
+              : currentSubTab === 'pr2' ? 'PR2 items'
+              : 'items';
+    setText('sum-text-' + tab.key, done + ' of ' + tabItems.length + ' ' + label + ' complete');
+    setText('sum-pct-'  + tab.key, pct + '%');
+
+    // Reset then animate fill bar
+    var fill = document.getElementById('fill-' + tab.key);
+    if (fill) { fill.style.width = '0%'; }
+    requestAnimationFrame(function () { animateFill(tab.key, tabItems); });
+
+    // Replace the theme-section node (re-triggers fadeIn CSS animation)
+    var old = document.getElementById('themes-' + tab.key);
+    if (!old) return;
+    var fresh = make('div', 'theme-section');
+    fresh.id  = 'themes-' + tab.key;
+    old.parentNode.replaceChild(fresh, old);
+    renderThemeSection(tabItems, fresh);
+  }
+
+  /**
+   * Switches the active sub-tab, updates button states across all sub-tab
+   * bars, and re-renders the currently visible main-tab panel.
+   * Exposed on window so HTML onclick attributes can call it directly.
+   */
+  function switchSubTab(value) {
+    currentSubTab = value;
+    // Sync active class on every .sub-tab button (both panels have their own bar)
+    document.querySelectorAll('.sub-tab').forEach(function (btn) {
+      btn.classList.toggle('active', btn.dataset.subTab === value);
+    });
+    // Re-render the currently active main-tab panel
+    var activePanel = document.querySelector('.tab-panel.active');
+    if (activePanel) {
+      var idx = parseInt(activePanel.dataset.tab, 10);
+      if (TABS[idx]) renderThemes(TABS[idx]);
+    }
+  }
+  window.switchSubTab = switchSubTab; // expose for HTML onclick
 
   /* ------------------------------------------------------------------
      Theme section renderer
@@ -1042,15 +1097,21 @@
     var tile = make('div', cls);
     tile.style.background = CANONICAL_BG[c] || '#e8eef7';
 
-    var pr1Badge  = item.pr1
-      ? '<span class="pr1-badge">PR1</span>' : '';
-    var pr2Badge  = (item.status === 'PR2 Core Scope Features')
+    // Release pill — top-right corner, shows on every sub-tab view
+    var PILL_CLS = { PR1: 'pr1', PR2: 'pr2', PR3: 'pr3', GA1: 'pr3' };
+    if (item.release && PILL_CLS[item.release]) {
+      var pill = make('span', 'release-pill ' + PILL_CLS[item.release]);
+      pill.textContent = item.release;
+      tile.appendChild(pill);
+    }
+
+    var pr2Badge = (item.status === 'PR2 Core Scope Features')
       ? '<span class="priority-badge">PR2</span>' : '';
 
-    var head = make('div', 'tile-head');
+    var head = make('div', 'tile-head' + (item.release ? ' has-pill' : ''));
     head.innerHTML =
       '<div class="tile-dot"></div>' +
-      '<div class="tile-name">' + esc(item.title || '(untitled)') + pr1Badge + pr2Badge + '</div>' +
+      '<div class="tile-name">' + esc(item.title || '(untitled)') + pr2Badge + '</div>' +
       '<div class="tile-arrow">&#9658;</div>';
     tile.appendChild(head);
 
