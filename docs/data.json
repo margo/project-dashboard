@@ -1288,6 +1288,7 @@
     "subIssueCount": 0,
     "status": "PM - Requirement in Draft",
     "pr1": null,
+    "theme": "Flexibility",
     "source": "pm"
   },
   {
@@ -1983,6 +1984,7 @@
     ],
     "subIssueCount": 1,
     "status": "Gen. Improvements: SUP Required",
+    "theme": "Trust",
     "source": "twg"
   },
   {
@@ -2018,6 +2020,7 @@
     ],
     "subIssueCount": 2,
     "status": "Gen. Improvements: Non SUP",
+    "theme": "Robustness",
     "source": "twg"
   },
   {
@@ -2124,6 +2127,7 @@
     ],
     "subIssueCount": 1,
     "status": "PR2 Core Scope Features",
+    "theme": "Trust",
     "source": "twg"
   },
   {
@@ -2142,6 +2146,7 @@
     ],
     "subIssueCount": 1,
     "status": "PR2 Core Scope Features",
+    "theme": "Trust",
     "source": "twg"
   },
   {
@@ -2167,6 +2172,7 @@
     ],
     "subIssueCount": 2,
     "status": "PR2 Core Scope Features",
+    "theme": "Trust",
     "source": "twg"
   },
   {
@@ -2177,6 +2183,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "status": "PR2 Core Scope Features",
+    "theme": "Robustness",
     "source": "twg"
   },
   {
@@ -2187,6 +2194,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "status": "PR2 Core Scope Features",
+    "theme": "Flexibility",
     "source": "twg"
   },
   {
@@ -2197,6 +2205,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "status": "PR2 Core Scope Features",
+    "theme": "Flexibility",
     "source": "twg"
   },
   {
@@ -2217,6 +2226,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "status": "PR2 Core Scope Features",
+    "theme": "Robustness",
     "source": "twg"
   },
   {
@@ -2630,6 +2640,7 @@
     ],
     "subIssueCount": 2,
     "status": "Gen. Improvements: SUP Required",
+    "theme": "Trust",
     "source": "twg"
   },
   {
