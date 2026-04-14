@@ -761,15 +761,11 @@
   ------------------------------------------------------------------ */
   var TABS = [
     { key: 'twg', label: 'TWG Features',
-      filter: function (i) { return i.source === 'twg'; } },
+      // type comes from the org-level issue type on each GitHub Issue.
+      filter: function (i) { return i.source === 'twg' && i.type === 'Feature (TWG)'; } },
     { key: 'pm',  label: 'PM Epics',
-      // Show "Epic (Child)" items only; items with no Type set are included
-      // but flagged with an "Untyped" badge so incomplete tagging is visible.
-      // "Epic (Parent)" items are intentionally excluded.
-      filter: function (i) {
-        return i.source === 'pm' &&
-               (i.type === 'Epic (Child)' || !i.type);
-      } },
+      // type comes from the org-level issue type on each GitHub Issue.
+      filter: function (i) { return i.source === 'pm'  && i.type === 'Epic (Child)';  } },
   ];
   var DEFAULT_TAB = 0; // TWG Features
 
@@ -956,19 +952,15 @@
     var tile = make('div', cls);
     tile.style.background = CANONICAL_BG[c] || '#e8eef7';
 
-    var pr1Badge     = item.pr1
+    var pr1Badge  = item.pr1
       ? '<span class="pr1-badge">PR1</span>' : '';
-    var pr2Badge     = (item.status === 'PR2 Core Scope Features')
+    var pr2Badge  = (item.status === 'PR2 Core Scope Features')
       ? '<span class="priority-badge">PR2</span>' : '';
-    // Show Untyped badge on PM items where the Type field is not set,
-    // signalling that tagging is incomplete.
-    var untypedBadge = (item.source === 'pm' && !item.type)
-      ? '<span class="type-badge">Untyped</span>' : '';
 
     var head = make('div', 'tile-head');
     head.innerHTML =
       '<div class="tile-dot"></div>' +
-      '<div class="tile-name">' + esc(item.title || '(untitled)') + pr1Badge + pr2Badge + untypedBadge + '</div>' +
+      '<div class="tile-name">' + esc(item.title || '(untitled)') + pr1Badge + pr2Badge + '</div>' +
       '<div class="tile-arrow">&#9658;</div>';
     tile.appendChild(head);
 
