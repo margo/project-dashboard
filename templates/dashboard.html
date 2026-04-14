@@ -760,11 +760,12 @@
     { key: 'twg', label: 'TWG Features',
       filter: function (i) { return i.source === 'twg'; } },
     { key: 'pm',  label: 'PM Epics',
-      // Show Child Epics only; items with no Type set are included but
-      // flagged with an "Untyped" badge so incomplete tagging is visible.
+      // Show "Epic (Child)" items only; items with no Type set are included
+      // but flagged with an "Untyped" badge so incomplete tagging is visible.
+      // "Epic (Parent)" items are intentionally excluded.
       filter: function (i) {
         return i.source === 'pm' &&
-               (i.type === 'Child Epic' || !i.type);
+               (i.type === 'Epic (Child)' || !i.type);
       } },
   ];
   var DEFAULT_TAB = 0; // TWG Features
