@@ -90,6 +90,9 @@ const ITEM_FIELDS = `
       title
       issueType { name }
       milestone { title }
+      labels(first: 10) {
+        nodes { name }
+      }
       subIssues(first: 20) {
         totalCount
         nodes {
@@ -205,6 +208,18 @@ function mapItem(rawItem, effectiveMappings) {
 
   for (const [logicalKey, githubFieldName] of Object.entries(effectiveMappings)) {
     item[logicalKey] = byFieldName[githubFieldName] ?? null;
+  }
+
+  // Derive theme from GitHub issue labels (case-insensitive match against config themes).
+  // This overrides any project custom field value for "theme".
+  const knownThemes = config.themes ?? [];
+  const labelNames  = (rawItem.content?.labels?.nodes ?? []).map(n => n.name);
+  const themeLabel  = labelNames.find(n =>
+    knownThemes.some(t => t.toLowerCase() === n.toLowerCase())
+  );
+  if (themeLabel) {
+    // Normalise to config casing (e.g. "trust" → "Trust")
+    item.theme = knownThemes.find(t => t.toLowerCase() === themeLabel.toLowerCase()) ?? themeLabel;
   }
 
   return item;

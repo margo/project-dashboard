@@ -401,6 +401,8 @@
       min-width: 0;
       align-content: start;
     }
+    /* Flat grid — used for PM Epics (no theme-row wrapper) */
+    .flat-grid { padding: 0; }
 
     /* ============================================================
        Status tiles
@@ -892,8 +894,20 @@
   /* ------------------------------------------------------------------
      Theme config
   ------------------------------------------------------------------ */
-  var KNOWN_THEMES = meta.themes || [];
-  // Render known themes in order, then catch-all Unassigned at bottom
+  // Build KNOWN_THEMES dynamically from TWG item labels so new themes appear
+  // automatically without code changes. Falls back to config order / defaults.
+  var configThemes = meta.themes || ['Trust', 'Flexibility', 'Robustness'];
+  var _seenThemes  = [];
+  items.forEach(function (i) {
+    if (i.source === 'twg' && i.theme && _seenThemes.indexOf(i.theme) === -1) {
+      _seenThemes.push(i.theme);
+    }
+  });
+  // Preserve config ordering for known themes, then append any newly seen ones
+  var KNOWN_THEMES = _seenThemes.length > 0
+    ? configThemes.filter(function (t) { return _seenThemes.indexOf(t) !== -1; })
+        .concat(_seenThemes.filter(function (t) { return configThemes.indexOf(t) === -1; }))
+    : configThemes;
   var THEME_KEYS = KNOWN_THEMES.concat(['Unassigned']);
 
   var THEME_CSS = {
@@ -1092,7 +1106,12 @@
     var fresh = make('div', 'theme-section');
     fresh.id  = 'themes-' + tab.key;
     old.parentNode.replaceChild(fresh, old);
-    renderThemeSection(tabItems, fresh);
+    // PM Epics: flat tile grid (no theme grouping). TWG: grouped by theme.
+    if (tab.key === 'pm') {
+      renderFlatGrid(tabItems, fresh);
+    } else {
+      renderThemeSection(tabItems, fresh);
+    }
   }
 
   /**
@@ -1161,6 +1180,22 @@
     });
   }
 
+  /**
+   * Flat tile grid — used for PM Epics where theme grouping doesn't apply.
+   * Items are sorted by status rank and rendered directly without theme rows.
+   */
+  function renderFlatGrid(tabItems, container) {
+    var sorted = tabItems.slice().sort(function (a, b) {
+      return statusRank(a.status) - statusRank(b.status);
+    });
+    if (sorted.length === 0) return;
+    var grid = make('div', 'theme-tiles flat-grid');
+    sorted.forEach(function (item) {
+      grid.appendChild(buildTile(item));
+    });
+    container.appendChild(grid);
+  }
+
   /* ------------------------------------------------------------------
      Tile builder
   ------------------------------------------------------------------ */
@@ -1213,8 +1248,9 @@
       var chevron  = make('span',   'sub-issues-chevron');
       chevron.textContent = '\u25b6'; // ▶
       siToggle.appendChild(chevron);
+      var siLabel = item.source === 'twg' ? 'Tasks' : 'Features';
       siToggle.appendChild(document.createTextNode(
-        '\u00a0Sub-issues (' + item.subIssueCount + ')'
+        '\u00a0' + siLabel + ' (' + item.subIssueCount + ')'
       ));
       siSection.appendChild(siToggle);
 
