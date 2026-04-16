@@ -23,7 +23,7 @@
     "GA1": "2027"
   },
   "milestoneLinks": {
-    "PR1": "https://docs.margo.org/specification/applications/application-registry"
+    "PR1": "https://docs.margo.org/"
   },
   "milestoneTooltips": {
     "PR1": "PR1 — Released 15 Dec 2025\nClick to view the PR1 specification",
