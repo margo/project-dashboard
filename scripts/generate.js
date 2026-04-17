@@ -11,7 +11,7 @@
 //   type    → issue.issueType.name  (org-level issue type, e.g. "Epic (Child)")
 //   release → issue.milestone.title (standard GitHub milestone, e.g. "PR2")
 
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, readdirSync } from 'node:fs';
 import { resolve, dirname }                        from 'node:path';
 import { fileURLToPath }                           from 'node:url';
 import { execFile }                                from 'node:child_process';
@@ -327,6 +327,48 @@ function renderHtml(items) {
 }
 
 // ---------------------------------------------------------------------------
+// Sitemap & robots.txt generation
+// ---------------------------------------------------------------------------
+
+const BASE_URL = 'https://greensoftware.foundation';
+
+function generateSitemap(docsDir) {
+  const files = readdirSync(docsDir, { recursive: true })
+    .filter(f => String(f).endsWith('.html'));
+
+  const locs = files.map(f => {
+    const parts = String(f).replace(/\\/g, '/');
+    let urlPath;
+    if (parts === 'index.html') {
+      urlPath = '/';
+    } else if (parts.endsWith('/index.html')) {
+      urlPath = '/' + parts.slice(0, -'index.html'.length);
+    } else {
+      urlPath = '/' + parts.replace(/\.html$/, '');
+    }
+    return `${BASE_URL}${urlPath}`;
+  });
+
+  const xml = [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    ...locs.map(loc => `  <url>\n    <loc>${loc}</loc>\n  </url>`),
+    '</urlset>',
+  ].join('\n');
+
+  const sitemapPath = resolve(docsDir, 'sitemap.xml');
+  writeFileSync(sitemapPath, xml, 'utf8');
+  console.log(`Wrote sitemap       → ${sitemapPath}`);
+}
+
+function generateRobots(docsDir) {
+  const content = 'User-agent: *\nAllow: /\nSitemap: https://greensoftware.foundation/sitemap.xml\n';
+  const robotsPath = resolve(docsDir, 'robots.txt');
+  writeFileSync(robotsPath, content, 'utf8');
+  console.log(`Wrote robots.txt    → ${robotsPath}`);
+}
+
+// ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
 
@@ -361,6 +403,9 @@ async function main() {
   const htmlPath = resolve(docsDir, 'index.html');
   writeFileSync(htmlPath, html, 'utf8');
   console.log(`Wrote dashboard     → ${htmlPath}`);
+
+  generateSitemap(docsDir);
+  generateRobots(docsDir);
 }
 
 main().catch(err => {
