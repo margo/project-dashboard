@@ -1328,7 +1328,7 @@
       var chevron  = make('span',   'sub-issues-chevron');
       chevron.textContent = '\u25b6'; // ▶
       siToggle.appendChild(chevron);
-      var siLabel = item.source === 'twg' ? 'Tasks' : 'Features';
+      var siLabel = item.source === 'twg' ? 'Linked Issues' : 'Features';
       siToggle.appendChild(document.createTextNode(
         '\u00a0' + siLabel + ' (' + item.subIssueCount + ')'
       ));
