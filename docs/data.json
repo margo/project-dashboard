@@ -1840,7 +1840,7 @@
     "title": "Define how developers can deploy and manage Kubernetes operators, and how it impacts the various established system elements in Margo.",
     "url": "https://github.com/margo/specification/issues/105",
     "type": "Feature (TWG)",
-    "release": "PR2",
+    "release": "GA1",
     "subIssues": [
       {
         "title": "Margo & Kubernetes Operator discussion",
@@ -1862,6 +1862,24 @@
     "source": "twg"
   },
   {
+    "title": "Define support for multiple instances of the same deployment profile type targeting same or 3rd party vendor devices",
+    "url": "https://github.com/margo/specification/issues/170",
+    "type": "Feature (TWG)",
+    "release": "PR2",
+    "subIssues": [
+      {
+        "title": "[PlugFest Feedback] - Hilscher / Sandbox App requirement improvement needed",
+        "url": "https://github.com/margo/plugfest/issues/29",
+        "state": "OPEN",
+        "number": 29,
+        "issueType": null
+      }
+    ],
+    "subIssueCount": 1,
+    "status": "backlog - notconfirmednextrelease",
+    "source": "twg"
+  },
+  {
     "title": "Define how device to WFM API interactions should be handled for intermittently connected devices",
     "url": "https://github.com/margo/specification/issues/147",
     "type": "Feature (TWG)",
@@ -1879,6 +1897,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "status": "Gen. Improvements: Non SUP",
+    "theme": "Robustness",
     "source": "twg"
   },
   {
@@ -2691,24 +2710,6 @@
       }
     ],
     "subIssueCount": 2,
-    "status": "Gen. Improvements: SUP Required",
-    "source": "twg"
-  },
-  {
-    "title": "Define support for multiple instances of the same deployment profile type targeting same or 3rd party vendor devices",
-    "url": "https://github.com/margo/specification/issues/170",
-    "type": "Feature (TWG)",
-    "release": "PR2",
-    "subIssues": [
-      {
-        "title": "[PlugFest Feedback] - Hilscher / Sandbox App requirement improvement needed",
-        "url": "https://github.com/margo/plugfest/issues/29",
-        "state": "OPEN",
-        "number": 29,
-        "issueType": null
-      }
-    ],
-    "subIssueCount": 1,
     "status": "Gen. Improvements: SUP Required",
     "source": "twg"
   },
