@@ -1038,7 +1038,9 @@
 
       ms.innerHTML =
         '<div class="ms-circle">' + circle + '</div>' +
-        '<div class="ms-label">'  + esc(state === 'ms-active' ? rel + ' (Next Release)' : rel) + '</div>' +
+        '<div class="ms-label">'  + esc(state === 'ms-active' ? rel + ' (Next Release)'
+                                       : rel === 'GA1'         ? rel + ' (V1.0 Release)'
+                                       : rel) + '</div>' +
         (sub     ? '<div class="ms-sub">'     + esc(sub)     + '</div>' : '') +
         (tipText ? '<div class="ms-tooltip">' + esc(tipText) + '</div>' : '');
 
