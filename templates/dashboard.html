@@ -224,6 +224,67 @@
     .milestone:hover .ms-tooltip   { opacity: 1; }
     .milestone.has-link             { cursor: pointer; }
 
+    /* Purpose & Scope click-callout on milestone */
+    .ms-scope-btn {
+      display: inline-block;
+      margin-top: 5px;
+      font-size: .65rem;
+      font-weight: 600;
+      color: var(--brand);
+      cursor: pointer;
+      border-bottom: 1px solid rgba(0,53,140,.28);
+      letter-spacing: .01em;
+    }
+    .ms-scope-btn:hover { border-bottom-color: var(--brand); }
+
+    .ms-scope-callout {
+      display: none;
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-size: .78rem;
+      line-height: 1.55;
+      color: var(--text);
+      box-shadow: 0 6px 24px rgba(0,0,0,.18);
+      z-index: 300;
+      text-align: left;
+      cursor: default;
+    }
+    /* Arrow pointing up toward the milestone */
+    .ms-scope-callout::before {
+      content: '';
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 7px solid transparent;
+      border-bottom-color: var(--border);
+    }
+    .ms-scope-callout::after {
+      content: '';
+      position: absolute;
+      bottom: calc(100% - 1px);
+      left: 50%;
+      transform: translateX(-50%);
+      border: 7px solid transparent;
+      border-bottom-color: #fff;
+    }
+    .ms-scope-title {
+      font-weight: 700;
+      font-size: .72rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 6px;
+    }
+    .milestone.scope-open .ms-scope-callout { display: block; }
+
     /* ============================================================
        Tab bar
     ============================================================ */
@@ -1050,7 +1111,48 @@
         });
       }
 
+      // Purpose & Scope click-callout
+      var scopeText = (meta.milestoneScopeText || {})[rel];
+      if (scopeText) {
+        var scopeBtn = document.createElement('div');
+        scopeBtn.className = 'ms-scope-btn';
+        scopeBtn.textContent = 'Purpose & Scope ▸';
+        ms.appendChild(scopeBtn);
+
+        var callout = document.createElement('div');
+        callout.className = 'ms-scope-callout';
+        var calloutTitle = document.createElement('div');
+        calloutTitle.className = 'ms-scope-title';
+        calloutTitle.textContent = 'Purpose & Scope';
+        var calloutBody = document.createElement('p');
+        calloutBody.style.margin = '0';
+        calloutBody.textContent = scopeText;
+        callout.appendChild(calloutTitle);
+        callout.appendChild(calloutBody);
+        ms.appendChild(callout);
+
+        scopeBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          var isOpen = ms.classList.contains('scope-open');
+          document.querySelectorAll('.milestone.scope-open').forEach(function (m) {
+            m.classList.remove('scope-open');
+          });
+          if (!isOpen) ms.classList.add('scope-open');
+        });
+
+        callout.addEventListener('click', function (e) {
+          e.stopPropagation(); // keep callout open when clicking inside it
+        });
+      }
+
       track.appendChild(ms);
+    });
+
+    // Close any open scope callout when clicking elsewhere on the page
+    document.addEventListener('click', function () {
+      document.querySelectorAll('.milestone.scope-open').forEach(function (m) {
+        m.classList.remove('scope-open');
+      });
     });
   }());
 

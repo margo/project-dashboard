@@ -31,6 +31,9 @@
     "PR3": "PR3 — Planned · Q4 2026",
     "GA1": "GA1 — Target 2027 · Final interoperability release"
   },
+  "milestoneScopeText": {
+    "PR1": "PR1 focuses on interoperable application lifecycle management between Margo-compliant devices and workload fleet managers, supporting Helm and Docker Compose packaging formats, and excludes device fleet management interoperability and conformance testing tools."
+  },
   "themes":          ["Trust", "Flexibility", "Robustness"],
   "themeDescriptions": {
     "Trust": {

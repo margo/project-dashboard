@@ -310,6 +310,7 @@ function renderHtml(items) {
     releaseDates:      config.releaseDates      ?? {},
     milestoneLinks:      config.milestoneLinks      ?? {},
     milestoneTooltips:   config.milestoneTooltips   ?? {},
+    milestoneScopeText:  config.milestoneScopeText  ?? {},
     themeDescriptions:   config.themeDescriptions   ?? {},
     generatedAt:         new Date().toUTCString(),
   };
