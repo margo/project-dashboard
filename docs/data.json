@@ -1827,6 +1827,17 @@
     "source": "pm"
   },
   {
+    "title": "Define how HTTP message signatures work behind load balancers / TLS-terminating proxies",
+    "url": "https://github.com/margo/specification/issues/160",
+    "type": "Feature (TWG)",
+    "release": "PR2",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "status": "Gen. Improvements: Non SUP",
+    "theme": "Robustness",
+    "source": "twg"
+  },
+  {
     "title": "Define the Margo \"Gateway\" capability Requirements",
     "url": "https://github.com/margo/specification/issues/137",
     "type": "Feature (TWG)",
@@ -1887,17 +1898,6 @@
     "subIssues": [],
     "subIssueCount": 0,
     "status": "backlog - notconfirmednextrelease",
-    "source": "twg"
-  },
-  {
-    "title": "Define how HTTP message signatures work behind load balancers / TLS-terminating proxies",
-    "url": "https://github.com/margo/specification/issues/160",
-    "type": "Feature (TWG)",
-    "release": "PR2",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "status": "Gen. Improvements: Non SUP",
-    "theme": "Robustness",
     "source": "twg"
   },
   {
