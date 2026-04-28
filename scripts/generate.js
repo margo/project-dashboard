@@ -311,6 +311,7 @@ function renderHtml(items) {
     milestoneLinks:      config.milestoneLinks      ?? {},
     milestoneTooltips:   config.milestoneTooltips   ?? {},
     milestoneScopeText:  config.milestoneScopeText  ?? {},
+    releaseJourneyInfo:  config.releaseJourneyInfo  ?? null,
     themeDescriptions:   config.themeDescriptions   ?? {},
     generatedAt:         new Date().toUTCString(),
   };

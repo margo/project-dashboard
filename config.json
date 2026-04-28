@@ -16,11 +16,11 @@
   },
   "releases":        ["PR1", "PR2", "PR3", "GA1"],
   "currentRelease":  "PR2",
-  "nextReleaseDate": "2026-06-30",
+  "nextReleaseDate": "15 June 2026",
   "releaseDates": {
     "PR1": "Released 15 Dec 2025",
-    "PR3": "Q4 2026",
-    "GA1": "2027"
+    "PR3": "15 Sep 2026",
+    "GA1": "15 Dec 2027"
   },
   "milestoneLinks": {
     "PR1": "https://docs.margo.org/"
@@ -28,8 +28,29 @@
   "milestoneTooltips": {
     "PR1": "PR1 — Released 15 Dec 2025\nClick to view the PR1 specification",
     "PR2": "PR2 — In Progress · Target {nextReleaseDate}",
-    "PR3": "PR3 — Planned · Q4 2026",
-    "GA1": "GA1 — Target 2027 · Final interoperability release"
+    "PR3": "PR3 — Planned · 15 Sep 2026",
+    "GA1": "GA1 — Target 15 Dec 2027 · Final interoperability release"
+  },
+  "releaseJourneyInfo": {
+    "sections": [
+      {
+        "heading": "Preview Release (PR)",
+        "intro": "An early, non-final version of the specification/content made available for:",
+        "bullets": [
+          "Implementation experiments and prototyping",
+          "Interoperability testing (e.g., at PlugFests)",
+          "Feedback gathering for the technical and product teams"
+        ]
+      },
+      {
+        "heading": "General Release (GA)",
+        "intro": "A stable, production-ready version of the specification that:",
+        "bullets": [
+          "Has gone through the full review, validation, and approval process",
+          "Is intended for widespread adoption and implementation in production"
+        ]
+      }
+    ]
   },
   "milestoneScopeText": {
     "PR1": "PR1 focuses on interoperable application lifecycle management between Margo-compliant devices and workload fleet managers, supporting Helm and Docker Compose packaging formats, and excludes device fleet management interoperability and conformance testing tools."

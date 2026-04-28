@@ -103,7 +103,66 @@
       letter-spacing: .7px;
       color: var(--muted);
       margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      position: relative;
     }
+
+    .rj-info-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 15px; height: 15px; border-radius: 50%;
+      background: rgba(0,0,0,.12); color: rgba(0,0,0,.5);
+      font-size: .62rem; font-weight: 700; font-style: normal;
+      cursor: pointer; flex-shrink: 0; text-transform: none; letter-spacing: 0;
+    }
+    .rj-info-btn:hover { background: rgba(0,0,0,.22); }
+
+    .rj-info-callout {
+      display: none;
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 0;
+      width: 340px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-size: .78rem;
+      line-height: 1.55;
+      color: var(--text);
+      box-shadow: 0 6px 24px rgba(0,0,0,.18);
+      z-index: 300;
+      text-transform: none;
+      letter-spacing: 0;
+      font-weight: 400;
+      cursor: default;
+    }
+    .rj-info-callout::before {
+      content: '';
+      position: absolute;
+      bottom: 100%;
+      left: 14px;
+      border: 7px solid transparent;
+      border-bottom-color: var(--border);
+    }
+    .rj-info-callout::after {
+      content: '';
+      position: absolute;
+      bottom: calc(100% - 1px);
+      left: 14px;
+      border: 7px solid transparent;
+      border-bottom-color: #fff;
+    }
+    .rj-section + .rj-section { margin-top: 12px; }
+    .rj-section-heading {
+      font-weight: 700; font-size: .8rem; color: var(--text); margin-bottom: 3px;
+    }
+    .rj-section-intro { color: var(--muted); margin-bottom: 4px; }
+    .rj-section-list { margin: 0; padding-left: 16px; color: var(--text); }
+    .rj-section-list li { margin-bottom: 3px; }
+    .rj-section-list li:last-child { margin-bottom: 0; }
+    .timeline-title.rj-open .rj-info-callout { display: block; }
 
     .timeline-track { display: flex; align-items: flex-start; }
 
@@ -1069,8 +1128,53 @@
     var milestoneLinks    = meta.milestoneLinks    || {};
     var milestoneTooltips = meta.milestoneTooltips || {};
 
-    el.innerHTML = '<div class="timeline-title">Release Journey</div>' +
-                   '<div class="timeline-track" id="tl-track"></div>';
+    // Build title row with optional info icon
+    var titleEl = make('div', 'timeline-title');
+    titleEl.appendChild(document.createTextNode('Release Journey'));
+
+    if (meta.releaseJourneyInfo && meta.releaseJourneyInfo.sections) {
+      var infoBtn = make('span', 'rj-info-btn');
+      infoBtn.textContent = 'i';
+      titleEl.appendChild(infoBtn);
+
+      var callout = make('div', 'rj-info-callout');
+      meta.releaseJourneyInfo.sections.forEach(function (sec) {
+        var section = make('div', 'rj-section');
+        var heading = make('div', 'rj-section-heading');
+        heading.textContent = sec.heading;
+        section.appendChild(heading);
+        if (sec.intro) {
+          var intro = make('div', 'rj-section-intro');
+          intro.textContent = sec.intro;
+          section.appendChild(intro);
+        }
+        if (sec.bullets && sec.bullets.length) {
+          var ul = document.createElement('ul');
+          ul.className = 'rj-section-list';
+          sec.bullets.forEach(function (b) {
+            var li = document.createElement('li');
+            li.textContent = b;
+            ul.appendChild(li);
+          });
+          section.appendChild(ul);
+        }
+        callout.appendChild(section);
+      });
+      titleEl.appendChild(callout);
+
+      infoBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        titleEl.classList.toggle('rj-open');
+      });
+      callout.addEventListener('click', function (e) { e.stopPropagation(); });
+      document.addEventListener('click', function () { titleEl.classList.remove('rj-open'); });
+    }
+
+    el.appendChild(titleEl);
+    var trackEl = make('div', '');
+    trackEl.id = 'tl-track';
+    trackEl.className = 'timeline-track';
+    el.appendChild(trackEl);
 
     var track = document.getElementById('tl-track');
 
