@@ -20,7 +20,7 @@
   "releaseDates": {
     "PR1": "Released 15 Dec 2025",
     "PR3": "15 Sep 2026",
-    "GA1": "15 Dec 2027"
+    "GA1": "15 Dec 2026"
   },
   "milestoneLinks": {
     "PR1": "https://docs.margo.org/"
@@ -29,7 +29,7 @@
     "PR1": "PR1 — Released 15 Dec 2025\nClick to view the PR1 specification",
     "PR2": "PR2 — In Progress · Target {nextReleaseDate}",
     "PR3": "PR3 — Planned · 15 Sep 2026",
-    "GA1": "GA1 — Target 15 Dec 2027 · Final interoperability release"
+    "GA1": "GA1 — Target 15 Dec 2026 · Final interoperability release"
   },
   "releaseJourneyInfo": {
     "sections": [
