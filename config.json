@@ -19,7 +19,7 @@
   "nextReleaseDate": "15 June 2026",
   "releaseDates": {
     "PR1": "Released 15 Dec 2025",
-    "PR3": "Q4 2026",
+    "PR3": "15 Sept 2026",
     "GA1": "1H 2027"
   },
   "milestoneLinks": {
@@ -28,7 +28,7 @@
   "milestoneTooltips": {
     "PR1": "PR1 — Released 15 Dec 2025\nClick to view the PR1 specification",
     "PR2": "PR2 — In Progress · Target {nextReleaseDate}",
-    "PR3": "PR3 — Planned · Q4 2026",
+    "PR3": "PR3 — Planned · 15 Sept 2026",
     "GA1": "GA1 — Target 1H 2027 · Final interoperability release"
   },
   "releaseJourneyInfo": {
