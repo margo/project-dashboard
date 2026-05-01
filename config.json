@@ -4,7 +4,7 @@
     "pm":  {
       "number": 13,
       "label":  "PM Epics",
-      "fieldMappings": { "release": "Milestone" }
+      "fieldMappings": { "pr1": "PR1" }
     },
     "twg": {
       "number": 22,
@@ -12,23 +12,18 @@
     }
   },
   "fieldMappings": {
-    "status":      "Status",
-    "theme":       "Theme",
-    "release":     "Release",
-    "type":        "Type",
-    "supRequired": "SUP Required",
-    "targetDate":  "Target Date"
+    "status": "Status"
   },
   "releases":        ["PR1", "PR2", "PR3", "GA1"],
   "currentRelease":  "PR2",
-  "nextReleaseDate": "2026-06-30",
+  "nextReleaseDate": "15 June 2026",
   "releaseDates": {
     "PR1": "Released 15 Dec 2025",
     "PR3": "Q4 2026",
     "GA1": "1H 2027"
   },
   "milestoneLinks": {
-    "PR1": "https://docs.margo.org/specification/applications/application-registry"
+    "PR1": "https://docs.margo.org/"
   },
   "milestoneTooltips": {
     "PR1": "PR1 — Released 15 Dec 2025\nClick to view the PR1 specification",
@@ -36,7 +31,60 @@
     "PR3": "PR3 — Planned · Q4 2026",
     "GA1": "GA1 — Target 1H 2027 · Final interoperability release"
   },
+  "releaseJourneyInfo": {
+    "sections": [
+      {
+        "heading": "Preview Release (PR)",
+        "intro": "An early, non-final version of the specification/content made available for:",
+        "bullets": [
+          "Implementation experiments and prototyping",
+          "Interoperability testing (e.g., at PlugFests)",
+          "Feedback gathering for the technical and product teams"
+        ]
+      },
+      {
+        "heading": "General Release (GA)",
+        "intro": "A stable, production-ready version of the specification that:",
+        "bullets": [
+          "Has gone through the full review, validation, and approval process",
+          "Is intended for widespread adoption and implementation in production"
+        ]
+      }
+    ]
+  },
+  "milestoneScopeText": {
+    "PR1": "PR1 focuses on interoperable application lifecycle management between Margo-compliant devices and workload fleet managers, supporting Helm and Docker Compose packaging formats, and excludes device fleet management interoperability and conformance testing tools."
+  },
   "themes":          ["Trust", "Flexibility", "Robustness"],
+  "themeDescriptions": {
+    "Trust": {
+      "title": "Trust / Authorization",
+      "bullets": [
+        "Strategy for Ecosystem Identity and Authorization",
+        "Application image and component signing strategy",
+        "OCI Credential management"
+      ]
+    },
+    "Flexibility": {
+      "title": "Extended Workload and Device Flexibility",
+      "bullets": [
+        "Vendor specific extensions (Device capabilities / app requirements)",
+        "Target vendor specific runtime via Application",
+        "How devices can expose device-specific parameter values to running applications"
+      ]
+    },
+    "Robustness": {
+      "title": "Robustness Improvements",
+      "bullets": [
+        "Device roles to capabilities (enables future improvements and flexibility)",
+        "Helm v3/4 standard feature breakdown",
+        "Management Interface",
+        "Application package",
+        "Runtime Constraints / Interoperability",
+        "Documentation (spec) construction/consistency implementation"
+      ]
+    }
+  },
   "groupBy":         "source",
   "statusMap": {
     "Completed":                         "Finished",
