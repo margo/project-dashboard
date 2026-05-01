@@ -165,6 +165,17 @@
     .timeline-title.rj-open .rj-info-callout { display: block; }
 
     .timeline-track { display: flex; align-items: flex-start; }
+    .tl-separator {
+      display: flex;
+      align-items: flex-start;
+      padding-top: 18px;
+      padding-left: 2px;
+      padding-right: 2px;
+      color: #9ca3af;
+      font-size: 1.1rem;
+      letter-spacing: 3px;
+      flex-shrink: 0;
+    }
 
     .milestone {
       display: flex;
@@ -862,7 +873,46 @@
       padding: 8px 0;
       margin-bottom: 12px;
       border-bottom: 1px solid var(--border);
+      position: relative;
     }
+
+    .pr2-info-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: #1976d2;
+      color: white;
+      font-size: 10px;
+      font-weight: bold;
+      font-style: normal;
+      cursor: pointer;
+      margin-left: 4px;
+      margin-bottom: 2px;
+      line-height: 1;
+      vertical-align: middle;
+      flex-shrink: 0;
+      user-select: none;
+    }
+    .pr2-info-callout {
+      display: none;
+      position: absolute;
+      top: calc(100% + 2px);
+      left: 0;
+      z-index: 50;
+      background: white;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-size: 13px;
+      line-height: 1.55;
+      color: #374151;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.13);
+      max-width: 480px;
+    }
+    .pr2-info-callout.open { display: block; }
 
     .sub-tab {
       padding: 5px 14px;
@@ -983,8 +1033,9 @@
     </div>
     <div class="sub-tab-bar">
       <button class="sub-tab" data-sub-tab="pr1" onclick="switchSubTab('pr1')">PR1 Completed</button>
-      <button class="sub-tab active" data-sub-tab="pr2" onclick="switchSubTab('pr2')">PR2 In Progress</button>
+      <button class="sub-tab active" data-sub-tab="pr2" onclick="switchSubTab('pr2')">PR2 In Progress<span class="pr2-info-icon" data-callout="pr2-callout-twg">i</span></button>
       <button class="sub-tab" data-sub-tab="ga1" onclick="switchSubTab('ga1')">GA1</button>
+      <div class="pr2-info-callout" id="pr2-callout-twg">The collection of features in this Preview Release is providing a real-time snapshot and status of the features being worked on. As Preview Releases are published on fixed milestones, features might be moved to a next preview release, in function of contribution velocity.</div>
     </div>
     <div id="release-banner-twg"></div>
     <div class="theme-section" id="themes-twg"></div>
@@ -1005,8 +1056,9 @@
     </div>
     <div class="sub-tab-bar">
       <button class="sub-tab" data-sub-tab="pr1" onclick="switchSubTab('pr1')">PR1 Completed</button>
-      <button class="sub-tab active" data-sub-tab="pr2" onclick="switchSubTab('pr2')">PR2 In Progress</button>
+      <button class="sub-tab active" data-sub-tab="pr2" onclick="switchSubTab('pr2')">PR2 In Progress<span class="pr2-info-icon" data-callout="pr2-callout-pm">i</span></button>
       <button class="sub-tab" data-sub-tab="ga1" onclick="switchSubTab('ga1')">GA1</button>
+      <div class="pr2-info-callout" id="pr2-callout-pm">The collection of features in this Preview Release is providing a real-time snapshot and status of the features being worked on. As Preview Releases are published on fixed milestones, features might be moved to a next preview release, in function of contribution velocity.</div>
     </div>
     <div id="release-banner-pm"></div>
     <div class="theme-section" id="themes-pm"></div>
@@ -1179,6 +1231,14 @@
     var track = document.getElementById('tl-track');
 
     releases.forEach(function (rel, idx) {
+      // Insert 3-dot graphical separator before GA1
+      if (rel === 'GA1') {
+        var sep = document.createElement('div');
+        sep.className = 'tl-separator';
+        sep.innerHTML = '&bull;&bull;&bull;';
+        track.appendChild(sep);
+      }
+
       var state  = idx < currentIdx  ? 'ms-done'
                  : idx === currentIdx ? 'ms-active'
                  : 'ms-upcoming';
@@ -1397,6 +1457,26 @@
   }
   window.switchSubTab = switchSubTab; // expose for HTML onclick
 
+  // Hover-driven info callouts — each .pr2-info-icon targets its callout via data-callout.
+  // A short hide-delay lets the mouse travel from icon → callout without flickering.
+  document.querySelectorAll('.pr2-info-icon').forEach(function (icon) {
+    var callout = document.getElementById(icon.getAttribute('data-callout'));
+    if (!callout) return;
+    var hideTimer;
+    function showCallout() {
+      clearTimeout(hideTimer);
+      document.querySelectorAll('.pr2-info-callout.open').forEach(function (c) { c.classList.remove('open'); });
+      callout.classList.add('open');
+    }
+    function scheduleHide() {
+      hideTimer = setTimeout(function () { callout.classList.remove('open'); }, 120);
+    }
+    icon.addEventListener('mouseenter', showCallout);
+    icon.addEventListener('mouseleave', scheduleHide);
+    callout.addEventListener('mouseenter', function () { clearTimeout(hideTimer); });
+    callout.addEventListener('mouseleave', scheduleHide);
+  });
+
   /* ------------------------------------------------------------------
      Theme section renderer
   ------------------------------------------------------------------ */
@@ -1583,6 +1663,10 @@
   /* ------------------------------------------------------------------
      Legend
   ------------------------------------------------------------------ */
+  var CANONICAL_LABEL = {
+    'SUP Accepted': 'SUP Accepted / Completed',
+  };
+
   var legendEl = document.getElementById('legend-items');
   if (legendEl) {
     Object.keys(CANONICAL_BG).forEach(function (state) {
@@ -1590,7 +1674,7 @@
       var sw = make('div', 'swatch');
       sw.style.background = CANONICAL_BG[state];
       li.appendChild(sw);
-      li.appendChild(document.createTextNode(state));
+      li.appendChild(document.createTextNode(CANONICAL_LABEL[state] || state));
       legendEl.appendChild(li);
     });
   }

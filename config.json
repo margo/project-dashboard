@@ -88,8 +88,10 @@
   "groupBy":         "source",
   "statusMap": {
     "Completed":                         "Finished",
+    "Specification Completed":           "Finished",
     "PR2 Core Scope Features":           "SUP Accepted",
     "TWG - Approved Requirements":       "SUP Accepted",
+    "SUP Completed":                     "SUP Accepted",
     "Gen. Improvements: SUP Required":   "SUP Initiated",
     "TWG - Requirement in progress":     "SUP Initiated",
     "TWG - Requirement Under Review":    "Owner Identified",
