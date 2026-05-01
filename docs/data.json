@@ -1136,6 +1136,7 @@
     "subIssueCount": 0,
     "status": "PM - Requirement in Draft",
     "pr1": null,
+    "theme": "Trust",
     "source": "pm"
   },
   {
@@ -1220,7 +1221,7 @@
     "title": "Define the Margo \"Cluster Leader\" capability requirements",
     "url": "https://github.com/margo/specification/issues/98",
     "type": "Feature (TWG)",
-    "release": "PR2",
+    "release": "GA1",
     "subIssues": [],
     "subIssueCount": 0,
     "status": "PM - Requirement in Draft",
@@ -1827,6 +1828,118 @@
     "source": "pm"
   },
   {
+    "title": "Non-root Containers",
+    "url": "https://github.com/margo/specification/issues/37",
+    "type": null,
+    "release": "GA1",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "status": "Backlog - GA1",
+    "theme": "Robustness",
+    "source": "twg"
+  },
+  {
+    "title": "Improve deployment status / desired state mechanics and workflows",
+    "url": "https://github.com/margo/specification/issues/156",
+    "type": "Feature (TWG)",
+    "release": "GA1",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "status": "Backlog - GA1",
+    "theme": "Robustness",
+    "source": "twg"
+  },
+  {
+    "title": "Further define how to properly handle namespaces for app deployment",
+    "url": "https://github.com/margo/specification/issues/142",
+    "type": "Feature (TWG)",
+    "release": "GA1",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "status": "Backlog - GA1",
+    "theme": "Robustness",
+    "source": "twg"
+  },
+  {
+    "title": "Define the strategy to enable sensitive information to be utilized within the application management mechanism",
+    "url": "https://github.com/margo/specification/issues/145",
+    "type": "Feature (TWG)",
+    "release": "GA1",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "status": "Backlog - GA1",
+    "source": "twg"
+  },
+  {
+    "title": "Define whether all or a limited set of Helm v3/4 features are supported for application deployment",
+    "url": "https://github.com/margo/specification/issues/148",
+    "type": "Feature (TWG)",
+    "release": "PR2",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "status": "SUP Completed",
+    "theme": "Robustness",
+    "source": "twg"
+  },
+  {
+    "title": "Specification consistency improvement - update once and propagate changes",
+    "url": "https://github.com/margo/specification/issues/157",
+    "type": "Bug",
+    "release": "PR2",
+    "subIssues": [
+      {
+        "title": "Specification has inconsistencies in multiple different places",
+        "url": "https://github.com/margo/specification/issues/149",
+        "state": "OPEN",
+        "number": 149,
+        "issueType": null
+      },
+      {
+        "title": "[PlugFest Feedback] - Siemens",
+        "url": "https://github.com/margo/plugfest/issues/32",
+        "state": "OPEN",
+        "number": 32,
+        "issueType": null
+      }
+    ],
+    "subIssueCount": 2,
+    "status": "SUP Completed",
+    "theme": "Robustness",
+    "source": "twg"
+  },
+  {
+    "title": "Address problems exposing application endpoints",
+    "url": "https://github.com/margo/specification/issues/75",
+    "type": "Feature (TWG)",
+    "release": "GA1",
+    "subIssues": [
+      {
+        "title": "[PlugFest Feedback] - Schneider Electric - Own thoughts",
+        "url": "https://github.com/margo/plugfest/issues/34",
+        "state": "OPEN",
+        "number": 34,
+        "issueType": null
+      },
+      {
+        "title": "[PlugFest Feedback] - Hilscher X COPA DATA",
+        "url": "https://github.com/margo/plugfest/issues/33",
+        "state": "OPEN",
+        "number": 33,
+        "issueType": null
+      },
+      {
+        "title": "Application endpoint discovery",
+        "url": "https://github.com/margo/specification/issues/40",
+        "state": "OPEN",
+        "number": 40,
+        "issueType": null
+      }
+    ],
+    "subIssueCount": 3,
+    "status": "Backlog - GA1",
+    "source": "twg"
+  },
+  {
     "title": "Define how HTTP message signatures work behind load balancers / TLS-terminating proxies",
     "url": "https://github.com/margo/specification/issues/160",
     "type": "Feature (TWG)",
@@ -1844,7 +1957,7 @@
     "release": "GA1",
     "subIssues": [],
     "subIssueCount": 0,
-    "status": "backlog - notconfirmednextrelease",
+    "status": "Backlog - GA1",
     "source": "twg"
   },
   {
@@ -1869,14 +1982,14 @@
       }
     ],
     "subIssueCount": 2,
-    "status": "backlog - notconfirmednextrelease",
+    "status": "Backlog - GA1",
     "source": "twg"
   },
   {
     "title": "Define support for multiple instances of the same deployment profile type targeting same or 3rd party vendor devices",
     "url": "https://github.com/margo/specification/issues/170",
     "type": "Feature (TWG)",
-    "release": "PR2",
+    "release": "GA1",
     "subIssues": [
       {
         "title": "[PlugFest Feedback] - Hilscher / Sandbox App requirement improvement needed",
@@ -1887,17 +2000,17 @@
       }
     ],
     "subIssueCount": 1,
-    "status": "backlog - notconfirmednextrelease",
+    "status": "Backlog - GA1",
     "source": "twg"
   },
   {
     "title": "Define how device to WFM API interactions should be handled for intermittently connected devices",
     "url": "https://github.com/margo/specification/issues/147",
     "type": "Feature (TWG)",
-    "release": "PR2",
+    "release": "GA1",
     "subIssues": [],
     "subIssueCount": 0,
-    "status": "backlog - notconfirmednextrelease",
+    "status": "Backlog - GA1",
     "source": "twg"
   },
   {
@@ -1923,38 +2036,7 @@
     ],
     "subIssueCount": 2,
     "status": "Gen. Improvements: Non SUP",
-    "source": "twg"
-  },
-  {
-    "title": "Address problems exposing application endpoints",
-    "url": "https://github.com/margo/specification/issues/75",
-    "type": "Feature (TWG)",
-    "release": "PR2",
-    "subIssues": [
-      {
-        "title": "[PlugFest Feedback] - Schneider Electric - Own thoughts",
-        "url": "https://github.com/margo/plugfest/issues/34",
-        "state": "OPEN",
-        "number": 34,
-        "issueType": null
-      },
-      {
-        "title": "[PlugFest Feedback] - Hilscher X COPA DATA",
-        "url": "https://github.com/margo/plugfest/issues/33",
-        "state": "OPEN",
-        "number": 33,
-        "issueType": null
-      },
-      {
-        "title": "Application endpoint discovery",
-        "url": "https://github.com/margo/specification/issues/40",
-        "state": "OPEN",
-        "number": 40,
-        "issueType": null
-      }
-    ],
-    "subIssueCount": 3,
-    "status": "Gen. Improvements: Non SUP",
+    "theme": "Robustness",
     "source": "twg"
   },
   {
@@ -1965,26 +2047,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "status": "Gen. Improvements: Non SUP",
-    "source": "twg"
-  },
-  {
-    "title": "Make `ApplicationDeployment` ID a top-level attribute",
-    "url": "https://github.com/margo/specification/issues/163",
-    "type": "Feature (TWG)",
-    "release": "PR2",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "status": "Gen. Improvements: Non SUP",
-    "source": "twg"
-  },
-  {
-    "title": "Define the strategy to enable sensitive information to be utilized within the application management mechanism",
-    "url": "https://github.com/margo/specification/issues/145",
-    "type": "Feature (TWG)",
-    "release": "PR2",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "status": "Gen. Improvements: Non SUP",
+    "theme": "Robustness",
     "source": "twg"
   },
   {
@@ -2014,42 +2077,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "status": "Gen. Improvements: Non SUP",
-    "source": "twg"
-  },
-  {
-    "title": "Specification consistency improvement - update once and propagate changes",
-    "url": "https://github.com/margo/specification/issues/157",
-    "type": "Bug",
-    "release": "PR2",
-    "subIssues": [
-      {
-        "title": "Specification has inconsistencies in multiple different places",
-        "url": "https://github.com/margo/specification/issues/149",
-        "state": "OPEN",
-        "number": 149,
-        "issueType": null
-      },
-      {
-        "title": "[PlugFest Feedback] - Siemens",
-        "url": "https://github.com/margo/plugfest/issues/32",
-        "state": "OPEN",
-        "number": 32,
-        "issueType": null
-      }
-    ],
-    "subIssueCount": 2,
-    "status": "Gen. Improvements: Non SUP",
     "theme": "Robustness",
-    "source": "twg"
-  },
-  {
-    "title": "Improve deployment status / desired state mechanics and workflows",
-    "url": "https://github.com/margo/specification/issues/156",
-    "type": "Feature (TWG)",
-    "release": "PR2",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "status": "Gen. Improvements: SUP Required",
     "source": "twg"
   },
   {
@@ -2060,6 +2088,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "status": "Gen. Improvements: Non SUP",
+    "theme": "Trust",
     "source": "twg"
   },
   {
@@ -2088,6 +2117,7 @@
     ],
     "subIssueCount": 1,
     "status": "Gen. Improvements: Non SUP",
+    "theme": "Robustness",
     "source": "twg"
   },
   {
@@ -2098,16 +2128,18 @@
     "subIssues": [],
     "subIssueCount": 0,
     "status": "Gen. Improvements: SUP Required",
+    "theme": "Robustness",
     "source": "twg"
   },
   {
-    "title": "Inconsistent certificate field name in Device Client Onboarding spec",
+    "title": "Inconsistent certificate field name in WFM Client Onboarding spec",
     "url": "https://github.com/margo/specification/issues/133",
     "type": null,
     "release": "PR2",
     "subIssues": [],
     "subIssueCount": 0,
     "status": "Gen. Improvements: Non SUP",
+    "theme": "Trust",
     "source": "twg"
   },
   {
@@ -2118,6 +2150,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "status": "Gen. Improvements: Non SUP",
+    "theme": "Trust",
     "source": "twg"
   },
   {
@@ -2128,6 +2161,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "status": "Gen. Improvements: Non SUP",
+    "theme": "Trust",
     "source": "twg"
   },
   {
@@ -2145,7 +2179,7 @@
       }
     ],
     "subIssueCount": 1,
-    "status": "PR2 Core Scope Features",
+    "status": "Core Scope Features",
     "theme": "Trust",
     "source": "twg"
   },
@@ -2164,7 +2198,7 @@
       }
     ],
     "subIssueCount": 1,
-    "status": "PR2 Core Scope Features",
+    "status": "Core Scope Features",
     "theme": "Trust",
     "source": "twg"
   },
@@ -2190,7 +2224,7 @@
       }
     ],
     "subIssueCount": 2,
-    "status": "PR2 Core Scope Features",
+    "status": "Core Scope Features",
     "theme": "Trust",
     "source": "twg"
   },
@@ -2201,7 +2235,7 @@
     "release": "PR2",
     "subIssues": [],
     "subIssueCount": 0,
-    "status": "PR2 Core Scope Features",
+    "status": "Core Scope Features",
     "theme": "Robustness",
     "source": "twg"
   },
@@ -2212,7 +2246,7 @@
     "release": "PR2",
     "subIssues": [],
     "subIssueCount": 0,
-    "status": "PR2 Core Scope Features",
+    "status": "Core Scope Features",
     "theme": "Flexibility",
     "source": "twg"
   },
@@ -2223,7 +2257,7 @@
     "release": "PR2",
     "subIssues": [],
     "subIssueCount": 0,
-    "status": "PR2 Core Scope Features",
+    "status": "Core Scope Features",
     "theme": "Flexibility",
     "source": "twg"
   },
@@ -2234,26 +2268,15 @@
     "release": "PR2",
     "subIssues": [],
     "subIssueCount": 0,
-    "status": "PR2 Core Scope Features",
+    "status": "Core Scope Features",
     "theme": "Flexibility",
-    "source": "twg"
-  },
-  {
-    "title": "Define whether all or a limited set of Helm v3/4 features are supported for application deployment",
-    "url": "https://github.com/margo/specification/issues/148",
-    "type": "Feature (TWG)",
-    "release": "PR2",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "status": "PR2 Core Scope Features",
-    "theme": "Robustness",
     "source": "twg"
   },
   {
     "title": "Define the Margo strategy regarding ingestion of helm charts within the WFM and impacts on deployment to cluster enabled devices.",
     "url": "https://github.com/margo/specification/issues/103",
     "type": "Feature (TWG)",
-    "release": "PR2",
+    "release": "GA1",
     "subIssues": [
       {
         "title": "Finalize decision regarding Fleet Managers ingestion Helm Charts",
@@ -2264,14 +2287,14 @@
       }
     ],
     "subIssueCount": 1,
-    "status": "backlog - notconfirmednextrelease",
+    "status": "Backlog - GA1",
     "source": "twg"
   },
   {
     "title": "Define how application developers can deploy WASM workloads through helm manifests, and how it impacts the various established system elements in Margo.",
     "url": "https://github.com/margo/specification/issues/104",
     "type": "Feature (TWG)",
-    "release": "PR2",
+    "release": "GA1",
     "subIssues": [
       {
         "title": "Wasm integration through Helm",
@@ -2282,14 +2305,14 @@
       }
     ],
     "subIssueCount": 1,
-    "status": "backlog - notconfirmednextrelease",
+    "status": "Backlog - GA1",
     "source": "twg"
   },
   {
     "title": "Define how WASM workloads are packaged and deployed to the constrained device role.",
     "url": "https://github.com/margo/specification/issues/131",
     "type": "Feature (TWG)",
-    "release": "PR2",
+    "release": "GA1",
     "subIssues": [
       {
         "title": "Wasm-native integration",
@@ -2300,47 +2323,47 @@
       }
     ],
     "subIssueCount": 1,
-    "status": "backlog - notconfirmednextrelease",
+    "status": "Backlog - GA1",
     "source": "twg"
   },
   {
     "title": "Define the Margo \"WASM Constrained device\" capability requirements",
     "url": "https://github.com/margo/specification/issues/130",
     "type": "Feature (TWG)",
-    "release": "PR2",
+    "release": "GA1",
     "subIssues": [],
     "subIssueCount": 0,
-    "status": "backlog - notconfirmednextrelease",
+    "status": "Backlog - GA1",
     "source": "twg"
   },
   {
     "title": "Define the Margo \"Cluster Worker\" capability requirements",
     "url": "https://github.com/margo/specification/issues/96",
     "type": "Feature (TWG)",
-    "release": "PR2",
+    "release": "GA1",
     "subIssues": [],
     "subIssueCount": 0,
-    "status": "backlog - notconfirmednextrelease",
+    "status": "Backlog - GA1",
     "source": "twg"
   },
   {
     "title": "Define the Margo \"Cluster Leader\" capability requirements",
     "url": "https://github.com/margo/specification/issues/98",
     "type": "Feature (TWG)",
-    "release": "PR2",
+    "release": "GA1",
     "subIssues": [],
     "subIssueCount": 0,
-    "status": "backlog - notconfirmednextrelease",
+    "status": "Backlog - GA1",
     "source": "twg"
   },
   {
     "title": "Define how Margo application description can support multi language",
     "url": "https://github.com/margo/specification/issues/128",
     "type": "Feature (TWG)",
-    "release": "PR2",
+    "release": "GA1",
     "subIssues": [],
     "subIssueCount": 0,
-    "status": "backlog - notconfirmednextrelease",
+    "status": "Backlog - GA1",
     "source": "twg"
   },
   {
@@ -2358,7 +2381,7 @@
       }
     ],
     "subIssueCount": 1,
-    "status": "Completed",
+    "status": "Specification Completed",
     "source": "twg"
   },
   {
@@ -2383,7 +2406,7 @@
       }
     ],
     "subIssueCount": 2,
-    "status": "Completed",
+    "status": "Specification Completed",
     "source": "twg"
   },
   {
@@ -2415,7 +2438,7 @@
       }
     ],
     "subIssueCount": 3,
-    "status": "Completed",
+    "status": "Specification Completed",
     "source": "twg"
   },
   {
@@ -2425,7 +2448,7 @@
     "release": "PR1",
     "subIssues": [],
     "subIssueCount": 0,
-    "status": "Completed",
+    "status": "Specification Completed",
     "source": "twg"
   },
   {
@@ -2450,7 +2473,7 @@
       }
     ],
     "subIssueCount": 2,
-    "status": "Completed",
+    "status": "Specification Completed",
     "source": "twg"
   },
   {
@@ -2460,7 +2483,7 @@
     "release": "PR1",
     "subIssues": [],
     "subIssueCount": 0,
-    "status": "Completed",
+    "status": "Specification Completed",
     "source": "twg"
   },
   {
@@ -2470,7 +2493,7 @@
     "release": "PR1",
     "subIssues": [],
     "subIssueCount": 0,
-    "status": "Completed",
+    "status": "Specification Completed",
     "source": "twg"
   },
   {
@@ -2480,7 +2503,7 @@
     "release": "PR1",
     "subIssues": [],
     "subIssueCount": 0,
-    "status": "Completed",
+    "status": "Specification Completed",
     "source": "twg"
   },
   {
@@ -2490,7 +2513,7 @@
     "release": "PR1",
     "subIssues": [],
     "subIssueCount": 0,
-    "status": "Completed",
+    "status": "Specification Completed",
     "source": "twg"
   },
   {
@@ -2500,7 +2523,7 @@
     "release": "PR1",
     "subIssues": [],
     "subIssueCount": 0,
-    "status": "Completed",
+    "status": "Specification Completed",
     "source": "twg"
   },
   {
@@ -2518,7 +2541,7 @@
       }
     ],
     "subIssueCount": 1,
-    "status": "Completed",
+    "status": "Specification Completed",
     "source": "twg"
   },
   {
@@ -2528,7 +2551,7 @@
     "release": "PR1",
     "subIssues": [],
     "subIssueCount": 0,
-    "status": "Completed",
+    "status": "Specification Completed",
     "source": "twg"
   },
   {
@@ -2574,7 +2597,7 @@
       }
     ],
     "subIssueCount": 5,
-    "status": "Completed",
+    "status": "Specification Completed",
     "source": "twg"
   },
   {
@@ -2584,7 +2607,7 @@
     "release": null,
     "subIssues": [],
     "subIssueCount": 0,
-    "status": "Completed",
+    "status": "Specification Completed",
     "source": "twg"
   },
   {
@@ -2594,7 +2617,7 @@
     "release": null,
     "subIssues": [],
     "subIssueCount": 0,
-    "status": "Completed",
+    "status": "Specification Completed",
     "source": "twg"
   },
   {
@@ -2608,16 +2631,6 @@
     "source": "twg"
   },
   {
-    "title": "Further define how to properly handle namespaces for app deployment",
-    "url": "https://github.com/margo/specification/issues/142",
-    "type": "Feature (TWG)",
-    "release": "PR2",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "status": "Gen. Improvements: Non SUP",
-    "source": "twg"
-  },
-  {
     "title": "Document expected `apiVersion` values for all API resources",
     "url": "https://github.com/margo/specification/issues/134",
     "type": "Feature (TWG)",
@@ -2625,6 +2638,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "status": "Gen. Improvements: SUP Required",
+    "theme": "Robustness",
     "source": "twg"
   },
   {
@@ -2635,10 +2649,11 @@
     "subIssues": [],
     "subIssueCount": 0,
     "status": "Gen. Improvements: Non SUP",
+    "theme": "Robustness",
     "source": "twg"
   },
   {
-    "title": "Complete device client onboarding strategy follow device identity and authorization",
+    "title": "Complete WFM client onboarding strategy following the MIAF SUP finalization",
     "url": "https://github.com/margo/specification/issues/146",
     "type": "Feature (TWG)",
     "release": "PR2",
@@ -2686,6 +2701,7 @@
     ],
     "subIssueCount": 2,
     "status": "Gen. Improvements: SUP Required",
+    "theme": "Robustness",
     "source": "twg"
   },
   {
@@ -2711,6 +2727,7 @@
     ],
     "subIssueCount": 2,
     "status": "Gen. Improvements: SUP Required",
+    "theme": "Robustness",
     "source": "twg"
   },
   {
@@ -2721,26 +2738,17 @@
     "subIssues": [],
     "subIssueCount": 0,
     "status": "Gen. Improvements: SUP Required",
-    "source": "twg"
-  },
-  {
-    "title": "Non-root Containers",
-    "url": "https://github.com/margo/specification/issues/37",
-    "type": null,
-    "release": "PR2",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "status": "Gen. Improvements: SUP Required",
+    "theme": "Trust",
     "source": "twg"
   },
   {
     "title": "Avoiding external registry access by WOA",
     "url": "https://github.com/margo/specification/issues/20",
     "type": null,
-    "release": "PR2",
+    "release": "GA1",
     "subIssues": [],
     "subIssueCount": 0,
-    "status": "backlog - notconfirmednextrelease",
+    "status": "Backlog - GA1",
     "source": "twg"
   },
   {
@@ -2751,6 +2759,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "status": "Gen. Improvements: Non SUP",
+    "theme": "Robustness",
     "source": "twg"
   }
 ]
