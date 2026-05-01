@@ -103,7 +103,66 @@
       letter-spacing: .7px;
       color: var(--muted);
       margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      position: relative;
     }
+
+    .rj-info-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 15px; height: 15px; border-radius: 50%;
+      background: rgba(0,0,0,.12); color: rgba(0,0,0,.5);
+      font-size: .62rem; font-weight: 700; font-style: normal;
+      cursor: pointer; flex-shrink: 0; text-transform: none; letter-spacing: 0;
+    }
+    .rj-info-btn:hover { background: rgba(0,0,0,.22); }
+
+    .rj-info-callout {
+      display: none;
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 0;
+      width: 340px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-size: .78rem;
+      line-height: 1.55;
+      color: var(--text);
+      box-shadow: 0 6px 24px rgba(0,0,0,.18);
+      z-index: 300;
+      text-transform: none;
+      letter-spacing: 0;
+      font-weight: 400;
+      cursor: default;
+    }
+    .rj-info-callout::before {
+      content: '';
+      position: absolute;
+      bottom: 100%;
+      left: 14px;
+      border: 7px solid transparent;
+      border-bottom-color: var(--border);
+    }
+    .rj-info-callout::after {
+      content: '';
+      position: absolute;
+      bottom: calc(100% - 1px);
+      left: 14px;
+      border: 7px solid transparent;
+      border-bottom-color: #fff;
+    }
+    .rj-section + .rj-section { margin-top: 12px; }
+    .rj-section-heading {
+      font-weight: 700; font-size: .8rem; color: var(--text); margin-bottom: 3px;
+    }
+    .rj-section-intro { color: var(--muted); margin-bottom: 4px; }
+    .rj-section-list { margin: 0; padding-left: 16px; color: var(--text); }
+    .rj-section-list li { margin-bottom: 3px; }
+    .rj-section-list li:last-child { margin-bottom: 0; }
+    .timeline-title.rj-open .rj-info-callout { display: block; }
 
     .timeline-track { display: flex; align-items: flex-start; }
     .tl-separator {
@@ -234,6 +293,67 @@
     }
     .milestone:hover .ms-tooltip   { opacity: 1; }
     .milestone.has-link             { cursor: pointer; }
+
+    /* Purpose & Scope click-callout on milestone */
+    .ms-scope-btn {
+      display: inline-block;
+      margin-top: 5px;
+      font-size: .65rem;
+      font-weight: 600;
+      color: var(--brand);
+      cursor: pointer;
+      border-bottom: 1px solid rgba(0,53,140,.28);
+      letter-spacing: .01em;
+    }
+    .ms-scope-btn:hover { border-bottom-color: var(--brand); }
+
+    .ms-scope-callout {
+      display: none;
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-size: .78rem;
+      line-height: 1.55;
+      color: var(--text);
+      box-shadow: 0 6px 24px rgba(0,0,0,.18);
+      z-index: 300;
+      text-align: left;
+      cursor: default;
+    }
+    /* Arrow pointing up toward the milestone */
+    .ms-scope-callout::before {
+      content: '';
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 7px solid transparent;
+      border-bottom-color: var(--border);
+    }
+    .ms-scope-callout::after {
+      content: '';
+      position: absolute;
+      bottom: calc(100% - 1px);
+      left: 50%;
+      transform: translateX(-50%);
+      border: 7px solid transparent;
+      border-bottom-color: #fff;
+    }
+    .ms-scope-title {
+      font-weight: 700;
+      font-size: .72rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 6px;
+    }
+    .milestone.scope-open .ms-scope-callout { display: block; }
 
     /* ============================================================
        Tab bar
@@ -402,6 +522,61 @@
     .theme-col-robustness  { border-left-color: #8E24AA; }
     .theme-col-unassigned  { border-left-color: #9E9E9E; }
 
+    /* Theme description tooltip — appears above the label col on hover */
+    .theme-label-col { position: relative; }
+
+    .theme-info-icon {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 15px; height: 15px; border-radius: 50%;
+      background: rgba(0,0,0,.1); color: rgba(0,0,0,.5);
+      font-size: .62rem; font-weight: 700; font-style: normal;
+      cursor: default; margin-top: 4px; flex-shrink: 0;
+    }
+    .theme-label-col:hover .theme-info-icon { background: rgba(0,0,0,.18); }
+
+    .theme-tooltip {
+      display: none;
+      position: absolute;
+      bottom: calc(100% + 10px);
+      left: 0;
+      top: auto;
+      transform: none;
+      z-index: 200;
+      width: 290px;
+      background: #1e293b;
+      color: #e2e8f0;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: .78rem;
+      line-height: 1.5;
+      box-shadow: 0 6px 28px rgba(0,0,0,.45);
+      pointer-events: none;
+      text-align: left;
+      text-transform: none;
+      letter-spacing: 0;
+      font-weight: 400;
+    }
+    /* Arrow pointing down toward the label */
+    .theme-tooltip::before {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 20px;
+      border: 7px solid transparent;
+      border-top-color: #1e293b;
+    }
+    .theme-tooltip-title {
+      font-weight: 700; font-size: .82rem;
+      color: #fff; margin-bottom: 7px;
+    }
+    .theme-tooltip-list {
+      margin: 0; padding-left: 16px; color: #94a3b8;
+    }
+    .theme-tooltip-list li { margin-bottom: 4px; }
+    .theme-tooltip-list li:last-child { margin-bottom: 0; }
+
+    .theme-label-col:hover .theme-tooltip { display: block; }
+
     /* Tiles grid area */
     .theme-tiles {
       flex: 1;
@@ -412,6 +587,8 @@
       min-width: 0;
       align-content: start;
     }
+    /* Flat grid — used for PM Epics (no theme-row wrapper) */
+    .flat-grid { padding: 0; }
 
     /* ============================================================
        Status tiles
@@ -511,6 +688,51 @@
     .tile-dark .gh-link        { color: #a5d6a7; border-bottom-color: rgba(165,214,167,.4); }
     .tile-dark .gh-link:hover  { border-bottom-color: #a5d6a7; }
 
+    /* Sub-issues collapsible section inside tile detail */
+    .sub-issues-section { margin-top: 10px; border-top: 1px solid rgba(0,0,0,.08); padding-top: 8px; }
+    .tile-dark .sub-issues-section { border-top-color: rgba(255,255,255,.14); }
+
+    .sub-issues-toggle {
+      display: flex; align-items: center; gap: 4px;
+      background: none; border: none; padding: 0; cursor: pointer;
+      font-size: .7rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+      color: rgba(0,0,0,.42);
+    }
+    .tile-dark .sub-issues-toggle { color: rgba(255,255,255,.48); }
+    .sub-issues-toggle:hover { color: rgba(0,0,0,.7); }
+    .tile-dark .sub-issues-toggle:hover { color: rgba(255,255,255,.8); }
+
+    .sub-issues-chevron { font-size: .6rem; transition: transform .15s; display: inline-block; }
+    .sub-issues-open .sub-issues-chevron { transform: rotate(90deg); }
+
+    .sub-issues-list { display: none; margin-top: 6px; max-height: 145px; overflow-y: auto; }
+    .sub-issues-open .sub-issues-list { display: block; }
+
+    .sub-issue-row {
+      display: flex; align-items: center; gap: 5px;
+      padding: 3px 0; font-size: .78rem;
+      border-bottom: 1px solid rgba(0,0,0,.06);
+    }
+    .sub-issue-row:last-child { border-bottom: none; }
+    .tile-dark .sub-issue-row { border-bottom-color: rgba(255,255,255,.08); }
+
+    .sub-issue-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+    .sub-issue-dot.closed { background: #1a7f37; }
+    .sub-issue-dot.open   { background: transparent; border: 2px solid #1a7f37; }
+    .tile-dark .sub-issue-dot.closed { background: #6bc46d; }
+    .tile-dark .sub-issue-dot.open   { border-color: #6bc46d; }
+
+    .sub-issue-title { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: rgba(0,0,0,.78); }
+    .tile-dark .sub-issue-title { color: rgba(255,255,255,.85); }
+
+    .sub-issue-num { color: rgba(0,0,0,.38); font-size: .72rem; flex-shrink: 0; }
+    .tile-dark .sub-issue-num { color: rgba(255,255,255,.42); }
+
+    .sub-issue-link { color: rgba(0,0,0,.38); text-decoration: none; flex-shrink: 0; font-size: .85rem; line-height: 1; }
+    .sub-issue-link:hover { color: rgba(0,0,0,.8); }
+    .tile-dark .sub-issue-link { color: rgba(255,255,255,.42); }
+    .tile-dark .sub-issue-link:hover { color: rgba(255,255,255,.9); }
+
     /* "Untyped" badge — shown on PM Epics tiles where Type field is blank */
     .type-badge {
       display: inline-flex;
@@ -528,11 +750,11 @@
       white-space: nowrap;
     }
 
-    /* PR2 priority badge */
-    .priority-badge {
+    /* PR1 / PR2 milestone badges */
+    .priority-badge,
+    .pr1-badge {
       display: inline-flex;
       align-items: center;
-      background: var(--brand);
       color: #fff;
       font-size: .62rem;
       font-weight: 700;
@@ -544,6 +766,9 @@
       flex-shrink: 0;
       white-space: nowrap;
     }
+    .priority-badge { background: var(--brand); }
+    /* PR1 is released — muted blue-grey to signal shipped */
+    .pr1-badge { background: #546E7A; }
 
     /* ============================================================
        Legend — sticky bar pinned to bottom of viewport
@@ -896,8 +1121,20 @@
   /* ------------------------------------------------------------------
      Theme config
   ------------------------------------------------------------------ */
-  var KNOWN_THEMES = meta.themes || [];
-  // Render known themes in order, then catch-all Unassigned at bottom
+  // Build KNOWN_THEMES dynamically from TWG item labels so new themes appear
+  // automatically without code changes. Falls back to config order / defaults.
+  var configThemes = meta.themes || ['Trust', 'Flexibility', 'Robustness'];
+  var _seenThemes  = [];
+  items.forEach(function (i) {
+    if (i.source === 'twg' && i.theme && _seenThemes.indexOf(i.theme) === -1) {
+      _seenThemes.push(i.theme);
+    }
+  });
+  // Preserve config ordering for known themes, then append any newly seen ones
+  var KNOWN_THEMES = _seenThemes.length > 0
+    ? configThemes.filter(function (t) { return _seenThemes.indexOf(t) !== -1; })
+        .concat(_seenThemes.filter(function (t) { return configThemes.indexOf(t) === -1; }))
+    : configThemes;
   var THEME_KEYS = KNOWN_THEMES.concat(['Unassigned']);
 
   var THEME_CSS = {
@@ -912,17 +1149,16 @@
   ------------------------------------------------------------------ */
   var TABS = [
     { key: 'twg', label: 'TWG Features',
-      filter: function (i) { return i.source === 'twg'; } },
+      // type comes from the org-level issue type on each GitHub Issue.
+      filter: function (i) { return i.source === 'twg' && i.type === 'Feature (TWG)'; } },
     { key: 'pm',  label: 'PM Epics',
-      // Show "Epic (Child)" items only; items with no Type set are included
-      // but flagged with an "Untyped" badge so incomplete tagging is visible.
-      // "Epic (Parent)" items are intentionally excluded.
-      filter: function (i) {
-        return i.source === 'pm' &&
-               (i.type === 'Epic (Child)' || !i.type);
-      } },
+      // type comes from the org-level issue type on each GitHub Issue.
+      filter: function (i) { return i.source === 'pm'  && i.type === 'Epic (Child)';  } },
   ];
   var DEFAULT_TAB = 0; // TWG Features
+
+  /* Sub-tab state — shared across both main tabs */
+  var currentSubTab = 'pr2'; // 'pr1' | 'pr2' | 'ga1' (ga1 = all releases combined)
 
   /* ------------------------------------------------------------------
      Header badges
@@ -944,8 +1180,53 @@
     var milestoneLinks    = meta.milestoneLinks    || {};
     var milestoneTooltips = meta.milestoneTooltips || {};
 
-    el.innerHTML = '<div class="timeline-title">Release Journey</div>' +
-                   '<div class="timeline-track" id="tl-track"></div>';
+    // Build title row with optional info icon
+    var titleEl = make('div', 'timeline-title');
+    titleEl.appendChild(document.createTextNode('Release Journey'));
+
+    if (meta.releaseJourneyInfo && meta.releaseJourneyInfo.sections) {
+      var infoBtn = make('span', 'rj-info-btn');
+      infoBtn.textContent = 'i';
+      titleEl.appendChild(infoBtn);
+
+      var callout = make('div', 'rj-info-callout');
+      meta.releaseJourneyInfo.sections.forEach(function (sec) {
+        var section = make('div', 'rj-section');
+        var heading = make('div', 'rj-section-heading');
+        heading.textContent = sec.heading;
+        section.appendChild(heading);
+        if (sec.intro) {
+          var intro = make('div', 'rj-section-intro');
+          intro.textContent = sec.intro;
+          section.appendChild(intro);
+        }
+        if (sec.bullets && sec.bullets.length) {
+          var ul = document.createElement('ul');
+          ul.className = 'rj-section-list';
+          sec.bullets.forEach(function (b) {
+            var li = document.createElement('li');
+            li.textContent = b;
+            ul.appendChild(li);
+          });
+          section.appendChild(ul);
+        }
+        callout.appendChild(section);
+      });
+      titleEl.appendChild(callout);
+
+      infoBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        titleEl.classList.toggle('rj-open');
+      });
+      callout.addEventListener('click', function (e) { e.stopPropagation(); });
+      document.addEventListener('click', function () { titleEl.classList.remove('rj-open'); });
+    }
+
+    el.appendChild(titleEl);
+    var trackEl = make('div', '');
+    trackEl.id = 'tl-track';
+    trackEl.className = 'timeline-track';
+    el.appendChild(trackEl);
 
     var track = document.getElementById('tl-track');
 
@@ -982,7 +1263,9 @@
 
       ms.innerHTML =
         '<div class="ms-circle">' + circle + '</div>' +
-        '<div class="ms-label">'  + esc(rel) + '</div>' +
+        '<div class="ms-label">'  + esc(state === 'ms-active' ? rel + ' (Next Release)'
+                                       : rel === 'GA1'         ? rel + ' (V1.0 Release)'
+                                       : rel) + '</div>' +
         (sub     ? '<div class="ms-sub">'     + esc(sub)     + '</div>' : '') +
         (tipText ? '<div class="ms-tooltip">' + esc(tipText) + '</div>' : '');
 
@@ -992,7 +1275,48 @@
         });
       }
 
+      // Purpose & Scope click-callout
+      var scopeText = (meta.milestoneScopeText || {})[rel];
+      if (scopeText) {
+        var scopeBtn = document.createElement('div');
+        scopeBtn.className = 'ms-scope-btn';
+        scopeBtn.textContent = 'Purpose & Scope ▸';
+        ms.appendChild(scopeBtn);
+
+        var callout = document.createElement('div');
+        callout.className = 'ms-scope-callout';
+        var calloutTitle = document.createElement('div');
+        calloutTitle.className = 'ms-scope-title';
+        calloutTitle.textContent = 'Purpose & Scope';
+        var calloutBody = document.createElement('p');
+        calloutBody.style.margin = '0';
+        calloutBody.textContent = scopeText;
+        callout.appendChild(calloutTitle);
+        callout.appendChild(calloutBody);
+        ms.appendChild(callout);
+
+        scopeBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          var isOpen = ms.classList.contains('scope-open');
+          document.querySelectorAll('.milestone.scope-open').forEach(function (m) {
+            m.classList.remove('scope-open');
+          });
+          if (!isOpen) ms.classList.add('scope-open');
+        });
+
+        callout.addEventListener('click', function (e) {
+          e.stopPropagation(); // keep callout open when clicking inside it
+        });
+      }
+
       track.appendChild(ms);
+    });
+
+    // Close any open scope callout when clicking elsewhere on the page
+    document.addEventListener('click', function () {
+      document.querySelectorAll('.milestone.scope-open').forEach(function (m) {
+        m.classList.remove('scope-open');
+      });
     });
   }());
 
@@ -1011,40 +1335,26 @@
     });
     document.querySelectorAll('.tab-panel').forEach(function (p) {
       var becoming = parseInt(p.dataset.tab, 10) === idx;
-      var wasHidden = !p.classList.contains('active');
       p.classList.toggle('active', becoming);
-      // Trigger progress-bar animation when panel first becomes visible
-      if (becoming && wasHidden) {
-        var tab = TABS[idx];
-        animateFill(tab.key, items.filter(tab.filter));
-      }
     });
+    // Re-render the newly active panel respecting the current sub-tab filter
+    if (TABS[idx]) renderThemes(TABS[idx]);
   }
 
   /* ------------------------------------------------------------------
      Populate each tab panel
   ------------------------------------------------------------------ */
   TABS.forEach(function (tab, idx) {
-    var tabItems = items.filter(tab.filter);
+    // Render summary + theme section through the shared renderThemes path so
+    // the sub-tab filter is always applied consistently (default: 'pr2').
+    renderThemes(tab);
 
-    // Summary counts
-    var done = tabItems.filter(function (i) {
-      return DONE_CANONICAL[canonical(i.status)];
-    }).length;
-    var pct = tabItems.length > 0
-      ? Math.round((done / tabItems.length) * 100) : 0;
-
-    setText('sum-text-' + tab.key, done + ' of ' + tabItems.length + ' items complete');
-    setText('sum-pct-'  + tab.key, pct + '%');
-
-    // Animate progress bar for the default (visible) tab immediately
+    // Animate progress bar for the default (visible) tab immediately.
+    // renderThemes sets width:0 then rAF to target; kick the animation here
+    // so it runs on the already-visible panel without waiting for a tab click.
     if (idx === DEFAULT_TAB) {
-      requestAnimationFrame(function () { animateFill(tab.key, tabItems); });
+      requestAnimationFrame(function () { animateFill(tab.key, getTabItems(tab)); });
     }
-
-    // Build theme rows
-    var container = document.getElementById('themes-' + tab.key);
-    if (container) renderThemeSection(tabItems, container);
   });
 
   function animateFill(key, tabItems) {
@@ -1200,6 +1510,31 @@
         '<span class="label-text">' + esc(theme) + '</span>' +
         '<span class="label-count">' + themeItems.length +
           (themeItems.length === 1 ? ' item' : ' items') + '</span>';
+
+      // Description tooltip — populated from config.themeDescriptions
+      var themeDesc = (meta.themeDescriptions || {})[theme];
+      if (themeDesc) {
+        var infoIcon = make('span', 'theme-info-icon');
+        infoIcon.textContent = 'i';
+        labelCol.appendChild(infoIcon);
+
+        var tip = make('div', 'theme-tooltip');
+        var tipTitle = make('div', 'theme-tooltip-title');
+        tipTitle.textContent = themeDesc.title || theme;
+        tip.appendChild(tipTitle);
+        if (themeDesc.bullets && themeDesc.bullets.length) {
+          var tipList = document.createElement('ul');
+          tipList.className = 'theme-tooltip-list';
+          themeDesc.bullets.forEach(function (b) {
+            var li = document.createElement('li');
+            li.textContent = b;
+            tipList.appendChild(li);
+          });
+          tip.appendChild(tipList);
+        }
+        labelCol.appendChild(tip);
+      }
+
       row.appendChild(labelCol);
 
       // Tiles grid
@@ -1211,6 +1546,22 @@
 
       container.appendChild(row);
     });
+  }
+
+  /**
+   * Flat tile grid — used for PM Epics where theme grouping doesn't apply.
+   * Items are sorted by status rank and rendered directly without theme rows.
+   */
+  function renderFlatGrid(tabItems, container) {
+    var sorted = tabItems.slice().sort(function (a, b) {
+      return statusRank(a.status) - statusRank(b.status);
+    });
+    if (sorted.length === 0) return;
+    var grid = make('div', 'theme-tiles flat-grid');
+    sorted.forEach(function (item) {
+      grid.appendChild(buildTile(item));
+    });
+    container.appendChild(grid);
   }
 
   /* ------------------------------------------------------------------
@@ -1225,17 +1576,21 @@
     var tile = make('div', cls);
     tile.style.background = CANONICAL_BG[c] || '#e8eef7';
 
-    var pr2Badge     = (item.status === 'PR2 Core Scope Features')
-      ? '<span class="priority-badge">PR2</span>' : '';
-    // Show Untyped badge on PM items where the Type field is not set,
-    // signalling that tagging is incomplete.
-    var untypedBadge = (item.source === 'pm' && !item.type)
-      ? '<span class="type-badge">Untyped</span>' : '';
+    // Release pill — top-right corner, shows on every sub-tab view
+    var PILL_CLS = { PR1: 'pr1', PR2: 'pr2', PR3: 'pr3', GA1: 'pr3' };
+    if (item.release && PILL_CLS[item.release]) {
+      var pill = make('span', 'release-pill ' + PILL_CLS[item.release]);
+      pill.textContent = item.release;
+      tile.appendChild(pill);
+    }
 
-    var head = make('div', 'tile-head');
+    var pr2Badge = (item.status === 'PR2 Core Scope Features')
+      ? '<span class="priority-badge">PR2</span>' : '';
+
+    var head = make('div', 'tile-head' + (item.release ? ' has-pill' : ''));
     head.innerHTML =
       '<div class="tile-dot"></div>' +
-      '<div class="tile-name">' + esc(item.title || '(untitled)') + pr2Badge + untypedBadge + '</div>' +
+      '<div class="tile-name">' + esc(item.title || '(untitled)') + pr2Badge + '</div>' +
       '<div class="tile-arrow">&#9658;</div>';
     tile.appendChild(head);
 
@@ -1252,6 +1607,53 @@
         ? '<a class="gh-link" href="' + esc(item.url) +
           '" target="_blank" rel="noopener">View on GitHub &#8599;</a>'
         : '');
+
+    // Sub-issues collapsible section (DOM-built, not innerHTML)
+    if (item.subIssues && item.subIssues.length > 0) {
+      var siSection = make('div', 'sub-issues-section');
+
+      var siToggle = make('button', 'sub-issues-toggle');
+      var chevron  = make('span',   'sub-issues-chevron');
+      chevron.textContent = '\u25b6'; // ▶
+      siToggle.appendChild(chevron);
+      var siLabel = item.source === 'twg' ? 'Linked Issues' : 'Features';
+      siToggle.appendChild(document.createTextNode(
+        '\u00a0' + siLabel + ' (' + item.subIssueCount + ')'
+      ));
+      siSection.appendChild(siToggle);
+
+      var siList = make('div', 'sub-issues-list');
+      item.subIssues.forEach(function (si) {
+        var row  = make('div', 'sub-issue-row');
+        var dot  = make('span', 'sub-issue-dot ' + (si.state === 'CLOSED' ? 'closed' : 'open'));
+        var ttl  = make('span', 'sub-issue-title');
+        ttl.textContent = si.title || ('#' + si.number);
+        var num  = make('span', 'sub-issue-num');
+        num.textContent = '#' + si.number;
+        row.appendChild(dot);
+        row.appendChild(ttl);
+        row.appendChild(num);
+        if (si.url) {
+          var lnk = make('a', 'sub-issue-link');
+          lnk.href = si.url;
+          lnk.target = '_blank';
+          lnk.rel    = 'noopener';
+          lnk.textContent = '\u2192'; // →
+          lnk.title = 'Open in GitHub';
+          row.appendChild(lnk);
+        }
+        siList.appendChild(row);
+      });
+      siSection.appendChild(siList);
+
+      siToggle.addEventListener('click', function (e) {
+        e.stopPropagation(); // don't collapse the parent tile
+        siSection.classList.toggle('sub-issues-open');
+      });
+
+      body.appendChild(siSection);
+    }
+
     tile.appendChild(body);
 
     head.addEventListener('click', function () { tile.classList.toggle('open'); });
@@ -1297,6 +1699,14 @@
     focusLi.appendChild(focusSw);
     focusLi.appendChild(document.createTextNode('PR2 focus theme row'));
     legendExtra.appendChild(focusLi);
+
+    // PR1 badge
+    var pr1Li   = make('div', 'legend-item');
+    var pr1Bdg  = make('span', 'pr1-badge');
+    pr1Bdg.textContent = 'PR1';
+    pr1Li.appendChild(pr1Bdg);
+    pr1Li.appendChild(document.createTextNode('\u00a0Released scope item'));
+    legendExtra.appendChild(pr1Li);
 
     // PR2 badge
     var badgeLi = make('div', 'legend-item');

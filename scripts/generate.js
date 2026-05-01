@@ -1,14 +1,15 @@
 // scripts/generate.js
 // Reads config.json, queries the GitHub Projects v2 GraphQL API for each
 // configured project (with full pagination), maps every item to a normalised
-// shape using fieldMappings, merges the results, and writes docs/data.json.
+// shape, and writes docs/data.json.
 //
-// All projects are fetched from their top-level items list.  Per-project
-// fieldMappings overrides (e.g. PM uses "Milestone" instead of "Release")
-// are merged at config-load time into effectiveMappings for each project.
-// View-scoped filtering (e.g. Child Epic only) is applied client-side in
-// the dashboard template, not here — the GitHub Projects v2 GraphQL API
-// does not expose items() on ProjectV2View.
+// Fields sourced from GitHub Project custom fields (via fieldValues):
+//   status  → "Status" single-select
+//   pr1     → "PR1"    single-select (PM project only, via per-project override)
+//
+// Fields sourced directly from the Issue content node (not project fields):
+//   type    → issue.issueType.name  (org-level issue type, e.g. "Epic (Child)")
+//   release → issue.milestone.title (standard GitHub milestone, e.g. "PR2")
 
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { resolve, dirname }                        from 'node:path';
@@ -84,7 +85,25 @@ async function graphql(query, variables = {}) {
 
 const ITEM_FIELDS = `
   content {
-    ... on Issue       { url title }
+    ... on Issue {
+      url
+      title
+      issueType { name }
+      milestone { title }
+      labels(first: 10) {
+        nodes { name }
+      }
+      subIssues(first: 20) {
+        totalCount
+        nodes {
+          title
+          url
+          state
+          number
+          issueType { name }
+        }
+      }
+    }
     ... on PullRequest { url title }
     ... on DraftIssue  { title }
   }
@@ -152,12 +171,17 @@ function extractValue(node) {
 }
 
 /**
- * Convert a raw project item node into the normalised shape defined by
- * effectiveMappings (the global fieldMappings merged with any per-project
- * overrides).  url and title are always sourced from content.
+ * Convert a raw project item node into the normalised shape.
+ *
+ * - url, title          — from content (all item types)
+ * - type                — from content.issueType.name (org-level issue type)
+ * - release             — from content.milestone.title (standard GitHub milestone)
+ * - everything else     — from fieldValues, mapped via effectiveMappings
+ *
  * source is stamped in by the caller.
  */
 function mapItem(rawItem, effectiveMappings) {
+  // Project custom fields (fieldValues)
   const byFieldName = {};
   for (const fv of rawItem.fieldValues.nodes) {
     const fieldName = fv.field?.name;
@@ -166,12 +190,36 @@ function mapItem(rawItem, effectiveMappings) {
   }
 
   const item = {
-    title: rawItem.content?.title ?? null,
-    url:   rawItem.content?.url   ?? null,
+    title:   rawItem.content?.title                   ?? null,
+    url:     rawItem.content?.url                     ?? null,
+    // Issue-level fields — not project custom fields
+    type:    rawItem.content?.issueType?.name         ?? null,
+    release: rawItem.content?.milestone?.title        ?? null,
+    // Sub-issues (nested issues) — fetched in same request, up to 20
+    subIssues: (rawItem.content?.subIssues?.nodes ?? []).map(n => ({
+      title:     n.title,
+      url:       n.url,
+      state:     n.state,
+      number:    n.number,
+      issueType: n.issueType?.name ?? null,
+    })),
+    subIssueCount: rawItem.content?.subIssues?.totalCount ?? 0,
   };
 
   for (const [logicalKey, githubFieldName] of Object.entries(effectiveMappings)) {
     item[logicalKey] = byFieldName[githubFieldName] ?? null;
+  }
+
+  // Derive theme from GitHub issue labels (case-insensitive match against config themes).
+  // This overrides any project custom field value for "theme".
+  const knownThemes = config.themes ?? [];
+  const labelNames  = (rawItem.content?.labels?.nodes ?? []).map(n => n.name);
+  const themeLabel  = labelNames.find(n =>
+    knownThemes.some(t => t.toLowerCase() === n.toLowerCase())
+  );
+  if (themeLabel) {
+    // Normalise to config casing (e.g. "trust" → "Trust")
+    item.theme = knownThemes.find(t => t.toLowerCase() === themeLabel.toLowerCase()) ?? themeLabel;
   }
 
   return item;
@@ -198,8 +246,36 @@ async function fetchAllItems({ key, number, label, effectiveMappings }) {
     if (page === 1) console.log(`    Project title: "${project.title}"`);
 
     const { nodes, pageInfo } = project.items;
+
+    // On the first page, log every unique field name seen in fieldValues so
+    // mismatches between config fieldMappings and actual GitHub field names
+    // are immediately visible in Action logs.
+    if (page === 1) {
+      const seen = new Set();
+      for (const rawItem of nodes) {
+        for (const fv of rawItem.fieldValues.nodes) {
+          if (fv.field?.name) seen.add(fv.field.name);
+        }
+      }
+      console.log(`    Field names in GitHub project: ${[...seen].sort().map(n => `"${n}"`).join(', ')}`);
+      const mapped   = Object.values(effectiveMappings);
+      const unmapped = [...seen].filter(n => !mapped.includes(n));
+      const missing  = mapped.filter(n => !seen.has(n));
+      if (missing.length)  console.log(`    ⚠ Mapped fields NOT found in data: ${missing.map(n => `"${n}"`).join(', ')}`);
+      if (unmapped.length) console.log(`    ℹ Unmapped fields available: ${unmapped.map(n => `"${n}"`).join(', ')}`);
+    }
+
     for (const rawItem of nodes) items.push({ ...mapItem(rawItem, effectiveMappings), source: key });
     console.log(`    +${nodes.length} items  (running total: ${items.length})`);
+
+    // After the last page, log distinct type and release values to confirm
+    // issueType and milestone are populating correctly.
+    if (!pageInfo.hasNextPage) {
+      const types    = [...new Set(items.map(i => i.type).filter(Boolean))].sort();
+      const releases = [...new Set(items.map(i => i.release).filter(Boolean))].sort();
+      console.log(`    Issue types seen:   ${types.length    ? types.map(t => `"${t}"`).join(', ')    : '(none — issueType may not be set)'}`);
+      console.log(`    Milestones seen:    ${releases.length ? releases.map(r => `"${r}"`).join(', ') : '(none — milestone may not be set)'}`);
+    }
 
     if (!pageInfo.hasNextPage) break;
     cursor = pageInfo.endCursor;
@@ -232,9 +308,12 @@ function renderHtml(items) {
     projects:          config.projects          ?? {},
     statusMap:         config.statusMap         ?? {},
     releaseDates:      config.releaseDates      ?? {},
-    milestoneLinks:    config.milestoneLinks    ?? {},
-    milestoneTooltips: config.milestoneTooltips ?? {},
-    generatedAt:       new Date().toUTCString(),
+    milestoneLinks:      config.milestoneLinks      ?? {},
+    milestoneTooltips:   config.milestoneTooltips   ?? {},
+    milestoneScopeText:  config.milestoneScopeText  ?? {},
+    releaseJourneyInfo:  config.releaseJourneyInfo  ?? null,
+    themeDescriptions:   config.themeDescriptions   ?? {},
+    generatedAt:         new Date().toUTCString(),
   };
 
   const payload   = JSON.stringify({ items, meta }).replace(/</g, '\\u003c');
