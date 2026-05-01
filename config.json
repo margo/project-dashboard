@@ -58,7 +58,7 @@
   "themes":          ["Trust", "Flexibility", "Robustness"],
   "themeDescriptions": {
     "Trust": {
-      "title": "Trust / Authorization",
+      "title": "Trust/Authorization",
       "bullets": [
         "Strategy for Ecosystem Identity and Authorization",
         "Application image and component signing strategy",
@@ -68,7 +68,7 @@
     "Flexibility": {
       "title": "Extended Workload and Device Flexibility",
       "bullets": [
-        "Vendor specific extensions (Device capabilities / app requirements)",
+        "Vendors specific extensions(Device capabilities / app requirements)",
         "Target vendor specific runtime via Application",
         "How devices can expose device-specific parameter values to running applications"
       ]
@@ -76,12 +76,12 @@
     "Robustness": {
       "title": "Robustness Improvements",
       "bullets": [
-        "Device roles to capabilities (enables future improvements and flexibility)",
+        "Device roles to capabilities(enables future improvements and flexibility)",
         "Helm v3/4 standard feature breakdown",
         "Management Interface",
         "Application package",
-        "Runtime Constraints / Interoperability",
-        "Documentation (spec) construction/consistency implementation"
+        "Runtime Constraints/Interoperability",
+        "Documentation(spec) construction/consistency implementation"
       ]
     }
   },
