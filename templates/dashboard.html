@@ -808,9 +808,9 @@
     </div>
     <div class="sub-tab-bar">
       <button class="sub-tab" data-sub-tab="pr1" onclick="switchSubTab('pr1')">PR1 Completed</button>
-      <button class="sub-tab active" data-sub-tab="pr2" onclick="switchSubTab('pr2')">PR2 In Progress<span class="pr2-info-icon" onclick="event.stopPropagation();togglePr2Callout('pr2-callout-twg')">i</span></button>
+      <button class="sub-tab active" data-sub-tab="pr2" onclick="switchSubTab('pr2')">PR2 In Progress<span class="pr2-info-icon" data-callout="pr2-callout-twg">i</span></button>
       <button class="sub-tab" data-sub-tab="ga1" onclick="switchSubTab('ga1')">GA1</button>
-      <div class="pr2-info-callout" id="pr2-callout-twg">The collection of features in this Preview Release provides a real-time snapshot of the features under development. As Preview Releases are published at fixed milestones, features might be moved to the next Preview Release in function of contribution velocity.</div>
+      <div class="pr2-info-callout" id="pr2-callout-twg">The collection of features in this Preview Release is providing a real-time snapshot and status of the features being worked on. As Preview Releases are published on fixed milestones, features might be moved to a next preview release, in function of contribution velocity.</div>
     </div>
     <div id="release-banner-twg"></div>
     <div class="theme-section" id="themes-twg"></div>
@@ -831,9 +831,9 @@
     </div>
     <div class="sub-tab-bar">
       <button class="sub-tab" data-sub-tab="pr1" onclick="switchSubTab('pr1')">PR1 Completed</button>
-      <button class="sub-tab active" data-sub-tab="pr2" onclick="switchSubTab('pr2')">PR2 In Progress<span class="pr2-info-icon" onclick="event.stopPropagation();togglePr2Callout('pr2-callout-pm')">i</span></button>
+      <button class="sub-tab active" data-sub-tab="pr2" onclick="switchSubTab('pr2')">PR2 In Progress<span class="pr2-info-icon" data-callout="pr2-callout-pm">i</span></button>
       <button class="sub-tab" data-sub-tab="ga1" onclick="switchSubTab('ga1')">GA1</button>
-      <div class="pr2-info-callout" id="pr2-callout-pm">The collection of features in this Preview Release provides a real-time snapshot of the features under development. As Preview Releases are published at fixed milestones, features might be moved to the next Preview Release in function of contribution velocity.</div>
+      <div class="pr2-info-callout" id="pr2-callout-pm">The collection of features in this Preview Release is providing a real-time snapshot and status of the features being worked on. As Preview Releases are published on fixed milestones, features might be moved to a next preview release, in function of contribution velocity.</div>
     </div>
     <div id="release-banner-pm"></div>
     <div class="theme-section" id="themes-pm"></div>
@@ -1147,20 +1147,24 @@
   }
   window.switchSubTab = switchSubTab; // expose for HTML onclick
 
-  function togglePr2Callout(id) {
-    var el = document.getElementById(id);
-    if (!el) return;
-    var isOpen = el.classList.contains('open');
-    document.querySelectorAll('.pr2-info-callout.open').forEach(function (c) {
-      c.classList.remove('open');
-    });
-    if (!isOpen) el.classList.add('open');
-  }
-  window.togglePr2Callout = togglePr2Callout;
-  document.addEventListener('click', function () {
-    document.querySelectorAll('.pr2-info-callout.open').forEach(function (c) {
-      c.classList.remove('open');
-    });
+  // Hover-driven info callouts — each .pr2-info-icon targets its callout via data-callout.
+  // A short hide-delay lets the mouse travel from icon → callout without flickering.
+  document.querySelectorAll('.pr2-info-icon').forEach(function (icon) {
+    var callout = document.getElementById(icon.getAttribute('data-callout'));
+    if (!callout) return;
+    var hideTimer;
+    function showCallout() {
+      clearTimeout(hideTimer);
+      document.querySelectorAll('.pr2-info-callout.open').forEach(function (c) { c.classList.remove('open'); });
+      callout.classList.add('open');
+    }
+    function scheduleHide() {
+      hideTimer = setTimeout(function () { callout.classList.remove('open'); }, 120);
+    }
+    icon.addEventListener('mouseenter', showCallout);
+    icon.addEventListener('mouseleave', scheduleHide);
+    callout.addEventListener('mouseenter', function () { clearTimeout(hideTimer); });
+    callout.addEventListener('mouseleave', scheduleHide);
   });
 
   /* ------------------------------------------------------------------
