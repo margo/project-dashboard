@@ -1191,7 +1191,7 @@
       } else if (state === 'ms-active' && meta.nextReleaseDate) {
         sub = meta.nextReleaseDate;
       } else if (state === 'ms-upcoming' && releaseDates[rel]) {
-        sub = releaseDates[rel];
+        sub = (rel === 'GA1' ? 'est ' : '') + releaseDates[rel];
       }
 
       // Tooltip text — replace {nextReleaseDate} placeholder
