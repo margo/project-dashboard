@@ -106,6 +106,17 @@
     }
 
     .timeline-track { display: flex; align-items: flex-start; }
+    .tl-separator {
+      display: flex;
+      align-items: flex-start;
+      padding-top: 18px;
+      padding-left: 2px;
+      padding-right: 2px;
+      color: #9ca3af;
+      font-size: 1.1rem;
+      letter-spacing: 3px;
+      flex-shrink: 0;
+    }
 
     .milestone {
       display: flex;
@@ -603,6 +614,135 @@
     }
 
     /* ============================================================
+       Release pill badge — top-right corner of every tile
+    ============================================================ */
+    .tile { position: relative; }
+
+    .release-pill {
+      position: absolute;
+      top: 7px;
+      right: 8px;
+      padding: 2px 7px;
+      border-radius: 20px;
+      font-size: .7rem;
+      font-weight: 700;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.4);
+      pointer-events: none;
+      white-space: nowrap;
+      z-index: 1;
+    }
+    .release-pill.pr1 { background: #1B5E20; }
+    .release-pill.pr2 { background: #00358C; }
+    .release-pill.pr3 { background: #9E9E9E; }
+
+    /* Prevent tile title from running under the pill */
+    .tile-head.has-pill { padding-right: 44px; }
+
+    /* ============================================================
+       Sub-tab bar — sits inside each tab panel below the main tabs
+    ============================================================ */
+    .sub-tab-bar {
+      display: flex;
+      gap: 4px;
+      padding: 8px 0;
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+
+    .pr2-info-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: #1976d2;
+      color: white;
+      font-size: 10px;
+      font-weight: bold;
+      font-style: normal;
+      cursor: pointer;
+      margin-left: 4px;
+      margin-bottom: 2px;
+      line-height: 1;
+      vertical-align: middle;
+      flex-shrink: 0;
+      user-select: none;
+    }
+    .pr2-info-callout {
+      display: none;
+      position: absolute;
+      top: calc(100% + 2px);
+      left: 0;
+      z-index: 50;
+      background: white;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-size: 13px;
+      line-height: 1.55;
+      color: #374151;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.13);
+      max-width: 480px;
+    }
+    .pr2-info-callout.open { display: block; }
+
+    .sub-tab {
+      padding: 5px 14px;
+      border-radius: 6px 6px 0 0;
+      font-size: .8rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      background: transparent;
+      color: var(--muted);
+      transition: color .15s, border-color .15s;
+      white-space: nowrap;
+    }
+    .sub-tab:hover:not(.active) { color: var(--text); }
+    .sub-tab.active {
+      background: #fff;
+      color: var(--brand);
+      border-bottom-color: var(--brand);
+      font-weight: 600;
+    }
+
+    /* Release banner — shown above tiles for PR1 / PR2 specific views */
+    .release-banner {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-radius: var(--radius);
+      padding: 10px 16px;
+      margin-bottom: 12px;
+      font-size: .85rem;
+      font-weight: 600;
+      color: #fff;
+    }
+    .release-banner.pr1-banner { background: #1B5E20; }
+    .release-banner.pr2-banner { background: var(--brand); }
+
+    .banner-icon { font-size: 1.1rem; flex-shrink: 0; }
+
+    @keyframes dot-pulse {
+      0%, 100% { opacity: 1;  transform: scale(1);   }
+      50%       { opacity: .4; transform: scale(.65); }
+    }
+    .banner-pulse-dot {
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.9);
+      flex-shrink: 0;
+      animation: dot-pulse 1.5s ease-in-out infinite;
+    }
+
+    /* ============================================================
        Responsive
     ============================================================ */
     @media (max-width: 700px) {
@@ -666,6 +806,13 @@
         <span class="pct-label" id="sum-pct-twg"></span>
       </div>
     </div>
+    <div class="sub-tab-bar">
+      <button class="sub-tab" data-sub-tab="pr1" onclick="switchSubTab('pr1')">PR1 Completed</button>
+      <button class="sub-tab active" data-sub-tab="pr2" onclick="switchSubTab('pr2')">PR2 In Progress<span class="pr2-info-icon" onclick="event.stopPropagation();togglePr2Callout('pr2-callout-twg')">i</span></button>
+      <button class="sub-tab" data-sub-tab="ga1" onclick="switchSubTab('ga1')">GA1</button>
+      <div class="pr2-info-callout" id="pr2-callout-twg">The collection of features in this Preview Release provides a real-time snapshot of the features under development. As Preview Releases are published at fixed milestones, features might be moved to the next Preview Release in function of contribution velocity.</div>
+    </div>
+    <div id="release-banner-twg"></div>
     <div class="theme-section" id="themes-twg"></div>
   </div>
 
@@ -682,6 +829,13 @@
         <span class="pct-label" id="sum-pct-pm"></span>
       </div>
     </div>
+    <div class="sub-tab-bar">
+      <button class="sub-tab" data-sub-tab="pr1" onclick="switchSubTab('pr1')">PR1 Completed</button>
+      <button class="sub-tab active" data-sub-tab="pr2" onclick="switchSubTab('pr2')">PR2 In Progress<span class="pr2-info-icon" onclick="event.stopPropagation();togglePr2Callout('pr2-callout-pm')">i</span></button>
+      <button class="sub-tab" data-sub-tab="ga1" onclick="switchSubTab('ga1')">GA1</button>
+      <div class="pr2-info-callout" id="pr2-callout-pm">The collection of features in this Preview Release provides a real-time snapshot of the features under development. As Preview Releases are published at fixed milestones, features might be moved to the next Preview Release in function of contribution velocity.</div>
+    </div>
+    <div id="release-banner-pm"></div>
     <div class="theme-section" id="themes-pm"></div>
   </div>
 
@@ -796,6 +950,14 @@
     var track = document.getElementById('tl-track');
 
     releases.forEach(function (rel, idx) {
+      // Insert 3-dot graphical separator before GA1
+      if (rel === 'GA1') {
+        var sep = document.createElement('div');
+        sep.className = 'tl-separator';
+        sep.innerHTML = '&bull;&bull;&bull;';
+        track.appendChild(sep);
+      }
+
       var state  = idx < currentIdx  ? 'ms-done'
                  : idx === currentIdx ? 'ms-active'
                  : 'ms-upcoming';
@@ -808,7 +970,7 @@
       } else if (state === 'ms-active' && meta.nextReleaseDate) {
         sub = meta.nextReleaseDate;
       } else if (state === 'ms-upcoming' && releaseDates[rel]) {
-        sub = releaseDates[rel];
+        sub = (rel === 'GA1' ? 'est. ' : '') + releaseDates[rel];
       }
 
       // Tooltip text — replace {nextReleaseDate} placeholder
@@ -894,6 +1056,112 @@
     var el = document.getElementById('fill-' + key);
     if (el) el.style.width = pct + '%';
   }
+
+  /* ------------------------------------------------------------------
+     Sub-tab filtering
+  ------------------------------------------------------------------ */
+
+  /**
+   * Returns items for a tab after applying both the tab's source/type filter
+   * and the current sub-tab release filter.
+   */
+  function getTabItems(tab) {
+    var filtered = items.filter(tab.filter);
+    if (currentSubTab === 'pr1') return filtered.filter(function (i) { return i.release === 'PR1'; });
+    if (currentSubTab === 'pr2') return filtered.filter(function (i) { return i.release === 'PR2'; });
+    return filtered; // 'ga1' — no release filter, shows all
+  }
+
+  /**
+   * Rebuilds the summary bar and theme section for a tab using the current
+   * sub-tab filter.  Replaces the theme-section DOM node entirely so the
+   * fadeIn animation re-triggers on each sub-tab switch.
+   */
+  function renderThemes(tab) {
+    var tabItems = getTabItems(tab);
+
+    // Update summary counts
+    var done = tabItems.filter(function (i) { return DONE_CANONICAL[canonical(i.status)]; }).length;
+    var pct  = tabItems.length > 0 ? Math.round((done / tabItems.length) * 100) : 0;
+    var label = currentSubTab === 'pr1' ? 'PR1 items'
+              : currentSubTab === 'pr2' ? 'PR2 items'
+              : 'items';
+    setText('sum-text-' + tab.key, done + ' of ' + tabItems.length + ' ' + label + ' complete');
+    setText('sum-pct-'  + tab.key, pct + '%');
+
+    // Reset then animate fill bar
+    var fill = document.getElementById('fill-' + tab.key);
+    if (fill) { fill.style.width = '0%'; }
+    requestAnimationFrame(function () { animateFill(tab.key, tabItems); });
+
+    // Update release banner
+    var banner = document.getElementById('release-banner-' + tab.key);
+    if (banner) {
+      banner.innerHTML = '';
+      if (currentSubTab === 'pr1') {
+        var b = make('div', 'release-banner pr1-banner');
+        var icon = make('span', 'banner-icon'); icon.textContent = '\u2705';
+        var txt = make('span', ''); txt.textContent = 'PR1 \u2014 ' + (meta.releaseDates['PR1'] || 'Released') + ' \u00b7 Showing completed items only';
+        b.appendChild(icon); b.appendChild(txt);
+        banner.appendChild(b);
+      } else if (currentSubTab === 'pr2') {
+        var b = make('div', 'release-banner pr2-banner');
+        var dot = make('span', 'banner-pulse-dot');
+        var txt = make('span', ''); txt.textContent = 'PR2 \u2014 In Progress \u00b7 Target ' + (meta.nextReleaseDate || '') + ' \u00b7 Showing in-progress items';
+        b.appendChild(dot); b.appendChild(txt);
+        banner.appendChild(b);
+      }
+    }
+
+    // Replace the theme-section node (re-triggers fadeIn CSS animation)
+    var old = document.getElementById('themes-' + tab.key);
+    if (!old) return;
+    var fresh = make('div', 'theme-section');
+    fresh.id  = 'themes-' + tab.key;
+    old.parentNode.replaceChild(fresh, old);
+    // PM Epics: flat tile grid (no theme grouping). TWG: grouped by theme.
+    if (tab.key === 'pm') {
+      renderFlatGrid(tabItems, fresh);
+    } else {
+      renderThemeSection(tabItems, fresh);
+    }
+  }
+
+  /**
+   * Switches the active sub-tab, updates button states across all sub-tab
+   * bars, and re-renders the currently visible main-tab panel.
+   * Exposed on window so HTML onclick attributes can call it directly.
+   */
+  function switchSubTab(value) {
+    currentSubTab = value;
+    // Sync active class on every .sub-tab button (both panels have their own bar)
+    document.querySelectorAll('.sub-tab').forEach(function (btn) {
+      btn.classList.toggle('active', btn.dataset.subTab === value);
+    });
+    // Re-render the currently active main-tab panel
+    var activePanel = document.querySelector('.tab-panel.active');
+    if (activePanel) {
+      var idx = parseInt(activePanel.dataset.tab, 10);
+      if (TABS[idx]) renderThemes(TABS[idx]);
+    }
+  }
+  window.switchSubTab = switchSubTab; // expose for HTML onclick
+
+  function togglePr2Callout(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    var isOpen = el.classList.contains('open');
+    document.querySelectorAll('.pr2-info-callout.open').forEach(function (c) {
+      c.classList.remove('open');
+    });
+    if (!isOpen) el.classList.add('open');
+  }
+  window.togglePr2Callout = togglePr2Callout;
+  document.addEventListener('click', function () {
+    document.querySelectorAll('.pr2-info-callout.open').forEach(function (c) {
+      c.classList.remove('open');
+    });
+  });
 
   /* ------------------------------------------------------------------
      Theme section renderer
@@ -989,6 +1257,10 @@
   /* ------------------------------------------------------------------
      Legend
   ------------------------------------------------------------------ */
+  var CANONICAL_LABEL = {
+    'SUP Accepted': 'SUP Accepted / Completed',
+  };
+
   var legendEl = document.getElementById('legend-items');
   if (legendEl) {
     Object.keys(CANONICAL_BG).forEach(function (state) {
@@ -996,7 +1268,7 @@
       var sw = make('div', 'swatch');
       sw.style.background = CANONICAL_BG[state];
       li.appendChild(sw);
-      li.appendChild(document.createTextNode(state));
+      li.appendChild(document.createTextNode(CANONICAL_LABEL[state] || state));
       legendEl.appendChild(li);
     });
   }
