@@ -1097,11 +1097,22 @@
   ------------------------------------------------------------------ */
   var statusMap = meta.statusMap || {};
 
+  // Any release whose index in the releases array is before currentRelease is done.
+  var _releases        = meta.releases || [];
+  var _currentReleaseIdx = _releases.indexOf(meta.currentRelease);
+  var _doneReleases    = new Set(
+    _currentReleaseIdx > 0 ? _releases.slice(0, _currentReleaseIdx) : []
+  );
+
   function canonical(item) {
     // Accept either a full item object or a raw status string (legacy call sites).
     var raw = (item && typeof item === 'object') ? item.status : item;
     if (!raw) return null;
     var c = statusMap[raw] || raw;
+    // Items belonging to a past (already shipped) release are always Finished.
+    if (item && typeof item === 'object' && _doneReleases.has(item.release)) {
+      return 'Finished';
+    }
     // TWG override: items that are not Finished/SUP Accepted collapse to
     // Has Assignee (has assignee) or No Owner (no assignee).
     if (item && typeof item === 'object' && item.source === 'twg'
