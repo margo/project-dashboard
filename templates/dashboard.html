@@ -1097,9 +1097,18 @@
   ------------------------------------------------------------------ */
   var statusMap = meta.statusMap || {};
 
-  function canonical(raw) {
+  function canonical(item) {
+    // Accept either a full item object or a raw status string (legacy call sites).
+    var raw = (item && typeof item === 'object') ? item.status : item;
     if (!raw) return null;
-    return statusMap[raw] || raw;
+    var c = statusMap[raw] || raw;
+    // TWG override: items that are not Finished/SUP Accepted collapse to
+    // Owner Identified (has assignee) or No Owner (no assignee).
+    if (item && typeof item === 'object' && item.source === 'twg'
+        && c !== 'Finished' && c !== 'SUP Accepted') {
+      return item.hasAssignee ? 'Owner Identified' : 'No Owner';
+    }
+    return c;
   }
 
   /* ------------------------------------------------------------------
@@ -1120,8 +1129,8 @@
     'Owner Identified': 3, 'No Owner': 4,
   };
 
-  function statusRank(raw) {
-    var c = canonical(raw);
+  function statusRank(item) {
+    var c = canonical(item);
     return CANONICAL_ORDER[c] != null ? CANONICAL_ORDER[c] : 99;
   }
 
@@ -1366,7 +1375,7 @@
 
   function animateFill(key, tabItems) {
     var done = tabItems.filter(function (i) {
-      return DONE_CANONICAL[canonical(i.status)];
+      return DONE_CANONICAL[canonical(i)];
     }).length;
     var pct = tabItems.length > 0
       ? Math.round((done / tabItems.length) * 100) : 0;
@@ -1398,7 +1407,7 @@
     var tabItems = getTabItems(tab);
 
     // Update summary counts
-    var done = tabItems.filter(function (i) { return DONE_CANONICAL[canonical(i.status)]; }).length;
+    var done = tabItems.filter(function (i) { return DONE_CANONICAL[canonical(i)]; }).length;
     var pct  = tabItems.length > 0 ? Math.round((done / tabItems.length) * 100) : 0;
     var label = currentSubTab === 'pr1' ? 'PR1 items'
               : currentSubTab === 'pr2' ? 'PR2 items'
@@ -1501,7 +1510,7 @@
 
       // Sort within row: most-progressed status first
       themeItems = themeItems.slice().sort(function (a, b) {
-        return statusRank(a.status) - statusRank(b.status);
+        return statusRank(a) - statusRank(b);
       });
 
       var hasPr2 = themeItems.some(function (i) {
@@ -1563,7 +1572,7 @@
    */
   function renderFlatGrid(tabItems, container) {
     var sorted = tabItems.slice().sort(function (a, b) {
-      return statusRank(a.status) - statusRank(b.status);
+      return statusRank(a) - statusRank(b);
     });
     if (sorted.length === 0) return;
     var grid = make('div', 'theme-tiles flat-grid');
@@ -1577,7 +1586,7 @@
      Tile builder
   ------------------------------------------------------------------ */
   function buildTile(item) {
-    var c   = canonical(item.status);
+    var c   = canonical(item);
     var cls = 'tile';
     if (CANONICAL_DARK[c])         cls += ' tile-dark';
     if (item.supRequired === 'No') cls += ' sup-no';
@@ -1673,7 +1682,8 @@
      Legend
   ------------------------------------------------------------------ */
   var CANONICAL_LABEL = {
-    'SUP Accepted': 'SUP Accepted / Completed',
+    'SUP Accepted':     'SUP Accepted / Completed',
+    'Owner Identified': 'SUP Initiated / Owner Identified',
   };
 
   var legendEl = document.getElementById('legend-items');
