@@ -1103,11 +1103,13 @@
     if (!raw) return null;
     var c = statusMap[raw] || raw;
     // TWG override: items that are not Finished/SUP Accepted collapse to
-    // Owner Identified (has assignee) or No Owner (no assignee).
+    // Has Assignee (has assignee) or No Owner (no assignee).
     if (item && typeof item === 'object' && item.source === 'twg'
         && c !== 'Finished' && c !== 'SUP Accepted') {
-      return item.hasAssignee ? 'Owner Identified' : 'No Owner';
+      return item.hasAssignee ? 'Has Assignee' : 'No Owner';
     }
+    // Collapse legacy SUP Initiated / Owner Identified into single state.
+    if (c === 'SUP Initiated' || c === 'Owner Identified') return 'Has Assignee';
     return c;
   }
 
@@ -1115,18 +1117,16 @@
      Five-state colour map
   ------------------------------------------------------------------ */
   var CANONICAL_BG = {
-    'Finished':         '#1B5E20',   // dark green  → white text (tile-dark)
-    'SUP Accepted':     '#66BB6A',   // mid green   → black text
-    'SUP Initiated':    '#FF9800',   // orange      → black text
-    'Owner Identified': '#FFD600',   // yellow      → black text
-    'No Owner':         '#E0E0E0',   // light grey  → black text
+    'Finished':     '#1B5E20',   // dark green  → white text (tile-dark)
+    'SUP Accepted': '#66BB6A',   // mid green   → black text
+    'Has Assignee': '#FFD600',   // yellow      → black text
+    'No Owner':     '#E0E0E0',   // light grey  → black text
   };
 
   var CANONICAL_DARK  = { 'Finished': true };
   var DONE_CANONICAL  = { 'Finished': true };
   var CANONICAL_ORDER = {
-    'Finished': 0, 'SUP Accepted': 1, 'SUP Initiated': 2,
-    'Owner Identified': 3, 'No Owner': 4,
+    'Finished': 0, 'SUP Accepted': 1, 'Has Assignee': 2, 'No Owner': 3,
   };
 
   function statusRank(item) {
@@ -1682,8 +1682,7 @@
      Legend
   ------------------------------------------------------------------ */
   var CANONICAL_LABEL = {
-    'SUP Accepted':     'SUP Accepted / Completed',
-    'Owner Identified': 'SUP Initiated / Owner Identified',
+    'SUP Accepted': 'SUP Accepted / Completed',
   };
 
   var legendEl = document.getElementById('legend-items');
