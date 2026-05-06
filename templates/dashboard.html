@@ -1165,8 +1165,7 @@
   ------------------------------------------------------------------ */
   var TABS = [
     { key: 'twg', label: 'TWG Features',
-      // type comes from the org-level issue type on each GitHub Issue.
-      filter: function (i) { return i.source === 'twg' && i.type === 'Feature (TWG)'; } },
+      filter: function (i) { return i.source === 'twg'; } },
     { key: 'pm',  label: 'PM Epics',
       // type comes from the org-level issue type on each GitHub Issue.
       filter: function (i) { return i.source === 'pm'  && i.type === 'Epic (Child)';  } },
