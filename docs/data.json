@@ -1828,6 +1828,58 @@
     "source": "pm"
   },
   {
+    "title": "Complete WFM client onboarding strategy following the MIAF SUP finalization",
+    "url": "https://github.com/margo/specification/issues/146",
+    "type": "Feature (TWG)",
+    "release": "PR2",
+    "subIssues": [
+      {
+        "title": "[PlugFest Feedback] - Atym - Gateway device certificate",
+        "url": "https://github.com/margo/plugfest/issues/31",
+        "state": "CLOSED",
+        "number": 31,
+        "issueType": null
+      },
+      {
+        "title": "[PlugFest Feedback] - Schneider Electric x Logiccloud",
+        "url": "https://github.com/margo/plugfest/issues/27",
+        "state": "OPEN",
+        "number": 27,
+        "issueType": null
+      },
+      {
+        "title": "Define/improve Certificate API functions(Child of Issue #146)",
+        "url": "https://github.com/margo/specification/issues/155",
+        "state": "OPEN",
+        "number": 155,
+        "issueType": "Feature (TWG)"
+      }
+    ],
+    "subIssueCount": 3,
+    "status": "Gen. Improvements: SUP Required",
+    "theme": "Trust",
+    "source": "twg"
+  },
+  {
+    "title": "Define/improve Certificate API functions(Child of Issue #146)",
+    "url": "https://github.com/margo/specification/issues/155",
+    "type": "Feature (TWG)",
+    "release": "PR2",
+    "subIssues": [
+      {
+        "title": "[PlugFest Feedback] - logiccloud - onboarding feedback",
+        "url": "https://github.com/margo/plugfest/issues/44",
+        "state": "OPEN",
+        "number": 44,
+        "issueType": null
+      }
+    ],
+    "subIssueCount": 1,
+    "status": "Gen. Improvements: SUP Required",
+    "theme": "Trust",
+    "source": "twg"
+  },
+  {
     "title": "Non-root Containers",
     "url": "https://github.com/margo/specification/issues/37",
     "type": null,
@@ -1877,7 +1929,7 @@
     "release": "PR2",
     "subIssues": [],
     "subIssueCount": 0,
-    "status": "SUP Completed",
+    "status": "SUP Approved",
     "theme": "Robustness",
     "source": "twg"
   },
@@ -1903,8 +1955,18 @@
       }
     ],
     "subIssueCount": 2,
-    "status": "SUP Completed",
+    "status": "SUP Approved",
     "theme": "Robustness",
+    "source": "twg"
+  },
+  {
+    "title": "Define the Margo \"Gateway\" capability Requirements",
+    "url": "https://github.com/margo/specification/issues/137",
+    "type": "Feature (TWG)",
+    "release": "GA1",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "status": "SUP Approved",
     "source": "twg"
   },
   {
@@ -1948,16 +2010,6 @@
     "subIssueCount": 0,
     "status": "Gen. Improvements: Non SUP",
     "theme": "Robustness",
-    "source": "twg"
-  },
-  {
-    "title": "Define the Margo \"Gateway\" capability Requirements",
-    "url": "https://github.com/margo/specification/issues/137",
-    "type": "Feature (TWG)",
-    "release": "GA1",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "status": "Backlog - GA1",
     "source": "twg"
   },
   {
@@ -2048,25 +2100,6 @@
     "subIssueCount": 0,
     "status": "Gen. Improvements: Non SUP",
     "theme": "Robustness",
-    "source": "twg"
-  },
-  {
-    "title": "Define/improve Certificate API functions",
-    "url": "https://github.com/margo/specification/issues/155",
-    "type": "Feature (TWG)",
-    "release": "PR2",
-    "subIssues": [
-      {
-        "title": "[PlugFest Feedback] - logiccloud - onboarding feedback",
-        "url": "https://github.com/margo/plugfest/issues/44",
-        "state": "OPEN",
-        "number": 44,
-        "issueType": null
-      }
-    ],
-    "subIssueCount": 1,
-    "status": "Gen. Improvements: SUP Required",
-    "theme": "Trust",
     "source": "twg"
   },
   {
@@ -2381,7 +2414,7 @@
       }
     ],
     "subIssueCount": 1,
-    "status": "Specification Completed",
+    "status": "SUP Completed",
     "source": "twg"
   },
   {
@@ -2406,7 +2439,7 @@
       }
     ],
     "subIssueCount": 2,
-    "status": "Specification Completed",
+    "status": "SUP Completed",
     "source": "twg"
   },
   {
@@ -2438,7 +2471,7 @@
       }
     ],
     "subIssueCount": 3,
-    "status": "Specification Completed",
+    "status": "SUP Completed",
     "source": "twg"
   },
   {
@@ -2448,7 +2481,7 @@
     "release": "PR1",
     "subIssues": [],
     "subIssueCount": 0,
-    "status": "Specification Completed",
+    "status": "SUP Completed",
     "source": "twg"
   },
   {
@@ -2473,7 +2506,7 @@
       }
     ],
     "subIssueCount": 2,
-    "status": "Specification Completed",
+    "status": "SUP Completed",
     "source": "twg"
   },
   {
@@ -2483,7 +2516,7 @@
     "release": "PR1",
     "subIssues": [],
     "subIssueCount": 0,
-    "status": "Specification Completed",
+    "status": "SUP Completed",
     "source": "twg"
   },
   {
@@ -2493,7 +2526,7 @@
     "release": "PR1",
     "subIssues": [],
     "subIssueCount": 0,
-    "status": "Specification Completed",
+    "status": "SUP Completed",
     "source": "twg"
   },
   {
@@ -2503,7 +2536,7 @@
     "release": "PR1",
     "subIssues": [],
     "subIssueCount": 0,
-    "status": "Specification Completed",
+    "status": "SUP Completed",
     "source": "twg"
   },
   {
@@ -2513,7 +2546,7 @@
     "release": "PR1",
     "subIssues": [],
     "subIssueCount": 0,
-    "status": "Specification Completed",
+    "status": "SUP Completed",
     "source": "twg"
   },
   {
@@ -2523,7 +2556,7 @@
     "release": "PR1",
     "subIssues": [],
     "subIssueCount": 0,
-    "status": "Specification Completed",
+    "status": "SUP Completed",
     "source": "twg"
   },
   {
@@ -2541,7 +2574,7 @@
       }
     ],
     "subIssueCount": 1,
-    "status": "Specification Completed",
+    "status": "SUP Completed",
     "source": "twg"
   },
   {
@@ -2551,7 +2584,7 @@
     "release": "PR1",
     "subIssues": [],
     "subIssueCount": 0,
-    "status": "Specification Completed",
+    "status": "SUP Completed",
     "source": "twg"
   },
   {
@@ -2597,7 +2630,7 @@
       }
     ],
     "subIssueCount": 5,
-    "status": "Specification Completed",
+    "status": "SUP Completed",
     "source": "twg"
   },
   {
@@ -2607,7 +2640,7 @@
     "release": null,
     "subIssues": [],
     "subIssueCount": 0,
-    "status": "Specification Completed",
+    "status": "SUP Completed",
     "source": "twg"
   },
   {
@@ -2617,7 +2650,7 @@
     "release": null,
     "subIssues": [],
     "subIssueCount": 0,
-    "status": "Specification Completed",
+    "status": "SUP Completed",
     "source": "twg"
   },
   {
@@ -2650,32 +2683,6 @@
     "subIssueCount": 0,
     "status": "Gen. Improvements: Non SUP",
     "theme": "Robustness",
-    "source": "twg"
-  },
-  {
-    "title": "Complete WFM client onboarding strategy following the MIAF SUP finalization",
-    "url": "https://github.com/margo/specification/issues/146",
-    "type": "Feature (TWG)",
-    "release": "PR2",
-    "subIssues": [
-      {
-        "title": "[PlugFest Feedback] - Atym - Gateway device certificate",
-        "url": "https://github.com/margo/plugfest/issues/31",
-        "state": "CLOSED",
-        "number": 31,
-        "issueType": null
-      },
-      {
-        "title": "[PlugFest Feedback] - Schneider Electric x Logiccloud",
-        "url": "https://github.com/margo/plugfest/issues/27",
-        "state": "OPEN",
-        "number": 27,
-        "issueType": null
-      }
-    ],
-    "subIssueCount": 2,
-    "status": "Gen. Improvements: SUP Required",
-    "theme": "Trust",
     "source": "twg"
   },
   {
