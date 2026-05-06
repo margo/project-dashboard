@@ -90,6 +90,9 @@ const ITEM_FIELDS = `
       title
       issueType { name }
       milestone { title }
+      assignees(first: 3) {
+        nodes { login }
+      }
       labels(first: 10) {
         nodes { name }
       }
@@ -204,6 +207,7 @@ function mapItem(rawItem, effectiveMappings) {
       issueType: n.issueType?.name ?? null,
     })),
     subIssueCount: rawItem.content?.subIssues?.totalCount ?? 0,
+    hasAssignee:   (rawItem.content?.assignees?.nodes?.length ?? 0) > 0,
   };
 
   for (const [logicalKey, githubFieldName] of Object.entries(effectiveMappings)) {
