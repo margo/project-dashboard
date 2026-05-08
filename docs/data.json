@@ -1057,7 +1057,7 @@
     "title": "Define the mechanism for workload fleet managers to be aware of app packages updates",
     "url": "https://github.com/margo/product_management/issues/67",
     "type": "Epic (Child)",
-    "release": "PR2",
+    "release": "GA1",
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
@@ -1113,7 +1113,7 @@
     "title": "Define the device requirements for multi-node clusters",
     "url": "https://github.com/margo/product_management/issues/71",
     "type": "Epic (Child)",
-    "release": "PR2",
+    "release": "GA1",
     "subIssues": [
       {
         "title": "Define the Margo \"Cluster Leader\" capability requirements",
@@ -1362,7 +1362,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": "PM - Requirement in Draft",
+    "status": "TWG - Requirement in progress",
     "pr1": null,
     "theme": "Flexibility",
     "source": "pm"
@@ -1487,7 +1487,7 @@
     "title": "Define mechanism for edge device to request permission to process device management requests",
     "url": "https://github.com/margo/product_management/issues/73",
     "type": "Epic (Child)",
-    "release": "PR2",
+    "release": "Future",
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
