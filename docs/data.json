@@ -2391,9 +2391,16 @@
         "state": "OPEN",
         "number": 15,
         "issueType": null
+      },
+      {
+        "title": "Define the strategy to enable sensitive information to be utilized within the application management mechanism",
+        "url": "https://github.com/margo/specification/issues/145",
+        "state": "OPEN",
+        "number": 145,
+        "issueType": "Feature (TWG)"
       }
     ],
-    "subIssueCount": 2,
+    "subIssueCount": 3,
     "hasAssignee": false,
     "status": "Core Scope Features",
     "theme": "Trust",
