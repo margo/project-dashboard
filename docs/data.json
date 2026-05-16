@@ -1939,6 +1939,18 @@
     "source": "pm"
   },
   {
+    "title": "Define whether all or a limited set of Helm v3/4 features are supported for application deployment",
+    "url": "https://github.com/margo/specification/issues/148",
+    "type": "Feature (TWG)",
+    "release": "PR2",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "SUP Completed",
+    "theme": "Robustness",
+    "source": "twg"
+  },
+  {
     "title": "Complete WFM client onboarding strategy following the MIAF SUP finalization",
     "url": "https://github.com/margo/specification/issues/146",
     "type": "Feature (TWG)",
@@ -2037,18 +2049,6 @@
     "subIssueCount": 0,
     "hasAssignee": false,
     "status": "Backlog - GA1",
-    "source": "twg"
-  },
-  {
-    "title": "Define whether all or a limited set of Helm v3/4 features are supported for application deployment",
-    "url": "https://github.com/margo/specification/issues/148",
-    "type": "Feature (TWG)",
-    "release": "PR2",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": true,
-    "status": "SUP Approved",
-    "theme": "Robustness",
     "source": "twg"
   },
   {
