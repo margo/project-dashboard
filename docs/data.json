@@ -1991,7 +1991,7 @@
       }
     ],
     "subIssueCount": 3,
-    "hasAssignee": false,
+    "hasAssignee": true,
     "status": "Gen. Improvements: SUP Required",
     "theme": "Trust",
     "source": "twg"
