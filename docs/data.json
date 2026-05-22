@@ -2224,7 +2224,7 @@
       }
     ],
     "subIssueCount": 2,
-    "hasAssignee": false,
+    "hasAssignee": true,
     "status": "Gen. Improvements: Non SUP",
     "theme": "Robustness",
     "source": "twg"
@@ -2273,7 +2273,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
-    "status": "Gen. Improvements: Non SUP",
+    "status": "SUP Completed",
     "source": "twg"
   },
   {
