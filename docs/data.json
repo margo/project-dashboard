@@ -545,13 +545,6 @@
         "issueType": "Epic (Child)"
       },
       {
-        "title": "Define how workloads can target Docker or Kubernetes as a runtime environment",
-        "url": "https://github.com/margo/product_management/issues/53",
-        "state": "CLOSED",
-        "number": 53,
-        "issueType": "Epic (Child)"
-      },
-      {
         "title": "Define how workloads can require vendor specific runtime environments",
         "url": "https://github.com/margo/product_management/issues/54",
         "state": "OPEN",
@@ -559,7 +552,7 @@
         "issueType": "Epic (Child)"
       }
     ],
-    "subIssueCount": 5,
+    "subIssueCount": 4,
     "hasAssignee": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
@@ -875,19 +868,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": "TWG - Requirement Under Review",
-    "pr1": null,
-    "source": "pm"
-  },
-  {
-    "title": "Define how workloads can target Docker or Kubernetes as a runtime environment",
-    "url": "https://github.com/margo/product_management/issues/53",
-    "type": "Epic (Child)",
-    "release": null,
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": true,
-    "status": "TWG - Approved Requirements",
+    "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
   },
@@ -895,7 +876,7 @@
     "title": "Define how workloads can require vendor specific runtime environments",
     "url": "https://github.com/margo/product_management/issues/54",
     "type": "Epic (Child)",
-    "release": "PR2",
+    "release": "GA1",
     "subIssues": [
       {
         "title": "Develop Margo standard feature enabling application developers to target device specific runtime environments",
