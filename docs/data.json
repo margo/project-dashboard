@@ -2210,7 +2210,7 @@
     "release": "PR2",
     "subIssues": [],
     "subIssueCount": 0,
-    "hasAssignee": false,
+    "hasAssignee": true,
     "status": "Gen. Improvements: Non SUP",
     "theme": "Robustness",
     "source": "twg"
