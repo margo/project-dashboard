@@ -1893,8 +1893,16 @@
     "url": "https://github.com/margo/product_management/issues/78",
     "type": "Epic (Child)",
     "release": "GA1",
-    "subIssues": [],
-    "subIssueCount": 0,
+    "subIssues": [
+      {
+        "title": "Define Margo strategy for ecosystem identity and authorization",
+        "url": "https://github.com/margo/specification/issues/127",
+        "state": "OPEN",
+        "number": 127,
+        "issueType": "Feature (TWG)"
+      }
+    ],
+    "subIssueCount": 1,
     "hasAssignee": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
@@ -1920,6 +1928,39 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "Define Margo strategy for ecosystem identity and authorization",
+    "url": "https://github.com/margo/specification/issues/127",
+    "type": "Feature (TWG)",
+    "release": "PR2",
+    "subIssues": [
+      {
+        "title": "Document threats and security requirements/approaches",
+        "url": "https://github.com/margo/specification/issues/65",
+        "state": "OPEN",
+        "number": 65,
+        "issueType": "Task"
+      }
+    ],
+    "subIssueCount": 1,
+    "hasAssignee": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "theme": "Trust",
+    "source": "pm"
+  },
+  {
+    "title": "Document threats and security requirements/approaches",
+    "url": "https://github.com/margo/specification/issues/65",
+    "type": "Task",
+    "release": null,
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
