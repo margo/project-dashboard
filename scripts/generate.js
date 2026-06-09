@@ -353,6 +353,23 @@ async function main() {
 
   console.log(`Total items across all projects: ${allItems.length}`);
 
+  // Post-processing: flag PM epics whose sub-issues include a PR2 TWG feature
+  const pr2TwgUrls = new Set(
+    allItems
+      .filter(i => i.source === 'twg' && i.release === 'PR2')
+      .map(i => i.url)
+      .filter(Boolean)
+  );
+  console.log(`PR2 TWG feature URLs: ${pr2TwgUrls.size}`);
+  for (const item of allItems) {
+    if (item.source === 'pm' && item.subIssues) {
+      const linked = item.subIssues.some(s => pr2TwgUrls.has(s.url));
+      if (linked) item.linkedFromFeature = true;
+    }
+  }
+  const linkedCount = allItems.filter(i => i.linkedFromFeature).length;
+  console.log(`PM epics flagged linkedFromFeature: ${linkedCount}`);
+
   // Write output — create docs/ if it doesn't exist yet.
   const docsDir = resolve(ROOT, 'docs');
   mkdirSync(docsDir, { recursive: true });

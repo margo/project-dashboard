@@ -777,6 +777,23 @@
     /* PR1 is released — muted blue-grey to signal shipped */
     .pr1-badge { background: #546E7A; }
 
+    .update-badge {
+      position: absolute;
+      bottom: 7px;
+      right: 8px;
+      padding: 2px 7px;
+      border-radius: 20px;
+      font-size: .68rem;
+      font-weight: 600;
+      background: #00358C;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.35);
+      pointer-events: none;
+      white-space: nowrap;
+      z-index: 1;
+      letter-spacing: .2px;
+    }
+
     /* ============================================================
        Legend — sticky bar pinned to bottom of viewport
     ============================================================ */
@@ -1403,8 +1420,11 @@
    */
   function getTabItems(tab) {
     var filtered = items.filter(tab.filter);
+    console.log('debug — tab:', tab.key, 'filtered:', filtered.length, 'linked in filtered:', filtered.filter(function(i){ return i.linkedFromFeature; }).length);
     if (currentSubTab === 'pr1') return filtered.filter(function (i) { return i.release === 'PR1'; });
-    if (currentSubTab === 'pr2') return filtered.filter(function (i) { return i.release === 'PR2'; });
+    if (currentSubTab === 'pr2') return filtered.filter(function (i) {
+      return i.release === 'PR2' || i.linkedFromFeature === true;
+    });
     return filtered; // 'ga1' — no release filter, shows all
   }
 
@@ -1684,6 +1704,12 @@
 
     tile.appendChild(body);
 
+    if (item.linkedFromFeature && currentSubTab === 'pr2') {
+      var updateBadge = make('span', 'update-badge');
+      updateBadge.textContent = 'update in progress';
+      tile.appendChild(updateBadge);
+    }
+
     head.addEventListener('click', function () { tile.classList.toggle('open'); });
     return tile;
   }
@@ -1691,7 +1717,9 @@
   /* ------------------------------------------------------------------
      Legend
   ------------------------------------------------------------------ */
-  var CANONICAL_LABEL = {};
+  var CANONICAL_LABEL = {
+    'Finished': 'Finished (this release)'
+  };
 
   var legendEl = document.getElementById('legend-items');
   if (legendEl) {
@@ -1701,6 +1729,10 @@
       sw.style.background = CANONICAL_BG[state];
       li.appendChild(sw);
       li.appendChild(document.createTextNode(CANONICAL_LABEL[state] || state));
+      if (state === 'Finished') {
+        li.title = 'A workable first version of this spec area — subject to further refinement in future releases';
+        li.style.cursor = 'help';
+      }
       legendEl.appendChild(li);
     });
   }
