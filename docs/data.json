@@ -2263,7 +2263,7 @@
     "release": "PR3",
     "subIssues": [],
     "subIssueCount": 0,
-    "hasAssignee": false,
+    "hasAssignee": true,
     "status": "Gen. Improvements: Non SUP",
     "theme": "Robustness",
     "source": "twg"
@@ -2275,7 +2275,7 @@
     "release": "PR3",
     "subIssues": [],
     "subIssueCount": 0,
-    "hasAssignee": false,
+    "hasAssignee": true,
     "status": "Gen. Improvements: Non SUP",
     "theme": "Trust",
     "source": "twg"
@@ -2870,7 +2870,7 @@
     "release": "PR2",
     "subIssues": [],
     "subIssueCount": 0,
-    "hasAssignee": false,
+    "hasAssignee": true,
     "status": "Gen. Improvements: SUP Required",
     "theme": "Robustness",
     "source": "twg"
