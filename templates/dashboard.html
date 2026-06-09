@@ -1420,6 +1420,7 @@
    */
   function getTabItems(tab) {
     var filtered = items.filter(tab.filter);
+    console.log('debug — tab:', tab.key, 'filtered:', filtered.length, 'linked in filtered:', filtered.filter(function(i){ return i.linkedFromFeature; }).length);
     if (currentSubTab === 'pr1') return filtered.filter(function (i) { return i.release === 'PR1'; });
     if (currentSubTab === 'pr2') return filtered.filter(function (i) {
       return i.release === 'PR2' || i.linkedFromFeature === true;
