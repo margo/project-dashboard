@@ -1422,7 +1422,7 @@
     var filtered = items.filter(tab.filter);
     if (currentSubTab === 'pr1') return filtered.filter(function (i) { return i.release === 'PR1'; });
     if (currentSubTab === 'pr2') return filtered.filter(function (i) {
-      return i.release === 'PR2' || (i.release === 'PR1' && i.linkedFromFeature === true);
+      return i.release === 'PR2' || i.linkedFromFeature === true;
     });
     return filtered; // 'ga1' — no release filter, shows all
   }
