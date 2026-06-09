@@ -1728,6 +1728,10 @@
       sw.style.background = CANONICAL_BG[state];
       li.appendChild(sw);
       li.appendChild(document.createTextNode(CANONICAL_LABEL[state] || state));
+      if (state === 'Finished') {
+        li.title = 'A workable first version of this spec area — subject to further refinement in future releases';
+        li.style.cursor = 'help';
+      }
       legendEl.appendChild(li);
     });
   }
