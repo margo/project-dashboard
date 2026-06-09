@@ -777,6 +777,23 @@
     /* PR1 is released — muted blue-grey to signal shipped */
     .pr1-badge { background: #546E7A; }
 
+    .update-badge {
+      position: absolute;
+      bottom: 7px;
+      right: 8px;
+      padding: 2px 7px;
+      border-radius: 20px;
+      font-size: .68rem;
+      font-weight: 600;
+      background: #00358C;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.35);
+      pointer-events: none;
+      white-space: nowrap;
+      z-index: 1;
+      letter-spacing: .2px;
+    }
+
     /* ============================================================
        Legend — sticky bar pinned to bottom of viewport
     ============================================================ */
@@ -1404,7 +1421,9 @@
   function getTabItems(tab) {
     var filtered = items.filter(tab.filter);
     if (currentSubTab === 'pr1') return filtered.filter(function (i) { return i.release === 'PR1'; });
-    if (currentSubTab === 'pr2') return filtered.filter(function (i) { return i.release === 'PR2'; });
+    if (currentSubTab === 'pr2') return filtered.filter(function (i) {
+      return i.release === 'PR2' || (i.release === 'PR1' && i.linkedFromFeature === true);
+    });
     return filtered; // 'ga1' — no release filter, shows all
   }
 
@@ -1683,6 +1702,12 @@
     }
 
     tile.appendChild(body);
+
+    if (item.linkedFromFeature && item.release === 'PR1' && currentSubTab === 'pr2') {
+      var updateBadge = make('span', 'update-badge');
+      updateBadge.textContent = 'update in progress';
+      tile.appendChild(updateBadge);
+    }
 
     head.addEventListener('click', function () { tile.classList.toggle('open'); });
     return tile;
