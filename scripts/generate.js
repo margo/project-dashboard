@@ -353,6 +353,13 @@ async function main() {
 
   console.log(`Total items across all projects: ${allItems.length}`);
 
+  // Add temporarily to see what sub-issue relationships exist
+  allItems.filter(i => i.source === 'pm').forEach(epic => {
+    if (epic.subIssues && epic.subIssues.length > 0) {
+      console.log('PM epic sub-issues:', epic.title, epic.subIssues.map(s => s.title));
+    }
+  });
+
   // Write output — create docs/ if it doesn't exist yet.
   const docsDir = resolve(ROOT, 'docs');
   mkdirSync(docsDir, { recursive: true });
