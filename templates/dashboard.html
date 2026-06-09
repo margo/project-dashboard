@@ -1703,7 +1703,7 @@
 
     tile.appendChild(body);
 
-    if (item.linkedFromFeature && item.release === 'PR1' && currentSubTab === 'pr2') {
+    if (item.linkedFromFeature && currentSubTab === 'pr2') {
       var updateBadge = make('span', 'update-badge');
       updateBadge.textContent = 'update in progress';
       tile.appendChild(updateBadge);
