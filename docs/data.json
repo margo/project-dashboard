@@ -1171,10 +1171,10 @@
     "title": "Develop margo standard strategy for WFM to authenticate and retrieve the app desc attachments securely",
     "url": "https://github.com/margo/specification/issues/90",
     "type": "Feature (TWG)",
-    "release": "PR2",
+    "release": "PR3",
     "subIssues": [],
     "subIssueCount": 0,
-    "hasAssignee": false,
+    "hasAssignee": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "theme": "Trust",
@@ -2017,7 +2017,7 @@
     "title": "Define/improve Certificate API functions(Child of Issue #146)",
     "url": "https://github.com/margo/specification/issues/155",
     "type": "Feature (TWG)",
-    "release": "PR2",
+    "release": "PR3",
     "subIssues": [
       {
         "title": "[PlugFest Feedback] - logiccloud - onboarding feedback",
@@ -2158,7 +2158,7 @@
     "release": "PR3",
     "subIssues": [],
     "subIssueCount": 0,
-    "hasAssignee": false,
+    "hasAssignee": true,
     "status": "Gen. Improvements: Non SUP",
     "theme": "Robustness",
     "source": "twg"
@@ -2321,7 +2321,7 @@
     "release": "PR2",
     "subIssues": [],
     "subIssueCount": 0,
-    "hasAssignee": false,
+    "hasAssignee": true,
     "status": "Gen. Improvements: SUP Required",
     "theme": "Robustness",
     "source": "twg"
@@ -2386,7 +2386,7 @@
     "title": "Define the Margo application image and component signing strategy",
     "url": "https://github.com/margo/specification/issues/138",
     "type": "Feature (TWG)",
-    "release": "PR2",
+    "release": "PR3",
     "subIssues": [
       {
         "title": "Signing app packages ",
@@ -2406,7 +2406,7 @@
     "title": "Define how the WFM manages OCI credentials within the Margo device.",
     "url": "https://github.com/margo/specification/issues/129",
     "type": "Feature (TWG)",
-    "release": "PR2",
+    "release": "PR3",
     "subIssues": [
       {
         "title": "[PlugFest Feedback] - Rockwell x ZEDEDA",
@@ -2911,7 +2911,7 @@
       }
     ],
     "subIssueCount": 2,
-    "hasAssignee": false,
+    "hasAssignee": true,
     "status": "Gen. Improvements: SUP Required",
     "theme": "Robustness",
     "source": "twg"
@@ -2938,7 +2938,7 @@
       }
     ],
     "subIssueCount": 2,
-    "hasAssignee": false,
+    "hasAssignee": true,
     "status": "Gen. Improvements: SUP Required",
     "theme": "Robustness",
     "source": "twg"
@@ -2947,10 +2947,10 @@
     "title": "Develop margo standard strategy for WFM to authenticate and retrieve the app desc attachments securely",
     "url": "https://github.com/margo/specification/issues/90",
     "type": "Feature (TWG)",
-    "release": "PR2",
+    "release": "PR3",
     "subIssues": [],
     "subIssueCount": 0,
-    "hasAssignee": false,
+    "hasAssignee": true,
     "status": "Gen. Improvements: SUP Required",
     "theme": "Trust",
     "source": "twg"
