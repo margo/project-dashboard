@@ -2119,6 +2119,30 @@
     "source": "twg"
   },
   {
+    "title": "Define how vendor specific extensions can be supported within the application description file + device capabilities",
+    "url": "https://github.com/margo/specification/issues/144",
+    "type": "Feature (TWG)",
+    "release": "PR2",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "SUP Approved",
+    "theme": "Flexibility",
+    "source": "twg"
+  },
+  {
+    "title": "Replace device roles with capabilities within Margo artifacts",
+    "url": "https://github.com/margo/specification/issues/136",
+    "type": "Feature (TWG)",
+    "release": "PR2",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "SUP Approved",
+    "theme": "Robustness",
+    "source": "twg"
+  },
+  {
     "title": "Address problems exposing application endpoints",
     "url": "https://github.com/margo/specification/issues/75",
     "type": "Feature (TWG)",
@@ -2434,30 +2458,6 @@
     "hasAssignee": false,
     "status": "Core Scope Features",
     "theme": "Trust",
-    "source": "twg"
-  },
-  {
-    "title": "Replace device roles with capabilities within Margo artifacts",
-    "url": "https://github.com/margo/specification/issues/136",
-    "type": "Feature (TWG)",
-    "release": "PR2",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": true,
-    "status": "Core Scope Features",
-    "theme": "Robustness",
-    "source": "twg"
-  },
-  {
-    "title": "Define how vendor specific extensions can be supported within the application description file + device capabilities",
-    "url": "https://github.com/margo/specification/issues/144",
-    "type": "Feature (TWG)",
-    "release": "PR2",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": true,
-    "status": "Core Scope Features",
-    "theme": "Flexibility",
     "source": "twg"
   },
   {
