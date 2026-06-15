@@ -2366,7 +2366,7 @@
     "title": "Clarify certificate encoding format: base64(DER) vs base64(PEM)",
     "url": "https://github.com/margo/specification/issues/132",
     "type": "Feature (TWG)",
-    "release": "PR2",
+    "release": "PR3",
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
@@ -2893,7 +2893,7 @@
     "title": "Define the standard mechanism for compose enabled devices to authenticate and pull Compose Archive",
     "url": "https://github.com/margo/specification/issues/166",
     "type": "Feature (TWG)",
-    "release": "PR2",
+    "release": "PR3",
     "subIssues": [
       {
         "title": "[PlugFest Feedback] - ZEDEDA / Belden",
@@ -2920,7 +2920,7 @@
     "title": "Define improvements to compose manifest workloads when targeting typical targets(Docker/Podman)",
     "url": "https://github.com/margo/specification/issues/168",
     "type": "Feature (TWG)",
-    "release": "PR2",
+    "release": "PR3",
     "subIssues": [
       {
         "title": "[PlugFest Feedback] - Schneider Electric x Rockwell",
