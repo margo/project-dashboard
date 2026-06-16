@@ -2134,7 +2134,7 @@
     "title": "Replace device roles with capabilities within Margo artifacts",
     "url": "https://github.com/margo/specification/issues/136",
     "type": "Feature (TWG)",
-    "release": "PR2",
+    "release": "PR3",
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
@@ -2252,21 +2252,21 @@
       {
         "title": "Make `ApplicationDescription` ID a top-level attribute",
         "url": "https://github.com/margo/specification/issues/162",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 162,
         "issueType": null
       },
       {
         "title": "Make `ApplicationDeployment` ID a top-level attribute",
         "url": "https://github.com/margo/specification/issues/163",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 163,
         "issueType": "Feature (TWG)"
       }
     ],
     "subIssueCount": 2,
     "hasAssignee": true,
-    "status": "Gen. Improvements: Non SUP",
+    "status": "SUP Completed",
     "theme": "Robustness",
     "source": "twg"
   },
