@@ -1968,6 +1968,17 @@
     "source": "pm"
   },
   {
+    "title": "Define the Margo \"Gateway\" capability Requirements",
+    "url": "https://github.com/margo/specification/issues/137",
+    "type": "Feature (TWG)",
+    "release": "GA1",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "SUP Completed",
+    "source": "twg"
+  },
+  {
     "title": "Define whether all or a limited set of Helm v3/4 features are supported for application deployment",
     "url": "https://github.com/margo/specification/issues/148",
     "type": "Feature (TWG)",
@@ -2105,17 +2116,6 @@
     "hasAssignee": true,
     "status": "SUP Approved",
     "theme": "Robustness",
-    "source": "twg"
-  },
-  {
-    "title": "Define the Margo \"Gateway\" capability Requirements",
-    "url": "https://github.com/margo/specification/issues/137",
-    "type": "Feature (TWG)",
-    "release": "GA1",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": true,
-    "status": "SUP Approved",
     "source": "twg"
   },
   {
@@ -2976,6 +2976,17 @@
     "hasAssignee": true,
     "status": "Gen. Improvements: Non SUP",
     "theme": "Robustness",
+    "source": "twg"
+  },
+  {
+    "title": "Remove metadata.name and metadata.namespace fields from Application Deployment",
+    "url": "https://github.com/margo/specification/issues/187",
+    "type": null,
+    "release": null,
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": null,
     "source": "twg"
   }
 ]
