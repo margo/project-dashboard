@@ -890,8 +890,7 @@
     "hasAssignee": true,
     "status": "TWG - Requirement in progress",
     "pr1": null,
-    "source": "pm",
-    "linkedFromFeature": true
+    "source": "pm"
   },
   {
     "title": "Define the Margo interfaces between app repositories and workload fleet managers",
@@ -1333,7 +1332,7 @@
     "title": "Develop Margo standard feature enabling application developers to target device specific runtime environments",
     "url": "https://github.com/margo/specification/issues/93",
     "type": "Feature (TWG)",
-    "release": "PR2",
+    "release": "PR3",
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
@@ -1907,8 +1906,7 @@
     "hasAssignee": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
-    "source": "pm",
-    "linkedFromFeature": true
+    "source": "pm"
   },
   {
     "title": "Verify identity of an edge device",
@@ -1938,7 +1936,7 @@
     "title": "Define Margo strategy for ecosystem identity and authorization",
     "url": "https://github.com/margo/specification/issues/127",
     "type": "Feature (TWG)",
-    "release": "PR2",
+    "release": "PR3",
     "subIssues": [
       {
         "title": "Document threats and security requirements/approaches",
@@ -1971,11 +1969,11 @@
     "title": "Define the Margo \"Gateway\" capability Requirements",
     "url": "https://github.com/margo/specification/issues/137",
     "type": "Feature (TWG)",
-    "release": "GA1",
+    "release": "PR2",
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": "SUP Completed",
+    "status": "SUP/PR Completed",
     "source": "twg"
   },
   {
@@ -1986,7 +1984,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": "SUP Completed",
+    "status": "SUP/PR Completed",
     "theme": "Robustness",
     "source": "twg"
   },
@@ -1994,7 +1992,7 @@
     "title": "Complete WFM client onboarding strategy following the MIAF SUP finalization",
     "url": "https://github.com/margo/specification/issues/146",
     "type": "Feature (TWG)",
-    "release": "PR2",
+    "release": "PR3",
     "subIssues": [
       {
         "title": "[PlugFest Feedback] - Atym - Gateway device certificate",
@@ -2095,7 +2093,7 @@
     "title": "Specification consistency improvement - update once and propagate changes",
     "url": "https://github.com/margo/specification/issues/157",
     "type": "Bug",
-    "release": "PR2",
+    "release": "PR3",
     "subIssues": [
       {
         "title": "Specification has inconsistencies in multiple different places",
@@ -2122,7 +2120,7 @@
     "title": "Define how vendor specific extensions can be supported within the application description file + device capabilities",
     "url": "https://github.com/margo/specification/issues/144",
     "type": "Feature (TWG)",
-    "release": "PR2",
+    "release": "PR3",
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
@@ -2266,7 +2264,7 @@
     ],
     "subIssueCount": 2,
     "hasAssignee": true,
-    "status": "SUP Completed",
+    "status": "SUP/PR Completed",
     "theme": "Robustness",
     "source": "twg"
   },
@@ -2278,7 +2276,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": "SUP Completed",
+    "status": "SUP/PR Completed",
     "theme": "Robustness",
     "source": "twg"
   },
@@ -2314,7 +2312,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": "SUP Completed",
+    "status": "SUP/PR Completed",
     "theme": "Robustness",
     "source": "twg"
   },
@@ -2334,7 +2332,7 @@
     ],
     "subIssueCount": 1,
     "hasAssignee": true,
-    "status": "SUP Completed",
+    "status": "SUP/PR Completed",
     "theme": "Robustness",
     "source": "twg"
   },
@@ -2342,7 +2340,7 @@
     "title": "Define consistent standard error responses for all 4xx/5xx response codes",
     "url": "https://github.com/margo/specification/issues/153",
     "type": "Feature (TWG)",
-    "release": "PR2",
+    "release": "PR3",
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
@@ -2358,7 +2356,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
-    "status": "SUP Completed",
+    "status": "SUP/PR Completed",
     "theme": "Trust",
     "source": "twg"
   },
@@ -2390,7 +2388,7 @@
     "title": "Define Margo strategy for ecosystem identity and authorization",
     "url": "https://github.com/margo/specification/issues/127",
     "type": "Feature (TWG)",
-    "release": "PR2",
+    "release": "PR3",
     "subIssues": [
       {
         "title": "Document threats and security requirements/approaches",
@@ -2464,7 +2462,7 @@
     "title": "Develop Margo standard feature enabling application developers to target device specific runtime environments",
     "url": "https://github.com/margo/specification/issues/93",
     "type": "Feature (TWG)",
-    "release": "PR2",
+    "release": "PR3",
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
@@ -2476,7 +2474,7 @@
     "title": "Define how device-specific parameter values can be provided",
     "url": "https://github.com/margo/specification/issues/141",
     "type": "Feature (TWG)",
-    "release": "PR2",
+    "release": "PR3",
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
@@ -2601,7 +2599,7 @@
     ],
     "subIssueCount": 1,
     "hasAssignee": true,
-    "status": "SUP Completed",
+    "status": "SUP/PR Completed",
     "source": "twg"
   },
   {
@@ -2627,7 +2625,7 @@
     ],
     "subIssueCount": 2,
     "hasAssignee": true,
-    "status": "SUP Completed",
+    "status": "SUP/PR Completed",
     "source": "twg"
   },
   {
@@ -2660,7 +2658,7 @@
     ],
     "subIssueCount": 3,
     "hasAssignee": true,
-    "status": "SUP Completed",
+    "status": "SUP/PR Completed",
     "source": "twg"
   },
   {
@@ -2671,7 +2669,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": "SUP Completed",
+    "status": "SUP/PR Completed",
     "source": "twg"
   },
   {
@@ -2697,7 +2695,7 @@
     ],
     "subIssueCount": 2,
     "hasAssignee": true,
-    "status": "SUP Completed",
+    "status": "SUP/PR Completed",
     "source": "twg"
   },
   {
@@ -2708,7 +2706,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": "SUP Completed",
+    "status": "SUP/PR Completed",
     "source": "twg"
   },
   {
@@ -2719,7 +2717,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": "SUP Completed",
+    "status": "SUP/PR Completed",
     "source": "twg"
   },
   {
@@ -2730,7 +2728,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": "SUP Completed",
+    "status": "SUP/PR Completed",
     "source": "twg"
   },
   {
@@ -2741,7 +2739,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": "SUP Completed",
+    "status": "SUP/PR Completed",
     "source": "twg"
   },
   {
@@ -2752,7 +2750,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": "SUP Completed",
+    "status": "SUP/PR Completed",
     "source": "twg"
   },
   {
@@ -2771,7 +2769,7 @@
     ],
     "subIssueCount": 1,
     "hasAssignee": true,
-    "status": "SUP Completed",
+    "status": "SUP/PR Completed",
     "source": "twg"
   },
   {
@@ -2782,7 +2780,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": "SUP Completed",
+    "status": "SUP/PR Completed",
     "source": "twg"
   },
   {
@@ -2829,7 +2827,7 @@
     ],
     "subIssueCount": 5,
     "hasAssignee": true,
-    "status": "SUP Completed",
+    "status": "SUP/PR Completed",
     "source": "twg"
   },
   {
@@ -2840,7 +2838,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
-    "status": "SUP Completed",
+    "status": "SUP/PR Completed",
     "source": "twg"
   },
   {
@@ -2851,7 +2849,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
-    "status": "SUP Completed",
+    "status": "SUP/PR Completed",
     "source": "twg"
   },
   {
@@ -2869,7 +2867,7 @@
     "title": "Document expected `apiVersion` values for all API resources",
     "url": "https://github.com/margo/specification/issues/134",
     "type": "Feature (TWG)",
-    "release": "PR2",
+    "release": "PR3",
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
@@ -2881,7 +2879,7 @@
     "title": "Enhance schema for the version number in the application description",
     "url": "https://github.com/margo/specification/issues/143",
     "type": "Feature (TWG)",
-    "release": "PR2",
+    "release": "PR3",
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
@@ -2970,7 +2968,7 @@
     "title": "Finalize Margo Version Management Strategy",
     "url": "https://github.com/margo/specification/issues/174",
     "type": null,
-    "release": "PR2",
+    "release": "PR3",
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
