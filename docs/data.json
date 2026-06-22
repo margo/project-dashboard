@@ -890,7 +890,8 @@
     "hasAssignee": true,
     "status": "TWG - Requirement in progress",
     "pr1": null,
-    "source": "pm"
+    "source": "pm",
+    "linkedFromFeature": true
   },
   {
     "title": "Define the Margo interfaces between app repositories and workload fleet managers",
@@ -1906,7 +1907,8 @@
     "hasAssignee": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
-    "source": "pm"
+    "source": "pm",
+    "linkedFromFeature": true
   },
   {
     "title": "Verify identity of an edge device",
@@ -1921,7 +1923,7 @@
     "source": "pm"
   },
   {
-    "title": "[AI]  Next Steps — Margo Plugfest Sync",
+    "title": "[AI]  Next Steps \u2014 Margo Plugfest Sync",
     "url": "https://github.com/margo/Project-Management-Tracking/issues/56",
     "type": "Task",
     "release": null,
