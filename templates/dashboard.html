@@ -1057,7 +1057,8 @@
     </div>
     <div class="sub-tab-bar">
       <button class="sub-tab" data-sub-tab="pr1" onclick="switchSubTab('pr1')">PR1 Completed</button>
-      <button class="sub-tab active" data-sub-tab="pr2" onclick="switchSubTab('pr2')">PR2 In Progress<span class="pr2-info-icon" data-callout="pr2-callout-twg">i</span></button>
+      <button class="sub-tab" data-sub-tab="pr2" onclick="switchSubTab('pr2')">PR2 Completed</button>
+      <button class="sub-tab active" data-sub-tab="pr3" onclick="switchSubTab('pr3')">PR3 In Progress<span class="pr2-info-icon" data-callout="pr2-callout-twg">i</span></button>
       <button class="sub-tab" data-sub-tab="ga1" onclick="switchSubTab('ga1')">GA1</button>
       <div class="pr2-info-callout" id="pr2-callout-twg">The collection of features in this Preview Release is providing a real-time snapshot and status of the features being worked on. As Preview Releases are published on fixed milestones, features might be moved to a next preview release, in function of contribution velocity.</div>
     </div>
@@ -1080,7 +1081,8 @@
     </div>
     <div class="sub-tab-bar">
       <button class="sub-tab" data-sub-tab="pr1" onclick="switchSubTab('pr1')">PR1 Completed</button>
-      <button class="sub-tab active" data-sub-tab="pr2" onclick="switchSubTab('pr2')">PR2 In Progress<span class="pr2-info-icon" data-callout="pr2-callout-pm">i</span></button>
+      <button class="sub-tab" data-sub-tab="pr2" onclick="switchSubTab('pr2')">PR2 Completed</button>
+      <button class="sub-tab active" data-sub-tab="pr3" onclick="switchSubTab('pr3')">PR3 In Progress<span class="pr2-info-icon" data-callout="pr2-callout-pm">i</span></button>
       <button class="sub-tab" data-sub-tab="ga1" onclick="switchSubTab('ga1')">GA1</button>
       <div class="pr2-info-callout" id="pr2-callout-pm">The collection of features in this Preview Release is providing a real-time snapshot and status of the features being worked on. As Preview Releases are published on fixed milestones, features might be moved to a next preview release, in function of contribution velocity.</div>
     </div>
@@ -1201,7 +1203,7 @@
   var DEFAULT_TAB = 0; // TWG Features
 
   /* Sub-tab state — shared across both main tabs */
-  var currentSubTab = 'pr2'; // 'pr1' | 'pr2' | 'ga1' (ga1 = all releases combined)
+  var currentSubTab = 'pr3'; // 'pr1' | 'pr2' | 'pr3' | 'ga1' (ga1 = all releases combined)
 
   /* ------------------------------------------------------------------
      Header badges
@@ -1422,8 +1424,9 @@
     var filtered = items.filter(tab.filter);
     console.log('debug — tab:', tab.key, 'filtered:', filtered.length, 'linked in filtered:', filtered.filter(function(i){ return i.linkedFromFeature; }).length);
     if (currentSubTab === 'pr1') return filtered.filter(function (i) { return i.release === 'PR1'; });
-    if (currentSubTab === 'pr2') return filtered.filter(function (i) {
-      return i.release === 'PR2' || i.linkedFromFeature === true;
+    if (currentSubTab === 'pr2') return filtered.filter(function (i) { return i.release === 'PR2'; });
+    if (currentSubTab === 'pr3') return filtered.filter(function (i) {
+      return i.release === 'PR3' || i.linkedFromFeature === true;
     });
     return filtered; // 'ga1' — no release filter, shows all
   }
@@ -1441,6 +1444,7 @@
     var pct  = tabItems.length > 0 ? Math.round((done / tabItems.length) * 100) : 0;
     var label = currentSubTab === 'pr1' ? 'PR1 items'
               : currentSubTab === 'pr2' ? 'PR2 items'
+              : currentSubTab === 'pr3' ? 'PR3 items'
               : 'items';
     setText('sum-text-' + tab.key, done + ' of ' + tabItems.length + ' ' + label + ' complete');
     setText('sum-pct-'  + tab.key, pct + '%');
@@ -1461,9 +1465,15 @@
         b.appendChild(icon); b.appendChild(txt);
         banner.appendChild(b);
       } else if (currentSubTab === 'pr2') {
+        var b = make('div', 'release-banner pr1-banner');
+        var icon2 = make('span', 'banner-icon'); icon2.textContent = '\u2705';
+        var txt2 = make('span', ''); txt2.textContent = 'PR2 \u2014 ' + (meta.releaseDates['PR2'] || 'Released') + ' \u00b7 Showing completed items only';
+        b.appendChild(icon2); b.appendChild(txt2);
+        banner.appendChild(b);
+      } else if (currentSubTab === 'pr3') {
         var b = make('div', 'release-banner pr2-banner');
         var dot = make('span', 'banner-pulse-dot');
-        var txt = make('span', ''); txt.textContent = 'PR2 \u2014 In Progress \u00b7 Target ' + (meta.nextReleaseDate || '') + ' \u00b7 Showing in-progress items';
+        var txt = make('span', ''); txt.textContent = 'PR3 \u2014 In Progress \u00b7 Target ' + (meta.nextReleaseDate || '') + ' \u00b7 Showing in-progress items';
         b.appendChild(dot); b.appendChild(txt);
         banner.appendChild(b);
       }
@@ -1704,7 +1714,7 @@
 
     tile.appendChild(body);
 
-    if (item.linkedFromFeature && currentSubTab === 'pr2') {
+    if (item.linkedFromFeature && currentSubTab === 'pr3') {
       var updateBadge = make('span', 'update-badge');
       updateBadge.textContent = 'update in progress';
       tile.appendChild(updateBadge);
