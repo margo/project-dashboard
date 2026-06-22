@@ -353,17 +353,17 @@ async function main() {
 
   console.log(`Total items across all projects: ${allItems.length}`);
 
-  // Post-processing: flag PM epics whose sub-issues include a PR2 TWG feature
-  const pr2TwgUrls = new Set(
+  // Post-processing: flag PM epics whose sub-issues include a PR3 TWG feature
+  const pr3TwgUrls = new Set(
     allItems
-      .filter(i => i.source === 'twg' && i.release === 'PR2')
+      .filter(i => i.source === 'twg' && i.release === 'PR3')
       .map(i => i.url)
       .filter(Boolean)
   );
-  console.log(`PR2 TWG feature URLs: ${pr2TwgUrls.size}`);
+  console.log(`PR3 TWG feature URLs: ${pr3TwgUrls.size}`);
   for (const item of allItems) {
     if (item.source === 'pm' && item.subIssues) {
-      const linked = item.subIssues.some(s => pr2TwgUrls.has(s.url));
+      const linked = item.subIssues.some(s => pr3TwgUrls.has(s.url));
       if (linked) item.linkedFromFeature = true;
     }
   }
