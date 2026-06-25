@@ -1999,7 +1999,7 @@
       {
         "title": "[PlugFest Feedback] - logiccloud - onboarding feedback",
         "url": "https://github.com/margo/plugfest/issues/44",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 44,
         "issueType": null
       }
@@ -2073,7 +2073,7 @@
       {
         "title": "[PlugFest Feedback] - Siemens",
         "url": "https://github.com/margo/plugfest/issues/32",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 32,
         "issueType": null
       }
@@ -2137,14 +2137,14 @@
       {
         "title": "[PlugFest Feedback] - Schneider Electric - Own thoughts",
         "url": "https://github.com/margo/plugfest/issues/34",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 34,
         "issueType": null
       },
       {
         "title": "[PlugFest Feedback] - Hilscher X COPA DATA",
         "url": "https://github.com/margo/plugfest/issues/33",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 33,
         "issueType": null
       },
@@ -2208,7 +2208,7 @@
       {
         "title": "[PlugFest Feedback] - Hilscher / Sandbox App requirement improvement needed",
         "url": "https://github.com/margo/plugfest/issues/29",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 29,
         "issueType": null
       }
@@ -2313,7 +2313,7 @@
       {
         "title": "[PlugFest Feedback] - COPA-DATA x Hilscher",
         "url": "https://github.com/margo/plugfest/issues/45",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 45,
         "issueType": null
       }
@@ -2401,7 +2401,7 @@
       {
         "title": "[PlugFest Feedback] - Rockwell x ZEDEDA",
         "url": "https://github.com/margo/plugfest/issues/47",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 47,
         "issueType": null
       },
@@ -2466,7 +2466,7 @@
       {
         "title": "[PlugFest Feedback] - Schneider Electric x Logiccloud",
         "url": "https://github.com/margo/plugfest/issues/27",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 27,
         "issueType": null
       },
@@ -2898,14 +2898,14 @@
       {
         "title": "[PlugFest Feedback] - ZEDEDA / Belden",
         "url": "https://github.com/margo/plugfest/issues/28",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 28,
         "issueType": null
       },
       {
         "title": "[PlugFest Feedback] - Siemens",
         "url": "https://github.com/margo/plugfest/issues/40",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 40,
         "issueType": null
       }
@@ -2925,14 +2925,14 @@
       {
         "title": "[PlugFest Feedback] - Schneider Electric x Rockwell",
         "url": "https://github.com/margo/plugfest/issues/38",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 38,
         "issueType": null
       },
       {
         "title": "[PlugFest Feedback] - Hilscher X Red Hat",
         "url": "https://github.com/margo/plugfest/issues/43",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 43,
         "issueType": null
       }
