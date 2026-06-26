@@ -55,6 +55,22 @@
       line-height: 1.2;
     }
 
+    .header-website-link {
+      display: inline-block;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -.3px;
+      line-height: 1.2;
+      color: rgba(255,255,255,.7);
+      text-decoration: none;
+      margin-left: 16px;
+    }
+
+    .header-website-link:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
     .header-meta {
       display: flex;
       flex-wrap: wrap;
@@ -1022,7 +1038,7 @@
 <!-- __INJECT_DATA__ -->
 
 <header>
-  <h1>Margo Roadmap Dashboard</h1>
+  <h1>Margo Roadmap Dashboard <a href="https://margo.org/" target="_blank" rel="noopener" class="header-website-link">Margo Website</a></h1>
   <div class="header-meta">
     <span class="badge" id="badge-release"></span>
     <span class="badge" id="badge-next"></span>
