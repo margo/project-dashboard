@@ -2006,7 +2006,7 @@
     ],
     "subIssueCount": 1,
     "hasAssignee": false,
-    "status": "Gen. Improvements: SUP Required",
+    "status": "Specification Improvements :SUP",
     "theme": "Trust",
     "source": "twg"
   },
@@ -2332,7 +2332,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": "Gen. Improvements: SUP Required",
+    "status": "Specification Improvements :SUP",
     "theme": "Robustness",
     "source": "twg"
   },
@@ -2873,7 +2873,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": "Gen. Improvements: SUP Required",
+    "status": "Specification Improvements :SUP",
     "theme": "Robustness",
     "source": "twg"
   },
@@ -2912,7 +2912,7 @@
     ],
     "subIssueCount": 2,
     "hasAssignee": true,
-    "status": "Gen. Improvements: SUP Required",
+    "status": "Specification Improvements :SUP",
     "theme": "Robustness",
     "source": "twg"
   },
@@ -2939,7 +2939,7 @@
     ],
     "subIssueCount": 2,
     "hasAssignee": true,
-    "status": "Gen. Improvements: SUP Required",
+    "status": "Specification Improvements :SUP",
     "theme": "Robustness",
     "source": "twg"
   },
@@ -2951,7 +2951,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": "Gen. Improvements: SUP Required",
+    "status": "Specification Improvements :SUP",
     "theme": "Trust",
     "source": "twg"
   },
