@@ -30,13 +30,21 @@
         "state": "CLOSED",
         "number": 99,
         "issueType": "Feature (TWG)"
+      },
+      {
+        "title": "Complete WFM client onboarding strategy following the MIAF SUP finalization",
+        "url": "https://github.com/margo/specification/issues/146",
+        "state": "OPEN",
+        "number": 146,
+        "issueType": "Feature (TWG)"
       }
     ],
-    "subIssueCount": 2,
+    "subIssueCount": 3,
     "hasAssignee": true,
     "status": "TWG - Approved Requirements",
     "pr1": null,
-    "source": "pm"
+    "source": "pm",
+    "linkedFromFeature": true
   },
   {
     "title": "Enable end users to receive a Margo device pre-configured with credentials",
@@ -1964,6 +1972,99 @@
     "subIssueCount": 0,
     "hasAssignee": false,
     "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "Complete WFM client onboarding strategy following the MIAF SUP finalization",
+    "url": "https://github.com/margo/specification/issues/146",
+    "type": "Feature (TWG)",
+    "release": "PR3",
+    "subIssues": [
+      {
+        "title": "[PlugFest Feedback] - Atym - Gateway device certificate",
+        "url": "https://github.com/margo/plugfest/issues/31",
+        "state": "CLOSED",
+        "number": 31,
+        "issueType": null
+      },
+      {
+        "title": "[PlugFest Feedback] - Schneider Electric x Logiccloud",
+        "url": "https://github.com/margo/plugfest/issues/27",
+        "state": "CLOSED",
+        "number": 27,
+        "issueType": null
+      },
+      {
+        "title": "Define/improve Certificate API functions(Child of Issue #146)",
+        "url": "https://github.com/margo/specification/issues/155",
+        "state": "OPEN",
+        "number": 155,
+        "issueType": "Feature (TWG)"
+      }
+    ],
+    "subIssueCount": 3,
+    "hasAssignee": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "theme": "Trust",
+    "source": "pm",
+    "linkedFromFeature": true
+  },
+  {
+    "title": "[PlugFest Feedback] - Atym - Gateway device certificate",
+    "url": "https://github.com/margo/plugfest/issues/31",
+    "type": null,
+    "release": null,
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "status": "TWG - Approved Requirements",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "[PlugFest Feedback] - Schneider Electric x Logiccloud",
+    "url": "https://github.com/margo/plugfest/issues/27",
+    "type": null,
+    "release": null,
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "status": "TWG - Approved Requirements",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "Define/improve Certificate API functions(Child of Issue #146)",
+    "url": "https://github.com/margo/specification/issues/155",
+    "type": "Feature (TWG)",
+    "release": "PR3",
+    "subIssues": [
+      {
+        "title": "[PlugFest Feedback] - logiccloud - onboarding feedback",
+        "url": "https://github.com/margo/plugfest/issues/44",
+        "state": "CLOSED",
+        "number": 44,
+        "issueType": null
+      }
+    ],
+    "subIssueCount": 1,
+    "hasAssignee": false,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "theme": "Trust",
+    "source": "pm"
+  },
+  {
+    "title": "[PlugFest Feedback] - logiccloud - onboarding feedback",
+    "url": "https://github.com/margo/plugfest/issues/44",
+    "type": null,
+    "release": null,
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "status": "TWG - Approved Requirements",
     "pr1": null,
     "source": "pm"
   },
