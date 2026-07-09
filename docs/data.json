@@ -1179,7 +1179,7 @@
     "title": "Develop margo standard strategy for WFM to authenticate and retrieve the app desc attachments securely",
     "url": "https://github.com/margo/specification/issues/90",
     "type": "Feature (TWG)",
-    "release": "PR3",
+    "release": "Future",
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
@@ -2050,7 +2050,7 @@
       }
     ],
     "subIssueCount": 1,
-    "hasAssignee": false,
+    "hasAssignee": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "theme": "Trust",
@@ -2067,6 +2067,72 @@
     "status": "TWG - Approved Requirements",
     "pr1": null,
     "source": "pm"
+  },
+  {
+    "title": "Define how device-specific parameter values can be provided",
+    "url": "https://github.com/margo/specification/issues/141",
+    "type": "Feature (TWG)",
+    "release": "GA1",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "Backlog - GA1",
+    "theme": "Flexibility",
+    "source": "twg"
+  },
+  {
+    "title": "Define how the WFM manages OCI credentials within the Margo device.",
+    "url": "https://github.com/margo/specification/issues/129",
+    "type": "Feature (TWG)",
+    "release": "GA1",
+    "subIssues": [
+      {
+        "title": "[PlugFest Feedback] - Rockwell x ZEDEDA",
+        "url": "https://github.com/margo/plugfest/issues/47",
+        "state": "CLOSED",
+        "number": 47,
+        "issueType": null
+      },
+      {
+        "title": "Security - Access to Private Registries",
+        "url": "https://github.com/margo/specification/issues/15",
+        "state": "OPEN",
+        "number": 15,
+        "issueType": null
+      },
+      {
+        "title": "Define the strategy to enable sensitive information to be utilized within the application management mechanism",
+        "url": "https://github.com/margo/specification/issues/145",
+        "state": "OPEN",
+        "number": 145,
+        "issueType": "Feature (TWG)"
+      }
+    ],
+    "subIssueCount": 3,
+    "hasAssignee": false,
+    "status": "Backlog - GA1",
+    "theme": "Trust",
+    "source": "twg"
+  },
+  {
+    "title": "Define the Margo application image and component signing strategy",
+    "url": "https://github.com/margo/specification/issues/138",
+    "type": "Feature (TWG)",
+    "release": "GA1",
+    "subIssues": [
+      {
+        "title": "Signing app packages ",
+        "url": "https://github.com/margo/specification/issues/36",
+        "state": "OPEN",
+        "number": 36,
+        "issueType": null
+      }
+    ],
+    "subIssueCount": 1,
+    "hasAssignee": false,
+    "status": "Backlog - GA1",
+    "theme": "Trust",
+    "source": "twg"
   },
   {
     "title": "Define the Margo \"Gateway\" capability Requirements",
@@ -2106,7 +2172,7 @@
       }
     ],
     "subIssueCount": 1,
-    "hasAssignee": false,
+    "hasAssignee": true,
     "status": "Specification Improvements :SUP",
     "theme": "Trust",
     "source": "twg"
@@ -2474,74 +2540,8 @@
     "source": "twg"
   },
   {
-    "title": "Define the Margo application image and component signing strategy",
-    "url": "https://github.com/margo/specification/issues/138",
-    "type": "Feature (TWG)",
-    "release": "PR3",
-    "subIssues": [
-      {
-        "title": "Signing app packages ",
-        "url": "https://github.com/margo/specification/issues/36",
-        "state": "OPEN",
-        "number": 36,
-        "issueType": null
-      }
-    ],
-    "subIssueCount": 1,
-    "hasAssignee": false,
-    "status": "Core Scope Features",
-    "theme": "Trust",
-    "source": "twg"
-  },
-  {
-    "title": "Define how the WFM manages OCI credentials within the Margo device.",
-    "url": "https://github.com/margo/specification/issues/129",
-    "type": "Feature (TWG)",
-    "release": "PR3",
-    "subIssues": [
-      {
-        "title": "[PlugFest Feedback] - Rockwell x ZEDEDA",
-        "url": "https://github.com/margo/plugfest/issues/47",
-        "state": "CLOSED",
-        "number": 47,
-        "issueType": null
-      },
-      {
-        "title": "Security - Access to Private Registries",
-        "url": "https://github.com/margo/specification/issues/15",
-        "state": "OPEN",
-        "number": 15,
-        "issueType": null
-      },
-      {
-        "title": "Define the strategy to enable sensitive information to be utilized within the application management mechanism",
-        "url": "https://github.com/margo/specification/issues/145",
-        "state": "OPEN",
-        "number": 145,
-        "issueType": "Feature (TWG)"
-      }
-    ],
-    "subIssueCount": 3,
-    "hasAssignee": false,
-    "status": "Core Scope Features",
-    "theme": "Trust",
-    "source": "twg"
-  },
-  {
     "title": "Develop Margo standard feature enabling application developers to target device specific runtime environments",
     "url": "https://github.com/margo/specification/issues/93",
-    "type": "Feature (TWG)",
-    "release": "PR3",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": true,
-    "status": "Core Scope Features",
-    "theme": "Flexibility",
-    "source": "twg"
-  },
-  {
-    "title": "Define how device-specific parameter values can be provided",
-    "url": "https://github.com/margo/specification/issues/141",
     "type": "Feature (TWG)",
     "release": "PR3",
     "subIssues": [],
@@ -3048,7 +3048,7 @@
     "title": "Develop margo standard strategy for WFM to authenticate and retrieve the app desc attachments securely",
     "url": "https://github.com/margo/specification/issues/90",
     "type": "Feature (TWG)",
-    "release": "PR3",
+    "release": "Future",
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
