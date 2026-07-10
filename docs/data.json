@@ -2076,8 +2076,100 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": "Backlog - GA1",
+    "status": "GA1",
     "theme": "Flexibility",
+    "source": "twg"
+  },
+  {
+    "title": "Define the Margo application image and component signing strategy",
+    "url": "https://github.com/margo/specification/issues/138",
+    "type": "Feature (TWG)",
+    "release": "GA1",
+    "subIssues": [
+      {
+        "title": "Signing app packages ",
+        "url": "https://github.com/margo/specification/issues/36",
+        "state": "OPEN",
+        "number": 36,
+        "issueType": null
+      }
+    ],
+    "subIssueCount": 1,
+    "hasAssignee": false,
+    "status": "GA1",
+    "theme": "Trust",
+    "source": "twg"
+  },
+  {
+    "title": "Define how HTTP message signatures work behind load balancers / TLS-terminating proxies",
+    "url": "https://github.com/margo/specification/issues/160",
+    "type": "Feature (TWG)",
+    "release": "PR3",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "Specification Improvements: Non SUP",
+    "theme": "Robustness",
+    "source": "twg"
+  },
+  {
+    "title": "Device Onboarding Workflow Needs Fixes for REST Timeliness and CA Support",
+    "url": "https://github.com/margo/specification/issues/164",
+    "type": null,
+    "release": "PR3",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "Specification Improvements: Non SUP",
+    "theme": "Robustness",
+    "source": "twg"
+  },
+  {
+    "title": "Onboarding security - Make it explicit that onboarding requests are authenticated/signed from the star",
+    "url": "https://github.com/margo/specification/issues/154",
+    "type": "Bug",
+    "release": "PR3",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "Specification Improvements: Non SUP",
+    "theme": "Trust",
+    "source": "twg"
+  },
+  {
+    "title": "Clarify certificate encoding format: base64(DER) vs base64(PEM)",
+    "url": "https://github.com/margo/specification/issues/132",
+    "type": "Feature (TWG)",
+    "release": "PR3",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "Specification Improvements: Non SUP",
+    "theme": "Trust",
+    "source": "twg"
+  },
+  {
+    "title": "Sequence diagram incorrectly suggests HTTP signatures begin after onboarding",
+    "url": "https://github.com/margo/specification/issues/135",
+    "type": null,
+    "release": "PR3",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "Specification Improvements: Non SUP",
+    "theme": "Trust",
+    "source": "twg"
+  },
+  {
+    "title": "Finalize Margo Version Management Strategy",
+    "url": "https://github.com/margo/specification/issues/174",
+    "type": null,
+    "release": "PR3",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "Specification Improvements: Non SUP",
+    "theme": "Robustness",
     "source": "twg"
   },
   {
@@ -2110,27 +2202,7 @@
     ],
     "subIssueCount": 3,
     "hasAssignee": false,
-    "status": "Backlog - GA1",
-    "theme": "Trust",
-    "source": "twg"
-  },
-  {
-    "title": "Define the Margo application image and component signing strategy",
-    "url": "https://github.com/margo/specification/issues/138",
-    "type": "Feature (TWG)",
-    "release": "GA1",
-    "subIssues": [
-      {
-        "title": "Signing app packages ",
-        "url": "https://github.com/margo/specification/issues/36",
-        "state": "OPEN",
-        "number": 36,
-        "issueType": null
-      }
-    ],
-    "subIssueCount": 1,
-    "hasAssignee": false,
-    "status": "Backlog - GA1",
+    "status": "GA1",
     "theme": "Trust",
     "source": "twg"
   },
@@ -2185,43 +2257,8 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": "Backlog - GA1",
+    "status": "Future Items",
     "theme": "Robustness",
-    "source": "twg"
-  },
-  {
-    "title": "Improve deployment status / desired state mechanics and workflows",
-    "url": "https://github.com/margo/specification/issues/156",
-    "type": "Feature (TWG)",
-    "release": "GA1",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": false,
-    "status": "Backlog - GA1",
-    "theme": "Robustness",
-    "source": "twg"
-  },
-  {
-    "title": "Further define how to properly handle namespaces for app deployment",
-    "url": "https://github.com/margo/specification/issues/142",
-    "type": "Feature (TWG)",
-    "release": "GA1",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": false,
-    "status": "Backlog - GA1",
-    "theme": "Robustness",
-    "source": "twg"
-  },
-  {
-    "title": "Define the strategy to enable sensitive information to be utilized within the application management mechanism",
-    "url": "https://github.com/margo/specification/issues/145",
-    "type": "Feature (TWG)",
-    "release": "GA1",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": true,
-    "status": "Backlog - GA1",
     "source": "twg"
   },
   {
@@ -2325,19 +2362,7 @@
     ],
     "subIssueCount": 3,
     "hasAssignee": false,
-    "status": "Backlog - GA1",
-    "source": "twg"
-  },
-  {
-    "title": "Define how HTTP message signatures work behind load balancers / TLS-terminating proxies",
-    "url": "https://github.com/margo/specification/issues/160",
-    "type": "Feature (TWG)",
-    "release": "PR3",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": true,
-    "status": "Gen. Improvements: Non SUP",
-    "theme": "Robustness",
+    "status": "GA1",
     "source": "twg"
   },
   {
@@ -2363,7 +2388,64 @@
     ],
     "subIssueCount": 2,
     "hasAssignee": false,
-    "status": "Backlog - GA1",
+    "status": "GA1",
+    "source": "twg"
+  },
+  {
+    "title": "Improve deployment status / desired state mechanics and workflows",
+    "url": "https://github.com/margo/specification/issues/156",
+    "type": "Feature (TWG)",
+    "release": "GA1",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "status": "GA1",
+    "theme": "Robustness",
+    "source": "twg"
+  },
+  {
+    "title": "Further define how to properly handle namespaces for app deployment",
+    "url": "https://github.com/margo/specification/issues/142",
+    "type": "Feature (TWG)",
+    "release": "GA1",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "status": "GA1",
+    "theme": "Robustness",
+    "source": "twg"
+  },
+  {
+    "title": "Define the strategy to enable sensitive information to be utilized within the application management mechanism",
+    "url": "https://github.com/margo/specification/issues/145",
+    "type": "Feature (TWG)",
+    "release": "GA1",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "GA1",
+    "source": "twg"
+  },
+  {
+    "title": "Define the Margo \"Cluster Worker\" capability requirements",
+    "url": "https://github.com/margo/specification/issues/96",
+    "type": "Feature (TWG)",
+    "release": "GA1",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "status": "GA1",
+    "source": "twg"
+  },
+  {
+    "title": "Define the Margo \"Cluster Leader\" capability requirements",
+    "url": "https://github.com/margo/specification/issues/98",
+    "type": "Feature (TWG)",
+    "release": "GA1",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "status": "GA1",
     "source": "twg"
   },
   {
@@ -2382,7 +2464,7 @@
     ],
     "subIssueCount": 1,
     "hasAssignee": false,
-    "status": "Backlog - GA1",
+    "status": "Future Items",
     "source": "twg"
   },
   {
@@ -2393,7 +2475,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
-    "status": "Backlog - GA1",
+    "status": "Future Items",
     "source": "twg"
   },
   {
@@ -2433,30 +2515,6 @@
     "hasAssignee": true,
     "status": "SUP/PR Completed",
     "theme": "Robustness",
-    "source": "twg"
-  },
-  {
-    "title": "Device Onboarding Workflow Needs Fixes for REST Timeliness and CA Support",
-    "url": "https://github.com/margo/specification/issues/164",
-    "type": null,
-    "release": "PR3",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": true,
-    "status": "Gen. Improvements: Non SUP",
-    "theme": "Robustness",
-    "source": "twg"
-  },
-  {
-    "title": "Onboarding security - Make it explicit that onboarding requests are authenticated/signed from the star",
-    "url": "https://github.com/margo/specification/issues/154",
-    "type": "Bug",
-    "release": "PR3",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": true,
-    "status": "Gen. Improvements: Non SUP",
-    "theme": "Trust",
     "source": "twg"
   },
   {
@@ -2512,30 +2570,6 @@
     "subIssueCount": 0,
     "hasAssignee": false,
     "status": "SUP/PR Completed",
-    "theme": "Trust",
-    "source": "twg"
-  },
-  {
-    "title": "Clarify certificate encoding format: base64(DER) vs base64(PEM)",
-    "url": "https://github.com/margo/specification/issues/132",
-    "type": "Feature (TWG)",
-    "release": "PR3",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": true,
-    "status": "Gen. Improvements: Non SUP",
-    "theme": "Trust",
-    "source": "twg"
-  },
-  {
-    "title": "Sequence diagram incorrectly suggests HTTP signatures begin after onboarding",
-    "url": "https://github.com/margo/specification/issues/135",
-    "type": null,
-    "release": "PR3",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": true,
-    "status": "Gen. Improvements: Non SUP",
     "theme": "Trust",
     "source": "twg"
   },
@@ -2601,7 +2635,7 @@
     ],
     "subIssueCount": 1,
     "hasAssignee": false,
-    "status": "Backlog - GA1",
+    "status": "Future Items",
     "source": "twg"
   },
   {
@@ -2620,14 +2654,14 @@
     ],
     "subIssueCount": 1,
     "hasAssignee": false,
-    "status": "Backlog - GA1",
+    "status": "Future Items",
     "source": "twg"
   },
   {
     "title": "Define how WASM workloads are packaged and deployed to the constrained device role.",
     "url": "https://github.com/margo/specification/issues/131",
     "type": "Feature (TWG)",
-    "release": "GA1",
+    "release": "Future",
     "subIssues": [
       {
         "title": "Wasm-native integration",
@@ -2639,40 +2673,18 @@
     ],
     "subIssueCount": 1,
     "hasAssignee": false,
-    "status": "Backlog - GA1",
+    "status": "Future Items",
     "source": "twg"
   },
   {
     "title": "Define the Margo \"WASM Constrained device\" capability requirements",
     "url": "https://github.com/margo/specification/issues/130",
     "type": "Feature (TWG)",
-    "release": "GA1",
+    "release": "Future",
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
-    "status": "Backlog - GA1",
-    "source": "twg"
-  },
-  {
-    "title": "Define the Margo \"Cluster Worker\" capability requirements",
-    "url": "https://github.com/margo/specification/issues/96",
-    "type": "Feature (TWG)",
-    "release": "GA1",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": false,
-    "status": "Backlog - GA1",
-    "source": "twg"
-  },
-  {
-    "title": "Define the Margo \"Cluster Leader\" capability requirements",
-    "url": "https://github.com/margo/specification/issues/98",
-    "type": "Feature (TWG)",
-    "release": "GA1",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": false,
-    "status": "Backlog - GA1",
+    "status": "Future Items",
     "source": "twg"
   },
   {
@@ -2683,7 +2695,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
-    "status": "Backlog - GA1",
+    "status": "Future Items",
     "source": "twg"
   },
   {
@@ -3052,31 +3064,8 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": "Specification Improvements :SUP",
+    "status": "Future Items",
     "theme": "Trust",
-    "source": "twg"
-  },
-  {
-    "title": "Avoiding external registry access by WOA",
-    "url": "https://github.com/margo/specification/issues/20",
-    "type": null,
-    "release": "GA1",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": false,
-    "status": "Backlog - GA1",
-    "source": "twg"
-  },
-  {
-    "title": "Finalize Margo Version Management Strategy",
-    "url": "https://github.com/margo/specification/issues/174",
-    "type": null,
-    "release": "PR3",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": true,
-    "status": "Gen. Improvements: Non SUP",
-    "theme": "Robustness",
     "source": "twg"
   },
   {
