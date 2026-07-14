@@ -2568,7 +2568,7 @@
     "release": "PR2",
     "subIssues": [],
     "subIssueCount": 0,
-    "hasAssignee": false,
+    "hasAssignee": true,
     "status": "SUP/PR Completed",
     "theme": "Trust",
     "source": "twg"
