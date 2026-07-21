@@ -558,9 +558,16 @@
         "state": "OPEN",
         "number": 54,
         "issueType": "Epic (Child)"
+      },
+      {
+        "title": "Define how applications can request parameter values from a device at deploy time",
+        "url": "https://github.com/margo/product_management/issues/86",
+        "state": "OPEN",
+        "number": 86,
+        "issueType": "Epic (Child)"
       }
     ],
-    "subIssueCount": 4,
+    "subIssueCount": 5,
     "hasAssignee": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
@@ -985,8 +992,16 @@
     "url": "https://github.com/margo/product_management/issues/60",
     "type": "Epic (Child)",
     "release": "PR1",
-    "subIssues": [],
-    "subIssueCount": 0,
+    "subIssues": [
+      {
+        "title": "Define how the WFM manages OCI credentials within the Margo device.",
+        "url": "https://github.com/margo/specification/issues/129",
+        "state": "OPEN",
+        "number": 129,
+        "issueType": "Feature (TWG)"
+      }
+    ],
+    "subIssueCount": 1,
     "hasAssignee": true,
     "status": "TWG - Requirement approved and merged",
     "pr1": null,
@@ -2065,6 +2080,89 @@
     "subIssueCount": 0,
     "hasAssignee": false,
     "status": "TWG - Approved Requirements",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "Define how the WFM manages OCI credentials within the Margo device.",
+    "url": "https://github.com/margo/specification/issues/129",
+    "type": "Feature (TWG)",
+    "release": "GA1",
+    "subIssues": [
+      {
+        "title": "[PlugFest Feedback] - Rockwell x ZEDEDA",
+        "url": "https://github.com/margo/plugfest/issues/47",
+        "state": "CLOSED",
+        "number": 47,
+        "issueType": null
+      },
+      {
+        "title": "Security - Access to Private Registries",
+        "url": "https://github.com/margo/specification/issues/15",
+        "state": "OPEN",
+        "number": 15,
+        "issueType": null
+      },
+      {
+        "title": "Define the strategy to enable sensitive information to be utilized within the application management mechanism",
+        "url": "https://github.com/margo/specification/issues/145",
+        "state": "OPEN",
+        "number": 145,
+        "issueType": "Feature (TWG)"
+      }
+    ],
+    "subIssueCount": 3,
+    "hasAssignee": false,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "theme": "Trust",
+    "source": "pm"
+  },
+  {
+    "title": "[PlugFest Feedback] - Rockwell x ZEDEDA",
+    "url": "https://github.com/margo/plugfest/issues/47",
+    "type": null,
+    "release": null,
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "status": "TWG - Approved Requirements",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "Security - Access to Private Registries",
+    "url": "https://github.com/margo/specification/issues/15",
+    "type": null,
+    "release": null,
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "Define the strategy to enable sensitive information to be utilized within the application management mechanism",
+    "url": "https://github.com/margo/specification/issues/145",
+    "type": "Feature (TWG)",
+    "release": "GA1",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "Define how applications can request parameter values from a device at deploy time",
+    "url": "https://github.com/margo/product_management/issues/86",
+    "type": "Epic (Child)",
+    "release": "GA1",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "PM - Requirement under Review",
     "pr1": null,
     "source": "pm"
   },
