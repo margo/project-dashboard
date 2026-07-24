@@ -2167,6 +2167,18 @@
     "source": "pm"
   },
   {
+    "title": "Enhance schema for the version number in the application description",
+    "url": "https://github.com/margo/specification/issues/143",
+    "type": "Feature (TWG)",
+    "release": "PR3",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "Specification Improvements :SUP",
+    "theme": "Robustness",
+    "source": "twg"
+  },
+  {
     "title": "Define how device-specific parameter values can be provided",
     "url": "https://github.com/margo/specification/issues/141",
     "type": "Feature (TWG)",
@@ -3085,18 +3097,6 @@
     "subIssueCount": 0,
     "hasAssignee": true,
     "status": "Specification Improvements :SUP",
-    "theme": "Robustness",
-    "source": "twg"
-  },
-  {
-    "title": "Enhance schema for the version number in the application description",
-    "url": "https://github.com/margo/specification/issues/143",
-    "type": "Feature (TWG)",
-    "release": "PR3",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": true,
-    "status": "SUP/PR Completed",
     "theme": "Robustness",
     "source": "twg"
   },
