@@ -2167,6 +2167,18 @@
     "source": "pm"
   },
   {
+    "title": "Define how vendor specific extensions can be supported within the application description file + device capabilities",
+    "url": "https://github.com/margo/specification/issues/144",
+    "type": "Feature (TWG)",
+    "release": "PR3",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "SUP/PR Completed",
+    "theme": "Flexibility",
+    "source": "twg"
+  },
+  {
     "title": "Enhance schema for the version number in the application description",
     "url": "https://github.com/margo/specification/issues/143",
     "type": "Feature (TWG)",
@@ -2399,18 +2411,6 @@
     "source": "twg"
   },
   {
-    "title": "Define how vendor specific extensions can be supported within the application description file + device capabilities",
-    "url": "https://github.com/margo/specification/issues/144",
-    "type": "Feature (TWG)",
-    "release": "PR3",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": true,
-    "status": "SUP Approved",
-    "theme": "Flexibility",
-    "source": "twg"
-  },
-  {
     "title": "Replace device roles with capabilities within Margo artifacts",
     "url": "https://github.com/margo/specification/issues/136",
     "type": "Feature (TWG)",
@@ -2437,6 +2437,52 @@
       }
     ],
     "subIssueCount": 1,
+    "hasAssignee": true,
+    "status": "SUP Approved",
+    "theme": "Trust",
+    "source": "twg"
+  },
+  {
+    "title": "Develop Margo standard feature enabling application developers to target device specific runtime environments",
+    "url": "https://github.com/margo/specification/issues/93",
+    "type": "Feature (TWG)",
+    "release": "PR3",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "SUP Approved",
+    "theme": "Flexibility",
+    "source": "twg"
+  },
+  {
+    "title": "Complete WFM client onboarding strategy following the MIAF SUP finalization",
+    "url": "https://github.com/margo/specification/issues/146",
+    "type": "Feature (TWG)",
+    "release": "PR3",
+    "subIssues": [
+      {
+        "title": "[PlugFest Feedback] - Atym - Gateway device certificate",
+        "url": "https://github.com/margo/plugfest/issues/31",
+        "state": "CLOSED",
+        "number": 31,
+        "issueType": null
+      },
+      {
+        "title": "[PlugFest Feedback] - Schneider Electric x Logiccloud",
+        "url": "https://github.com/margo/plugfest/issues/27",
+        "state": "CLOSED",
+        "number": 27,
+        "issueType": null
+      },
+      {
+        "title": "Define/improve Certificate API functions(Child of Issue #146)",
+        "url": "https://github.com/margo/specification/issues/155",
+        "state": "OPEN",
+        "number": 155,
+        "issueType": "Feature (TWG)"
+      }
+    ],
+    "subIssueCount": 3,
     "hasAssignee": true,
     "status": "SUP Approved",
     "theme": "Trust",
@@ -2680,52 +2726,6 @@
     "subIssueCount": 0,
     "hasAssignee": true,
     "status": "SUP/PR Completed",
-    "theme": "Trust",
-    "source": "twg"
-  },
-  {
-    "title": "Develop Margo standard feature enabling application developers to target device specific runtime environments",
-    "url": "https://github.com/margo/specification/issues/93",
-    "type": "Feature (TWG)",
-    "release": "PR3",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": true,
-    "status": "Core Scope Features",
-    "theme": "Flexibility",
-    "source": "twg"
-  },
-  {
-    "title": "Complete WFM client onboarding strategy following the MIAF SUP finalization",
-    "url": "https://github.com/margo/specification/issues/146",
-    "type": "Feature (TWG)",
-    "release": "PR3",
-    "subIssues": [
-      {
-        "title": "[PlugFest Feedback] - Atym - Gateway device certificate",
-        "url": "https://github.com/margo/plugfest/issues/31",
-        "state": "CLOSED",
-        "number": 31,
-        "issueType": null
-      },
-      {
-        "title": "[PlugFest Feedback] - Schneider Electric x Logiccloud",
-        "url": "https://github.com/margo/plugfest/issues/27",
-        "state": "CLOSED",
-        "number": 27,
-        "issueType": null
-      },
-      {
-        "title": "Define/improve Certificate API functions(Child of Issue #146)",
-        "url": "https://github.com/margo/specification/issues/155",
-        "state": "OPEN",
-        "number": 155,
-        "issueType": "Feature (TWG)"
-      }
-    ],
-    "subIssueCount": 3,
-    "hasAssignee": true,
-    "status": "Core Scope Features",
     "theme": "Trust",
     "source": "twg"
   },
