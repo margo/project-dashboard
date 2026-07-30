@@ -2548,6 +2548,17 @@
     "source": "twg"
   },
   {
+    "title": "Improve Workload Management API to support improved app management (Upgrade/Rollback)",
+    "url": "https://github.com/margo/specification/issues/201",
+    "type": "Feature (TWG)",
+    "release": "GA1",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "status": "GA1",
+    "source": "twg"
+  },
+  {
     "title": "Improve deployment status / desired state mechanics and workflows",
     "url": "https://github.com/margo/specification/issues/156",
     "type": "Feature (TWG)",
