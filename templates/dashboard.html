@@ -1124,8 +1124,10 @@
   'use strict';
 
   var _d    = window.__DASHBOARD__;
-  var items = _d.items;
   var meta  = _d.meta;
+  // Never render items flagged excluded at data-generation time (no milestone
+  // set, or milestone === "Future" in any case) — hidden from every tab/sub-tab.
+  var items = (_d.items || []).filter(function (i) { return !i.excluded; });
 
   /* ------------------------------------------------------------------
      Canonical status resolution
@@ -1444,7 +1446,10 @@
     if (currentSubTab === 'pr3') return filtered.filter(function (i) {
       return i.release === 'PR3' || i.linkedFromFeature === true;
     });
-    return filtered; // 'ga1' — no release filter, shows all
+    // 'ga1' — combined view: the full journey to GA1 (PR1 -> PR2 -> PR3 -> GA1).
+    return filtered.filter(function (i) {
+      return ['PR1', 'PR2', 'PR3', 'GA1'].includes(i.release);
+    });
   }
 
   /**

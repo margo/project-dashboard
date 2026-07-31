@@ -210,6 +210,16 @@ function mapItem(rawItem, effectiveMappings) {
     hasAssignee:   (rawItem.content?.assignees?.nodes?.length ?? 0) > 0,
   };
 
+  // Flag items that must never appear on the dashboard: no milestone at all,
+  // or a "Future" milestone (any case). Excluded items are still written to
+  // data.json (for auditing) but the template filters them out of every tab.
+  if (!item.release) {
+    item.release  = null;
+    item.excluded = true;
+  } else if (item.release.toLowerCase() === 'future') {
+    item.excluded = true;
+  }
+
   for (const [logicalKey, githubFieldName] of Object.entries(effectiveMappings)) {
     item[logicalKey] = byFieldName[githubFieldName] ?? null;
   }
