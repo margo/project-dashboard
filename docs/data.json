@@ -54,6 +54,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -90,6 +91,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": "2025-05-27",
     "source": "pm"
@@ -201,6 +203,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": "2025-05-27",
     "source": "pm"
@@ -225,6 +228,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": "2025-05-27",
     "source": "pm"
@@ -237,6 +241,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": "2025-05-27",
     "source": "pm"
@@ -249,6 +254,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": "2025-05-27",
     "source": "pm"
@@ -261,6 +267,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": "2025-05-27",
     "source": "pm"
@@ -273,6 +280,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": "2025-05-27",
     "source": "pm"
@@ -297,6 +305,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": "2025-05-27",
     "source": "pm"
@@ -309,6 +318,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -321,6 +331,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": "2025-05-27",
     "source": "pm"
@@ -333,6 +344,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": "2025-05-27",
     "source": "pm"
@@ -409,6 +421,7 @@
     ],
     "subIssueCount": 9,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": "2025-05-27",
     "source": "pm"
@@ -421,6 +434,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": "2025-05-27",
     "source": "pm"
@@ -433,6 +447,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -445,6 +460,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -457,6 +473,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -469,6 +486,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "TWG - Approved Requirements",
     "pr1": null,
     "source": "pm"
@@ -481,6 +499,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -501,6 +520,7 @@
     ],
     "subIssueCount": 1,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -521,6 +541,7 @@
     ],
     "subIssueCount": 1,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -569,6 +590,7 @@
     ],
     "subIssueCount": 5,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -589,6 +611,7 @@
     ],
     "subIssueCount": 1,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -601,6 +624,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -635,6 +659,7 @@
     ],
     "subIssueCount": 3,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -683,6 +708,7 @@
     ],
     "subIssueCount": 5,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -710,6 +736,7 @@
     ],
     "subIssueCount": 2,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -744,6 +771,7 @@
     ],
     "subIssueCount": 3,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -764,6 +792,7 @@
     ],
     "subIssueCount": 1,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -784,6 +813,7 @@
     ],
     "subIssueCount": 1,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -804,6 +834,7 @@
     ],
     "subIssueCount": 1,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -824,6 +855,7 @@
     ],
     "subIssueCount": 1,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -851,6 +883,7 @@
     ],
     "subIssueCount": 2,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -883,6 +916,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -963,6 +997,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -1015,6 +1050,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -1091,6 +1127,7 @@
     ],
     "subIssueCount": 1,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -1103,6 +1140,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -1135,6 +1173,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -1147,6 +1186,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -1198,6 +1238,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "theme": "Trust",
@@ -1373,6 +1414,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -1433,6 +1475,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -1445,6 +1488,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "TWG - Approved Requirements",
     "pr1": null,
     "source": "pm"
@@ -1457,6 +1501,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -1489,6 +1534,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -1544,6 +1590,7 @@
     ],
     "subIssueCount": 6,
     "hasAssignee": true,
+    "excluded": true,
     "status": "TWG - Approved Requirements",
     "pr1": null,
     "source": "pm"
@@ -1680,6 +1727,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "TWG - Approved Requirements",
     "pr1": null,
     "source": "pm"
@@ -1692,6 +1740,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -1704,6 +1753,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -1788,6 +1838,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "TWG - Approved Requirements",
     "pr1": null,
     "source": "pm"
@@ -1812,6 +1863,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
+    "excluded": true,
     "status": "TWG - Approved Requirements",
     "pr1": null,
     "source": "pm"
@@ -1824,6 +1876,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "TWG - Approved Requirements",
     "pr1": null,
     "source": "pm"
@@ -1884,6 +1937,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -1896,6 +1950,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "TWG - Approved Requirements",
     "pr1": null,
     "source": "pm"
@@ -1908,6 +1963,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -1953,6 +2009,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -1986,6 +2043,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -2034,6 +2092,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
+    "excluded": true,
     "status": "TWG - Approved Requirements",
     "pr1": null,
     "source": "pm"
@@ -2046,6 +2105,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
+    "excluded": true,
     "status": "TWG - Approved Requirements",
     "pr1": null,
     "source": "pm"
@@ -2079,6 +2139,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
+    "excluded": true,
     "status": "TWG - Approved Requirements",
     "pr1": null,
     "source": "pm"
@@ -2126,6 +2187,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
+    "excluded": true,
     "status": "TWG - Approved Requirements",
     "pr1": null,
     "source": "pm"
@@ -2138,6 +2200,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -2163,6 +2226,40 @@
     "subIssueCount": 0,
     "hasAssignee": true,
     "status": "PM - Requirement under Review",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "[Prod-Req] Managed update sources with stored credentials",
+    "url": "https://github.com/margo/product_management/issues/89",
+    "type": "Epic (Child)",
+    "release": null,
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "excluded": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "[Prod-Req] OS/FW Lifecycle Management",
+    "url": "https://github.com/margo/product_management/issues/88",
+    "type": "Epic (Parent)",
+    "release": null,
+    "subIssues": [
+      {
+        "title": "[Prod-Req] Managed update sources with stored credentials",
+        "url": "https://github.com/margo/product_management/issues/89",
+        "state": "OPEN",
+        "number": 89,
+        "issueType": "Epic (Child)"
+      }
+    ],
+    "subIssueCount": 1,
+    "hasAssignee": true,
+    "excluded": true,
+    "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
   },
@@ -2782,7 +2879,7 @@
     "title": "Define how WASM workloads are packaged and deployed to the constrained device role.",
     "url": "https://github.com/margo/specification/issues/131",
     "type": "Feature (TWG)",
-    "release": "Future",
+    "release": null,
     "subIssues": [
       {
         "title": "Wasm-native integration",
@@ -2794,6 +2891,7 @@
     ],
     "subIssueCount": 1,
     "hasAssignee": false,
+    "excluded": true,
     "status": "Future Items",
     "source": "twg"
   },
@@ -2805,6 +2903,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
+    "excluded": true,
     "status": "Future Items",
     "source": "twg"
   },
@@ -3074,6 +3173,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
+    "excluded": true,
     "status": "SUP/PR Completed",
     "source": "twg"
   },
@@ -3085,6 +3185,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
+    "excluded": true,
     "status": "SUP/PR Completed",
     "source": "twg"
   },
@@ -3096,6 +3197,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
+    "excluded": true,
     "status": null,
     "source": "twg"
   },
@@ -3173,6 +3275,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": "Future Items",
     "theme": "Trust",
     "source": "twg"
@@ -3185,6 +3288,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
+    "excluded": true,
     "status": null,
     "source": "twg"
   }
