@@ -2233,7 +2233,7 @@
     "title": "[Prod-Req] Managed update sources with stored credentials",
     "url": "https://github.com/margo/product_management/issues/89",
     "type": "Epic (Child)",
-    "release": null,
+    "release": "Future",
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
