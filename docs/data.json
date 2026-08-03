@@ -851,9 +851,37 @@
         "state": "OPEN",
         "number": 73,
         "issueType": "Epic (Child)"
+      },
+      {
+        "title": "[OS/FW Lifecycle][DFM] Managed update sources with stored credentials",
+        "url": "https://github.com/margo/product_management/issues/89",
+        "state": "OPEN",
+        "number": 89,
+        "issueType": "Epic (Child)"
+      },
+      {
+        "title": "[OS/FW Lifecycle][DFM] Per-group policy from a single curated source",
+        "url": "https://github.com/margo/product_management/issues/90",
+        "state": "OPEN",
+        "number": 90,
+        "issueType": "Epic (Child)"
+      },
+      {
+        "title": "[OS/FW Lifecycle][DFMC] Autonomous patch-and-update from desired-state policy",
+        "url": "https://github.com/margo/product_management/issues/91",
+        "state": "OPEN",
+        "number": 91,
+        "issueType": "Epic (Child)"
+      },
+      {
+        "title": "[OS/FW Lifecycle][DFMC] Fetch updates from the policy's designated source",
+        "url": "https://github.com/margo/product_management/issues/92",
+        "state": "OPEN",
+        "number": 92,
+        "issueType": "Epic (Child)"
       }
     ],
-    "subIssueCount": 1,
+    "subIssueCount": 5,
     "hasAssignee": true,
     "excluded": true,
     "status": "PM - Requirement in Draft",
@@ -2230,7 +2258,7 @@
     "source": "pm"
   },
   {
-    "title": "[Prod-Req] Managed update sources with stored credentials",
+    "title": "[OS/FW Lifecycle][DFM] Managed update sources with stored credentials",
     "url": "https://github.com/margo/product_management/issues/89",
     "type": "Epic (Child)",
     "release": "Future",
@@ -2247,16 +2275,47 @@
     "url": "https://github.com/margo/product_management/issues/88",
     "type": "Epic (Parent)",
     "release": null,
-    "subIssues": [
-      {
-        "title": "[Prod-Req] Managed update sources with stored credentials",
-        "url": "https://github.com/margo/product_management/issues/89",
-        "state": "OPEN",
-        "number": 89,
-        "issueType": "Epic (Child)"
-      }
-    ],
-    "subIssueCount": 1,
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "excluded": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "[OS/FW Lifecycle][DFM] Per-group policy from a single curated source",
+    "url": "https://github.com/margo/product_management/issues/90",
+    "type": "Epic (Child)",
+    "release": "Future",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "excluded": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "[OS/FW Lifecycle][DFMC] Autonomous patch-and-update from desired-state policy",
+    "url": "https://github.com/margo/product_management/issues/91",
+    "type": "Epic (Child)",
+    "release": "Future",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "excluded": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "[OS/FW Lifecycle][DFMC] Fetch updates from the policy's designated source",
+    "url": "https://github.com/margo/product_management/issues/92",
+    "type": "Epic (Child)",
+    "release": "Future",
+    "subIssues": [],
+    "subIssueCount": 0,
     "hasAssignee": true,
     "excluded": true,
     "status": "PM - Requirement in Draft",
@@ -2716,7 +2775,7 @@
     "title": "Define support for multiple instances of the same deployment profile type targeting same or 3rd party vendor devices",
     "url": "https://github.com/margo/specification/issues/170",
     "type": "Feature (TWG)",
-    "release": "GA1",
+    "release": "Future",
     "subIssues": [
       {
         "title": "[PlugFest Feedback] - Hilscher / Sandbox App requirement improvement needed",
@@ -2728,6 +2787,7 @@
     ],
     "subIssueCount": 1,
     "hasAssignee": false,
+    "excluded": true,
     "status": "Future Items",
     "source": "twg"
   },
@@ -2860,7 +2920,7 @@
     "title": "Define how application developers can deploy WASM workloads through helm manifests, and how it impacts the various established system elements in Margo.",
     "url": "https://github.com/margo/specification/issues/104",
     "type": "Feature (TWG)",
-    "release": "GA1",
+    "release": "Future",
     "subIssues": [
       {
         "title": "Wasm integration through Helm",
@@ -2872,6 +2932,7 @@
     ],
     "subIssueCount": 1,
     "hasAssignee": false,
+    "excluded": true,
     "status": "Future Items",
     "source": "twg"
   },
@@ -2911,10 +2972,11 @@
     "title": "Define how Margo application description can support multi language",
     "url": "https://github.com/margo/specification/issues/128",
     "type": "Feature (TWG)",
-    "release": "GA1",
+    "release": "Future",
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
+    "excluded": true,
     "status": "Future Items",
     "source": "twg"
   },
