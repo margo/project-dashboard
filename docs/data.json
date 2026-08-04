@@ -175,9 +175,16 @@
         "state": "CLOSED",
         "number": 6,
         "issueType": null
+      },
+      {
+        "title": "Define support for multiple instances of the same deployment profile type targeting same or 3rd party vendor devices",
+        "url": "https://github.com/margo/specification/issues/170",
+        "state": "OPEN",
+        "number": 170,
+        "issueType": "Feature (TWG)"
       }
     ],
-    "subIssueCount": 1,
+    "subIssueCount": 2,
     "hasAssignee": true,
     "status": "TWG - Requirement approved and merged",
     "pr1": null,
@@ -655,9 +662,16 @@
         "state": "OPEN",
         "number": 71,
         "issueType": "Epic (Child)"
+      },
+      {
+        "title": "Enabling Fleet Management of Non Margo Devices through a Gateway Service",
+        "url": "https://github.com/margo/product_management/issues/80",
+        "state": "OPEN",
+        "number": 80,
+        "issueType": "Epic (Child)"
       }
     ],
-    "subIssueCount": 3,
+    "subIssueCount": 4,
     "hasAssignee": true,
     "excluded": true,
     "status": "PM - Requirement in Draft",
@@ -1198,8 +1212,16 @@
     "url": "https://github.com/margo/specification/issues/63",
     "type": "Task",
     "release": null,
-    "subIssues": [],
-    "subIssueCount": 0,
+    "subIssues": [
+      {
+        "title": "SUP Voting Issue - Device to WFM API Details Finalization",
+        "url": "https://github.com/margo/specification-enhancements/issues/33",
+        "state": "CLOSED",
+        "number": 33,
+        "issueType": "Task"
+      }
+    ],
+    "subIssueCount": 1,
     "hasAssignee": false,
     "excluded": true,
     "status": "PM - Requirement in Draft",
@@ -1291,9 +1313,16 @@
         "state": "CLOSED",
         "number": 29,
         "issueType": "Story (TWG)"
+      },
+      {
+        "title": "SUP Voting Issue - Application Package as OCI",
+        "url": "https://github.com/margo/specification-enhancements/issues/34",
+        "state": "CLOSED",
+        "number": 34,
+        "issueType": "Task"
       }
     ],
-    "subIssueCount": 2,
+    "subIssueCount": 3,
     "hasAssignee": true,
     "status": "TWG - Approved Requirements",
     "pr1": null,
@@ -1413,9 +1442,16 @@
         "state": "OPEN",
         "number": 53,
         "issueType": null
+      },
+      {
+        "title": "SUP Voting Issue - Desired State Communication Strategy",
+        "url": "https://github.com/margo/specification-enhancements/issues/32",
+        "state": "CLOSED",
+        "number": 32,
+        "issueType": "Task"
       }
     ],
-    "subIssueCount": 3,
+    "subIssueCount": 4,
     "hasAssignee": true,
     "status": "TWG - Approved Requirements",
     "pr1": null,
@@ -1426,8 +1462,16 @@
     "url": "https://github.com/margo/specification/issues/93",
     "type": "Feature (TWG)",
     "release": "PR3",
-    "subIssues": [],
-    "subIssueCount": 0,
+    "subIssues": [
+      {
+        "title": "SUP Voting - Custom Runtimes",
+        "url": "https://github.com/margo/specification-enhancements/issues/78",
+        "state": "CLOSED",
+        "number": 78,
+        "issueType": null
+      }
+    ],
+    "subIssueCount": 1,
     "hasAssignee": true,
     "status": "TWG - Requirement in progress",
     "pr1": null,
@@ -2054,9 +2098,23 @@
         "state": "OPEN",
         "number": 65,
         "issueType": "Task"
+      },
+      {
+        "title": "SUP Voting - MIAF SUP",
+        "url": "https://github.com/margo/specification-enhancements/issues/70",
+        "state": "CLOSED",
+        "number": 70,
+        "issueType": null
+      },
+      {
+        "title": "SUP Voting - WFM Identity Profile",
+        "url": "https://github.com/margo/specification-enhancements/issues/71",
+        "state": "CLOSED",
+        "number": 71,
+        "issueType": null
       }
     ],
-    "subIssueCount": 1,
+    "subIssueCount": 3,
     "hasAssignee": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
@@ -2323,12 +2381,185 @@
     "source": "pm"
   },
   {
+    "title": "Enabling Fleet Management of Non Margo Devices through a Gateway Service",
+    "url": "https://github.com/margo/product_management/issues/80",
+    "type": "Epic (Child)",
+    "release": "PR2",
+    "subIssues": [
+      {
+        "title": "Define the Margo \"Gateway\" capability Requirements",
+        "url": "https://github.com/margo/specification/issues/137",
+        "state": "OPEN",
+        "number": 137,
+        "issueType": "Feature (TWG)"
+      }
+    ],
+    "subIssueCount": 1,
+    "hasAssignee": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "Define the Margo \"Gateway\" capability Requirements",
+    "url": "https://github.com/margo/specification/issues/137",
+    "type": "Feature (TWG)",
+    "release": "PR2",
+    "subIssues": [
+      {
+        "title": "SUP Voting Issue - Gateway Functionality(Management Interface)",
+        "url": "https://github.com/margo/specification-enhancements/issues/45",
+        "state": "CLOSED",
+        "number": 45,
+        "issueType": null
+      }
+    ],
+    "subIssueCount": 1,
+    "hasAssignee": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "Define support for multiple instances of the same deployment profile type targeting same or 3rd party vendor devices",
+    "url": "https://github.com/margo/specification/issues/170",
+    "type": "Feature (TWG)",
+    "release": "Future",
+    "subIssues": [
+      {
+        "title": "[PlugFest Feedback] - Hilscher / Sandbox App requirement improvement needed",
+        "url": "https://github.com/margo/plugfest/issues/29",
+        "state": "CLOSED",
+        "number": 29,
+        "issueType": null
+      }
+    ],
+    "subIssueCount": 1,
+    "hasAssignee": false,
+    "excluded": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "[PlugFest Feedback] - Hilscher / Sandbox App requirement improvement needed",
+    "url": "https://github.com/margo/plugfest/issues/29",
+    "type": null,
+    "release": null,
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "excluded": true,
+    "status": "TWG - Approved Requirements",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "SUP Voting Issue - Desired State Communication Strategy",
+    "url": "https://github.com/margo/specification-enhancements/issues/32",
+    "type": "Task",
+    "release": null,
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "excluded": true,
+    "status": "TWG - Approved Requirements",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "SUP Voting Issue - Device to WFM API Details Finalization",
+    "url": "https://github.com/margo/specification-enhancements/issues/33",
+    "type": "Task",
+    "release": null,
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "excluded": true,
+    "status": "TWG - Approved Requirements",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "SUP Voting Issue - Application Package as OCI",
+    "url": "https://github.com/margo/specification-enhancements/issues/34",
+    "type": "Task",
+    "release": null,
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "excluded": true,
+    "status": "TWG - Approved Requirements",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "SUP Voting Issue - Gateway Functionality(Management Interface)",
+    "url": "https://github.com/margo/specification-enhancements/issues/45",
+    "type": null,
+    "release": null,
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "excluded": true,
+    "status": "TWG - Approved Requirements",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "SUP Voting - MIAF SUP",
+    "url": "https://github.com/margo/specification-enhancements/issues/70",
+    "type": null,
+    "release": null,
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "excluded": true,
+    "status": "TWG - Approved Requirements",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "SUP Voting - WFM Identity Profile",
+    "url": "https://github.com/margo/specification-enhancements/issues/71",
+    "type": null,
+    "release": null,
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "excluded": true,
+    "status": "TWG - Approved Requirements",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "SUP Voting - Custom Runtimes",
+    "url": "https://github.com/margo/specification-enhancements/issues/78",
+    "type": null,
+    "release": null,
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "excluded": true,
+    "status": "TWG - Approved Requirements",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
     "title": "Improve deployment status / desired state mechanics and workflows",
     "url": "https://github.com/margo/specification/issues/156",
     "type": "Feature (TWG)",
     "release": "GA1",
-    "subIssues": [],
-    "subIssueCount": 0,
+    "subIssues": [
+      {
+        "title": "SUP Voting - Desired State Read Receipts",
+        "url": "https://github.com/margo/specification-enhancements/issues/82",
+        "state": "OPEN",
+        "number": 82,
+        "issueType": null
+      }
+    ],
+    "subIssueCount": 1,
     "hasAssignee": true,
     "status": "Specification Improvements :SUP",
     "theme": "Robustness",
@@ -2427,6 +2658,18 @@
     "source": "twg"
   },
   {
+    "title": "Finalize Margo Version Management Strategy",
+    "url": "https://github.com/margo/specification/issues/174",
+    "type": null,
+    "release": "PR3",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "SUP/PR Completed",
+    "theme": "Robustness",
+    "source": "twg"
+  },
+  {
     "title": "Clarify certificate encoding format: base64(DER) vs base64(PEM)",
     "url": "https://github.com/margo/specification/issues/132",
     "type": "Feature (TWG)",
@@ -2448,18 +2691,6 @@
     "hasAssignee": true,
     "status": "SUP/PR Completed",
     "theme": "Trust",
-    "source": "twg"
-  },
-  {
-    "title": "Finalize Margo Version Management Strategy",
-    "url": "https://github.com/margo/specification/issues/174",
-    "type": null,
-    "release": "PR3",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": true,
-    "status": "Specification Improvements: Non SUP",
-    "theme": "Robustness",
     "source": "twg"
   },
   {
@@ -2501,8 +2732,16 @@
     "url": "https://github.com/margo/specification/issues/137",
     "type": "Feature (TWG)",
     "release": "PR2",
-    "subIssues": [],
-    "subIssueCount": 0,
+    "subIssues": [
+      {
+        "title": "SUP Voting Issue - Gateway Functionality(Management Interface)",
+        "url": "https://github.com/margo/specification-enhancements/issues/45",
+        "state": "CLOSED",
+        "number": 45,
+        "issueType": null
+      }
+    ],
+    "subIssueCount": 1,
     "hasAssignee": true,
     "status": "SUP/PR Completed",
     "source": "twg"
@@ -2512,8 +2751,23 @@
     "url": "https://github.com/margo/specification/issues/148",
     "type": "Feature (TWG)",
     "release": "PR2",
-    "subIssues": [],
-    "subIssueCount": 0,
+    "subIssues": [
+      {
+        "title": "SUP Voting Issue - Helm v4 support",
+        "url": "https://github.com/margo/specification-enhancements/issues/51",
+        "state": "CLOSED",
+        "number": 51,
+        "issueType": null
+      },
+      {
+        "title": "SUP Voting - Limit Helm support to client side features only",
+        "url": "https://github.com/margo/specification-enhancements/issues/52",
+        "state": "CLOSED",
+        "number": 52,
+        "issueType": null
+      }
+    ],
+    "subIssueCount": 2,
     "hasAssignee": true,
     "status": "SUP/PR Completed",
     "theme": "Robustness",
@@ -2543,10 +2797,11 @@
     "title": "Non-root Containers",
     "url": "https://github.com/margo/specification/issues/37",
     "type": null,
-    "release": "GA1",
+    "release": "Future",
     "subIssues": [],
     "subIssueCount": 0,
-    "hasAssignee": true,
+    "hasAssignee": false,
+    "excluded": true,
     "status": "Future Items",
     "theme": "Robustness",
     "source": "twg"
@@ -2583,8 +2838,16 @@
     "url": "https://github.com/margo/specification/issues/136",
     "type": "Feature (TWG)",
     "release": "PR3",
-    "subIssues": [],
-    "subIssueCount": 0,
+    "subIssues": [
+      {
+        "title": "SUP VOTING - Device roles to capabilities",
+        "url": "https://github.com/margo/specification-enhancements/issues/63",
+        "state": "CLOSED",
+        "number": 63,
+        "issueType": null
+      }
+    ],
+    "subIssueCount": 1,
     "hasAssignee": true,
     "status": "SUP Approved",
     "theme": "Robustness",
@@ -2602,9 +2865,23 @@
         "state": "OPEN",
         "number": 65,
         "issueType": "Task"
+      },
+      {
+        "title": "SUP Voting - MIAF SUP",
+        "url": "https://github.com/margo/specification-enhancements/issues/70",
+        "state": "CLOSED",
+        "number": 70,
+        "issueType": null
+      },
+      {
+        "title": "SUP Voting - WFM Identity Profile",
+        "url": "https://github.com/margo/specification-enhancements/issues/71",
+        "state": "CLOSED",
+        "number": 71,
+        "issueType": null
       }
     ],
-    "subIssueCount": 1,
+    "subIssueCount": 3,
     "hasAssignee": true,
     "status": "SUP Approved",
     "theme": "Trust",
@@ -2615,8 +2892,16 @@
     "url": "https://github.com/margo/specification/issues/93",
     "type": "Feature (TWG)",
     "release": "PR3",
-    "subIssues": [],
-    "subIssueCount": 0,
+    "subIssues": [
+      {
+        "title": "SUP Voting - Custom Runtimes",
+        "url": "https://github.com/margo/specification-enhancements/issues/78",
+        "state": "CLOSED",
+        "number": 78,
+        "issueType": null
+      }
+    ],
+    "subIssueCount": 1,
     "hasAssignee": true,
     "status": "SUP Approved",
     "theme": "Flexibility",
@@ -2795,10 +3080,11 @@
     "title": "Define how device to WFM API interactions should be handled for intermittently connected devices",
     "url": "https://github.com/margo/specification/issues/147",
     "type": "Feature (TWG)",
-    "release": "GA1",
+    "release": "Future",
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
+    "excluded": true,
     "status": "Future Items",
     "source": "twg"
   },
@@ -2878,8 +3164,16 @@
     "url": "https://github.com/margo/specification/issues/153",
     "type": "Feature (TWG)",
     "release": "PR3",
-    "subIssues": [],
-    "subIssueCount": 0,
+    "subIssues": [
+      {
+        "title": "SUP Voting - Common API error responses: RFC 9457",
+        "url": "https://github.com/margo/specification-enhancements/issues/83",
+        "state": "OPEN",
+        "number": 83,
+        "issueType": null
+      }
+    ],
+    "subIssueCount": 1,
     "hasAssignee": true,
     "status": "Specification Improvements :SUP",
     "theme": "Robustness",
@@ -2901,7 +3195,7 @@
     "title": "Define the Margo strategy regarding ingestion of helm charts within the WFM and impacts on deployment to cluster enabled devices.",
     "url": "https://github.com/margo/specification/issues/103",
     "type": "Feature (TWG)",
-    "release": "GA1",
+    "release": "Future",
     "subIssues": [
       {
         "title": "Finalize decision regarding Fleet Managers ingestion Helm Charts",
@@ -2913,6 +3207,7 @@
     ],
     "subIssueCount": 1,
     "hasAssignee": false,
+    "excluded": true,
     "status": "Future Items",
     "source": "twg"
   },
@@ -3018,9 +3313,16 @@
         "state": "CLOSED",
         "number": 29,
         "issueType": "Story (TWG)"
+      },
+      {
+        "title": "SUP Voting Issue - Application Package as OCI",
+        "url": "https://github.com/margo/specification-enhancements/issues/34",
+        "state": "CLOSED",
+        "number": 34,
+        "issueType": "Task"
       }
     ],
-    "subIssueCount": 2,
+    "subIssueCount": 3,
     "hasAssignee": true,
     "status": "SUP/PR Completed",
     "source": "twg"
@@ -3051,9 +3353,16 @@
         "state": "OPEN",
         "number": 53,
         "issueType": null
+      },
+      {
+        "title": "SUP Voting Issue - Desired State Communication Strategy",
+        "url": "https://github.com/margo/specification-enhancements/issues/32",
+        "state": "CLOSED",
+        "number": 32,
+        "issueType": "Task"
       }
     ],
-    "subIssueCount": 3,
+    "subIssueCount": 4,
     "hasAssignee": true,
     "status": "SUP/PR Completed",
     "source": "twg"
@@ -3294,9 +3603,23 @@
         "state": "CLOSED",
         "number": 40,
         "issueType": null
+      },
+      {
+        "title": "SUP Voting - The Helm Way (Compose)",
+        "url": "https://github.com/margo/specification-enhancements/issues/79",
+        "state": "CLOSED",
+        "number": 79,
+        "issueType": null
+      },
+      {
+        "title": "SUP Voting - Compose OCI registry publishing & archive structure",
+        "url": "https://github.com/margo/specification-enhancements/issues/80",
+        "state": "CLOSED",
+        "number": 80,
+        "issueType": null
       }
     ],
-    "subIssueCount": 2,
+    "subIssueCount": 4,
     "hasAssignee": true,
     "status": "Specification Improvements :SUP",
     "theme": "Robustness",
