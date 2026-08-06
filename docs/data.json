@@ -2621,11 +2621,11 @@
     "title": "Define how device-specific parameter values can be provided",
     "url": "https://github.com/margo/specification/issues/141",
     "type": "Feature (TWG)",
-    "release": "GA1",
+    "release": "PR3",
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": "GA1",
+    "status": "Specification Improvements :SUP",
     "theme": "Flexibility",
     "source": "twg"
   },
@@ -2676,7 +2676,7 @@
   {
     "title": "Onboarding security - Make it explicit that onboarding requests are authenticated/signed from the star",
     "url": "https://github.com/margo/specification/issues/154",
-    "type": "Bug",
+    "type": null,
     "release": "PR3",
     "subIssues": [],
     "subIssueCount": 0,
