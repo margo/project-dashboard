@@ -47,6 +47,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "Dashboard is already up to date — nothing to commit."
           else
-            git commit -m "chore(dashboard): regenerate [skip ci]"
+            git commit -m "chore(dashboard): regenerate"
             git push
           fi
