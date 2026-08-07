@@ -107,6 +107,7 @@
     "PM - Requirement in Draft":           "No Owner",
     "backlog - notconfirmednextrelease":   "No Owner",
     "GA1":                                 "No Owner",
-    "Future Items":                        "No Owner"
+    "Future Items":                        "No Owner",
+    "Not Implemented":                     "Excluded"
   }
 }
