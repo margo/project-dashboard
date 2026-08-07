@@ -2389,7 +2389,7 @@
       {
         "title": "Define the Margo \"Gateway\" capability Requirements",
         "url": "https://github.com/margo/specification/issues/137",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 137,
         "issueType": "Feature (TWG)"
       }
@@ -2416,7 +2416,7 @@
     ],
     "subIssueCount": 1,
     "hasAssignee": true,
-    "status": "PM - Requirement in Draft",
+    "status": "TWG - Approved Requirements",
     "pr1": null,
     "source": "pm"
   },
@@ -2546,6 +2546,66 @@
     "source": "pm"
   },
   {
+    "title": "Define how HTTP message signatures work behind load balancers / TLS-terminating proxies",
+    "url": "https://github.com/margo/specification/issues/160",
+    "type": "Feature (TWG)",
+    "release": "PR3",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "Not Implemented",
+    "theme": "Robustness",
+    "source": "twg"
+  },
+  {
+    "title": "Onboarding security - Make it explicit that onboarding requests are authenticated/signed from the star",
+    "url": "https://github.com/margo/specification/issues/154",
+    "type": null,
+    "release": "PR3",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "Not Implemented",
+    "theme": "Trust",
+    "source": "twg"
+  },
+  {
+    "title": "Device Onboarding Workflow Needs Fixes for REST Timeliness and CA Support",
+    "url": "https://github.com/margo/specification/issues/164",
+    "type": null,
+    "release": "PR3",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "Not Implemented",
+    "theme": "Robustness",
+    "source": "twg"
+  },
+  {
+    "title": "Clarify certificate encoding format: base64(DER) vs base64(PEM)",
+    "url": "https://github.com/margo/specification/issues/132",
+    "type": "Feature (TWG)",
+    "release": "PR3",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "Not Implemented",
+    "theme": "Trust",
+    "source": "twg"
+  },
+  {
+    "title": "Sequence diagram incorrectly suggests HTTP signatures begin after onboarding",
+    "url": "https://github.com/margo/specification/issues/135",
+    "type": null,
+    "release": "PR3",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "Not Implemented",
+    "theme": "Trust",
+    "source": "twg"
+  },
+  {
     "title": "Replace device roles with capabilities within Margo artifacts",
     "url": "https://github.com/margo/specification/issues/136",
     "type": "Feature (TWG)",
@@ -2569,7 +2629,7 @@
     "title": "Improve deployment status / desired state mechanics and workflows",
     "url": "https://github.com/margo/specification/issues/156",
     "type": "Feature (TWG)",
-    "release": "GA1",
+    "release": "PR3",
     "subIssues": [
       {
         "title": "SUP Voting - Desired State Read Receipts",
@@ -2650,42 +2710,6 @@
     "source": "twg"
   },
   {
-    "title": "Define how HTTP message signatures work behind load balancers / TLS-terminating proxies",
-    "url": "https://github.com/margo/specification/issues/160",
-    "type": "Feature (TWG)",
-    "release": "PR3",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": true,
-    "status": "SUP/PR Completed",
-    "theme": "Robustness",
-    "source": "twg"
-  },
-  {
-    "title": "Device Onboarding Workflow Needs Fixes for REST Timeliness and CA Support",
-    "url": "https://github.com/margo/specification/issues/164",
-    "type": null,
-    "release": "PR3",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": true,
-    "status": "SUP/PR Completed",
-    "theme": "Robustness",
-    "source": "twg"
-  },
-  {
-    "title": "Onboarding security - Make it explicit that onboarding requests are authenticated/signed from the star",
-    "url": "https://github.com/margo/specification/issues/154",
-    "type": null,
-    "release": "PR3",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": true,
-    "status": "SUP/PR Completed",
-    "theme": "Trust",
-    "source": "twg"
-  },
-  {
     "title": "Finalize Margo Version Management Strategy",
     "url": "https://github.com/margo/specification/issues/174",
     "type": null,
@@ -2695,30 +2719,6 @@
     "hasAssignee": true,
     "status": "SUP/PR Completed",
     "theme": "Robustness",
-    "source": "twg"
-  },
-  {
-    "title": "Clarify certificate encoding format: base64(DER) vs base64(PEM)",
-    "url": "https://github.com/margo/specification/issues/132",
-    "type": "Feature (TWG)",
-    "release": "PR3",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": true,
-    "status": "SUP/PR Completed",
-    "theme": "Trust",
-    "source": "twg"
-  },
-  {
-    "title": "Sequence diagram incorrectly suggests HTTP signatures begin after onboarding",
-    "url": "https://github.com/margo/specification/issues/135",
-    "type": null,
-    "release": "PR3",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": true,
-    "status": "SUP/PR Completed",
-    "theme": "Trust",
     "source": "twg"
   },
   {
