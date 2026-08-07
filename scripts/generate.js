@@ -211,12 +211,18 @@ function mapItem(rawItem, effectiveMappings) {
   };
 
   // Flag items that must never appear on the dashboard: no milestone at all,
-  // or a "Future" milestone (any case). Excluded items are still written to
-  // data.json (for auditing) but the template filters them out of every tab.
+  // a "Future" milestone (any case), or a status that maps to "Excluded".
+  // Excluded items are still written to data.json (for auditing) but the
+  // template filters them out of every tab.
   if (!item.release) {
     item.release  = null;
     item.excluded = true;
   } else if (item.release.toLowerCase() === 'future') {
+    item.excluded = true;
+  }
+
+  const rawStatus = byFieldName[effectiveMappings.status ?? 'Status'];
+  if (rawStatus && (config.statusMap?.[rawStatus] === 'Excluded')) {
     item.excluded = true;
   }
 
