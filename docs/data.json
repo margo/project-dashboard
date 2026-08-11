@@ -2639,7 +2639,7 @@
       {
         "title": "SUP Voting - Desired State Read Receipts",
         "url": "https://github.com/margo/specification-enhancements/issues/82",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 82,
         "issueType": null
       }
@@ -3222,14 +3222,14 @@
       {
         "title": "SUP Voting - Common API error responses: RFC 9457",
         "url": "https://github.com/margo/specification-enhancements/issues/83",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 83,
         "issueType": null
       }
     ],
     "subIssueCount": 1,
     "hasAssignee": true,
-    "status": "Specification Improvements :SUP",
+    "status": "SUP/PR Completed",
     "theme": "Robustness",
     "source": "twg"
   },
