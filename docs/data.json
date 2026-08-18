@@ -2683,18 +2683,6 @@
     "source": "twg"
   },
   {
-    "title": "Define how device-specific parameter values can be provided",
-    "url": "https://github.com/margo/specification/issues/141",
-    "type": "Feature (TWG)",
-    "release": "PR3",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": true,
-    "status": "Specification Improvements :SUP",
-    "theme": "Flexibility",
-    "source": "twg"
-  },
-  {
     "title": "Define the Margo application image and component signing strategy",
     "url": "https://github.com/margo/specification/issues/138",
     "type": "Feature (TWG)",
@@ -3006,6 +2994,46 @@
         "url": "https://github.com/margo/specification-enhancements/issues/83",
         "state": "CLOSED",
         "number": 83,
+        "issueType": null
+      }
+    ],
+    "subIssueCount": 1,
+    "hasAssignee": true,
+    "status": "SUP Approved",
+    "theme": "Robustness",
+    "source": "twg"
+  },
+  {
+    "title": "Define how device-specific parameter values can be provided",
+    "url": "https://github.com/margo/specification/issues/141",
+    "type": "Feature (TWG)",
+    "release": "PR3",
+    "subIssues": [
+      {
+        "title": "SUP Voting - Device Specific Parameter Values",
+        "url": "https://github.com/margo/specification-enhancements/issues/87",
+        "state": "CLOSED",
+        "number": 87,
+        "issueType": null
+      }
+    ],
+    "subIssueCount": 1,
+    "hasAssignee": true,
+    "status": "SUP Approved",
+    "theme": "Flexibility",
+    "source": "twg"
+  },
+  {
+    "title": "Document expected `apiVersion` values for all API resources",
+    "url": "https://github.com/margo/specification/issues/134",
+    "type": "Feature (TWG)",
+    "release": "PR3",
+    "subIssues": [
+      {
+        "title": "SUP Voting - API Artifact Improvements - apiVersion & kind alterations",
+        "url": "https://github.com/margo/specification-enhancements/issues/86",
+        "state": "CLOSED",
+        "number": 86,
         "issueType": null
       }
     ],
@@ -3624,18 +3652,6 @@
     "hasAssignee": false,
     "excluded": true,
     "status": null,
-    "source": "twg"
-  },
-  {
-    "title": "Document expected `apiVersion` values for all API resources",
-    "url": "https://github.com/margo/specification/issues/134",
-    "type": "Feature (TWG)",
-    "release": "PR3",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": true,
-    "status": "Specification Improvements :SUP",
-    "theme": "Robustness",
     "source": "twg"
   },
   {
