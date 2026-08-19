@@ -3039,7 +3039,7 @@
     ],
     "subIssueCount": 1,
     "hasAssignee": true,
-    "status": "SUP Approved",
+    "status": "SUP/PR Completed",
     "theme": "Robustness",
     "source": "twg"
   },
@@ -3107,8 +3107,16 @@
     "url": "https://github.com/margo/specification/issues/201",
     "type": "Feature (TWG)",
     "release": "GA1",
-    "subIssues": [],
-    "subIssueCount": 0,
+    "subIssues": [
+      {
+        "title": "Enhance schema for the version number in the application description",
+        "url": "https://github.com/margo/specification/issues/143",
+        "state": "OPEN",
+        "number": 143,
+        "issueType": "Feature (TWG)"
+      }
+    ],
+    "subIssueCount": 1,
     "hasAssignee": false,
     "status": "GA1",
     "source": "twg"
