@@ -2975,9 +2975,16 @@
         "state": "CLOSED",
         "number": 80,
         "issueType": null
+      },
+      {
+        "title": "[Story: ] As a Device Vendor, compose enabled devices need a standard OCI based mechanism to authenticate and pull Compose Archive",
+        "url": "https://github.com/margo/sandbox/issues/373",
+        "state": "OPEN",
+        "number": 373,
+        "issueType": "Story (TWG)"
       }
     ],
-    "subIssueCount": 4,
+    "subIssueCount": 5,
     "hasAssignee": true,
     "status": "SUP Approved",
     "theme": "Robustness",
