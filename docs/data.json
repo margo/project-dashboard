@@ -2986,7 +2986,7 @@
     ],
     "subIssueCount": 5,
     "hasAssignee": true,
-    "status": "SUP Approved",
+    "status": "SUP/PR Completed",
     "theme": "Robustness",
     "source": "twg"
   },
