@@ -2991,26 +2991,6 @@
     "source": "twg"
   },
   {
-    "title": "Define consistent standard error responses for all 4xx/5xx response codes",
-    "url": "https://github.com/margo/specification/issues/153",
-    "type": "Feature (TWG)",
-    "release": "PR3",
-    "subIssues": [
-      {
-        "title": "SUP Voting - Common API error responses: RFC 9457",
-        "url": "https://github.com/margo/specification-enhancements/issues/83",
-        "state": "CLOSED",
-        "number": 83,
-        "issueType": null
-      }
-    ],
-    "subIssueCount": 1,
-    "hasAssignee": true,
-    "status": "SUP Approved",
-    "theme": "Robustness",
-    "source": "twg"
-  },
-  {
     "title": "Define how device-specific parameter values can be provided",
     "url": "https://github.com/margo/specification/issues/141",
     "type": "Feature (TWG)",
@@ -3041,6 +3021,26 @@
         "url": "https://github.com/margo/specification-enhancements/issues/86",
         "state": "CLOSED",
         "number": 86,
+        "issueType": null
+      }
+    ],
+    "subIssueCount": 1,
+    "hasAssignee": true,
+    "status": "SUP/PR Completed",
+    "theme": "Robustness",
+    "source": "twg"
+  },
+  {
+    "title": "Define consistent standard error responses for all 4xx/5xx response codes",
+    "url": "https://github.com/margo/specification/issues/153",
+    "type": "Feature (TWG)",
+    "release": "PR3",
+    "subIssues": [
+      {
+        "title": "SUP Voting - Common API error responses: RFC 9457",
+        "url": "https://github.com/margo/specification-enhancements/issues/83",
+        "state": "CLOSED",
+        "number": 83,
         "issueType": null
       }
     ],
