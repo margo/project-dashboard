@@ -2703,6 +2703,17 @@
     "source": "twg"
   },
   {
+    "title": "Define the strategy to enable sensitive information to be utilized within the application management mechanism",
+    "url": "https://github.com/margo/specification/issues/145",
+    "type": "Feature (TWG)",
+    "release": "GA1",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "GA1",
+    "source": "twg"
+  },
+  {
     "title": "Finalize Margo Version Management Strategy",
     "url": "https://github.com/margo/specification/issues/174",
     "type": null,
@@ -3138,17 +3149,6 @@
     "hasAssignee": false,
     "status": "GA1",
     "theme": "Robustness",
-    "source": "twg"
-  },
-  {
-    "title": "Define the strategy to enable sensitive information to be utilized within the application management mechanism",
-    "url": "https://github.com/margo/specification/issues/145",
-    "type": "Feature (TWG)",
-    "release": "GA1",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": true,
-    "status": "GA1",
     "source": "twg"
   },
   {
