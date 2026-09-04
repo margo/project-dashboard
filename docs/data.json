@@ -1196,7 +1196,7 @@
       {
         "title": "Define the Margo \"Cluster Leader\" capability requirements",
         "url": "https://github.com/margo/specification/issues/98",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 98,
         "issueType": "Feature (TWG)"
       }
@@ -1392,7 +1392,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
-    "status": "PM - Requirement in Draft",
+    "status": "TWG - Approved Requirements",
     "pr1": null,
     "source": "pm"
   },
@@ -2611,6 +2611,30 @@
     "source": "twg"
   },
   {
+    "title": "Define the Margo \"Cluster Worker\" capability requirements",
+    "url": "https://github.com/margo/specification/issues/96",
+    "type": "Feature (TWG)",
+    "release": "GA1",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "excluded": true,
+    "status": "Not Implemented",
+    "source": "twg"
+  },
+  {
+    "title": "Define the Margo \"Cluster Leader\" capability requirements",
+    "url": "https://github.com/margo/specification/issues/98",
+    "type": "Feature (TWG)",
+    "release": "GA1",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "excluded": true,
+    "status": "Not Implemented",
+    "source": "twg"
+  },
+  {
     "title": "Replace device roles with capabilities within Margo artifacts",
     "url": "https://github.com/margo/specification/issues/136",
     "type": "Feature (TWG)",
@@ -3149,28 +3173,6 @@
     "hasAssignee": false,
     "status": "GA1",
     "theme": "Robustness",
-    "source": "twg"
-  },
-  {
-    "title": "Define the Margo \"Cluster Worker\" capability requirements",
-    "url": "https://github.com/margo/specification/issues/96",
-    "type": "Feature (TWG)",
-    "release": "GA1",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": false,
-    "status": "GA1",
-    "source": "twg"
-  },
-  {
-    "title": "Define the Margo \"Cluster Leader\" capability requirements",
-    "url": "https://github.com/margo/specification/issues/98",
-    "type": "Feature (TWG)",
-    "release": "GA1",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": false,
-    "status": "GA1",
     "source": "twg"
   },
   {
@@ -3719,6 +3721,17 @@
     "hasAssignee": true,
     "excluded": true,
     "status": null,
+    "source": "twg"
+  },
+  {
+    "title": "Define how Kubernetes edge devices can become targetable via Margo conformant applications",
+    "url": "https://github.com/margo/specification/issues/213",
+    "type": "Feature (TWG)",
+    "release": "GA1",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "status": "GA1",
     "source": "twg"
   }
 ]
