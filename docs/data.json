@@ -2112,9 +2112,30 @@
         "state": "CLOSED",
         "number": 71,
         "issueType": null
+      },
+      {
+        "title": "[Story: ] As a Margo Device Supplier, I want to configure an mTLS connection with the Margo WFM",
+        "url": "https://github.com/margo/sandbox/issues/397",
+        "state": "OPEN",
+        "number": 397,
+        "issueType": "Story (TWG)"
+      },
+      {
+        "title": "[Story: ] As a Margo WFM Supplier, I would like to restrict WFM Client connections to those authorized with SVIDs over mTLS",
+        "url": "https://github.com/margo/sandbox/issues/398",
+        "state": "OPEN",
+        "number": 398,
+        "issueType": "Story (TWG)"
+      },
+      {
+        "title": "[Story: ] As a WFM Supplier, I would like to support a MIS Function in the Margo deployment",
+        "url": "https://github.com/margo/sandbox/issues/401",
+        "state": "OPEN",
+        "number": 401,
+        "issueType": "Story (TWG)"
       }
     ],
-    "subIssueCount": 3,
+    "subIssueCount": 6,
     "hasAssignee": true,
     "status": "TWG - Approved Requirements",
     "pr1": null,
@@ -2546,6 +2567,62 @@
     "source": "pm"
   },
   {
+    "title": "[Story: ] As a Margo Device Supplier, I want to configure an mTLS connection with the Margo WFM",
+    "url": "https://github.com/margo/sandbox/issues/397",
+    "type": "Story (TWG)",
+    "release": "SPRINT_23_PR3",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "[Story: ] As a Margo WFM Supplier, I would like to restrict WFM Client connections to those authorized with SVIDs over mTLS",
+    "url": "https://github.com/margo/sandbox/issues/398",
+    "type": "Story (TWG)",
+    "release": "SPRINT_23_PR3",
+    "subIssues": [
+      {
+        "title": "[TASK: ] Implement custom mTLS checks for WFM & WFM-Client",
+        "url": "https://github.com/margo/sandbox/issues/399",
+        "state": "OPEN",
+        "number": 399,
+        "issueType": "Task"
+      }
+    ],
+    "subIssueCount": 1,
+    "hasAssignee": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "[TASK: ] Implement custom mTLS checks for WFM & WFM-Client",
+    "url": "https://github.com/margo/sandbox/issues/399",
+    "type": "Task",
+    "release": "SPRINT_23_PR3",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "[Story: ] As a WFM Supplier, I would like to support a MIS Function in the Margo deployment",
+    "url": "https://github.com/margo/sandbox/issues/401",
+    "type": "Story (TWG)",
+    "release": "SPRINT_23_PR3",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
     "title": "Define how HTTP message signatures work behind load balancers / TLS-terminating proxies",
     "url": "https://github.com/margo/specification/issues/160",
     "type": "Feature (TWG)",
@@ -2915,9 +2992,30 @@
         "state": "CLOSED",
         "number": 71,
         "issueType": null
+      },
+      {
+        "title": "[Story: ] As a Margo Device Supplier, I want to configure an mTLS connection with the Margo WFM",
+        "url": "https://github.com/margo/sandbox/issues/397",
+        "state": "OPEN",
+        "number": 397,
+        "issueType": "Story (TWG)"
+      },
+      {
+        "title": "[Story: ] As a Margo WFM Supplier, I would like to restrict WFM Client connections to those authorized with SVIDs over mTLS",
+        "url": "https://github.com/margo/sandbox/issues/398",
+        "state": "OPEN",
+        "number": 398,
+        "issueType": "Story (TWG)"
+      },
+      {
+        "title": "[Story: ] As a WFM Supplier, I would like to support a MIS Function in the Margo deployment",
+        "url": "https://github.com/margo/sandbox/issues/401",
+        "state": "OPEN",
+        "number": 401,
+        "issueType": "Story (TWG)"
       }
     ],
-    "subIssueCount": 3,
+    "subIssueCount": 6,
     "hasAssignee": true,
     "status": "SUP/PR Completed",
     "theme": "Trust",
@@ -3726,6 +3824,17 @@
   {
     "title": "Define how Kubernetes edge devices can become targetable via Margo conformant applications",
     "url": "https://github.com/margo/specification/issues/213",
+    "type": "Feature (TWG)",
+    "release": "GA1",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "status": "GA1",
+    "source": "twg"
+  },
+  {
+    "title": "Define what a WFM does when a configurable parameter is left blank",
+    "url": "https://github.com/margo/specification/issues/214",
     "type": "Feature (TWG)",
     "release": "GA1",
     "subIssues": [],
