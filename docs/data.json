@@ -2615,10 +2615,30 @@
     "url": "https://github.com/margo/sandbox/issues/401",
     "type": "Story (TWG)",
     "release": "SPRINT_23_PR3",
+    "subIssues": [
+      {
+        "title": "[TASK: ] Setup Scripts: MIAF integration into sandbox scripts",
+        "url": "https://github.com/margo/sandbox/issues/402",
+        "state": "OPEN",
+        "number": 402,
+        "issueType": "Task"
+      }
+    ],
+    "subIssueCount": 1,
+    "hasAssignee": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "[TASK: ] Setup Scripts: MIAF integration into sandbox scripts",
+    "url": "https://github.com/margo/sandbox/issues/402",
+    "type": "Task",
+    "release": "SPRINT_23_PR3",
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": "PM - Requirement in Draft",
+    "status": null,
     "pr1": null,
     "source": "pm"
   },
@@ -3112,7 +3132,7 @@
       {
         "title": "[Story: ] As a Device Vendor, compose enabled devices need a standard OCI based mechanism to authenticate and pull Compose Archive",
         "url": "https://github.com/margo/sandbox/issues/373",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 373,
         "issueType": "Story (TWG)"
       }
