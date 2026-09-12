@@ -2345,7 +2345,7 @@
     "subIssueCount": 0,
     "hasAssignee": true,
     "excluded": true,
-    "status": "PM - Requirement in Draft",
+    "status": "PM - Requirement under Review",
     "pr1": null,
     "source": "pm"
   },
@@ -2371,7 +2371,7 @@
     "subIssueCount": 0,
     "hasAssignee": true,
     "excluded": true,
-    "status": "PM - Requirement in Draft",
+    "status": "PM - Requirement under Review",
     "pr1": null,
     "source": "pm"
   },
@@ -2384,7 +2384,7 @@
     "subIssueCount": 0,
     "hasAssignee": true,
     "excluded": true,
-    "status": "PM - Requirement in Draft",
+    "status": "PM - Requirement under Review",
     "pr1": null,
     "source": "pm"
   },
@@ -2397,7 +2397,7 @@
     "subIssueCount": 0,
     "hasAssignee": true,
     "excluded": true,
-    "status": "PM - Requirement in Draft",
+    "status": "PM - Requirement under Review",
     "pr1": null,
     "source": "pm"
   },
