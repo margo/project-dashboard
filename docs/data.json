@@ -893,9 +893,72 @@
         "state": "OPEN",
         "number": 92,
         "issueType": "Epic (Child)"
+      },
+      {
+        "title": "[OS/FW Lifecycle][DFM] Unified OS update policy management",
+        "url": "https://github.com/margo/product_management/issues/99",
+        "state": "OPEN",
+        "number": 99,
+        "issueType": "Epic (Child)"
+      },
+      {
+        "title": "[OS/FW Lifecycle][DFM] OS compliance, drift, and reboot visibility",
+        "url": "https://github.com/margo/product_management/issues/100",
+        "state": "OPEN",
+        "number": 100,
+        "issueType": "Epic (Child)"
+      },
+      {
+        "title": "[OS/FW Lifecycle][DFM] OS update history and traceability",
+        "url": "https://github.com/margo/product_management/issues/101",
+        "state": "OPEN",
+        "number": 101,
+        "issueType": "Epic (Child)"
+      },
+      {
+        "title": "[OS/FW Lifecycle][DFM] Selective package and image update control",
+        "url": "https://github.com/margo/product_management/issues/102",
+        "state": "OPEN",
+        "number": 102,
+        "issueType": "Epic (Child)"
+      },
+      {
+        "title": "[OS/FW Lifecycle][DFM] Controlled reboot handling for OS updates",
+        "url": "https://github.com/margo/product_management/issues/103",
+        "state": "OPEN",
+        "number": 103,
+        "issueType": "Epic (Child)"
+      },
+      {
+        "title": "[OS/FW Lifecycle][DFMC] Policy-controlled update reboot handling",
+        "url": "https://github.com/margo/product_management/issues/104",
+        "state": "OPEN",
+        "number": 104,
+        "issueType": "Epic (Child)"
+      },
+      {
+        "title": "[OS/FW Lifecycle][DFMC] Post-update health validation and recovery reporting",
+        "url": "https://github.com/margo/product_management/issues/105",
+        "state": "OPEN",
+        "number": 105,
+        "issueType": "Epic (Child)"
+      },
+      {
+        "title": "[OS/FW Lifecycle][DFMC] Device OS version and update status reporting",
+        "url": "https://github.com/margo/product_management/issues/106",
+        "state": "OPEN",
+        "number": 106,
+        "issueType": "Epic (Child)"
+      },
+      {
+        "title": "[OS/FW Lifecycle][DFMC] Policy enforcement for package exclusions and image selection",
+        "url": "https://github.com/margo/product_management/issues/107",
+        "state": "OPEN",
+        "number": 107,
+        "issueType": "Epic (Child)"
       }
     ],
-    "subIssueCount": 5,
+    "subIssueCount": 14,
     "hasAssignee": true,
     "excluded": true,
     "status": "PM - Requirement in Draft",
@@ -2639,6 +2702,123 @@
     "subIssueCount": 0,
     "hasAssignee": true,
     "status": null,
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "[OS/FW Lifecycle][DFM] Unified OS update policy management",
+    "url": "https://github.com/margo/product_management/issues/99",
+    "type": "Epic (Child)",
+    "release": null,
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "excluded": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "[OS/FW Lifecycle][DFM] OS compliance, drift, and reboot visibility",
+    "url": "https://github.com/margo/product_management/issues/100",
+    "type": "Epic (Child)",
+    "release": null,
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "excluded": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "[OS/FW Lifecycle][DFM] OS update history and traceability",
+    "url": "https://github.com/margo/product_management/issues/101",
+    "type": "Epic (Child)",
+    "release": null,
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "excluded": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "[OS/FW Lifecycle][DFM] Selective package and image update control",
+    "url": "https://github.com/margo/product_management/issues/102",
+    "type": "Epic (Child)",
+    "release": null,
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "excluded": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "[OS/FW Lifecycle][DFM] Controlled reboot handling for OS updates",
+    "url": "https://github.com/margo/product_management/issues/103",
+    "type": "Epic (Child)",
+    "release": null,
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "excluded": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "[OS/FW Lifecycle][DFMC] Policy-controlled update reboot handling",
+    "url": "https://github.com/margo/product_management/issues/104",
+    "type": "Epic (Child)",
+    "release": null,
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "excluded": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "[OS/FW Lifecycle][DFMC] Post-update health validation and recovery reporting",
+    "url": "https://github.com/margo/product_management/issues/105",
+    "type": "Epic (Child)",
+    "release": null,
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "excluded": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "[OS/FW Lifecycle][DFMC] Device OS version and update status reporting",
+    "url": "https://github.com/margo/product_management/issues/106",
+    "type": "Epic (Child)",
+    "release": null,
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "excluded": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "[OS/FW Lifecycle][DFMC] Policy enforcement for package exclusions and image selection",
+    "url": "https://github.com/margo/product_management/issues/107",
+    "type": "Epic (Child)",
+    "release": null,
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "excluded": true,
+    "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
   },
