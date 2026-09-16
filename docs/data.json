@@ -2634,8 +2634,37 @@
     "url": "https://github.com/margo/sandbox/issues/397",
     "type": "Story (TWG)",
     "release": "SPRINT_23_PR3",
-    "subIssues": [],
-    "subIssueCount": 0,
+    "subIssues": [
+      {
+        "title": "[TASK: ] Implement mTLS on Margo Management Interface on WFM Client",
+        "url": "https://github.com/margo/sandbox/issues/416",
+        "state": "OPEN",
+        "number": 416,
+        "issueType": "Task"
+      },
+      {
+        "title": "[TASK: ] Implement Discovery/ TrustBundle download for SVID verification on WFM Client from MIS",
+        "url": "https://github.com/margo/sandbox/issues/417",
+        "state": "OPEN",
+        "number": 417,
+        "issueType": "Task"
+      },
+      {
+        "title": "[TASK: ] Implement Whitelisting of WFM's Spiffe IDs",
+        "url": "https://github.com/margo/sandbox/issues/418",
+        "state": "OPEN",
+        "number": 418,
+        "issueType": "Task"
+      },
+      {
+        "title": "[TASK: ] Implement dynamic whitelisting of WFM Spiffe IDs",
+        "url": "https://github.com/margo/sandbox/issues/419",
+        "state": "OPEN",
+        "number": 419,
+        "issueType": "Task"
+      }
+    ],
+    "subIssueCount": 4,
     "hasAssignee": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
@@ -2650,12 +2679,40 @@
       {
         "title": "[TASK: ] Implement custom mTLS checks for WFM & WFM-Client",
         "url": "https://github.com/margo/sandbox/issues/399",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 399,
+        "issueType": "Task"
+      },
+      {
+        "title": "[TASK: ] Implement Discovery/ TrustBundle download for SVID verification on WFM from MIS",
+        "url": "https://github.com/margo/sandbox/issues/412",
+        "state": "OPEN",
+        "number": 412,
+        "issueType": "Task"
+      },
+      {
+        "title": "[TASK: ] Implement Whitelisting of WFM Client's Spiffe IDs",
+        "url": "https://github.com/margo/sandbox/issues/413",
+        "state": "OPEN",
+        "number": 413,
+        "issueType": "Task"
+      },
+      {
+        "title": "[TASK: ] Implement dynamic whitelisting of WFM Client's Spiffe IDs",
+        "url": "https://github.com/margo/sandbox/issues/414",
+        "state": "OPEN",
+        "number": 414,
+        "issueType": "Task"
+      },
+      {
+        "title": "[TASK: ] Update WFM Documentation according to MIAF",
+        "url": "https://github.com/margo/sandbox/issues/415",
+        "state": "OPEN",
+        "number": 415,
         "issueType": "Task"
       }
     ],
-    "subIssueCount": 1,
+    "subIssueCount": 5,
     "hasAssignee": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
@@ -2669,7 +2726,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": "PM - Requirement in Draft",
+    "status": "TWG - Approved Requirements",
     "pr1": null,
     "source": "pm"
   },
@@ -2685,9 +2742,23 @@
         "state": "OPEN",
         "number": 402,
         "issueType": "Task"
+      },
+      {
+        "title": "[TASK: ] Implement Margo Identity Service (MIS)",
+        "url": "https://github.com/margo/sandbox/issues/408",
+        "state": "OPEN",
+        "number": 408,
+        "issueType": "Task"
+      },
+      {
+        "title": "[TASK: ] Design And Implement Margo Identity Service Deployment Strategy",
+        "url": "https://github.com/margo/sandbox/issues/411",
+        "state": "OPEN",
+        "number": 411,
+        "issueType": "Task"
       }
     ],
-    "subIssueCount": 1,
+    "subIssueCount": 3,
     "hasAssignee": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
@@ -2818,6 +2889,165 @@
     "subIssueCount": 0,
     "hasAssignee": true,
     "excluded": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "[TASK: ] Implement Margo Identity Service (MIS)",
+    "url": "https://github.com/margo/sandbox/issues/408",
+    "type": "Task",
+    "release": "SPRINT_23_PR3",
+    "subIssues": [
+      {
+        "title": "[TASK: ] Implement Normative Margo Identity Service API Server",
+        "url": "https://github.com/margo/sandbox/issues/409",
+        "state": "OPEN",
+        "number": 409,
+        "issueType": "Task"
+      },
+      {
+        "title": "[TASK: ] Implement Margo Identity Service SVID Minting Server",
+        "url": "https://github.com/margo/sandbox/issues/410",
+        "state": "OPEN",
+        "number": 410,
+        "issueType": "Task"
+      }
+    ],
+    "subIssueCount": 2,
+    "hasAssignee": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "[TASK: ] Implement Normative Margo Identity Service API Server",
+    "url": "https://github.com/margo/sandbox/issues/409",
+    "type": "Task",
+    "release": "SPRINT_23_PR3",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "[TASK: ] Implement Margo Identity Service SVID Minting Server",
+    "url": "https://github.com/margo/sandbox/issues/410",
+    "type": "Task",
+    "release": "SPRINT_23_PR3",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "[TASK: ] Design And Implement Margo Identity Service Deployment Strategy",
+    "url": "https://github.com/margo/sandbox/issues/411",
+    "type": "Task",
+    "release": "SPRINT_23_PR3",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "[TASK: ] Implement Discovery/ TrustBundle download for SVID verification on WFM from MIS",
+    "url": "https://github.com/margo/sandbox/issues/412",
+    "type": "Task",
+    "release": "SPRINT_23_PR3",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "[TASK: ] Implement Whitelisting of WFM Client's Spiffe IDs",
+    "url": "https://github.com/margo/sandbox/issues/413",
+    "type": "Task",
+    "release": "SPRINT_23_PR3",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "[TASK: ] Implement dynamic whitelisting of WFM Client's Spiffe IDs",
+    "url": "https://github.com/margo/sandbox/issues/414",
+    "type": "Task",
+    "release": "SPRINT_23_PR3",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "[TASK: ] Update WFM Documentation according to MIAF",
+    "url": "https://github.com/margo/sandbox/issues/415",
+    "type": "Task",
+    "release": "SPRINT_23_PR3",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "[TASK: ] Implement mTLS on Margo Management Interface on WFM Client",
+    "url": "https://github.com/margo/sandbox/issues/416",
+    "type": "Task",
+    "release": "SPRINT_23_PR3",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "[TASK: ] Implement Discovery/ TrustBundle download for SVID verification on WFM Client from MIS",
+    "url": "https://github.com/margo/sandbox/issues/417",
+    "type": "Task",
+    "release": "SPRINT_23_PR3",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "[TASK: ] Implement Whitelisting of WFM's Spiffe IDs",
+    "url": "https://github.com/margo/sandbox/issues/418",
+    "type": "Task",
+    "release": "SPRINT_23_PR3",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "[TASK: ] Implement dynamic whitelisting of WFM Spiffe IDs",
+    "url": "https://github.com/margo/sandbox/issues/419",
+    "type": "Task",
+    "release": "SPRINT_23_PR3",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -4035,6 +4265,39 @@
   {
     "title": "Define what a WFM does when a configurable parameter is left blank",
     "url": "https://github.com/margo/specification/issues/214",
+    "type": "Feature (TWG)",
+    "release": "GA1",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "status": "GA1",
+    "source": "twg"
+  },
+  {
+    "title": "Runtime resource usage and availability reporting",
+    "url": "https://github.com/margo/specification/issues/215",
+    "type": "Feature (TWG)",
+    "release": "GA1",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "status": "GA1",
+    "source": "twg"
+  },
+  {
+    "title": "Multi-tenant, Isolation, and multiple instances per cluster",
+    "url": "https://github.com/margo/specification/issues/216",
+    "type": "Feature (TWG)",
+    "release": "GA1",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "status": "GA1",
+    "source": "twg"
+  },
+  {
+    "title": "Privileged execution mode and RBAC posture",
+    "url": "https://github.com/margo/specification/issues/217",
     "type": "Feature (TWG)",
     "release": "GA1",
     "subIssues": [],
