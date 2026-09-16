@@ -43,8 +43,7 @@
     "hasAssignee": true,
     "status": "TWG - Approved Requirements",
     "pr1": null,
-    "source": "pm",
-    "linkedFromFeature": true
+    "source": "pm"
   },
   {
     "title": "Enable end users to receive a Margo device pre-configured with credentials",
@@ -1044,8 +1043,7 @@
     "hasAssignee": true,
     "status": "TWG - Requirement in progress",
     "pr1": null,
-    "source": "pm",
-    "linkedFromFeature": true
+    "source": "pm"
   },
   {
     "title": "Define the Margo interfaces between app repositories and workload fleet managers",
@@ -1145,7 +1143,8 @@
     "hasAssignee": true,
     "status": "TWG - Requirement approved and merged",
     "pr1": null,
-    "source": "pm"
+    "source": "pm",
+    "linkedFromFeature": true
   },
   {
     "title": "minimal touch onboarding",
@@ -1451,7 +1450,7 @@
     "title": "Define the Margo \"Cluster Leader\" capability requirements",
     "url": "https://github.com/margo/specification/issues/98",
     "type": "Feature (TWG)",
-    "release": "GA1",
+    "release": "PR3",
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
@@ -2121,8 +2120,7 @@
     "hasAssignee": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
-    "source": "pm",
-    "linkedFromFeature": true
+    "source": "pm"
   },
   {
     "title": "Verify identity of an edge device",
@@ -2251,8 +2249,7 @@
     "status": "TWG - Approved Requirements",
     "pr1": null,
     "theme": "Trust",
-    "source": "pm",
-    "linkedFromFeature": true
+    "source": "pm"
   },
   {
     "title": "[PlugFest Feedback] - Atym - Gateway device certificate",
@@ -2318,7 +2315,7 @@
     "title": "Define how the WFM manages OCI credentials within the Margo device.",
     "url": "https://github.com/margo/specification/issues/129",
     "type": "Feature (TWG)",
-    "release": "GA1",
+    "release": "PR4",
     "subIssues": [
       {
         "title": "[PlugFest Feedback] - Rockwell x ZEDEDA",
@@ -2347,7 +2344,8 @@
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "theme": "Trust",
-    "source": "pm"
+    "source": "pm",
+    "linkedFromFeature": true
   },
   {
     "title": "[PlugFest Feedback] - Rockwell x ZEDEDA",
@@ -2379,7 +2377,7 @@
     "title": "Define the strategy to enable sensitive information to be utilized within the application management mechanism",
     "url": "https://github.com/margo/specification/issues/145",
     "type": "Feature (TWG)",
-    "release": "GA1",
+    "release": "PR4",
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
@@ -3121,7 +3119,7 @@
     "title": "Define the Margo \"Cluster Worker\" capability requirements",
     "url": "https://github.com/margo/specification/issues/96",
     "type": "Feature (TWG)",
-    "release": "GA1",
+    "release": "PR3",
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
@@ -3133,7 +3131,7 @@
     "title": "Define the Margo \"Cluster Leader\" capability requirements",
     "url": "https://github.com/margo/specification/issues/98",
     "type": "Feature (TWG)",
-    "release": "GA1",
+    "release": "PR3",
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
@@ -3165,7 +3163,7 @@
     "title": "Improve deployment status / desired state mechanics and workflows",
     "url": "https://github.com/margo/specification/issues/156",
     "type": "Feature (TWG)",
-    "release": "PR3",
+    "release": "PR4",
     "subIssues": [
       {
         "title": "SUP Voting - Desired State Read Receipts",
@@ -3205,7 +3203,7 @@
     "title": "Enhance schema for the version number in the application description",
     "url": "https://github.com/margo/specification/issues/143",
     "type": "Feature (TWG)",
-    "release": "PR3",
+    "release": "PR4",
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
@@ -3217,7 +3215,7 @@
     "title": "Define the Margo application image and component signing strategy",
     "url": "https://github.com/margo/specification/issues/138",
     "type": "Feature (TWG)",
-    "release": "GA1",
+    "release": "PR4",
     "subIssues": [
       {
         "title": "Signing app packages ",
@@ -3237,7 +3235,7 @@
     "title": "Define the strategy to enable sensitive information to be utilized within the application management mechanism",
     "url": "https://github.com/margo/specification/issues/145",
     "type": "Feature (TWG)",
-    "release": "GA1",
+    "release": "PR4",
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
@@ -3260,7 +3258,7 @@
     "title": "Define how the WFM manages OCI credentials within the Margo device.",
     "url": "https://github.com/margo/specification/issues/129",
     "type": "Feature (TWG)",
-    "release": "GA1",
+    "release": "PR4",
     "subIssues": [
       {
         "title": "[PlugFest Feedback] - Rockwell x ZEDEDA",
@@ -3373,7 +3371,7 @@
     "title": "Specification consistency improvement - update once and propagate changes",
     "url": "https://github.com/margo/specification/issues/157",
     "type": "Bug",
-    "release": "PR3",
+    "release": "PR4",
     "subIssues": [
       {
         "title": "Specification has inconsistencies in multiple different places",
@@ -3557,7 +3555,7 @@
     "title": "Define how device-specific parameter values can be provided",
     "url": "https://github.com/margo/specification/issues/141",
     "type": "Feature (TWG)",
-    "release": "PR3",
+    "release": "PR4",
     "subIssues": [
       {
         "title": "SUP Voting - Device Specific Parameter Values",
@@ -3617,7 +3615,7 @@
     "title": "Address problems exposing application endpoints",
     "url": "https://github.com/margo/specification/issues/75",
     "type": "Feature (TWG)",
-    "release": "GA1",
+    "release": "PR4",
     "subIssues": [
       {
         "title": "[PlugFest Feedback] - Schneider Electric - Own thoughts",
@@ -3650,7 +3648,7 @@
     "title": "Define how developers can deploy and manage Kubernetes operators, and how it impacts the various established system elements in Margo.",
     "url": "https://github.com/margo/specification/issues/105",
     "type": "Feature (TWG)",
-    "release": "GA1",
+    "release": "PR4",
     "subIssues": [
       {
         "title": "Margo & Kubernetes Operator discussion",
@@ -3676,7 +3674,7 @@
     "title": "Improve Workload Management API to support improved app management (Upgrade/Rollback)",
     "url": "https://github.com/margo/specification/issues/201",
     "type": "Feature (TWG)",
-    "release": "GA1",
+    "release": "PR4",
     "subIssues": [
       {
         "title": "Enhance schema for the version number in the application description",
@@ -3695,7 +3693,7 @@
     "title": "Further define how to properly handle namespaces for app deployment",
     "url": "https://github.com/margo/specification/issues/142",
     "type": "Feature (TWG)",
-    "release": "GA1",
+    "release": "PR4",
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
@@ -4203,7 +4201,7 @@
     "title": "Define improvements to compose manifest workloads when targeting typical targets(Docker/Podman)",
     "url": "https://github.com/margo/specification/issues/168",
     "type": "Feature (TWG)",
-    "release": "PR3",
+    "release": "PR4",
     "subIssues": [
       {
         "title": "[PlugFest Feedback] - Schneider Electric x Rockwell",
@@ -4255,7 +4253,7 @@
     "title": "Define how Kubernetes edge devices can become targetable via Margo conformant applications",
     "url": "https://github.com/margo/specification/issues/213",
     "type": "Feature (TWG)",
-    "release": "GA1",
+    "release": "PR4",
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
@@ -4266,7 +4264,7 @@
     "title": "Define what a WFM does when a configurable parameter is left blank",
     "url": "https://github.com/margo/specification/issues/214",
     "type": "Feature (TWG)",
-    "release": "GA1",
+    "release": "PR4",
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
@@ -4277,7 +4275,7 @@
     "title": "Runtime resource usage and availability reporting",
     "url": "https://github.com/margo/specification/issues/215",
     "type": "Feature (TWG)",
-    "release": "GA1",
+    "release": "PR4",
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
@@ -4288,7 +4286,7 @@
     "title": "Multi-tenant, Isolation, and multiple instances per cluster",
     "url": "https://github.com/margo/specification/issues/216",
     "type": "Feature (TWG)",
-    "release": "GA1",
+    "release": "PR4",
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
@@ -4299,7 +4297,7 @@
     "title": "Privileged execution mode and RBAC posture",
     "url": "https://github.com/margo/specification/issues/217",
     "type": "Feature (TWG)",
-    "release": "GA1",
+    "release": "PR4",
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": false,
