@@ -30,8 +30,10 @@ Both views can be filtered by release milestone:
 | Sub-tab | Shows |
 |---|---|
 | **PR1 Completed** | Items with milestone = PR1 |
-| **PR2 In Progress** | Items with milestone = PR2 |
-| **GA1** | All PR1 + PR2 items combined |
+| **PR2 Completed** | Items with milestone = PR2 |
+| **PR3 Completed** | Items with milestone = PR3 |
+| **PR4 In Progress** | Items with milestone = PR4 |
+| **GA1** | All PR1 + PR2 + PR3 + PR4 items combined |
 
 ---
 
@@ -58,8 +60,9 @@ Every tile displays a coloured badge indicating which Preview Release it belongs
 | Badge | Release | Colour |
 |---|---|---|
 | **PR1** | Preview Release 1 — Released 15 Dec 2025 | Dark green |
-| **PR2** | Preview Release 2 — In Progress | Margo blue |
-| **PR3** | Preview Release 3 — Planned Q4 2026 | Grey |
+| **PR2** | Preview Release 2 — Released 16 June 2026 | Margo blue |
+| **PR3** | Preview Release 3 — Released 15 Sept 2026 | Grey |
+| **PR4** | Preview Release 4 — In Progress, target 15 Dec 2026 | Orange |
 
 ---
 
@@ -135,9 +138,9 @@ All configurable values live in `config.json`:
     "pm": { "number": 13, "label": "PM Epics" },
     "twg": { "number": 22, "label": "TWG Features" }
   },
-  "releases": ["PR1", "PR2", "PR3", "GA1"],
-  "currentRelease": "PR2",
-  "nextReleaseDate": "2026-06-30",
+  "releases": ["PR1", "PR2", "PR3", "PR4", "GA1"],
+  "currentRelease": "PR4",
+  "nextReleaseDate": "15 Dec 2026",
   "themes": ["Trust", "Flexibility", "Robustness"]
 }
 ```
