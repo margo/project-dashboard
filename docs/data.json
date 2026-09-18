@@ -3051,6 +3051,61 @@
     "source": "pm"
   },
   {
+    "title": "Step 1: Decouple deployment technology from device capabilities and application descriptions",
+    "url": "https://github.com/margo/specification/issues/219",
+    "type": "Feature (TWG)",
+    "release": "PR4",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "status": "Specification Improvements :SUP",
+    "source": "twg"
+  },
+  {
+    "title": "Step 2:  Define strategy for how to seperate Core from Deployment Specification(s)",
+    "url": "https://github.com/margo/specification/issues/220",
+    "type": "Feature (TWG)",
+    "release": "PR4",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "status": "Specification Improvements :SUP",
+    "source": "twg"
+  },
+  {
+    "title": "Step 3a: Helm/Kubernetes Deployment Specification Creation",
+    "url": "https://github.com/margo/specification/issues/221",
+    "type": "Feature (TWG)",
+    "release": "PR4",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "status": "Specification Improvements :SUP",
+    "source": "twg"
+  },
+  {
+    "title": "Step 3b: Compose/Podman Deployment Specification Creation",
+    "url": "https://github.com/margo/specification/issues/222",
+    "type": "Feature (TWG)",
+    "release": "PR4",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "status": "Specification Improvements :SUP",
+    "source": "twg"
+  },
+  {
+    "title": "Step 3c: Vendor/Custom Runtime Deployment Specification Creation",
+    "url": "https://github.com/margo/specification/issues/223",
+    "type": "Feature (TWG)",
+    "release": "PR4",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "status": "Specification Improvements :SUP",
+    "source": "twg"
+  },
+  {
     "title": "Privileged execution mode and RBAC posture",
     "url": "https://github.com/margo/specification/issues/217",
     "type": "Feature (TWG)",
@@ -4257,6 +4312,17 @@
     "source": "twg"
   },
   {
+    "title": "Define how Kubernetes edge devices can become targetable via Margo conformant applications",
+    "url": "https://github.com/margo/specification/issues/213",
+    "type": "Feature (TWG)",
+    "release": "PR4",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "status": "Specification Improvements :SUP",
+    "source": "twg"
+  },
+  {
     "title": "Further define how to properly handle namespaces for app deployment",
     "url": "https://github.com/margo/specification/issues/142",
     "type": "Feature (TWG)",
@@ -4266,17 +4332,6 @@
     "hasAssignee": false,
     "status": "Specification Improvements :SUP",
     "theme": "Robustness",
-    "source": "twg"
-  },
-  {
-    "title": "Define how Kubernetes edge devices can become targetable via Margo conformant applications",
-    "url": "https://github.com/margo/specification/issues/213",
-    "type": "Feature (TWG)",
-    "release": "PR4",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": false,
-    "status": "Specification Improvements :SUP",
     "source": "twg"
   },
   {
