@@ -4358,5 +4358,16 @@
     "excluded": true,
     "status": null,
     "source": "twg"
+  },
+  {
+    "title": "Define how Edge clients are removed/offboarded and the lifecycle steps",
+    "url": "https://github.com/margo/specification/issues/224",
+    "type": "Feature (TWG)",
+    "release": "GA1",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "status": "GA1",
+    "source": "twg"
   }
 ]
