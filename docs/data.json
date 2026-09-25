@@ -4330,7 +4330,7 @@
     "release": "PR4",
     "subIssues": [],
     "subIssueCount": 0,
-    "hasAssignee": false,
+    "hasAssignee": true,
     "status": "Specification Improvements :SUP",
     "source": "twg"
   },
