@@ -592,9 +592,16 @@
         "state": "OPEN",
         "number": 86,
         "issueType": "Epic (Child)"
+      },
+      {
+        "title": "Define the method for artifact signing to establish trust between vendors",
+        "url": "https://github.com/margo/product_management/issues/110",
+        "state": "OPEN",
+        "number": 110,
+        "issueType": "Epic (Child)"
       }
     ],
-    "subIssueCount": 5,
+    "subIssueCount": 6,
     "hasAssignee": true,
     "excluded": true,
     "status": "PM - Requirement in Draft",
@@ -3060,6 +3067,48 @@
     "hasAssignee": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "Define the method for artifact signing to establish trust between vendors",
+    "url": "https://github.com/margo/product_management/issues/110",
+    "type": "Epic (Child)",
+    "release": "PR4",
+    "subIssues": [
+      {
+        "title": "Define the Margo application image and component signing strategy",
+        "url": "https://github.com/margo/specification/issues/138",
+        "state": "OPEN",
+        "number": 138,
+        "issueType": "Feature (TWG)"
+      }
+    ],
+    "subIssueCount": 1,
+    "hasAssignee": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm",
+    "linkedFromFeature": true
+  },
+  {
+    "title": "Define the Margo application image and component signing strategy",
+    "url": "https://github.com/margo/specification/issues/138",
+    "type": "Feature (TWG)",
+    "release": "PR4",
+    "subIssues": [
+      {
+        "title": "Signing app packages ",
+        "url": "https://github.com/margo/specification/issues/36",
+        "state": "OPEN",
+        "number": 36,
+        "issueType": null
+      }
+    ],
+    "subIssueCount": 1,
+    "hasAssignee": false,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "theme": "Trust",
     "source": "pm"
   },
   {
