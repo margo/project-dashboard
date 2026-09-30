@@ -2643,28 +2643,28 @@
       {
         "title": "[TASK: ] Implement mTLS on Margo Management Interface on WFM Client",
         "url": "https://github.com/margo/sandbox/issues/416",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 416,
         "issueType": "Task"
       },
       {
         "title": "[TASK: ] Implement Discovery/ TrustBundle download for SVID verification on WFM Client from MIS",
         "url": "https://github.com/margo/sandbox/issues/417",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 417,
         "issueType": "Task"
       },
       {
         "title": "[TASK: ] Implement Whitelisting of WFM's Spiffe IDs",
         "url": "https://github.com/margo/sandbox/issues/418",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 418,
         "issueType": "Task"
       },
       {
         "title": "[TASK: ] Implement dynamic whitelisting of WFM Spiffe IDs",
         "url": "https://github.com/margo/sandbox/issues/419",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 419,
         "issueType": "Task"
       }
@@ -2691,28 +2691,28 @@
       {
         "title": "[TASK: ] Implement Discovery/ TrustBundle download for SVID verification on WFM from MIS",
         "url": "https://github.com/margo/sandbox/issues/412",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 412,
         "issueType": "Task"
       },
       {
         "title": "[TASK: ] Implement Whitelisting of WFM Client's Spiffe IDs",
         "url": "https://github.com/margo/sandbox/issues/413",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 413,
         "issueType": "Task"
       },
       {
         "title": "[TASK: ] Implement dynamic whitelisting of WFM Client's Spiffe IDs",
         "url": "https://github.com/margo/sandbox/issues/414",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 414,
         "issueType": "Task"
       },
       {
         "title": "[TASK: ] Update WFM Documentation according to MIAF",
         "url": "https://github.com/margo/sandbox/issues/415",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 415,
         "issueType": "Task"
       }
@@ -2751,14 +2751,14 @@
       {
         "title": "[TASK: ] Implement Margo Identity Service (MIS)",
         "url": "https://github.com/margo/sandbox/issues/408",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 408,
         "issueType": "Task"
       },
       {
         "title": "[TASK: ] Design And Implement Margo Identity Service Deployment Strategy",
         "url": "https://github.com/margo/sandbox/issues/411",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 411,
         "issueType": "Task"
       }
@@ -2907,21 +2907,21 @@
       {
         "title": "[TASK: ] Implement Normative Margo Identity Service API Server",
         "url": "https://github.com/margo/sandbox/issues/409",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 409,
         "issueType": "Task"
       },
       {
         "title": "[TASK: ] Implement Margo Identity Service SVID Minting Server",
         "url": "https://github.com/margo/sandbox/issues/410",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 410,
         "issueType": "Task"
       }
     ],
     "subIssueCount": 2,
     "hasAssignee": true,
-    "status": "PM - Requirement in Draft",
+    "status": "TWG - Approved Requirements",
     "pr1": null,
     "source": "pm"
   },
@@ -2933,7 +2933,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": "PM - Requirement in Draft",
+    "status": "TWG - Approved Requirements",
     "pr1": null,
     "source": "pm"
   },
@@ -2945,7 +2945,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": "PM - Requirement in Draft",
+    "status": "TWG - Approved Requirements",
     "pr1": null,
     "source": "pm"
   },
@@ -2957,7 +2957,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": "PM - Requirement in Draft",
+    "status": "TWG - Approved Requirements",
     "pr1": null,
     "source": "pm"
   },
@@ -2969,7 +2969,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": "PM - Requirement in Draft",
+    "status": "TWG - Approved Requirements",
     "pr1": null,
     "source": "pm"
   },
@@ -2981,7 +2981,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": "PM - Requirement in Draft",
+    "status": "TWG - Approved Requirements",
     "pr1": null,
     "source": "pm"
   },
@@ -2993,7 +2993,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": "PM - Requirement in Draft",
+    "status": "TWG - Approved Requirements",
     "pr1": null,
     "source": "pm"
   },
@@ -3005,7 +3005,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": "PM - Requirement in Draft",
+    "status": "TWG - Approved Requirements",
     "pr1": null,
     "source": "pm"
   },
@@ -3017,7 +3017,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": "PM - Requirement in Draft",
+    "status": "TWG - Approved Requirements",
     "pr1": null,
     "source": "pm"
   },
@@ -3029,7 +3029,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": "PM - Requirement in Draft",
+    "status": "TWG - Approved Requirements",
     "pr1": null,
     "source": "pm"
   },
@@ -3041,7 +3041,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": "PM - Requirement in Draft",
+    "status": "TWG - Approved Requirements",
     "pr1": null,
     "source": "pm"
   },
@@ -3053,7 +3053,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": "PM - Requirement in Draft",
+    "status": "TWG - Approved Requirements",
     "pr1": null,
     "source": "pm"
   },
