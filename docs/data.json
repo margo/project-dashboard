@@ -2184,21 +2184,21 @@
       {
         "title": "[Story: ] As a Margo Device Supplier, I want to configure an mTLS connection with the Margo WFM",
         "url": "https://github.com/margo/sandbox/issues/397",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 397,
         "issueType": "Story (TWG)"
       },
       {
         "title": "[Story: ] As a Margo WFM Supplier, I would like to restrict WFM Client connections to those authorized with SVIDs over mTLS",
         "url": "https://github.com/margo/sandbox/issues/398",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 398,
         "issueType": "Story (TWG)"
       },
       {
         "title": "[Story: ] As a WFM Supplier, I would like to support a MIS Function in the Margo deployment",
         "url": "https://github.com/margo/sandbox/issues/401",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 401,
         "issueType": "Story (TWG)"
       }
@@ -2671,7 +2671,7 @@
     ],
     "subIssueCount": 4,
     "hasAssignee": true,
-    "status": "PM - Requirement in Draft",
+    "status": "TWG - Approved Requirements",
     "pr1": null,
     "source": "pm"
   },
@@ -2719,7 +2719,7 @@
     ],
     "subIssueCount": 5,
     "hasAssignee": true,
-    "status": "PM - Requirement in Draft",
+    "status": "TWG - Approved Requirements",
     "pr1": null,
     "source": "pm"
   },
@@ -2744,7 +2744,7 @@
       {
         "title": "[TASK: ] Setup Scripts: MIAF integration into sandbox scripts",
         "url": "https://github.com/margo/sandbox/issues/402",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 402,
         "issueType": "Task"
       },
@@ -2765,7 +2765,7 @@
     ],
     "subIssueCount": 3,
     "hasAssignee": true,
-    "status": "PM - Requirement in Draft",
+    "status": "TWG - Approved Requirements",
     "pr1": null,
     "source": "pm"
   },
@@ -2777,7 +2777,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": null,
+    "status": "TWG - Approved Requirements",
     "pr1": null,
     "source": "pm"
   },
@@ -3583,21 +3583,21 @@
       {
         "title": "[Story: ] As a Margo Device Supplier, I want to configure an mTLS connection with the Margo WFM",
         "url": "https://github.com/margo/sandbox/issues/397",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 397,
         "issueType": "Story (TWG)"
       },
       {
         "title": "[Story: ] As a Margo WFM Supplier, I would like to restrict WFM Client connections to those authorized with SVIDs over mTLS",
         "url": "https://github.com/margo/sandbox/issues/398",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 398,
         "issueType": "Story (TWG)"
       },
       {
         "title": "[Story: ] As a WFM Supplier, I would like to support a MIS Function in the Margo deployment",
         "url": "https://github.com/margo/sandbox/issues/401",
-        "state": "OPEN",
+        "state": "CLOSED",
         "number": 401,
         "issueType": "Story (TWG)"
       }
