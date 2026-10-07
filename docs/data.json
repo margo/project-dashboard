@@ -3112,6 +3112,19 @@
     "source": "pm"
   },
   {
+    "title": "Parent Epic 14: Configure enrolled edge devices",
+    "url": "https://github.com/margo/product_management/issues/111",
+    "type": "Epic (Parent)",
+    "release": null,
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "excluded": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
     "title": "Step 1: Decouple deployment technology from device capabilities and application descriptions",
     "url": "https://github.com/margo/specification/issues/219",
     "type": "Feature (TWG)",
