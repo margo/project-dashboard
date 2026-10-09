@@ -3061,10 +3061,47 @@
     "title": "Parent Epic 0: Organization and Guidance for Margo Deliverables",
     "url": "https://github.com/margo/product_management/issues/109",
     "type": "Epic (Parent)",
-    "release": "GA1",
-    "subIssues": [],
-    "subIssueCount": 0,
+    "release": null,
+    "subIssues": [
+      {
+        "title": "Core specification maintained as deployment technology agnostic",
+        "url": "https://github.com/margo/product_management/issues/112",
+        "state": "OPEN",
+        "number": 112,
+        "issueType": "Epic (Child)"
+      },
+      {
+        "title": "Maintain the WFM ability to deploy Margo applications as part of Core specification",
+        "url": "https://github.com/margo/product_management/issues/113",
+        "state": "OPEN",
+        "number": 113,
+        "issueType": "Epic (Child)"
+      },
+      {
+        "title": "WFM conformance with deployment specifications",
+        "url": "https://github.com/margo/product_management/issues/114",
+        "state": "OPEN",
+        "number": 114,
+        "issueType": "Epic (Child)"
+      },
+      {
+        "title": "WFM use of deployment specific specification to enrich user experience",
+        "url": "https://github.com/margo/product_management/issues/115",
+        "state": "OPEN",
+        "number": 115,
+        "issueType": "Epic (Child)"
+      },
+      {
+        "title": "Deployment specification content targeting optional WFM interoperability",
+        "url": "https://github.com/margo/product_management/issues/116",
+        "state": "OPEN",
+        "number": 116,
+        "issueType": "Epic (Child)"
+      }
+    ],
+    "subIssueCount": 5,
     "hasAssignee": true,
+    "excluded": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
@@ -3125,13 +3162,76 @@
     "source": "pm"
   },
   {
+    "title": "Core specification maintained as deployment technology agnostic",
+    "url": "https://github.com/margo/product_management/issues/112",
+    "type": "Epic (Child)",
+    "release": "GA1",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "Maintain the WFM ability to deploy Margo applications as part of Core specification",
+    "url": "https://github.com/margo/product_management/issues/113",
+    "type": "Epic (Child)",
+    "release": "GA1",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "WFM conformance with deployment specifications",
+    "url": "https://github.com/margo/product_management/issues/114",
+    "type": "Epic (Child)",
+    "release": null,
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "excluded": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "WFM use of deployment specific specification to enrich user experience",
+    "url": "https://github.com/margo/product_management/issues/115",
+    "type": "Epic (Child)",
+    "release": null,
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "excluded": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "Deployment specification content targeting optional WFM interoperability",
+    "url": "https://github.com/margo/product_management/issues/116",
+    "type": "Epic (Child)",
+    "release": null,
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "excluded": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
     "title": "Step 1: Decouple deployment technology from device capabilities and application descriptions",
     "url": "https://github.com/margo/specification/issues/219",
     "type": "Feature (TWG)",
     "release": "PR4",
     "subIssues": [],
     "subIssueCount": 0,
-    "hasAssignee": false,
+    "hasAssignee": true,
     "status": "Specification Improvements :SUP",
     "source": "twg"
   },
@@ -3142,7 +3242,7 @@
     "release": "PR4",
     "subIssues": [],
     "subIssueCount": 0,
-    "hasAssignee": false,
+    "hasAssignee": true,
     "status": "Specification Improvements :SUP",
     "source": "twg"
   },
@@ -3153,7 +3253,7 @@
     "release": "PR4",
     "subIssues": [],
     "subIssueCount": 0,
-    "hasAssignee": false,
+    "hasAssignee": true,
     "status": "Specification Improvements :SUP",
     "source": "twg"
   },
