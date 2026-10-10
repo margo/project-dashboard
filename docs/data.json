@@ -4543,5 +4543,37 @@
     "hasAssignee": false,
     "status": "GA1",
     "source": "twg"
+  },
+  {
+    "title": "Define MIAF credential acquisition modes and the provisioning input contract",
+    "url": "https://github.com/margo/specification/issues/228",
+    "type": "Feature (TWG)",
+    "release": "PR4",
+    "subIssues": [
+      {
+        "title": "SUP Voting - MIAF Credential Provisioning and Acquisition",
+        "url": "https://github.com/margo/specification-enhancements/issues/102",
+        "state": "CLOSED",
+        "number": 102,
+        "issueType": null
+      }
+    ],
+    "subIssueCount": 1,
+    "hasAssignee": true,
+    "status": "SUP Approved",
+    "theme": "Trust",
+    "source": "twg"
+  },
+  {
+    "title": "Fixes PR3 Sandbox issues",
+    "url": "https://github.com/margo/sandbox/pull/450",
+    "type": null,
+    "release": null,
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "excluded": true,
+    "status": null,
+    "source": "twg"
   }
 ]
