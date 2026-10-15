@@ -3142,7 +3142,7 @@
       }
     ],
     "subIssueCount": 1,
-    "hasAssignee": false,
+    "hasAssignee": true,
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "theme": "Trust",
@@ -4394,7 +4394,7 @@
       }
     ],
     "subIssueCount": 1,
-    "hasAssignee": false,
+    "hasAssignee": true,
     "status": "Specification Improvements :SUP",
     "theme": "Trust",
     "source": "twg"
