@@ -3064,7 +3064,7 @@
     "release": null,
     "subIssues": [
       {
-        "title": "Core specification maintained as deployment technology agnostic",
+        "title": "Core specification content to be maintained as deployment technology agnostic",
         "url": "https://github.com/margo/product_management/issues/112",
         "state": "OPEN",
         "number": 112,
@@ -3162,7 +3162,7 @@
     "source": "pm"
   },
   {
-    "title": "Core specification maintained as deployment technology agnostic",
+    "title": "Core specification content to be maintained as deployment technology agnostic",
     "url": "https://github.com/margo/product_management/issues/112",
     "type": "Epic (Child)",
     "release": "GA1",
