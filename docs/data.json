@@ -4573,7 +4573,7 @@
     "subIssueCount": 0,
     "hasAssignee": false,
     "excluded": true,
-    "status": null,
+    "status": "SUP/PR Completed",
     "source": "twg"
   }
 ]
