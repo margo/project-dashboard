@@ -4553,5 +4553,17 @@
     "excluded": true,
     "status": "SUP/PR Completed",
     "source": "twg"
+  },
+  {
+    "title": "Align Retry-After and retry semantics across the OpenAPI specifications",
+    "url": "https://github.com/margo/specification/issues/231",
+    "type": "Feature (TWG)",
+    "release": null,
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "excluded": true,
+    "status": "GA1",
+    "source": "twg"
   }
 ]
