@@ -3089,7 +3089,7 @@
         "url": "https://github.com/margo/product_management/issues/119",
         "state": "OPEN",
         "number": 119,
-        "issueType": null
+        "issueType": "Epic (Child)"
       }
     ],
     "subIssueCount": 4,
@@ -3193,7 +3193,7 @@
   {
     "title": "Deployment specifications to be centrally referenced via a Margo-hosted registry",
     "url": "https://github.com/margo/product_management/issues/119",
-    "type": null,
+    "type": "Epic (Child)",
     "release": "GA1",
     "subIssues": [],
     "subIssueCount": 0,
