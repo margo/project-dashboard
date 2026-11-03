@@ -3162,7 +3162,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": "PM - Requirement under Review",
+    "status": "TWG - Requirement Under Review",
     "pr1": null,
     "source": "pm"
   },
@@ -3186,7 +3186,7 @@
     "subIssues": [],
     "subIssueCount": 0,
     "hasAssignee": true,
-    "status": "PM - Requirement in Draft",
+    "status": "PM - Requirement under Review",
     "pr1": null,
     "source": "pm"
   },
