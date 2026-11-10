@@ -3203,23 +3203,20 @@
     "source": "pm"
   },
   {
-    "title": "Step 1: Decouple deployment technology from device capabilities and application descriptions",
-    "url": "https://github.com/margo/specification/issues/219",
-    "type": "Feature (TWG)",
-    "release": "PR4",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": true,
-    "status": "Specification Improvements :SUP",
-    "source": "twg"
-  },
-  {
     "title": "Step 2:  Define strategy for how to seperate Core from Deployment Specification(s)",
     "url": "https://github.com/margo/specification/issues/220",
     "type": "Feature (TWG)",
     "release": "PR4",
-    "subIssues": [],
-    "subIssueCount": 0,
+    "subIssues": [
+      {
+        "title": "SUP Voting - Separate Margo Core from deployment specifications",
+        "url": "https://github.com/margo/specification-enhancements/issues/108",
+        "state": "CLOSED",
+        "number": 108,
+        "issueType": null
+      }
+    ],
+    "subIssueCount": 1,
     "hasAssignee": true,
     "status": "Specification Improvements :SUP",
     "source": "twg"
@@ -3253,7 +3250,7 @@
     "release": "PR4",
     "subIssues": [],
     "subIssueCount": 0,
-    "hasAssignee": false,
+    "hasAssignee": true,
     "status": "Specification Improvements :SUP",
     "source": "twg"
   },
@@ -4534,12 +4531,38 @@
         "state": "CLOSED",
         "number": 102,
         "issueType": null
+      },
+      {
+        "title": "SUP Voting - MIAF Enrollment, Renewal, and Revocation",
+        "url": "https://github.com/margo/specification-enhancements/issues/106",
+        "state": "CLOSED",
+        "number": 106,
+        "issueType": null
+      }
+    ],
+    "subIssueCount": 2,
+    "hasAssignee": true,
+    "status": "SUP Approved",
+    "theme": "Trust",
+    "source": "twg"
+  },
+  {
+    "title": "Step 1: Decouple deployment technology from device capabilities and application descriptions",
+    "url": "https://github.com/margo/specification/issues/219",
+    "type": "Feature (TWG)",
+    "release": "PR4",
+    "subIssues": [
+      {
+        "title": "SUP Voting - Schema-Agnostic device profile and characteristics",
+        "url": "https://github.com/margo/specification-enhancements/issues/107",
+        "state": "CLOSED",
+        "number": 107,
+        "issueType": null
       }
     ],
     "subIssueCount": 1,
     "hasAssignee": true,
     "status": "SUP Approved",
-    "theme": "Trust",
     "source": "twg"
   },
   {
