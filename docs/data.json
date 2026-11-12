@@ -3203,25 +3203,6 @@
     "source": "pm"
   },
   {
-    "title": "Step 2:  Define strategy for how to seperate Core from Deployment Specification(s)",
-    "url": "https://github.com/margo/specification/issues/220",
-    "type": "Feature (TWG)",
-    "release": "PR4",
-    "subIssues": [
-      {
-        "title": "SUP Voting - Separate Margo Core from deployment specifications",
-        "url": "https://github.com/margo/specification-enhancements/issues/108",
-        "state": "CLOSED",
-        "number": 108,
-        "issueType": null
-      }
-    ],
-    "subIssueCount": 1,
-    "hasAssignee": true,
-    "status": "Specification Improvements :SUP",
-    "source": "twg"
-  },
-  {
     "title": "Step 3a: Helm/Kubernetes Deployment Specification Creation",
     "url": "https://github.com/margo/specification/issues/221",
     "type": "Feature (TWG)",
@@ -4566,6 +4547,25 @@
     "source": "twg"
   },
   {
+    "title": "Step 2:  Define strategy for how to seperate Core from Deployment Specification(s)",
+    "url": "https://github.com/margo/specification/issues/220",
+    "type": "Feature (TWG)",
+    "release": "PR4",
+    "subIssues": [
+      {
+        "title": "SUP Voting - Separate Margo Core from deployment specifications",
+        "url": "https://github.com/margo/specification-enhancements/issues/108",
+        "state": "CLOSED",
+        "number": 108,
+        "issueType": null
+      }
+    ],
+    "subIssueCount": 1,
+    "hasAssignee": true,
+    "status": "SUP Approved",
+    "source": "twg"
+  },
+  {
     "title": "Fixes PR3 Sandbox issues",
     "url": "https://github.com/margo/sandbox/pull/450",
     "type": null,
@@ -4587,6 +4587,28 @@
     "hasAssignee": false,
     "excluded": true,
     "status": "GA1",
+    "source": "twg"
+  },
+  {
+    "title": "Refine Gateway functionality within specification",
+    "url": "https://github.com/margo/specification/issues/234",
+    "type": "Feature (TWG)",
+    "release": "PR4",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "Specification Improvements :SUP",
+    "source": "twg"
+  },
+  {
+    "title": "Address MIAF implementation issues related to Gateway functionality",
+    "url": "https://github.com/margo/specification/issues/235",
+    "type": "Feature (TWG)",
+    "release": "PR4",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "Specification Improvements :SUP",
     "source": "twg"
   }
 ]
