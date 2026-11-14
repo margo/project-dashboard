@@ -4610,5 +4610,16 @@
     "hasAssignee": true,
     "status": "Specification Improvements :SUP",
     "source": "twg"
+  },
+  {
+    "title": "[TASK: ] Analysis of changes in WFM, WFM Client & MIS  based on MIAF Credential Provisioning and Acquisition",
+    "url": "https://github.com/margo/sandbox/issues/498",
+    "type": "Task",
+    "release": "SPRINT_26_PR4",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": null,
+    "source": "twg"
   }
 ]
