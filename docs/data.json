@@ -154,13 +154,28 @@
         "state": "CLOSED",
         "number": 91,
         "issueType": "Feature (TWG)"
+      },
+      {
+        "title": "Define improvements to compose manifest workloads when targeting typical targets(Docker/Podman)",
+        "url": "https://github.com/margo/specification/issues/168",
+        "state": "OPEN",
+        "number": 168,
+        "issueType": "Feature (TWG)"
+      },
+      {
+        "title": "Define how Kubernetes edge devices can become targetable via Margo conformant applications",
+        "url": "https://github.com/margo/specification/issues/213",
+        "state": "OPEN",
+        "number": 213,
+        "issueType": "Feature (TWG)"
       }
     ],
-    "subIssueCount": 1,
+    "subIssueCount": 3,
     "hasAssignee": true,
     "status": "TWG - Requirement approved and merged",
     "pr1": null,
-    "source": "pm"
+    "source": "pm",
+    "linkedFromFeature": true
   },
   {
     "title": "Application Package - Define the format for Margo applications to specify device requirements",
@@ -356,9 +371,9 @@
     "source": "pm"
   },
   {
-    "title": "Specify the workload resource requirements",
+    "title": "Specify real-time workload resource requirements",
     "url": "https://github.com/margo/product_management/issues/15",
-    "type": null,
+    "type": "Epic (Child)",
     "release": "Future",
     "subIssues": [
       {
@@ -599,9 +614,16 @@
         "state": "OPEN",
         "number": 110,
         "issueType": "Epic (Child)"
+      },
+      {
+        "title": "Specify real-time workload resource requirements",
+        "url": "https://github.com/margo/product_management/issues/15",
+        "state": "OPEN",
+        "number": 15,
+        "issueType": "Epic (Child)"
       }
     ],
-    "subIssueCount": 6,
+    "subIssueCount": 7,
     "hasAssignee": true,
     "excluded": true,
     "status": "PM - Requirement in Draft",
@@ -3203,6 +3225,72 @@
     "source": "pm"
   },
   {
+    "title": "Define improvements to compose manifest workloads when targeting typical targets(Docker/Podman)",
+    "url": "https://github.com/margo/specification/issues/168",
+    "type": "Feature (TWG)",
+    "release": "PR4",
+    "subIssues": [
+      {
+        "title": "[PlugFest Feedback] - Schneider Electric x Rockwell",
+        "url": "https://github.com/margo/plugfest/issues/38",
+        "state": "CLOSED",
+        "number": 38,
+        "issueType": null
+      },
+      {
+        "title": "[PlugFest Feedback] - Hilscher X Red Hat",
+        "url": "https://github.com/margo/plugfest/issues/43",
+        "state": "CLOSED",
+        "number": 43,
+        "issueType": null
+      }
+    ],
+    "subIssueCount": 2,
+    "hasAssignee": false,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "theme": "Robustness",
+    "source": "pm"
+  },
+  {
+    "title": "[PlugFest Feedback] - Schneider Electric x Rockwell",
+    "url": "https://github.com/margo/plugfest/issues/38",
+    "type": null,
+    "release": null,
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "excluded": true,
+    "status": "TWG - Approved Requirements",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "[PlugFest Feedback] - Hilscher X Red Hat",
+    "url": "https://github.com/margo/plugfest/issues/43",
+    "type": null,
+    "release": null,
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "excluded": true,
+    "status": "TWG - Approved Requirements",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
+    "title": "Define how Kubernetes edge devices can become targetable via Margo conformant applications",
+    "url": "https://github.com/margo/specification/issues/213",
+    "type": "Feature (TWG)",
+    "release": "PR4",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "PM - Requirement in Draft",
+    "pr1": null,
+    "source": "pm"
+  },
+  {
     "title": "Step 3a: Helm/Kubernetes Deployment Specification Creation",
     "url": "https://github.com/margo/specification/issues/221",
     "type": "Feature (TWG)",
@@ -3468,7 +3556,7 @@
     "title": "Improve deployment status / desired state mechanics and workflows",
     "url": "https://github.com/margo/specification/issues/156",
     "type": "Feature (TWG)",
-    "release": "PR4",
+    "release": "PR3",
     "subIssues": [
       {
         "title": "SUP Voting - Desired State Read Receipts",
