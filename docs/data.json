@@ -3352,7 +3352,7 @@
     "release": "PR4",
     "subIssues": [],
     "subIssueCount": 0,
-    "hasAssignee": false,
+    "hasAssignee": true,
     "status": "GA1",
     "source": "twg"
   },
