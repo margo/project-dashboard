@@ -3226,7 +3226,7 @@
     "title": "Define improvements to compose manifest workloads when targeting typical targets(Docker/Podman)",
     "url": "https://github.com/margo/specification/issues/168",
     "type": "Feature (TWG)",
-    "release": "PR5",
+    "release": "PR4",
     "subIssues": [
       {
         "title": "[PlugFest Feedback] - Schneider Electric x Rockwell",
@@ -3287,6 +3287,17 @@
     "status": "PM - Requirement in Draft",
     "pr1": null,
     "source": "pm"
+  },
+  {
+    "title": "Define what a WFM does when a configurable parameter is left blank",
+    "url": "https://github.com/margo/specification/issues/214",
+    "type": "Feature (TWG)",
+    "release": "PR4",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": true,
+    "status": "Specification Improvements: Non SUP",
+    "source": "twg"
   },
   {
     "title": "Define how the WFM manages OCI credentials within the Margo device.",
@@ -3368,17 +3379,6 @@
     "source": "twg"
   },
   {
-    "title": "Step 3b: Compose/Podman Deployment Specification Creation",
-    "url": "https://github.com/margo/specification/issues/222",
-    "type": "Feature (TWG)",
-    "release": "PR4",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": false,
-    "status": "Specification Improvements :SUP",
-    "source": "twg"
-  },
-  {
     "title": "Step 3c: Vendor/Custom Runtime Deployment Specification Creation",
     "url": "https://github.com/margo/specification/issues/223",
     "type": "Feature (TWG)",
@@ -3415,7 +3415,7 @@
     "title": "Define improvements to compose manifest workloads when targeting typical targets(Docker/Podman)",
     "url": "https://github.com/margo/specification/issues/168",
     "type": "Feature (TWG)",
-    "release": "PR5",
+    "release": "PR4",
     "subIssues": [
       {
         "title": "[PlugFest Feedback] - Schneider Electric x Rockwell",
@@ -3436,6 +3436,17 @@
     "hasAssignee": false,
     "status": "GA1",
     "theme": "Robustness",
+    "source": "twg"
+  },
+  {
+    "title": "Step 3b: Compose/Podman Deployment Specification Creation",
+    "url": "https://github.com/margo/specification/issues/222",
+    "type": "Feature (TWG)",
+    "release": "PR4",
+    "subIssues": [],
+    "subIssueCount": 0,
+    "hasAssignee": false,
+    "status": "GA1",
     "source": "twg"
   },
   {
@@ -4678,17 +4689,6 @@
   {
     "title": "Address MIAF implementation issues related to Gateway functionality",
     "url": "https://github.com/margo/specification/issues/235",
-    "type": "Feature (TWG)",
-    "release": "PR4",
-    "subIssues": [],
-    "subIssueCount": 0,
-    "hasAssignee": true,
-    "status": "Specification Improvements :SUP",
-    "source": "twg"
-  },
-  {
-    "title": "Define what a WFM does when a configurable parameter is left blank",
-    "url": "https://github.com/margo/specification/issues/214",
     "type": "Feature (TWG)",
     "release": "PR4",
     "subIssues": [],
